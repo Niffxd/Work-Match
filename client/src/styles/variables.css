@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
+
+:root {
+  /* Typography */
+  --font-size: max(16px, 1vw);
+  --font-family: Raleway, 'Segoe UI';
+  --thin: 300;
+  --regular: 400;
+  --semibold: 600;
+  --bold: 700;
+  /* Border radius */
+  --border-radius: 0.75rem;
+  /* Primary colors */
+  --light-color: #fffefb;
+  --dark-color: #142129;
+  --purple: #6b7fd7;
+  /* Secundary colors */
+  --cream: #f2efef;
+  --baby-purple: #d0d5f0;
+  --light-purple: #f2f4fd;
+  --red: #d2433d;
+  --green: #57bf7d;
+  --dark-blue: #253d4b;
+  --dark-gray: #61727c;
+  --gray: #7f8b92;
+  /* Icon filters */
+  --filter-dark: invert(7%) sepia(13%) saturate(2464%) hue-rotate(159deg)
+    brightness(100%) contrast(88%);
+  --filter-light: invert(100%) sepia(98%) saturate(186%) hue-rotate(332deg)
+    brightness(108%) contrast(102%);
+  --filter-purple: invert(65%) sepia(65%) saturate(3915%) hue-rotate(204deg)
+    brightness(89%) contrast(89%);
+  --filter-black-and-white: grayscale(1);
+  --filter-color: grayscale(0);
+}
