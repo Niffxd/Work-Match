@@ -1,21 +1,22 @@
 const {PostedOffers}= require("../configs/db.config.js");
 
-const getallJobs= async (req,res)=>{
+const get= async (req,res,next)=>{
     try{
     
       let jobs= await PostedOffers.findAll()
       if(!Object.keys(jobs).length){
         return res.status(404).json({
-          msg: "jobs does not found database "
+          msg: "jobs do not found database "
       })
       }
       return res.status(200).send(jobs)
   }catch(err){
-      return res.status(404).send(err.message);
+      console.error(`Error while getting jobs`, err.message);
+      next(err);
   }
   }
 
- const postJob = async(req,res)=>{
+ const post = async(req,res,next)=>{
     const { title,description,direction,status,estimatedTime,renumerations,agreement } =req.body;
       let jobCreated 
       try {
@@ -70,8 +71,9 @@ if (estimatedTime.match(noSpecialCharacters)) {
     return res.status(200).send(jobCreated);   
      
     } catch (error) {
-      return error;
+      console.error(`Error while creating job`, err.message);
+      next(err);
     }
   }
 
-module.exports = {getallJobs,postJob}; 
+module.exports = {get,post}; 
