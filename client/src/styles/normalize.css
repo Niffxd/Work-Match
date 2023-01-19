@@ -1,0 +1,130 @@
+@import 'variables.css';
+
+html,
+*,
+*:before,
+*:after {
+  font-family: var(--font-family);
+  font-size: var(--font-size);
+  font-weight: var(--regular);
+  color: var(--dark-color);
+  margin: 1rem auto;
+  padding: 0;
+  border-width: 0;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background-color: var(--cream);
+  margin: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+*::-webkit-scrollbar {
+  width: 0.6rem;
+  background-color: transparent;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-left: 0.25rem solid var(--gray);
+  background-color: transparent;
+}
+
+button {
+  display: block;
+  padding: 0.5rem 1.5rem;
+  font-size: max(1.2rem, 1.5vw);
+  font-weight: var(--semibold);
+  border-radius: 1.7rem;
+  cursor: pointer;
+}
+
+@media (pointer: fine) {
+  button:hover {
+    transform: scale(1.07);
+  }
+}
+
+canvas,
+img,
+iframe,
+picture,
+svg,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+h1 {
+  font-size: 1.8rem;
+  font-weight: var(--bold);
+  text-align: center;
+  cursor: default;
+}
+h2 {
+  font-size: 1.6rem;
+  font-weight: var(--semibold);
+  cursor: default;
+}
+h3 {
+  font-size: 1.4rem;
+  font-weight: var(--semibold);
+  cursor: default;
+}
+h4 {
+  font-size: 1.2rem;
+  font-weight: var(--semibold);
+  cursor: default;
+}
+
+input,
+textarea {
+  display: block;
+  padding: 0.75rem;
+  border-radius: var(--border-radius);
+  width: 100%;
+  height: 2rem;
+  background-color: var(--baby-purple);
+}
+
+input:focus,
+input:active,
+textarea:focus,
+textarea:active {
+  border-color: var(--purple);
+  outline-color: var(--purple);
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  cursor: pointer;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--gray);
+}
+input::-ms-input-placeholder,
+textarea::-ms-input-placeholder {
+  color: var(--gray);
+}
+
+textarea {
+  height: 8rem;
+  resize: none;
+}
+
+p {
+  cursor: default;
+}
+
+label {
+  display: block;
+}
