@@ -1,5 +1,7 @@
 const { DataTypes } = require("sequelize");
 
+//This file is the model who saved any Post of job offers.
+
 module.exports = (sequelize) => {
   sequelize.define(
     "PostedOffers",
