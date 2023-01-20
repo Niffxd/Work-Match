@@ -1,5 +1,8 @@
 const { DataTypes } = require("sequelize");
 
+//This model'll have the jobs that a user can ask for, the specific task to be performed.
+//This task or Job, will be related to a Type.
+
 module.exports = (sequelize) => {
   sequelize.define("Job", {
     id: {
