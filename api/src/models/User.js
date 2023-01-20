@@ -1,5 +1,7 @@
 const { DataTypes } = require("sequelize");
 
+// This model save all the users, binding them with the type of job they want to apply and the cities they can work at
+
 module.exports = (sequelize) => {
   sequelize.define(
     "User",
