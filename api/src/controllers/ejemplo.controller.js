@@ -1,11 +1,11 @@
 const ejemplo = require('../services/ejemplo.service.js');
 
-async function get(req, res, next) {
+async function read(req, res, next) {
   try {
-      res.json(await ejemplo.get(req.query.page));
+    res.json(await ejemplo.read(req.query.page));
   } catch (err) {
-      console.error(`Error while getting ejemplos`, err.message);
-      next(err);
+    console.error(`Error while getting ejemplos`, err.message);
+    next(err);
   }
 }
 
@@ -37,8 +37,8 @@ async function remove(req, res, next) {
 }
 
 module.exports = {
-  get,
+  read,
   create,
   update,
-  remove
+  remove,
 };
