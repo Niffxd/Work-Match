@@ -1,5 +1,7 @@
 const { DataTypes } = require("sequelize");
 
+//State or Provincies of each country, related with Cities & Countries
+
 module.exports = (sequelize) => {
   sequelize.define("State", {
     id: {
