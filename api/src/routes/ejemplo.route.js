@@ -1,10 +1,11 @@
 const express = require('express');
+
 const router = express.Router();
-const ejemplo = require('../controllers/ejemplo.controller');
+const ejemplo = require('../controllers/ejemplo.controller.js');
 
 /* GET ejemplos */
-router.get('/', ejemplo.get);
-  
+router.get('/', ejemplo.read);
+
 /* POST ejemplo */
 router.post('/', ejemplo.create);
 
