@@ -1,5 +1,7 @@
 const { DataTypes } = require("sequelize");
 
+//This model will save all the cities in the world, bindind each city with all the users who can work or live in it
+
 module.exports = (sequelize) => {
   sequelize.define("City", {
     id: {
