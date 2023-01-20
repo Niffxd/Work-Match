@@ -1,5 +1,7 @@
 const { DataTypes } = require("sequelize");
 
+//This Model is where we register when a user applies to a job offer, so the employer can see who wants the job
+
 module.exports = (sequelize) => {
   sequelize.define("Application", {
     id: {
