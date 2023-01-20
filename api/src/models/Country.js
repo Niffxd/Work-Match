@@ -1,5 +1,7 @@
 const { DataTypes } = require("sequelize");
 
+//Model who save countries, it will be used to determinate user's country and will be bind to State Model
+
 module.exports = (sequelize) => {
   sequelize.define("Country", {
     id: {
