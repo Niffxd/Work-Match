@@ -1,0 +1,58 @@
+.container_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem  1fr));
+  grid-gap: 0.2em;
+}
+
+/*----------IMAGEN DEL OFICIO -------*/
+.container_grid .imagen {
+  grid-column: -3/-2;
+  align-items: center;
+  justify-content: center;
+  width: 7rem;
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
+
+.imagen_svg {
+  margin: 0;
+}
+
+/*----CONTENEDOR DESCRIPCION TITULO ----- */
+.container_grid .info {
+  grid-column-start: -2; 
+   grid-column-end: -1;
+  margin-left: 1rem;
+}
+
+.container_grid .info h3 {
+  display: flex;
+  margin-top: 0;
+  align-items: flex-start;
+}
+
+.container_grid .info p {
+  height: 2.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* --------SUELDO Y HORA---------*/
+.container_grid .precio_hora {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  font-weight: var(--thin);
+  color: inherit;
+  margin: 0;
+  padding: 0.2em;
+}
+
+.precio_hora > span {
+  margin: 0;
+}
+/* @media screen and (max-width: 31.25em) and (orientation: landscape) {
+
+  
+} */
