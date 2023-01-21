@@ -1,6 +1,17 @@
 @import 'variables.css';
 
 /* Buttons */
+.buttons-container {
+  display: flex;
+  margin-bottom: 0;
+  width: 100%;
+  height: min-content;
+  align-items: center;
+  justify-content: center;
+}
+.buttons-container > button {
+  margin: 1rem 2vw;
+}
 .button-dark {
   background-color: var(--dark-color);
   color: var(--light-color);
@@ -36,6 +47,19 @@
     padding: 3rem 5rem;
     width: 65vw;
   }
+}
+
+/* Error */
+.error {
+  display: block;
+  padding: 0.25rem 0.7rem;
+  color: var(--light-color);
+  border-radius: 0.3rem;
+  background-color: var(--red);
+}
+.error::before {
+  content: '⚠️';
+  margin-right: 0.5rem;
 }
 
 /* Font weight */
@@ -101,8 +125,8 @@
 }
 .input-light-purple:focus,
 .input-light-purple:active {
-  border-color: var(--baby-purple);
-  outline-color: var(--baby-purple);
+  border: 0.15rem solid var(--baby-purple);
+  outline: none;
 }
 
 .input-gray {
@@ -111,8 +135,8 @@
 }
 .input-gray:focus,
 .input-gray:active {
-  border-color: var(--dark-gray);
-  outline-color: var(--dark-gray);
+  border: 0.15rem solid var(--dark-gray);
+  outline: none;
 }
 .input-gray::placeholder {
   color: #e0dbdb;
@@ -131,7 +155,4 @@
 /* Invisible object */
 .invisible {
   display: none;
-}
-
-@media screen and (min-width: 60em) {
 }
