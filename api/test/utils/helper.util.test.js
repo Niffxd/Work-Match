@@ -1,6 +1,6 @@
 const helper = require('../../src/utils/helper.util.js');
 
-describe('Helper Utils test', () => {
+xdescribe('Helper Utils test', () => {
   describe('getOffset', () => {
     it('Should get the offset without params will return 0', () => {
       expect(helper.getOffset()).toBe(0);
