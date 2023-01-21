@@ -11,6 +11,9 @@ function findOptions(page, ord) {
   const options = {
     offset,
     limit,
+    where: {
+      deleted: false,
+    },
   };
 
   if (ord && ord.hasOwnProperty('column')) {
