@@ -5,37 +5,38 @@ import React from 'react';
 // import money from '../../../../public/billete.svg';
 import styles from '../app/page.module.css';
 
-export default function Cardjob({ nombre, imagen, texto, precio, hora }) {
+export default function Cardjob({ title, address,/*imagen,*/ description, budget/*, hora*/ }) {
   return (
     <>
-    <div className={`${styles['imagen']}`}>
+    {/* <div className={`${styles['imagen']}`}>
         <Image
           className={`${styles['image_svg']}`}
           src={imagen}
           alt="imagen de trabajo"
         />
-      </div>
+      </div> */}
       <div className={`${styles['info']}`}>
-        <h3>{nombre}</h3>
-        <p>{texto}</p>
-      <div className={`${styles['precio_hora']}`}>
+        <h3>{title}</h3>
+        <h2>{address}</h2>
+        <p>{description}</p>
+      {/* <div className={`${styles['precio_hora']}`}>
         <span>
-            {/* <Image
+            <Image
               className={`|${styles["imagen_time"]}`}
               src={time}
               alt="time"
-            />{" "} */}
+            />{" "} 
           {hora}
-        </span>
+        </span> */}
         <span>
             {/* <Image
               className={`${styles["imagen_money"]}`}
               src={money}
               alt="dinero"
             />{" "} */}
-          {precio}
+          {budget}
         </span>
-      </div>
+      {/* </div> */}
     </div>
     </>
   );
