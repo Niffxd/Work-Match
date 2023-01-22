@@ -1,5 +1,6 @@
 import '../styles/normalize.css';
 import '../styles/index.css';
+import Footer from '../components/Footer/Footer.jsx'
 
 export default function RootLayout({ children }) {
   return (
@@ -9,7 +10,10 @@ export default function RootLayout({ children }) {
         head.jsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body>{children}</body>
+      <body>
+        {children}
+        <Footer/>
+      </body>
     </html>
   );
 }
