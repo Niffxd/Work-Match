@@ -6,14 +6,14 @@ describe('User Routes', () => {
   beforeAll(async () => {
     await conn.sync({ force: true });
   });
-  const name = 'nombre';
   // POST
   describe('Post Endpoints', () => {
+    const user = {
+      id: 1,
+      name: 'nombre',
+    };
     it('should create', async () => {
-      const res = await request(app).post('/user').send({
-        // id,
-        name,
-      });
+      const res = await request(app).post('/user').send(user);
       expect(res.statusCode).toEqual(201);
       expect(res.body).toHaveProperty('name');
       expect(res.body.name).toBe('nombre');

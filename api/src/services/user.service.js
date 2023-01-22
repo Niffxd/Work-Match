@@ -23,18 +23,13 @@ async function create(user) {
 }
 
 async function update(user) {
-  const { id, name } = user;
+  const { id } = user;
 
-  return User.update(
-    {
-      name,
+  return User.update(user, {
+    where: {
+      id,
     },
-    {
-      where: {
-        id,
-      },
-    }
-  );
+  });
 }
 
 async function remove(id) {
@@ -48,7 +43,6 @@ async function remove(id) {
       },
     }
   );
-  // console.log(result)
   return result;
 }
 

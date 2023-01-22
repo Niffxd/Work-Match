@@ -14,14 +14,12 @@ async function create(req, res, next) {
     res.status(201).send(await user.create(req.body));
   } catch (err) {
     console.error(`Error while creating user`, err.message);
-    // res.status(404);
     next(err);
   }
 }
 
 async function update(req, res, next) {
   try {
-    // console.log(req)
     res.status(201).send(await user.update(req.body));
   } catch (err) {
     console.error(`Error while updating user`, err.message);
