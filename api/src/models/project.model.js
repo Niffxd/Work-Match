@@ -1,25 +1,28 @@
-const { DataTypes } = require("sequelize");
-
-//This file is the model who saved any Post of job offers.
-
+const { DataTypes } = require('sequelize');
+// This file is the model who saved any Post of job offers.
 module.exports = (sequelize) => {
   sequelize.define(
-    "PostedOffers",
+    'Project',
     {
       id: {
-        type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV4,
+        type: DataTypes.INTEGER,
         primaryKey: true,
+        allowNull: false,
+        autoIncrement: true,
       },
       title: {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      deleted: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
       description: {
         type: DataTypes.TEXT,
-        allowNull: false,
+        // allowNull: false,
       },
-      direction: {
+      address: {
         type: DataTypes.STRING,
         allowNull: false,
       },
@@ -29,9 +32,9 @@ module.exports = (sequelize) => {
       },
       estimatedtime: {
         type: DataTypes.STRING,
-        allowNull: false,
+        // allowNull: false,
       },
-      renumerations: {
+      budget: {
         type: DataTypes.INTEGER,
         allowNull: false,
         validate: {
@@ -41,9 +44,9 @@ module.exports = (sequelize) => {
       agreement: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
-        defaultValue: false,
+        // defaultValue: false,
       },
-      //PostedOffers will be related with:
+      // Project will be related with:
       // Job n:m relation
       // City n:m relation
       // User n:1 relation
