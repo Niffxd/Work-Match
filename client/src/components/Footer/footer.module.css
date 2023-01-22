@@ -1,0 +1,25 @@
+.container-footer {
+  width: 100vw;
+  height: 5rem;
+  margin: 0;
+  padding: 0 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #6B7FD7;
+}
+
+.logo-footer {
+  width: 6rem;
+}
+
+.links-footer {
+  display: flex;
+}
+
+.link-footer {
+  margin: 0 2rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #FFFEFB;
+}
