@@ -1,7 +1,10 @@
 /** @format */
-import limpieza from '../../public/limpieza.png';
-import Jardineria from '../../public/jardineria.png';
-import agua from '../../public/agua-del-grifo.png';
+// import limpieza from '../../public/limpieza.png';
+import limpieza from '../../public/vercel.svg';
+// import Jardineria from '../../public/jardineria.png';
+import Jardineria from '../../public/vercel.svg';
+// import agua from '../../public/agua-del-grifo.png';
+import agua from '../../public/vercel.svg';
 
 const prueba = [
   {
