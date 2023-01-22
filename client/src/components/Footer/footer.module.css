@@ -1,8 +1,8 @@
 .container-footer {
   width: 100vw;
-  height: 5rem;
+  height: 12rem;
   margin: 0;
-  padding: 0 3rem;
+  padding: 0 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -10,11 +10,12 @@
 }
 
 .logo-footer {
-  width: 6rem;
+  width: 12rem;
 }
 
 .links-footer {
   display: flex;
+  flex-direction: column;
 }
 
 .link-footer {
@@ -22,4 +23,19 @@
   font-weight: 600;
   text-decoration: none;
   color: #FFFEFB;
+}
+
+@media screen and (min-width: 36em) and (orientation: landscape) {
+  .container-footer {
+    height: 8rem;
+    padding: 0;
+  }
+
+  .logo-footer {
+    width: 9rem;
+  }
+
+  .links-footer {
+    flex-direction: row;
+  }
 }
