@@ -6,7 +6,7 @@ export const preloadProject = async (id, query) => {
   void getCacheProject(id, query);
 }
 export const getCacheProject = cache(async (id, query) => {
-  const res = await fetch(URL).then();
+  const res = await fetch(URL);
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
 
@@ -19,10 +19,27 @@ export const getCacheProject = cache(async (id, query) => {
   return data;
 }
 );
-//GET
-export const getProject = async (id, query) => {
-  console.log(URL)
-  const res = await fetch(URL);
+/**
+ * Trae datos de proyectos (ofertas de trabajos) la api
+ * @param {arg} number 
+ * @param {arg} object
+ * @returns data
+ */
+export const getProject = async (arg) => {
+
+  // Si le pasas como parametro un:
+  // Numero lo trae por id (1)
+  const query = (typeof arg === "number") ? '/' + arg
+  // Objeto puede traer una pagina ({page=1})
+  // u ordenar ({column:'id', direction:'DESC'}) direction es opcinal por defecto es ASC
+  // o ambos p.e. await getProject({page:1, column:'id', direction:'DESC'})
+    : (typeof arg === "object") ? '?' + new URLSearchParams(arg) 
+  // Si no directamente trae todos de la 1er pagina (por defecto)
+    : '';
+
+  const uri = URL + query;
+  console.log(uri)
+  const res = await fetch(uri);
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
 
