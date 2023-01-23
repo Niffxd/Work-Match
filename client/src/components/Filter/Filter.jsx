@@ -1,4 +1,5 @@
-'use client'
+'use client';
+import style from './filter.module.css';
 // import { useDispatch, useSelector } from 'react-redux';
 // import {
 //   filterEmpleoByTypeJob,
@@ -62,10 +63,10 @@
 // ];
 // Prueba
 
-export default function Filter({onSortChange}) {
-//   const dispatch = useDispatch();
-//   const todosEmpleos = useSelector((state) => state.empleos);
-//   const tipoEmpleos = useSelector ((state)=> state.tipoEmpleos)
+export default function Filter({ onSortChange }) {
+  //   const dispatch = useDispatch();
+  //   const todosEmpleos = useSelector((state) => state.empleos);
+  //   const tipoEmpleos = useSelector ((state)=> state.tipoEmpleos)
 
   function handleFilteredTypeJob(e) {
     // dispatch(filterEmpleoByTypeJob(e.target.value));
@@ -87,16 +88,16 @@ export default function Filter({onSortChange}) {
   }
 
   return (
-    <div>
+    <div className={`${style['filter-container']}`}>
       <article>
-        <div>
-          <h2>Filter Jobs by:</h2>
+        <div className={`${style['filter-div']}`}>
+          <h4>Filter Jobs by:</h4>
           {/* <img src={""} alt="Clear" /> */}
         </div>
-        <form className="" name="">
+        <form className={`${style['filter-form']}`} name="">
           {/* ORDER BY */}
           <select
-            className=""
+            className={`${style['filter-select']}`}
             title="Por Orden alfabético"
             onChange={(e) => handleSort(e)}
           >

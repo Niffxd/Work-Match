@@ -6,12 +6,11 @@ import style from './page.module.css';
 import validationsCreateJobOffer from '@/utils/helpers/validationsCreateJobOffer';
 import categories from '@/utils/helpers/categories';
 
-
 const initialForm = {
   category: 'Selecciona una categoría',
   description: '',
   tasks: [],
-  time: 6, //cambiar a 0 despues de la presentación
+  time: 0,
   remuneration: 0,
   negotiable: false,
   location: '',
@@ -21,17 +20,17 @@ let id = 0;
 
 const post = async (data) => {
   const JSONdata = JSON.stringify(data);
-    const endpoint = 'http://localhost:3001/project';
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSONdata,
-    };
-    const response = await fetch(endpoint, options);
-    return await response.json();
-}
+  const endpoint = 'http://localhost:3001/project';
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSONdata,
+  };
+  const response = await fetch(endpoint, options);
+  return await response.json();
+};
 
 export default function CreateJobOffer() {
   const [visible, setVisible] = useState('invisible');
@@ -90,7 +89,6 @@ export default function CreateJobOffer() {
   };
   // Submit
   const submitHandler = async (event) => {
-
     if (form.category === 'Selecciona una categoría') {
       setErrors({ ...errors, category: 'Por favor ingrese una categoría' });
     } else if (!form.description) {
@@ -98,23 +96,23 @@ export default function CreateJobOffer() {
         ...errors,
         description: 'Por favor, ingrese una descripción.',
       });
-      // } else if (form.tasks.length === 0) {
-      //   setErrors({ ...errors, tasks: 'Por favor, agregue al menos una tarea.' });
-      // } else if (form.tasks.length > 0) {
-      //   for (let task of form.tasks) {
-      //     if (!task.description) {
-      //       setErrors({
-      //         ...errors,
-      //         task: 'Por favor, no deje tareas sin información.',
-      //       });
-      //     }
-      //   }
-      // }
-      // if (!form.time || parseInt(form.time) === 0) {
-      //   setErrors({
-      //     ...errors,
-      //     time: 'Por favor, ingresa el duración estimada del trabajo.',
-      //   });
+    } else if (form.tasks.length === 0) {
+      setErrors({ ...errors, tasks: 'Por favor, agregue al menos una tarea.' });
+    } else if (form.tasks.length > 0) {
+      for (let task of form.tasks) {
+        if (!task.description) {
+          setErrors({
+            ...errors,
+            task: 'Por favor, no deje tareas sin información.',
+          });
+        }
+      }
+    }
+    if (!form.time || parseInt(form.time) === 0) {
+      setErrors({
+        ...errors,
+        time: 'Por favor, ingresa el duración estimada del trabajo.',
+      });
     } else if (parseInt(form.time) < 0 || parseInt(form.time) >= 8) {
       setErrors({
         ...errors,
@@ -128,7 +126,7 @@ export default function CreateJobOffer() {
     } else if (!form.location) {
       setErrors({ ...errors, location: 'Por favor, ingresa tu ubicación.' });
     } else if (Object.keys(errors).length === 0) {
-      try {        
+      try {
         await post({
           title: form.category,
           description: form.description,
@@ -143,13 +141,7 @@ export default function CreateJobOffer() {
       }
     }
   };
-  // console.log({
-  //   title: form.category,
-  //   description: form.description,
-  //   address: form.location,
-  //   budget: parseInt(form.remuneration),
-  //   agreement: form.negotiable,
-  // });
+
   return (
     <form className={`container ${style['container']}`}>
       {/* Category */}
@@ -175,7 +167,7 @@ export default function CreateJobOffer() {
                 key={`category-${index}`}
                 className={`${style['category-container']}`}
                 onClick={(event) =>
-                  categorySelectionHandler(event, category.name)
+                  categorySelectionHandler(event, category.category)
                 }
               >
                 <img
@@ -183,21 +175,21 @@ export default function CreateJobOffer() {
                   src={category.image}
                   alt={category.name}
                   onClick={(event) =>
-                    categorySelectionHandler(event, category.name)
+                    categorySelectionHandler(event, category.category)
                   }
                 />
                 <h4
                   className={`${style['category-name']}`}
                   onClick={(event) =>
-                    categorySelectionHandler(event, category.name)
+                    categorySelectionHandler(event, category.category)
                   }
                 >
-                  {category.name}
+                  {category.category}
                 </h4>
                 <p
                   className={`${style['category-description']}`}
                   onClick={(event) =>
-                    categorySelectionHandler(event, category.name)
+                    categorySelectionHandler(event, category.category)
                   }
                 >
                   {category.description}
@@ -226,7 +218,7 @@ export default function CreateJobOffer() {
       )}
       {/* Task */}
 
-      {/* {form.tasks.length > 0 && (
+      {form.tasks.length > 0 && (
         <>
           {form.tasks.map((task, index) => {
             return (
@@ -281,9 +273,9 @@ export default function CreateJobOffer() {
       </div>
       {errors && Object.keys(errors).length > 0 && errors.tasks && (
         <p className="error">{errors.tasks}</p>
-      )} */}
+      )}
       {/* Time */}
-      {/* <label htmlFor="time">Duración estimada:</label>
+      <label htmlFor="time">Duración estimada:</label>
       <div className={`${style['time-container']}`}>
         <input
           id="time"
@@ -299,7 +291,7 @@ export default function CreateJobOffer() {
       </div>
       {errors && Object.keys(errors).length > 0 && errors.time && (
         <p className="error">{errors.time}</p>
-      )} */}
+      )}
       {/* Remuneration */}
       <label htmlFor="remuneration">Remuneración:</label>
       <div className={`${style['remuneration-container']}`}>

@@ -1,44 +1,43 @@
-import Image from 'next/image';
+import categories from '@/utils/helpers/categories';
 import React from 'react';
 
-// import time from '../../../../public/time.svg';
-// import money from '../../../../public/billete.svg';
 import styles from '../app/page.module.css';
 
-export default function Cardjob({ project }) {
-  const { id, title, address,/*imagen,*/ description, budget/*, hora*/ } = project;
+export default function Cardjob({ title, address, description, budget }) {
+  const image = categories.find((category) => category.category === title);
   return (
     <>
-      {/* <div className={`${styles['imagen']}`}>
+      <div className={`${styles['container-grid']}`}>
+        <div className={`${styles['imagen']}`}>
+          <img
+            className={`${styles['image-svg']}`}
+            src={image.image}
+            alt="imagen de trabajo"
+          />
+        </div>
+        <div className={`${styles['info']}`}>
+          <h3>{title}</h3>
+          <h3>{address}</h3>
+          <p>{description}</p>
+          {/* <div className={`${styles['precio_hora']}`}>
+        <span>
         <Image
-          className={`${styles['image_svg']}`}
-          src={imagen}
-          alt="imagen de trabajo"
-        />
-      </div> */}
-      <div className={`${styles['info']}`}>
-        {/* <h1>{id}</h1> */}
-        <h2>{title}</h2>
-        <h3>{address}</h3>
-        <p>{description}</p>
-        {/* <div className={`${styles['precio_hora']}`}>
-        <span>
-            <Image
-              className={`|${styles["imagen_time"]}`}
-              src={time}
-              alt="time"
-            />{" "} 
-          {hora}
-        </span> */}
-        <span>
-          {/* <Image
+        className={`|${styles["imagen_time"]}`}
+        src={time}
+        alt="time"
+        />{" "} 
+        {hora}
+      </span> */}
+          {/* <span>
+          <Image
               className={`${styles["imagen_money"]}`}
               src={money}
               alt="dinero"
-            />{" "} */}
-          {budget}
-        </span>
-        {/* </div> */}
+              />{" "}
+              {budget}
+            </span> */}
+          {/* </div> */}
+        </div>
       </div>
     </>
   );
