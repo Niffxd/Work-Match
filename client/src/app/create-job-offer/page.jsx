@@ -1,51 +1,17 @@
-// Hay 3 TO DO en las líneas: 8, 10 y 151
 'use client';
 
 import useForm from '../../utils/customHooks/useForm';
 import { useState } from 'react';
 import style from './page.module.css';
 import validationsCreateJobOffer from '@/utils/helpers/validationsCreateJobOffer';
-// TO DO 1/3: Importar el array 'categories' de /utils/helpers/...
-
-// TO DO 2/3: Eliminar esta constante: categories.
-const categories = [
-  {
-    category: 'Limpieza',
-    image: 'https://cdn-icons-png.flaticon.com/512/995/995016.png',
-    description:
-      'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit',
-  },
-  {
-    category: 'Plomería',
-    image: 'https://cdn-icons-png.flaticon.com/512/4635/4635163.png',
-    description:
-      'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit',
-  },
-  {
-    category: 'Pintura',
-    image: 'https://cdn-icons-png.flaticon.com/512/3162/3162611.png',
-    description:
-      'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit',
-  },
-  {
-    category: 'Carpintería',
-    image: 'https://cdn-icons-png.flaticon.com/512/4854/4854871.png',
-    description:
-      'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit',
-  },
-  {
-    category: 'Jardinería',
-    image: 'https://cdn-icons-png.flaticon.com/512/1518/1518914.png',
-    description:
-      'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit',
-  },
-];
+import categories from '@/utils/helpers/categories';
+import { postProject } from '@/utils/api/project';
 
 const initialForm = {
   category: 'Selecciona una categoría',
   description: '',
   tasks: [],
-  time: 0,
+  time: 6, //cambiar a 0 despues de la presentación
   remuneration: 0,
   negotiable: false,
   location: '',
@@ -110,7 +76,6 @@ export default function CreateJobOffer() {
   };
   // Submit
   const submitHandler = async (event) => {
-    event.preventDefault();
     if (form.category === 'Selecciona una categoría') {
       setErrors({ ...errors, category: 'Por favor ingrese una categoría' });
     } else if (!form.description) {
@@ -118,27 +83,27 @@ export default function CreateJobOffer() {
         ...errors,
         description: 'Por favor, ingrese una descripción.',
       });
-    } else if (form.tasks.length === 0) {
-      setErrors({ ...errors, tasks: 'Por favor, agregue al menos una tarea.' });
-    } else if (form.tasks.length > 0) {
-      for (let task of form.tasks) {
-        if (!task.description) {
-          setErrors({
-            ...errors,
-            task: 'Por favor, no deje tareas sin información.',
-          });
-        }
-      }
-    }
-    if (!form.time || parseInt(form.time) === 0) {
-      setErrors({
-        ...errors,
-        time: 'Por favor, ingresa el duración estimada del trabajo.',
-      });
+      // } else if (form.tasks.length === 0) {
+      //   setErrors({ ...errors, tasks: 'Por favor, agregue al menos una tarea.' });
+      // } else if (form.tasks.length > 0) {
+      //   for (let task of form.tasks) {
+      //     if (!task.description) {
+      //       setErrors({
+      //         ...errors,
+      //         task: 'Por favor, no deje tareas sin información.',
+      //       });
+      //     }
+      //   }
+      // }
+      // if (!form.time || parseInt(form.time) === 0) {
+      //   setErrors({
+      //     ...errors,
+      //     time: 'Por favor, ingresa el duración estimada del trabajo.',
+      //   });
     } else if (parseInt(form.time) < 0 || parseInt(form.time) >= 8) {
       setErrors({
         ...errors,
-        time: 'El tiempo de trabajo debe durar entre una y ocho horas.',
+        time: 'El tiempo de trabajo debe durar entre cero y ocho horas.',
       });
     } else if (!form.remuneration || parseInt(form.remuneration) === 0) {
       setErrors({
@@ -148,14 +113,36 @@ export default function CreateJobOffer() {
     } else if (!form.location) {
       setErrors({ ...errors, location: 'Por favor, ingresa tu ubicación.' });
     } else if (Object.keys(errors).length === 0) {
-      // TO DO 3/3: Cambiar el alert por un fetch post que envie los datos del form
-      // y redirija a la pagina de detalle de esta nueva oferta, o en su defectto, al home.
-      alert(
-        'se envia el formulario y se redirige al detalle de la oferta recientemente creada.'
-      );
+      try {
+        // await postProject({
+        //   title: 'Limpieza',
+        //   description: 'Esta es la descripción',
+        //   address: 'Calle 1',
+        //   budget: 100,
+        //   agreement: true,
+        // });
+        await postProject({
+          title: form.category,
+          description: form.description,
+          address: form.location,
+          budget: parseInt(form.remuneration),
+          agreement: form.negotiable,
+        });
+        alert('Tu oferta fue publicada con éxito');
+        resetHandler();
+      } catch (error) {
+        setErrors({ ...errors, form: error.message });
+      }
     }
   };
 
+  console.log({
+    title: form.category,
+    description: form.description,
+    address: form.location,
+    budget: parseInt(form.remuneration),
+    agreement: form.negotiable,
+  });
   return (
     <form className={`container ${style['container']}`}>
       {/* Category */}
@@ -232,7 +219,7 @@ export default function CreateJobOffer() {
       )}
       {/* Task */}
 
-      {form.tasks.length > 0 && (
+      {/* {form.tasks.length > 0 && (
         <>
           {form.tasks.map((task, index) => {
             return (
@@ -287,9 +274,9 @@ export default function CreateJobOffer() {
       </div>
       {errors && Object.keys(errors).length > 0 && errors.tasks && (
         <p className="error">{errors.tasks}</p>
-      )}
+      )} */}
       {/* Time */}
-      <label htmlFor="time">Duración estimada:</label>
+      {/* <label htmlFor="time">Duración estimada:</label>
       <div className={`${style['time-container']}`}>
         <input
           id="time"
@@ -305,7 +292,7 @@ export default function CreateJobOffer() {
       </div>
       {errors && Object.keys(errors).length > 0 && errors.time && (
         <p className="error">{errors.time}</p>
-      )}
+      )} */}
       {/* Remuneration */}
       <label htmlFor="remuneration">Remuneración:</label>
       <div className={`${style['remuneration-container']}`}>
@@ -355,6 +342,9 @@ export default function CreateJobOffer() {
       />
       {errors && Object.keys(errors).length > 0 && errors.location && (
         <p className="error">{errors.location}</p>
+      )}
+      {errors && Object.keys(errors).length > 0 && errors.form && (
+        <p className="error">{errors.form}</p>
       )}
       <div className="buttons-container">
         <button className="button-purple" onClick={resetHandler}>
