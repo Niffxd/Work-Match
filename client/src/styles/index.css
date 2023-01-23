@@ -38,12 +38,13 @@
   margin: 0 auto;
   padding: 3rem 3.5rem;
   width: 100vw;
-  min-height: 100vh;
+  min-height: calc(100vh - 17rem);
   background-color: var(--light-color);
 }
 
 @media screen and (min-width: 36em) and (orientation: landscape) {
   .container {
+    min-height: calc(100vh - 13rem);
     padding: 3rem 5rem;
     width: 65vw;
   }
