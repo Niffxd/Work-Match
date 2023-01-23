@@ -20,7 +20,7 @@ body {
   background-color: var(--cream);
   margin: 0;
   width: 100vw;
-  height: max(100vh, min-content);
+  min-height: 100vh;
   overflow-x: hidden;
 }
 

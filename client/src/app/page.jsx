@@ -7,6 +7,8 @@ import Cardjob from '../components/Cardjob';
 // import prueba from '../components/contenido';
 // import BasicPagination from '../components/Paginate/Pagination';
 
+// const fetcher = (...args) => fetch(...args).then(res => res.json())
+
 export default async function Home() {
   // const [paginate, setPaginate] = useState(await getProject()); 
   let paginate; 

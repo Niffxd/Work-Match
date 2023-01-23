@@ -1,0 +1,26 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.button-pagination {
+  margin: 0;
+  padding: 0.5rem;
+  background: none;
+}
+.button-pagination:hover {
+  transform: scale(1);
+}
+.input-pagination {
+  width: 3rem;
+  text-align: center;
+  background: none;
+  margin: 0;
+  padding: 0;
+  -moz-appearance: textfield;
+}
+.input-pagination::-webkit-inner-spin-button,
+.input-pagination::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
