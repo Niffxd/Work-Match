@@ -8,35 +8,35 @@
 // } from '../redux/actions';
 
 // Prueba
-const tipoEmpleo = [
-  {
-    id: Math.random(),
-    name: 'Jardineria',
-  },
-  {
-    id: Math.random(),
-    name: 'Electronica',
-  },
-  {
-    id: Math.random(),
-    name: 'Computacion',
-  },
-  {
-    id: Math.random(),
-    name: 'Seguridad',
-  },
-];
+// const tipoEmpleo = [
+//   {
+//     id: Math.random(),
+//     name: 'Jardineria',
+//   },
+//   {
+//     id: Math.random(),
+//     name: 'Electronica',
+//   },
+//   {
+//     id: Math.random(),
+//     name: 'Computacion',
+//   },
+//   {
+//     id: Math.random(),
+//     name: 'Seguridad',
+//   },
+// ];
 
-const empleo = [
-  {
-    id: Math.random(),
-    status: 'Disponible',
-  },
-  {
-    id: Math.random(),
-    status: 'Ocupado',
-  },
-];
+// const empleo = [
+//   {
+//     id: Math.random(),
+//     status: 'Disponible',
+//   },
+//   {
+//     id: Math.random(),
+//     status: 'Ocupado',
+//   },
+// ];
 
 // const country = [
 //   {
@@ -62,7 +62,7 @@ const empleo = [
 // ];
 // Prueba
 
-export default function Filter() {
+export default function Filter({onSortChange}) {
 //   const dispatch = useDispatch();
 //   const todosEmpleos = useSelector((state) => state.empleos);
 //   const tipoEmpleos = useSelector ((state)=> state.tipoEmpleos)
@@ -72,7 +72,8 @@ export default function Filter() {
   }
 
   function handleSort(e) {
-    // e.preventDefault();
+    e.preventDefault();
+    onSortChange(e.target.value);
     // dispatch(filterEmpleoByOrderName(e.target.value));
   }
 
@@ -100,10 +101,10 @@ export default function Filter() {
             onChange={(e) => handleSort(e)}
           >
             <option value="">Por Orden alfabetico </option>
-            <option value="az">A-Z</option>
-            <option value="za">Z-A</option>
+            <option value="ASC">A-Z</option>
+            <option value="DESC">Z-A</option>
           </select>
-          <select className="selectupf" onChange={handleFilteredTypeJob}>
+          {/* <select className="selectupf" onChange={handleFilteredTypeJob}>
             <option key="All" value="All">
               By Job Type
             </option>
@@ -114,7 +115,7 @@ export default function Filter() {
                 </option>
               );
             })}
-          </select>
+          </select> */}
           {/* <select
             className=""
             onChange={handleFilterEmpleoByCountry}

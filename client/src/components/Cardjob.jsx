@@ -17,7 +17,7 @@ export default function Cardjob({ project }) {
         />
       </div> */}
       <div className={`${styles['info']}`}>
-        <h1>{id}</h1>
+        {/* <h1>{id}</h1> */}
         <h2>{title}</h2>
         <h3>{address}</h3>
         <p>{description}</p>
