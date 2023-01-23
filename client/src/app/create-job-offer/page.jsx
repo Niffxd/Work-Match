@@ -5,7 +5,7 @@ import { useState } from 'react';
 import style from './page.module.css';
 import validationsCreateJobOffer from '@/utils/helpers/validationsCreateJobOffer';
 import categories from '@/utils/helpers/categories';
-import { postProject } from '@/utils/api/project';
+
 
 const initialForm = {
   category: 'Selecciona una categoría',
@@ -18,6 +18,20 @@ const initialForm = {
 };
 
 let id = 0;
+
+const post = async (data) => {
+  const JSONdata = JSON.stringify(data);
+    const endpoint = 'http://localhost:3001/project';
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSONdata,
+    };
+    const response = await fetch(endpoint, options);
+    return await response.json();
+}
 
 export default function CreateJobOffer() {
   const [visible, setVisible] = useState('invisible');
@@ -76,6 +90,7 @@ export default function CreateJobOffer() {
   };
   // Submit
   const submitHandler = async (event) => {
+
     if (form.category === 'Selecciona una categoría') {
       setErrors({ ...errors, category: 'Por favor ingrese una categoría' });
     } else if (!form.description) {
@@ -113,15 +128,8 @@ export default function CreateJobOffer() {
     } else if (!form.location) {
       setErrors({ ...errors, location: 'Por favor, ingresa tu ubicación.' });
     } else if (Object.keys(errors).length === 0) {
-      try {
-        // await postProject({
-        //   title: 'Limpieza',
-        //   description: 'Esta es la descripción',
-        //   address: 'Calle 1',
-        //   budget: 100,
-        //   agreement: true,
-        // });
-        await postProject({
+      try {        
+        await post({
           title: form.category,
           description: form.description,
           address: form.location,
@@ -135,14 +143,13 @@ export default function CreateJobOffer() {
       }
     }
   };
-
-  console.log({
-    title: form.category,
-    description: form.description,
-    address: form.location,
-    budget: parseInt(form.remuneration),
-    agreement: form.negotiable,
-  });
+  // console.log({
+  //   title: form.category,
+  //   description: form.description,
+  //   address: form.location,
+  //   budget: parseInt(form.remuneration),
+  //   agreement: form.negotiable,
+  // });
   return (
     <form className={`container ${style['container']}`}>
       {/* Category */}
@@ -168,29 +175,29 @@ export default function CreateJobOffer() {
                 key={`category-${index}`}
                 className={`${style['category-container']}`}
                 onClick={(event) =>
-                  categorySelectionHandler(event, category.category)
+                  categorySelectionHandler(event, category.name)
                 }
               >
                 <img
                   className={`icon-black-and-white ${style['category-image']}`}
                   src={category.image}
-                  alt={category.category}
+                  alt={category.name}
                   onClick={(event) =>
-                    categorySelectionHandler(event, category.category)
+                    categorySelectionHandler(event, category.name)
                   }
                 />
                 <h4
                   className={`${style['category-name']}`}
                   onClick={(event) =>
-                    categorySelectionHandler(event, category.category)
+                    categorySelectionHandler(event, category.name)
                   }
                 >
-                  {category.category}
+                  {category.name}
                 </h4>
                 <p
                   className={`${style['category-description']}`}
                   onClick={(event) =>
-                    categorySelectionHandler(event, category.category)
+                    categorySelectionHandler(event, category.name)
                   }
                 >
                   {category.description}
