@@ -6,7 +6,11 @@ import Cardjob from '../components/Cardjob';
 // import prueba from '../components/contenido';
 // import BasicPagination from '../components/Paginate/Pagination';
 
+// const fetcher = (...args) => fetch(...args).then(res => res.json())
+
 export default async function Home() {
+  // const { data, error } = useSWR('http://localhost:3001/projects', fetcher)
+  
   // const [paginate, setPaginate] = useState(prueba.slice(0, 5));  
   const projectSeed = {
     // id: 1,
@@ -17,14 +21,15 @@ export default async function Home() {
     agreement: true,
   };
 //ESTO CREA PUBLICACIONES DE PRUEBA DESACTIVAR LUEGO  
-console.log(postProject(projectSeed))
+// await postProject(projectSeed)
 
   // const paginate = async () => await getProject();  
-  const paginate = await getProject();
+  const data = await getProject().then();
+  
   return (
     <main className={`container`}>
       <section className={`${styles['container_grid']}`}>
-        {paginate.map((x) => ( 
+        {data.map((x) => ( 
           <Cardjob
             key={x.id.toString()}
             title={x.title}
