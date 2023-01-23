@@ -1,4 +1,5 @@
 // 'use client';
+import Filter from '@/components/Filter/Filter';
 import { postProject, getProject } from '@/utils/api/project';
 // import { useState } from 'react';
 import styles from '../app/page.module.css';
@@ -7,7 +8,8 @@ import Cardjob from '../components/Cardjob';
 // import BasicPagination from '../components/Paginate/Pagination';
 
 export default async function Home() {
-  // const [paginate, setPaginate] = useState(prueba.slice(0, 5));  
+  // const [paginate, setPaginate] = useState(await getProject()); 
+  let paginate; 
   const projectSeed = {
     // id: 1,
     title: 'limpiar1',
@@ -17,27 +19,24 @@ export default async function Home() {
     agreement: true,
   };
 //ESTO CREA PUBLICACIONES DE PRUEBA DESACTIVAR LUEGO  
-console.log(postProject(projectSeed))
+await postProject(projectSeed)
 
-  // const paginate = async () => await getProject();  
-  const paginate = await getProject();
+  const setPaginate = async (arg) => paginate = await getProject(arg);  
+  await setPaginate();
+
   return (
     <main className={`container`}>
       <section className={`${styles['container_grid']}`}>
-        {paginate.map((x) => ( 
+        {paginate.map(e => ( 
           <Cardjob
-            key={x.id.toString()}
-            title={x.title}
-            address={x.address}
-            // imagen={x.imagen}
-            description={x.description}
-            budget={x.budget}
-            // hora={x.hora}
+            key={e.id}
+            project={e}            
           />
         ))        
       }
       </section>
       {/* <BasicPagination prueba={prueba} setPaginate={setPaginate} /> */}
+      <Filter />
     </main>
   );
 }
