@@ -3,9 +3,7 @@ import style from './page.module.css';
 
 export default async function JobOffer({ params }) {
   const { id } = params;
-  // TO DO 1/1: Sustituir el valor de jobOffer por el detalle real de la oferta de trabajo, utilizando el id que se recibe por parámetro.
   const jobOffer = await getProject(parseInt(id));
-  console.log(jobOffer);
   return (
     <>
       {!jobOffer ? (

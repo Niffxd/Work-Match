@@ -1,33 +1,42 @@
 const categories = [
   {
-    id: Math.random(),
+    id: 1,
     image: 'https://cdn-icons-png.flaticon.com/512/1518/1518914.png',
-    name: 'Jardineria',
-    description: '',
+    category: 'Jardinería',
+    description: 'Arte y técnica de cuidar y cultivar los jardines.',
   },
   {
-    id: Math.random(),
+    id: 2,
     image: 'https://cdn-icons-png.flaticon.com/512/995/995016.png',
-    name: 'Ama de llaves',
-    description: '',
+    category: 'Limpieza',
+    description: 'Organización y limpieza de la casa.',
   },
   {
-    id: Math.random(),
+    id: 3,
     image: 'https://cdn-icons-png.flaticon.com/512/4635/4635163.png',
-    name: 'Plomeria',
-    description: '',
+    category: 'Plomería',
+    description:
+      'Instalación y mantenimiento de sistemas usados para agua potable, drenaje y aguas residuales en sistemas de plomería.',
   },
   {
-    id: Math.random(),
+    id: 4,
+    image: 'https://cdn-icons-png.flaticon.com/512/3162/3162611.png',
+    category: 'Pintura',
+    description: 'Aplicación de color y protección a paredes y techos.',
+  },
+  {
+    id: 5,
     image: 'https://cdn-icons-png.flaticon.com/512/1973/1973946.png',
-    name: 'Carpinteria',
-    description: '',
+    category: 'Carpintería',
+    description:
+      'Arte y técnica de trabajar la madera y de fabricar o arreglar objetos con ella.',
   },
   {
-    id: Math.random(),
+    id: 6,
     image: 'https://cdn-icons-png.flaticon.com/512/4009/4009139.png',
-    name: 'Guardia de seguridad',
-    description: '',
+    category: 'Seguridad',
+    description:
+      'Mantener la seguridad de las personas y de las propiedades en un área específica.',
   },
 ];
 

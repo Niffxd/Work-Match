@@ -1,11 +1,23 @@
-.container_grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(14rem  1fr));
-  grid-gap: 0.2em;
+@import '../styles/variables.css';
+.jobs-container {
+  margin: 0;
 }
-
+.container-grid {
+  display: grid;
+  grid-template-columns: 7rem 1fr;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+}
+.container-grid:hover,
+.container-grid > *:hover {
+  background-color: var(--light-purple);
+}
+.detail-link {
+  cursor: pointer;
+  text-decoration: none;
+}
 /*----------IMAGEN DEL OFICIO -------*/
-.container_grid .imagen {
+.container-grid .imagen {
   grid-column: -3/-2;
   align-items: center;
   justify-content: center;
@@ -15,44 +27,44 @@
   padding: 0;
 }
 
-.imagen_svg {
+.imagen-svg {
   margin: 0;
 }
 
 /*----CONTENEDOR DESCRIPCION TITULO ----- */
-.container_grid .info {
-  grid-column-start: -2; 
-   grid-column-end: -1;
-  margin-left: 1rem;
+.info {
+  grid-column-start: -2;
+  grid-column-end: -1;
+  margin: 0;
+  margin-left: 1.25rem;
 }
 
-.container_grid .info h3 {
+.info > h3 {
   display: flex;
   margin-top: 0;
   align-items: flex-start;
+  cursor: pointer;
 }
 
-.container_grid .info p {
+.info > p {
   height: 2.5rem;
   overflow: hidden;
   text-overflow: ellipsis;
+  cursor: pointer;
 }
 
 /* --------SUELDO Y HORA---------*/
-.container_grid .precio_hora {
+.container-grid .precio_hora {
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
-  font-weight: var(--thin);
   color: inherit;
   margin: 0;
   padding: 0.2em;
+  cursor: pointer;
 }
 
 .precio_hora > span {
   margin: 0;
+  cursor: pointer;
 }
-/* @media screen and (max-width: 31.25em) and (orientation: landscape) {
-
-  
-} */

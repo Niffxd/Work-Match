@@ -1,3 +1,5 @@
+@import '../../styles/variables.css';
+
 .container-footer {
   width: 100vw;
   height: 12rem;
@@ -6,7 +8,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #6B7FD7;
+  background-color: var(--purple);
+  overflow: hidden;
 }
 
 .logo-footer {
@@ -22,7 +25,7 @@
   margin: 0 2rem;
   font-weight: 600;
   text-decoration: none;
-  color: #FFFEFB;
+  color: var(--light-color);
 }
 
 @media screen and (min-width: 36em) and (orientation: landscape) {

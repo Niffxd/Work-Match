@@ -1,3 +1,5 @@
+@import '../../styles/variables.css';
+
 .container-header {
   width: 100vw;
   height: 5rem;
@@ -7,7 +9,8 @@
   justify-content: space-between;
   align-items: center;
   gap: 40vw;
-  background-color: #6B7FD7;
+  background-color: var(--purple);
+  overflow: hidden;
 }
 
 .logo-header {
@@ -21,7 +24,7 @@
 .link-nav {
   margin: 0;
   text-decoration: none;
-  color: #fffefb;
+  color: var(--light-color);
   font-size: max(1.2rem, 1.5vw);
 }
 
