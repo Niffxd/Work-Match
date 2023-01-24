@@ -2,6 +2,7 @@ import '../styles/normalize.css';
 import '../styles/index.css';
 import Footer from '../components/Footer/Footer.jsx'
 import Navigation from '../components/Navigation/Navigation.jsx'
+import { Providers } from "./provider/provider";
 
 export default function RootLayout({ children }) {
   return (
@@ -11,11 +12,13 @@ export default function RootLayout({ children }) {
         head.jsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body>
-        <Navigation/>
-        {children}
-        <Footer/>
-      </body>
+        <body>
+          <Providers>
+            <Navigation/>
+              {children}
+            <Footer/>
+          </Providers>
+        </body>
     </html>
   );
 }
