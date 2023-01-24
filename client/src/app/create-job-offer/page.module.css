@@ -1,0 +1,212 @@
+@import "../../styles/variables.css";
+
+/* Category */
+.categories-container {
+  margin: 0;
+  max-height: 25rem;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  background-color: var(--light-purple);
+  overflow-y: auto;
+}
+
+.category-container {
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  grid-template-rows: repeat(2, min-content);
+  grid-template-areas:
+    "image category"
+    "image description";
+  margin: 0;
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  background-color: var(--light-purple);
+  cursor: pointer;
+}
+
+@media (pointer: fine) {
+  .category-container:hover {
+    background-color: var(--baby-purple);
+  }
+  .category-container:hover > .category-image {
+    filter: var(--color);
+  }
+}
+
+.category-image {
+  grid-area: image;
+  width: 3rem;
+  height: auto;
+}
+.category-name {
+  grid-area: category;
+}
+.category-description {
+  grid-area: description;
+}
+.category-image,
+.category-name,
+.category-description {
+  margin: 0;
+  cursor: pointer;
+}
+
+.down-arrow {
+  margin: 0;
+  width: 1rem;
+}
+
+.select-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0.35rem 1rem;
+  width: 100%;
+  border-radius: var(--border-radius);
+  background-color: var(--baby-purple);
+  cursor: pointer;
+}
+
+.select-button-text {
+  margin: 0;
+  cursor: pointer;
+}
+.select-menu {
+  position: relative;
+  border-radius: var(--border-radius);
+  background-color: var(--baby-purple);
+}
+
+/* Task */
+.add-task {
+  margin: 0;
+  margin-left: 1rem;
+  cursor: pointer;
+}
+
+.add-task-container {
+  justify-content: start;
+}
+
+.add-task-container,
+.task-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.button-add {
+  position: absolute;
+  top: -0.15rem;
+  right: 0.55rem;
+  margin: 0;
+  font-size: 2rem;
+  font-weight: var(--thin);
+}
+
+.button-circular {
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+  margin: 0;
+  padding: 0.2rem;
+  background-color: var(--baby-purple);
+  overflow: hidden;
+}
+
+.button-circular:hover {
+  transform: scale(1);
+}
+.button-delete {
+  position: absolute;
+  top: -0.35rem;
+  right: 0.55rem;
+  margin: 0;
+  font-size: 2rem;
+  font-weight: var(--thin);
+}
+
+.task,
+.tasks-container {
+  margin: 0;
+}
+
+.task-container {
+  justify-content: space-between;
+}
+
+/* Time */
+.input-time,
+.p-time {
+  margin: 0;
+}
+
+.input-time {
+  margin-right: 1rem;
+}
+
+.time-container {
+  display: flex;
+  align-items: center;
+}
+
+/* Remuneration */
+.input-remuneration,
+.input-negotiable,
+.label-negotiable {
+  margin: 0;
+}
+
+.remuneration-container {
+  display: grid;
+  grid-template-columns: 1fr 19ch min-content;
+  align-items: center;
+}
+
+/* Negotiable */
+
+.input-negotiable {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.35rem;
+  transition: background-color 0.5s;
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: var(--baby-purple);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.input-negotiable::after {
+  display: none;
+  content: "✓";
+  margin: 0;
+  color: var(--dark-color);
+  font-size: 1.5rem;
+}
+
+.input-negotiable:checked:after {
+  display: inline-block;
+}
+
+@media (pointer: fine) {
+  .input-negotiable:hover {
+    background-color: var(--purple);
+  }
+}
+
+.label-negotiable {
+  margin: 0 1rem;
+  cursor: pointer;
+}
+
+.negotiable-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+}

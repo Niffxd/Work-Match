@@ -1,0 +1,68 @@
+version: '3.8'
+services:
+  database:
+    container_name: database
+    image: postgres:15.1
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - database_data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    networks:
+      - net
+    healthcheck:
+      disable: true
+    # restart: unless-stopped
+  
+  api:
+    container_name: api
+    image: api:latest
+    depends_on: 
+      - database
+    build:
+      context: ./api
+    volumes:
+      - ./api:/api:cached      
+      - notused_data:/api/node_modules
+    ports:
+      - 3001:3001
+    networks:
+      - net
+    # healthcheck:
+    #   disable: true
+    tty: true
+    # restart: unless-stopped
+    command: npm start
+
+  client:
+    container_name: client
+    image: client:latest
+    depends_on: 
+      - api
+    build:
+      dockerfile: Dockerfile 
+    volumes:
+      - ./client:/app:cached      
+      - notused_data:/app/node_modules
+    ports:
+      - 3000:3000
+    networks:
+      - net
+    healthcheck:
+      disable: true
+    tty: true
+    # restart: unless-stopped
+    command: npm run dev
+
+networks:
+  net:
+    driver: bridge
+
+volumes:
+  database_data:
+  # api_data:
+  # client_data:
+  notused_data:

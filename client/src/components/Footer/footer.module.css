@@ -1,0 +1,44 @@
+@import '../../styles/variables.css';
+
+.container-footer {
+  width: 100vw;
+  height: 12rem;
+  margin: 0;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--purple);
+  overflow: hidden;
+}
+
+.logo-footer {
+  width: 12rem;
+}
+
+.links-footer {
+  display: flex;
+  flex-direction: column;
+}
+
+.link-footer {
+  margin: 0 2rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--light-color);
+}
+
+@media screen and (min-width: 36em) and (orientation: landscape) {
+  .container-footer {
+    height: 8rem;
+    padding: 0;
+  }
+
+  .logo-footer {
+    width: 9rem;
+  }
+
+  .links-footer {
+    flex-direction: row;
+  }
+}
