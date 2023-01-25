@@ -1,0 +1,5 @@
+.container-carousel-component {
+  width: 100vw;
+  height: calc(100vh - 13rem);
+  margin: 0;
+}
