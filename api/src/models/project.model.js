@@ -10,10 +10,10 @@ module.exports = (sequelize) => {
         allowNull: false,
         autoIncrement: true,
       },
-      title: {
+      /*title: {
         type: DataTypes.STRING,
         allowNull: false,
-      },
+      },*/
       deleted: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
