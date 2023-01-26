@@ -32,11 +32,15 @@
   background-color: var(--light-color);
   color: var(--dark-color);
 }
+.button-red {
+  background-color: var(--red);
+  color: var(--light-color);
+}
 
 /* Container */
 .container {
   margin: 0 auto;
-  padding: 3rem 3.5rem;
+  padding: 2rem 2.5rem;
   width: 100vw;
   min-height: calc(100vh - 17rem);
   background-color: var(--light-color);
