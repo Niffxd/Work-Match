@@ -5,13 +5,13 @@ export default async function JobOffer({ params }) {
   const { id } = params;
   const jobOffer = await getProject(parseInt(id));
   return (
-    <>
+    <article className="container">
       {!jobOffer ? (
         <h1>Page not Found</h1>
       ) : (
-        <div className="container">
+        <>
           <h1>{jobOffer.title}</h1>
-          <h4>Descripción del trabajo:</h4>
+          <h4>Descripción del puesto:</h4>
           <p>{jobOffer.description}</p>
           {/* <h4 className={`${style['h4-task']}`}>Tareas a realizar:</h4>
           <ul className={`${style['ul-task']}`}>
@@ -23,7 +23,7 @@ export default async function JobOffer({ params }) {
               );
             })}
           </ul> */}
-          <div className={`${style['container-features']}`}>
+          <section className={`${style['container-features']}`}>
             {/* <div className={`${style['div-time']}`}>
               <img
                 src="https://cdn-icons-png.flaticon.com/512/5561/5561832.png"
@@ -32,33 +32,33 @@ export default async function JobOffer({ params }) {
               <h4>Duración estimada:</h4>
               <p>{jobOffer.time} hs</p>
             </div> */}
-            <div className={`${style['div-remuneration']}`}>
+            <div className={`${style['div-budget']}`}>
               <img
                 src="https://cdn-icons-png.flaticon.com/512/9420/9420018.png"
-                alt="Remuneration"
+                alt="budget"
               />
               <h4>Remuneración:</h4>
               <p>$ {jobOffer.budget}</p>
             </div>
-            <div className={`${style['div-negotiable']}`}>
+            <div className={`${style['div-agreement']}`}>
               <img
                 src="https://cdn-icons-png.flaticon.com/512/4878/4878245.png"
-                alt="Negotiable"
+                alt="agreement"
               />
               <h4>Negociable:</h4>
               {jobOffer.agreement ? <p>Si.</p> : <p>No.</p>}
             </div>
-            <div className={`${style['div-location']}`}>
+            <div className={`${style['div-address']}`}>
               <img
                 src="https://cdn-icons-png.flaticon.com/512/3082/3082383.png"
-                alt="Location"
+                alt="address"
               />
               <h4>Ubcación:</h4>
               <p>{jobOffer.address}.</p>
             </div>
-          </div>
-        </div>
+          </section>
+        </>
       )}
-    </>
+    </article>
   );
 }

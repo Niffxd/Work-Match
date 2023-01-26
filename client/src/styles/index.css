@@ -110,6 +110,9 @@
 .icon-purple {
   filter: var(--filter-purple);
 }
+.icon-green {
+  filter: var(--filter-green);
+}
 
 @media (pointer: fine) {
   .icon-button:hover {
@@ -155,7 +158,6 @@
   text-decoration: underline;
   cursor: pointer;
 }
-/* Label */
 
 /* Invisible object */
 .invisible {

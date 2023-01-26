@@ -1,4 +1,4 @@
-@import "../../../styles/variables.css";
+@import '../../../styles/variables.css';
 
 .container-features {
   display: grid;
@@ -7,9 +7,9 @@
 }
 
 .div-time,
-.div-remuneration,
-.div-negotiable,
-.div-location {
+.div-budget,
+.div-agreement,
+.div-address {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -17,29 +17,29 @@
 }
 
 .div-time > h4,
-.div-remuneration > h4,
-.div-negotiable > h4,
-.div-location > h4 {
+.div-budget > h4,
+.div-agreement > h4,
+.div-address > h4 {
   margin: 0;
   margin-right: 0.5rem;
 }
 .div-time > p,
-.div-remuneration > p,
-.div-negotiable > p,
-.div-location > p {
+.div-budget > p,
+.div-agreement > p,
+.div-address > p {
   margin: 0;
 }
 
 .div-time > img,
-.div-remuneration > img,
-.div-negotiable > img,
-.div-location > img {
+.div-budget > img,
+.div-agreement > img,
+.div-address > img {
   width: 1.5rem;
   margin: 0 0.7rem 0 0.25rem;
 }
 
-.div-remuneration > img,
-.div-negotiable > img {
+.div-budget > img,
+.div-agreement > img {
   width: 2rem;
   margin: 0;
   margin-right: 0.5rem;
