@@ -1,5 +1,7 @@
 .container-carousel-component {
   width: 100vw;
-  height: calc(100vh - 13rem);
+  height: 90vh;
+  overflow: hidden;
   margin: 0;
 }
+
