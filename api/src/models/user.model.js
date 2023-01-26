@@ -1,4 +1,4 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes, BOOLEAN } = require('sequelize');
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
@@ -7,13 +7,13 @@ module.exports = (sequelize) => {
     'User',
     {
       id: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         primaryKey: true,
         allowNull: false,
-        autoIncrement: true,
       },
       name: {
         type: DataTypes.STRING,
+        allowNull: false,
       },
       deleted: {
         type: DataTypes.BOOLEAN,
@@ -27,8 +27,8 @@ module.exports = (sequelize) => {
           min: 16,
         },
       },
-      description: {
-        type: DataTypes.TEXT,
+      biography: {
+        type: DataTypes.STRING,
       },
       mail: {
         type: DataTypes.STRING(100),
@@ -40,19 +40,22 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
         validate: {
           isNumeric: true,
-          len: [9],
         },
       },
-      type: {
-        type: DataTypes.ENUM,
-        values: ['Seeker', 'Employer', 'Admin'],
+       rate: {
+         type:DataTypes.INTEGER,
+       },
+       role: {
+        type: DataTypes.INTEGER,
       },
-      jobsDone: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+      image: {
+        type: DataTypes.STRING
       },
-      // User will be related with:
-      // JobsTypes n:m relation
-      // City n:m relation
+      premium:{
+        type:DataTypes.BOOLEAN,
+        defaultValue:false
+      }
+
     }
     // TimeStamps will be used as determinant of seniority on the platform
   );
