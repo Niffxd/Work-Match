@@ -1,8 +1,8 @@
 .container-carousel {
   width: 100vw;
-  height: calc((100vh - 13rem));
+  height: 100vh;
   overflow: hidden;
-  margin: 0 auto;
+  margin: 0;
 }
 
 .container-carousel > div {
@@ -12,9 +12,9 @@
 
 
 .container-carousel > div > div {
-  width: 47rem !important;
-  margin: 6rem 0 0;
+  width: 42rem !important;
   height: 100vh;
+  margin: 0;
   overflow: hidden;
 }
 
@@ -88,4 +88,8 @@
 
 .social-links img {
   filter: invert(53%) sepia(8%) saturate(4305%) hue-rotate(193deg) brightness(95%) contrast(77%);
+}
+
+@media screen and (min-width: 36em) and (orientation: landscape) {
+
 }
