@@ -1,0 +1,57 @@
+@import "../../styles/variables.css";
+
+.card-container {
+  display: grid;
+  grid-template-columns: 7rem 1fr;
+  grid-template-rows: repeat(3, min-content);
+  grid-template-areas:
+    "image category"
+    "image description"
+    "image status";
+  column-gap: 2rem;
+  padding: 1rem;
+  border-radius: var(--border-radius);
+}
+
+.icon-category {
+  grid-area: image;
+  margin: 0;
+}
+.category {
+  grid-area: category;
+  margin: 0;
+}
+.description {
+  grid-area: description;
+  height: 2.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.status {
+  grid-area: status;
+  justify-self: end;
+  margin: 0;
+}
+.yellow-text {
+  font-weight: var(--semibold);
+  color: rgb(231, 201, 28);
+}
+.green-text {
+  font-weight: var(--semibold);
+  color: var(--green);
+}
+.blue-text {
+  font-weight: var(--semibold);
+  color: var(--purple);
+}
+.red-text {
+  font-weight: var(--semibold);
+  color: var(--red);
+}
+
+@media (pointer: fine) {
+  .card-container:hover,
+  .card-container > *:hover {
+    background-color: var(--light-purple);
+  }
+}
