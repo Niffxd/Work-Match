@@ -1,4 +1,4 @@
-@import "../../styles/variables.css";
+@import '../../styles/variables.css';
 
 /* User navigation bar */
 .details,
@@ -63,7 +63,7 @@
 /* User banner */
 .add-photo {
   position: relative;
-  bottom: 1.25rem;
+  bottom: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -76,16 +76,24 @@
   background-color: var(--baby-purple);
   overflow: hidden;
 }
-.photo-container {
+.add-photo-container {
   position: relative;
   margin: 1rem;
   margin-bottom: 0;
 }
-.photo-profile {
+.photo-container {
   margin: 0;
   width: min(30vw, 10rem);
   height: min(30vw, 10rem);
   border-radius: 50%;
+  overflow: hidden;
+}
+.photo-profile {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 .premium {
   margin: 0;

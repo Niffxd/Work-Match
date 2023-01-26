@@ -1,4 +1,4 @@
-@import "../../styles/variables.css";
+@import '../../styles/variables.css';
 
 /* Category */
 .categories-container {
@@ -14,8 +14,8 @@
   grid-template-columns: 4rem 1fr;
   grid-template-rows: repeat(2, min-content);
   grid-template-areas:
-    "image category"
-    "image description";
+    'image category'
+    'image description';
   margin: 0;
   padding: 1rem;
   border-radius: var(--border-radius);
@@ -114,9 +114,12 @@
   overflow: hidden;
 }
 
-.button-circular:hover {
-  transform: scale(1);
+@media (pointer: fine) {
+  .button-circular:hover {
+    transform: scale(1);
+  }
 }
+
 .button-delete {
   position: absolute;
   top: -0.35rem;
@@ -135,37 +138,37 @@
   justify-content: space-between;
 }
 
-/* Time */
-.input-time,
-.p-time {
+/* estimated */
+.input-estimated,
+.p-estimated {
   margin: 0;
 }
 
-.input-time {
+.input-estimated {
   margin-right: 1rem;
 }
 
-.time-container {
+.estimated-container {
   display: flex;
   align-items: center;
 }
 
-/* Remuneration */
-.input-remuneration,
-.input-negotiable,
-.label-negotiable {
+/* budget */
+.input-budget,
+.input-agreement,
+.label-agreement {
   margin: 0;
 }
 
-.remuneration-container {
+.budget-container {
   display: grid;
   grid-template-columns: 1fr 19ch min-content;
   align-items: center;
 }
 
-/* Negotiable */
+/* agreement */
 
-.input-negotiable {
+.input-agreement {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -181,30 +184,30 @@
   cursor: pointer;
 }
 
-.input-negotiable::after {
+.input-agreement::after {
   display: none;
-  content: "✓";
+  content: '✓';
   margin: 0;
   color: var(--dark-color);
   font-size: 1.5rem;
 }
 
-.input-negotiable:checked:after {
+.input-agreement:checked:after {
   display: inline-block;
 }
 
 @media (pointer: fine) {
-  .input-negotiable:hover {
+  .input-agreement:hover {
     background-color: var(--purple);
   }
 }
 
-.label-negotiable {
+.label-agreement {
   margin: 0 1rem;
   cursor: pointer;
 }
 
-.negotiable-container {
+.agreement-container {
   display: flex;
   align-items: center;
   justify-content: space-between;

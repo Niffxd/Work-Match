@@ -6,7 +6,7 @@ const validationsCreateJobOffer = (form) => {
     errors.category = 'Por favor ingrese una categoría';
   } else if (!form.description) {
     errors.description = 'Por favor, ingrese una descripción.';
-  } else if (form.tasks.length === 0) {
+    /* } else if (form.tasks.length === 0) {
     errors.tasks = 'Por favor, agregue al menos una tarea.';
   } else if (form.tasks.length > 0) {
     for (let task of form.tasks) {
@@ -15,24 +15,22 @@ const validationsCreateJobOffer = (form) => {
       }
     }
   }
-  if (!form.time || parseInt(form.time) === 0) {
-    errors.time = 'Por favor, ingresa el duración estimada del trabajo.';
+  if (!form.estimated || parseInt(form.estimated) === 0) {
+    errors.estimated = 'Por favor, ingresa el duración estimada del trabajo.';
   } else if (
-    !regexNumber.test(form.time) ||
-    parseInt(form.time) <= 0 ||
-    parseInt(form.time) > 8
+    !regexNumber.test(form.estimated) ||
+    parseInt(form.estimated) <= 0 ||
+    parseInt(form.estimated) > 8
   ) {
-    errors.time = 'El tiempo de trabajo debe durar entre cero y ocho horas.';
-  } else if (!form.remuneration || parseInt(form.remuneration === 0)) {
-    errors.remuneration = 'Por favor, ingresa la remuneración pretendida.';
-  } else if (
-    !regexNumber.test(form.remuneration) ||
-    parseInt(form.remuneration) <= 0
-  ) {
-    errors.remuneration =
+    errors.estimated = 'El tiempo de trabajo debe durar entre cero y ocho horas.';
+  */
+  } else if (!form.budget || parseInt(form.budget === 0)) {
+    errors.budget = 'Por favor, ingresa la remuneración pretendida.';
+  } else if (!regexNumber.test(form.budget) || parseInt(form.budget) <= 0) {
+    errors.budget =
       'La remuneración monetaria debe ser un número entero positivo, mayor que cero.';
-  } else if (!form.location) {
-    errors.location = 'Por favor, ingresa tu ubicación.';
+  } else if (!form.address) {
+    errors.address = 'Por favor, ingresa tu ubicación.';
   }
 
   return errors;

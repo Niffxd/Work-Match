@@ -7,16 +7,16 @@ import validationsCreateJobOffer from '@/utils/helpers/validationsCreateJobOffer
 import categories from '@/utils/helpers/categories';
 
 const initialForm = {
+  address: '',
+  agreement: false,
+  budget: 0,
   category: 'Selecciona una categoría',
   description: '',
-  tasks: [],
-  time: 0,
-  remuneration: 0,
-  negotiable: false,
-  location: '',
+  // estimated: 0,
+  // tasks: [],
 };
 
-let id = 0;
+// let id = 0;
 
 const post = async (data) => {
   const JSONdata = JSON.stringify(data);
@@ -59,6 +59,7 @@ export default function CreateJobOffer() {
     setForm({ ...form, category: category });
     setVisible('invisible');
   };
+  /*
   // Task
   const addTaskHandler = (event) => {
     event.preventDefault();
@@ -87,58 +88,25 @@ export default function CreateJobOffer() {
     taskUpdate.description = form[`task${idTask}`];
     setErrors(validationsCreateJobOffer(form));
   };
+  */
   // Submit
   const submitHandler = async (event) => {
-    if (form.category === 'Selecciona una categoría') {
-      setErrors({ ...errors, category: 'Por favor ingrese una categoría' });
-    } else if (!form.description) {
-      setErrors({
-        ...errors,
-        description: 'Por favor, ingrese una descripción.',
-      });
-    } else if (form.tasks.length === 0) {
-      setErrors({ ...errors, tasks: 'Por favor, agregue al menos una tarea.' });
-    } else if (form.tasks.length > 0) {
-      for (let task of form.tasks) {
-        if (!task.description) {
-          setErrors({
-            ...errors,
-            task: 'Por favor, no deje tareas sin información.',
-          });
-        }
-      }
-    }
-    if (!form.time || parseInt(form.time) === 0) {
-      setErrors({
-        ...errors,
-        time: 'Por favor, ingresa el duración estimada del trabajo.',
-      });
-    } else if (parseInt(form.time) < 0 || parseInt(form.time) >= 8) {
-      setErrors({
-        ...errors,
-        time: 'El tiempo de trabajo debe durar entre cero y ocho horas.',
-      });
-    } else if (!form.remuneration || parseInt(form.remuneration) === 0) {
-      setErrors({
-        ...errors,
-        remuneration: 'Por favor, ingresa la remuneración pretendida.',
-      });
-    } else if (!form.location) {
-      setErrors({ ...errors, location: 'Por favor, ingresa tu ubicación.' });
-    } else if (Object.keys(errors).length === 0) {
-      try {
+    event.preventDefault();
+    try {
+      setErrors(validationsCreateJobOffer(form));
+      if (Object.keys(errors).length === 0) {
         await post({
-          title: form.category,
+          address: form.address,
+          agreement: form.agreement,
+          budget: parseInt(form.budget),
+          category: form.category,
           description: form.description,
-          address: form.location,
-          budget: parseInt(form.remuneration),
-          agreement: form.negotiable,
         });
         alert('Tu oferta fue publicada con éxito');
-        resetHandler();
-      } catch (error) {
-        setErrors({ ...errors, form: error.message });
+        router.back();
       }
+    } catch (error) {
+      setErrors({ ...errors, form: error.message });
     }
   };
 
@@ -216,9 +184,9 @@ export default function CreateJobOffer() {
       {errors && Object.keys(errors).length > 0 && errors.description && (
         <p className="error ">{errors.description}</p>
       )}
-      {/* Task */}
 
-      {form.tasks.length > 0 && (
+      {/* Task */}
+      {/* {form.tasks.length > 0 && (
         <>
           {form.tasks.map((task, index) => {
             return (
@@ -273,74 +241,74 @@ export default function CreateJobOffer() {
       </div>
       {errors && Object.keys(errors).length > 0 && errors.tasks && (
         <p className="error">{errors.tasks}</p>
-      )}
-      {/* Time */}
-      <label htmlFor="time">Duración estimada:</label>
-      <div className={`${style['time-container']}`}>
+      )} */}
+
+      {/* Estimated */}
+      {/* <label htmlFor="estimate">Duración estimada:</label>
+      <div className={`${style['estimate-container']}`}>
         <input
-          id="time"
-          className={`${style['input-time']} `}
+          id="estimate"
+          className={`${style['input-estimate']} `}
           type="number"
-          name="time"
-          value={form.time}
+          name="estimate"
+          value={form.estimate}
           onChange={changeHandler}
           onBlur={changeHandler}
           autoComplete="off"
         />
-        <p className={`${style['p-time']} `}>hs.</p>
+        <p className={`${style['p-estimate']} `}>hs.</p>
       </div>
-      {errors && Object.keys(errors).length > 0 && errors.time && (
-        <p className="error">{errors.time}</p>
-      )}
-      {/* Remuneration */}
-      <label htmlFor="remuneration">Remuneración:</label>
-      <div className={`${style['remuneration-container']}`}>
+      {errors && Object.keys(errors).length > 0 && errors.estimate && (
+        <p className="error">{errors.estimate}</p>
+      )} */}
+
+      {/* Budget */}
+      <label htmlFor="budget">Remuneración:</label>
+      <div className={`${style['budget-container']}`}>
         <input
-          id="remuneration"
-          className={`${style['input-remuneration']}`}
+          id="budget"
+          className={`${style['input-budget']}`}
           type="number"
-          name="remuneration"
-          value={form.remuneration}
+          name="budget"
+          value={form.budget}
           onChange={changeHandler}
           onBlur={changeHandler}
           autoComplete="off"
         />
 
-        {/* Negotiable */}
-        <div className={`${style['negotiable-container']}`}>
-          <label
-            className={`${style['label-negotiable']}`}
-            htmlFor="negotiable"
-          >
+        {/* Agreement */}
+        <div className={`${style['agreement-container']}`}>
+          <label className={`${style['label-agreement']}`} htmlFor="agreement">
             ¿Es negociable?
           </label>
           <input
-            id="negotiable"
-            className={`${style['input-negotiable']}`}
+            id="agreement"
+            className={`${style['input-agreement']}`}
             type="checkbox"
-            name="negotiable"
-            value={form.negotiable}
+            name="agreement"
+            value={form.agreement}
             onChange={checkedHandler}
           />
         </div>
       </div>
-      {errors && Object.keys(errors).length > 0 && errors.remuneration && (
-        <p className="error">{errors.remuneration}</p>
+      {errors && Object.keys(errors).length > 0 && errors.budget && (
+        <p className="error">{errors.budget}</p>
       )}
-      {/* Location */}
-      <label htmlFor="location">Ubicación</label>
+
+      {/* Address */}
+      <label htmlFor="address">Ubicación</label>
       <input
-        id="location"
+        id="address"
         type="text"
         placeholder="Ej: Buenos Aires, Argentina"
-        name="location"
-        value={form.location}
+        name="address"
+        value={form.address}
         onChange={changeHandler}
         onBlur={changeHandler}
         autoComplete="off"
       />
-      {errors && Object.keys(errors).length > 0 && errors.location && (
-        <p className="error">{errors.location}</p>
+      {errors && Object.keys(errors).length > 0 && errors.address && (
+        <p className="error">{errors.address}</p>
       )}
       {errors && Object.keys(errors).length > 0 && errors.form && (
         <p className="error">{errors.form}</p>

@@ -140,12 +140,14 @@ export default function DashboardEmployee() {
         <form>
           {/* Image */}
           <div className={`${style["user-banner"]}`}>
-            <div className={`${style["photo-container"]}`}>
-              <img
-                className={`${style["photo-profile"]}`}
-                src={image}
-                alt='Photo profile.'
-              />
+          <div className={`${style["add-photo-container"]}`}>
+              <div className={`${style["photo-container"]}`}>
+                <img
+                  className={`${style["photo-profile"]}`}
+                  src={image}
+                  alt='Photo profile'
+                />
+              </div>
               <button
                 className={`${style["add-photo"]}`}
                 onClick={addImageHandler}

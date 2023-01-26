@@ -30,6 +30,8 @@
     brightness(108%) contrast(102%);
   --filter-purple: invert(65%) sepia(65%) saturate(3915%) hue-rotate(204deg)
     brightness(89%) contrast(89%);
+  --filter-green: invert(70%) sepia(20%) saturate(966%) hue-rotate(89deg)
+    brightness(90%) contrast(90%);
   --filter-black-and-white: grayscale(1);
   --filter-color: grayscale(0);
 }

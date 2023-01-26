@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import style from './page.module.css';
 import Cardjob from '../components/Cardjob';
 import Link from 'next/link';
+import Pagination from '@/components/Pagination/Pagination';
 
 export const get = async (arg) => {
   const URL = 'http://localhost:3001/project';
@@ -25,9 +26,10 @@ export const get = async (arg) => {
 export default function Home() {
   const [paginate, setPaginate] = useState();
   const [order, setOrder] = useState('ASC');
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    get({ column: 'title', direction: order }).then((data) =>
+    get({ page: currentPage, column: 'title', direction: order }).then((data) =>
       setPaginate(data)
     );
   }, [paginate, order]);
@@ -58,7 +60,7 @@ export default function Home() {
               </Link>
             ))}
         </section>
-        {/* <BasicPagination prueba={prueba} setPaginate={setPaginate} /> */}
+        <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} />
       </main>
     </>
   );
