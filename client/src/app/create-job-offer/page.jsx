@@ -99,7 +99,7 @@ export default function CreateJobOffer() {
           address: form.address,
           agreement: form.agreement,
           budget: parseInt(form.budget),
-          category: form.category,
+          title: form.category,
           description: form.description,
         });
         alert('Tu oferta fue publicada con éxito');
