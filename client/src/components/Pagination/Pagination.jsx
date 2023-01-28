@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useRef, useState } from "react";
-import style from "./pagination.module.css";
+import { useRef, useState } from 'react';
+import style from './pagination.module.css';
 
 export default function Pagination({ currentPage, setCurrentPage }) {
   const [inputValue, setInputValue] = useState(currentPage);
@@ -12,7 +12,7 @@ export default function Pagination({ currentPage, setCurrentPage }) {
     setInputValue(parseInt(inputValue) + 1);
   };
   const enterHandler = (event) => {
-    if (event.key === "Enter") {
+    if (event.key === 'Enter') {
       setCurrentPage(parseInt(inputValue));
       inputName.current.blur();
     }
@@ -26,28 +26,26 @@ export default function Pagination({ currentPage, setCurrentPage }) {
   };
 
   return (
-    <div className={`${style["pagination"]}`}>
+    <div className={`${style['pagination']}`}>
       {currentPage > 1 && (
         <button
-          className={`${style["button-pagination"]}`}
+          className={`${style['button-pagination']}`}
           onClick={prevHandler}
         >
-          {"<"}
+          {'<'}
         </button>
       )}
       <input
-        className={`${style["input-pagination"]}`}
-        type='number'
+        className={`${style['input-pagination']}`}
+        type="number"
         value={inputValue}
         onChange={changeHandler}
         onKeyDown={enterHandler}
         ref={inputName}
       />
-      <button className={`${style["button-pagination"]}`} onClick={nextHandler}>
-        {">"}
+      <button className={`${style['button-pagination']}`} onClick={nextHandler}>
+        {'>'}
       </button>
     </div>
   );
 }
-
-//13

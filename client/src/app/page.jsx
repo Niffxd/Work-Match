@@ -1,10 +1,10 @@
 'use client';
-import Filter from '@/components/Filter/Filter';
-import { useState, useEffect } from 'react';
-import style from './page.module.css';
-import Cardjob from '../components/Cardjob';
 import Link from 'next/link';
+import { useState, useEffect } from 'react';
+import Filter from '@/components/Filter/Filter';
 import Pagination from '@/components/Pagination/Pagination';
+import JobOfferCard from '@/components/JobOfferCard/JobOfferCard';
+import style from './page.module.css';
 
 export const get = async (arg) => {
   const URL = 'http://localhost:3001/project';
@@ -24,7 +24,7 @@ export const get = async (arg) => {
 };
 
 export default function Home() {
-  const [paginate, setPaginate] = useState();
+  const [paginate, setPaginate] = useState([]);
   const [order, setOrder] = useState('ASC');
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -39,29 +39,28 @@ export default function Home() {
   };
 
   return (
-    <>
-      <Filter onSortChange={handleSort} />
-      <main className={`container`}>
-        <section className={`${style['jobs-container']}`}>
-          {paginate &&
-            paginate.map((x) => (
-              <Link
-                className={`${style['detail-link']}`}
-                href={`/job-offer/${x.id}`}
-              >
-                <Cardjob
-                  key={x.id.toString()}
-                  title={x.title}
-                  address={x.address}
-                  description={x.description}
-                  budget={x.budget}
-                  // hora={x.hora}
-                />
-              </Link>
-            ))}
-        </section>
-        <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} />
-      </main>
-    </>
+    <main className={`${style['container']}`}>
+      <section className={`container ${style['jobs-container']}`}>
+        <Filter onSortChange={handleSort} />
+        {paginate && paginate.length > 0 ? (
+          paginate.map((jobOffer) => (
+            <Link
+              key={jobOffer.id.toString()}
+              className={`${style['detail-link']}`}
+              href={`/job-offer/${jobOffer.id}`}
+            >
+              <JobOfferCard
+                title={jobOffer.category}
+                address={jobOffer.address}
+                description={jobOffer.description}
+              />
+            </Link>
+          ))
+        ) : (
+          <h1>No hay trabajos disponibles en este momento</h1>
+        )}
+      </section>
+      <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} />
+    </main>
   );
 }
