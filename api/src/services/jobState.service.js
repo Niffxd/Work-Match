@@ -1,4 +1,4 @@
-const { Project,Bid,User,JobState } = require('./db.service.js');
+const { JobState } = require('./db.service.js');
 const helper = require('../utils/helper.util.js');
 
 async function read(id, query) {
@@ -8,142 +8,49 @@ async function read(id, query) {
 
   const options = helper.findOptions(page, query);
 
-  var data = id ? await Project.findByPk(id) : await Project.findAll(options);
-
+  var data = id ? await JobState.findByPk(id) : await JobState.findAll(options);
   var result = {
     data,
     meta,
   };
-
   if(result.data.length===0){
-    const jobs =[ {
-      deleted:false,
-      description:"una description",
-      category:2,
-      status:false,
-      budget:25,
-      agreement:false,
-      owner:"ElsuperAdmin",
-      bidder:"ElPrimerUsuario",
-      image:"",
-      estimated:2
-    },{
-      deleted:false,
-      description:"otra",
-      category:2,
-      status:false,
-      budget:30,
-      agreement:false,
-      owner:"ElsuperAdmin",
-      bidder:"ElPrimerUsuario",
-      image:"",
-      estimated:2
-    },
-    {
-      deleted:false,
-      description:"otra descripcion",
-      category:1,
-      status:false,
-      budget:48,
-      agreement:false,
-      owner:"ElPrimerUsuario",
-      bidder:"ElsuperAdmin",
-      image:"",
-      estimated:3
-    }
-  ];
-
-  const bids =[ {
-    project:1,
-    user:"ElsuperAdmin",
-    deleted:false,
-  },{
-    project:2,
-    user:"ElsuperAdmin",
-    deleted:false,
-  },
-  {
-    project:3,
-    user:"ElPrimerUsuario",
-    deleted:false,
+      const jobs =[ {
+        "id":1,
+        "name":"Postulado",
+        "deleted":false
+      },{
+        "id":2,
+        "name":"Aceptado",
+        "deleted":false
+      },
+      {
+        "id":3,
+        "name":"Rechazado",
+        "deleted":false
+      },
+      {
+        "id":4,
+        "name":"No apica",
+        "deleted":false
+      },
+      
+    ];
+      var i=0
+      while(i<jobs.length){
+         await JobState.create(jobs[i]);
+        i++
+      }
+       data=await JobState.findAll();
+       result = {
+        data,
+        meta,
+      };
+      return result
   }
-];
-
-    var i=0
-    while(i<jobs.length){
-       await Project.create(jobs[i]);
-       await Bid.create(bids[i]);      
-      i++
-    }
-    
-  data=await Bid.findAll();
-   result = {
-    data,
-    meta,
-  };
-    data=await Project.findAll();
-     result = {
-      data,
-      meta,
-    };
-    return result
-}
-
   return result;
 }
 
-async function readByUser(id,query) {
-  const page = query.page || 1;
-  const meta = { page };
-  const options = helper.findOptions(page, query);
- 
-  var  data = await Project.findAll({
-    where:{owner:id},
-    include : [
-      { 
-        model: User, 
-        required: true,
-        where: {id:id}
-        }
-    ]
-  })
-        var result = {
-          data,
-          meta,
-        };
-  return result;
-}
-
-async function readByPostulations(id,query) {
-  const page = query.page || 1;
-  const meta = { page };
-  const options = helper.findOptions(page, query);
- 
-  var  data = await JobState.findAll({
-    
-    include : [
-      { 
-        model: User, 
-        required: true,
-        where: {id:id},
-        include:[
-          {
-            model: Project, 
-            required: true,
-           
-          }
-        ]
-        }
-    ]
-  })
-        var result = {
-          data,
-          meta,
-        };
-  return result;
-}
-
-async function create(project) {
+async function create(jobState) {
   // let message;
   // const {
   //   title,
@@ -199,21 +106,13 @@ async function create(project) {
   //   message = 'project created successfully';
   // }
   // return { message };
-  
 
 
-  var data=await Project.create(project);
 
-  const bids = {
-    project:data.id,
-    user:project.owner,
-    deleted:project.deleted,
-  }
-  await Bid.create(bids); 
-  return data
+  return JobState.create(jobState);
 }
 
-async function update(project) {
+async function update(jobState) {
   // let message;
   // const projectDb = await Projects.findOne({
   //   where: {
@@ -281,9 +180,9 @@ async function update(project) {
   //   message = 'id does not found';
   // }
   // return { message };
-  const { id } = project;
+  const { id } = jobState;
 
-  return Project.update(project, {
+  return JobState.update(jobState, {
     where: {
       id,
     },
@@ -303,7 +202,7 @@ async function remove(id) {
   //   message = 'Error in deleting project';
   // }
   // return { message };
-  const result = await Project.update(
+  const result = await JobState.update(
     {
       deleted: true,
     },
@@ -321,6 +220,4 @@ module.exports = {
   create,
   update,
   remove,
-  readByUser,
-  readByPostulations
 };

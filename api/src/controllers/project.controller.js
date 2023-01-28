@@ -9,6 +9,24 @@ async function read(req, res, next) {
   }
 }
 
+async function readByUser(req, res, next) {
+  try {
+    res.status(200).send(await project.readByUser(req.params.id, req.query));
+  } catch (err) {
+    console.error(`Error while getting projects`, err.message);
+    next(err);
+  }
+}
+
+async function readByPostulations(req, res, next) {
+  try {
+    res.status(200).send(await project.readByPostulations(req.params.id, req.query));
+  } catch (err) {
+    console.error(`Error while getting projects`, err.message);
+    next(err);
+  }
+}
+
 async function create(req, res, next) {
   try {
     res.status(201).send(await project.create(req.body));
@@ -40,4 +58,6 @@ module.exports = {
   create,
   update,
   remove,
+  readByUser,
+  readByPostulations
 };

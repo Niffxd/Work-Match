@@ -8,12 +8,53 @@ async function read(id, query) {
 
   const options = helper.findOptions(page, query);
 
-  const data = id ? await User.findByPk(id) : await User.findAll(options);
+  var data = id ? await User.findByPk(id) : await User.findAll(options);
 
-  const result = {
+  var result = {
     data,
     meta,
   };
+  if(result.data.length===0){
+    const jobs =[ {
+      id:"ElsuperAdmin",
+      name:"Miguel Mendez Gonzales",
+      deleted:false,
+      age:23,
+      biography:"I am the admin user!!",
+      mail:"email@email.com",
+      phone:25487,
+      rate:null,
+      role:1,
+      image:"",
+      premium:true,
+      jobState:4
+    },{
+      id:"ElPrimerUsuario",
+      name:"José Biden Rodriguez",
+      deleted:false,
+      age:31,
+      biography:"I like apples!!",
+      mail:"email2@email.com",
+      phone:2145,
+      rate:null,
+      role:2,
+      image:"",
+      premium:false,
+      jobState:1
+    }
+  ];
+    var i=0
+    while(i<jobs.length){
+       await User.create(jobs[i]);
+      i++
+    }
+    data=await User.findAll();
+     result = {
+      data,
+      meta,
+    };
+    return result
+}
 
   return result;
 }

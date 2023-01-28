@@ -5,6 +5,8 @@ const project = require('../controllers/project.controller.js');
 
 /* GET all jobs */
 router.get('/', project.read);
+router.get('/User/:id', project.readByUser);
+router.get('/User/:id/Postulations', project.readByPostulations);
 /* GET job  detail */
 router.get('/:id', project.read);
 
