@@ -8,6 +8,14 @@ async function read(req, res, next) {
     next(err);
   }
 }
+async function readUserAddres(req, res, next) {
+  try {
+    res.status(200).send(await user.readUserAddres(req.params.id, req.query));
+  } catch (err) {
+    console.error(`Error while getting projects`, err.message);
+    next(err);
+  }
+}
 
 async function create(req, res, next) {
   try {
@@ -41,4 +49,5 @@ module.exports = {
   create,
   update,
   remove,
+  readUserAddres
 };

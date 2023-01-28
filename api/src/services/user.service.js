@@ -1,4 +1,4 @@
-const { User } = require('./db.service.js');
+const { User,Address,City,State,Country } = require('./db.service.js');
 const helper = require('../utils/helper.util.js');
 
 async function read(id, query) {
@@ -59,6 +59,46 @@ async function read(id, query) {
   return result;
 }
 
+async function readUserAddres(id,query) {
+  const page = query.page || 1;
+  const meta = { page };
+  const options = helper.findOptions(page, query);
+    var data = await User.findAll({
+    include : [
+      { 
+        model: Address, 
+        where:{user:id},
+        required: true,
+        extends:[
+          {
+            model: City, 
+            required: true,
+            extends:[
+              {
+                model: State, 
+                required: true,
+                extends:[
+                  {
+                    model: Country, 
+                    required: true,
+                  }
+                ]
+              }
+            ]           
+          },
+          
+        ]
+        }
+    ],
+  })
+        var result = {
+          data,
+          meta,
+        };
+        
+  return result;
+}
+
 async function create(user) {
   return User.create(user);
 }
@@ -92,4 +132,5 @@ module.exports = {
   create,
   update,
   remove,
+  readUserAddres
 };
