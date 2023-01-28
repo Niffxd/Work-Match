@@ -1,0 +1,29 @@
+@import "../../../styles/variables.css";
+
+.navigation-layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 0;
+  background-color: var(--baby-purple);
+}
+
+.navigation-link {
+  margin-left: 0;
+  margin-right: 0;
+  text-decoration: none;
+  font-size: 1.15rem;
+}
+.navigation-link.active {
+  font-weight: var(--semibold);
+}
+@media (pointer: fine) {
+  .navigation-link:hover {
+    font-weight: var(--semibold);
+  }
+}
+@media screen and (min-width: 36em) and (orientation: landscape) {
+  .navigation-layout {
+    padding: 0 25vw;
+  }
+}
