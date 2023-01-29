@@ -1,5 +1,5 @@
-const GET_ALL_JOBS = 'GET_ALL_JOBS'
-const POST_JOB = 'POST_JOB'
+export const GET_ALL_JOBS = 'GET_ALL_JOBS'
+export const POST_JOB = 'POST_JOB'
 
 const serverDeploy ='url-deploy-back'
 
@@ -14,7 +14,7 @@ export const postRecipes = (newJob) => async dispatch => {
   ).then(recipe => recipe.json())
 
   dispatch({
-    type: POST_RECIPE,
+    type: POST_JOB,
     payload: response
   })
 }

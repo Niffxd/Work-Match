@@ -12,13 +12,7 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         jobs: action.payload,
       }
-
-    case actions.CLEAN_STATE:
-      return {
-        ...state,
-        details: []
-      }
-        
+ 
     case actions.POST_JOB:
     default:
       return {...state }
