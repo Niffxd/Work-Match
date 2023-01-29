@@ -12,13 +12,11 @@
   margin: 0;
   background-color: var(--baby-purple);
 }
-.link {
-  text-decoration: none;
-}
-.links-container {
-  display: flex;
-  flex-direction: column;
-  margin: 0;
+.menu-icon {
+  margin-right: 1rem;
+  width: 1.5rem;
+  height: auto;
+  cursor: pointer;
 }
 .navigation-container {
   position: absolute;
@@ -32,27 +30,8 @@
   background-color: var(--baby-purple);
   z-index: 1;
 }
-.position-relative {
-  position: relative;
-}
-.menu-icon {
-  margin-right: 1rem;
-  width: 1.5rem;
-  height: auto;
-  cursor: pointer;
-}
-.summary {
-  font-weight: var(--semibold);
-  cursor: pointer;
-}
 .user-navigation {
   background-color: var(--baby-purple);
-}
-
-@media (pointer: fine) {
-  .link:hover {
-    font-weight: var(--semibold);
-  }
 }
 @media screen and (min-width: 36em) and (orientation: landscape) {
   .icon-container {
@@ -60,7 +39,30 @@
     width: 65vw;
   }
 }
+/* User navigation bar links*/
+.link {
+  text-decoration: none;
+}
+.links-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+.position-relative {
+  position: relative;
+}
+.summary {
+  font-weight: var(--semibold);
+  cursor: pointer;
+}
+@media (pointer: fine) {
+  .link:hover {
+    font-weight: var(--semibold);
+  }
+}
+
 /* User banner */
+/* Photo */
 .add-photo {
   position: relative;
   bottom: 1rem;
@@ -95,6 +97,7 @@
   object-fit: cover;
   object-position: center;
 }
+/* User's Data */
 .premium {
   margin: 0;
   display: flex;
@@ -140,8 +143,8 @@
   margin: 0.5rem auto;
 }
 
-@media screen and (min-width: 36em) {
-  .photo-container {
+@media screen and (min-width: 40em) {
+  .add-photo-container {
     margin: 1rem 0;
   }
   .user-banner {
