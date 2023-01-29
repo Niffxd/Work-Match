@@ -11,7 +11,7 @@ async function read(req, res, next) {
 
 async function create(req, res, next) {
   try {
-    res.status(201).send(await login.create(req.body));
+    res.status(201).send(await login.Login(req.body));
   } catch (err) {
     console.error(`Error while creating login`, err.message);
     next(err);

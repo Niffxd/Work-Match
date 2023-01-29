@@ -30,7 +30,7 @@ async function read(id, query) {
       },
       {
         "id":4,
-        "name":"No apica",
+        "name":"No aplica",
         "deleted":false
       },
       

@@ -14,19 +14,98 @@ async function read(id, query) {
     meta,
   };
   if(result.data.length===0){
-    const jobs =[ {
-      name:"jardineria",
-      deleted:false,
-      image:"",
-      description:"trabajos de jardineria",
-      parent:0,
-    },{
-      name:"aseo y hogar",
-      deleted:false,
-      image:"",
-      description:"trabajos de aseo",
-      parent:0,
-    }
+    const jobs =[  {
+      name: 'Carpintería',
+      image: 'https://cdn-icons-png.flaticon.com/512/1973/1973946.png',
+      description:
+        'Arte y técnica de trabajar la madera y de fabricar o arreglar objetos con ella.',
+      deleted: false,
+      parent: 0,
+    },
+    {
+      name: 'Cocina',
+      image: 'https://cdn-icons-png.flaticon.com/512/3183/3183463.png',
+      description:
+        'Preparación, conservación y presentación de los alimentos que conforman la oferta gastronómica de un evento.',
+      deleted: false,
+      parent: 0,
+    },
+    {
+      name: 'Electricidad',
+      image: 'https://cdn-icons-png.flaticon.com/512/3467/3467271.png',
+      description:
+        'Instalación y reparación de cables, cableado, contadores, aparatos de maniobra, conductos de metal (cables), instalaciones eléctricas y equipamientos tanto en los edificios nuevos como en edificios antiguos.',
+      deleted: false,
+      parent: 0,
+    },
+    {
+      name: 'Estilismo',
+      image: 'https://cdn-icons-png.flaticon.com/512/9423/9423538.png',
+      description:
+        'Mejorar la imagen de una persona, ya sea con la ropa, cabello y/o maquillaje.',
+      deleted: false,
+      parent: 0,
+    },
+    {
+      name: 'Fotografía y vídeo',
+      image: 'https://cdn-icons-png.flaticon.com/512/2383/2383411.png',
+      description:
+        'Arte de tomar fotografías y vídeos con una cámara digital o de película.',
+      deleted: false,
+      parent: 0,
+    },
+    {
+      name: 'Jardinería',
+      image: 'https://cdn-icons-png.flaticon.com/512/1518/1518914.png',
+      description: 'Arte y técnica de cuidar y cultivar los jardines.',
+      deleted: false,
+      parent: 0,
+    },
+    {
+      name: 'Limpieza',
+      image: 'https://cdn-icons-png.flaticon.com/512/995/995016.png',
+      description: 'Organización y limpieza de la casa.',
+      deleted: false,
+      parent: 0,
+    },
+    {
+      name: 'Pintura',
+      image: 'https://cdn-icons-png.flaticon.com/512/3162/3162611.png',
+      description: 'Aplicación de color y protección a paredes y techos.',
+      deleted: false,
+      parent: 0,
+    },
+    {
+      name: 'Plomería',
+      image: 'https://cdn-icons-png.flaticon.com/512/4635/4635163.png',
+      description:
+        'Instalación y mantenimiento de sistemas usados para agua potable, drenaje y aguas residuales en sistemas de plomería.',
+      deleted: false,
+      parent: 0,
+    },
+    {
+      name: 'Repostería y pastelería',
+      image: 'https://cdn-icons-png.flaticon.com/512/2917/2917629.png',
+      description:
+        'Preparar y adornar platillos dulces como lo pueden ser los pasteles, panadería, galletas, entre otros más.',
+      deleted: false,
+      parent: 0,
+    },
+    {
+      name: 'Seguridad',
+      image: 'https://cdn-icons-png.flaticon.com/512/4009/4009139.png',
+      description:
+        'Mantener la seguridad de las personas y de las propiedades en un área específica.',
+      deleted: false,
+      parent: 0,
+    },
+    {
+      name: 'Otro',
+      image: 'https://cdn-icons-png.flaticon.com/512/1086/1086474.png',
+      description: 'Otros tipos de trabajo.',
+      deleted: false,
+      parent: 0,
+    },
   ];
     var i=0
     while(i<jobs.length){

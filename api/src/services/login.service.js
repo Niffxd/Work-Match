@@ -1,4 +1,4 @@
-const { Login } = require('./db.service.js');
+const { User } = require('./db.service.js');
 const helper = require('../utils/helper.util.js');
 
 async function read(id, query) {
@@ -16,7 +16,7 @@ async function read(id, query) {
   return result;
 }
 
-async function create(login) {
+async function Login(login) {
   // let message;
   // const {
   //   title,
@@ -73,9 +73,18 @@ async function create(login) {
   // }
   // return { message };
 
-
-
-  return Login.create(login);
+var msg;
+  result=await User.findAll({
+    where: 
+      {id: login.username, password: login.password,} 
+    ,attributes: ['id']
+  });
+if(result.length>0){
+  msg=login.username+" is logged in"
+}else{
+  msg="username or password incorrect"
+}
+  return msg
 }
 
 async function update(login) {
@@ -183,7 +192,7 @@ async function remove(id) {
 
 module.exports = {
   read,
-  create,
+  Login,
   update,
   remove,
 };

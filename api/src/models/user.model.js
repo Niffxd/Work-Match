@@ -11,6 +11,10 @@ module.exports = (sequelize) => {
         primaryKey: true,
         allowNull: false,
       },
+      password: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       name: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -37,7 +41,7 @@ module.exports = (sequelize) => {
         },
       },
       phone: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.BIGINT,
         validate: {
           isNumeric: true,
         },

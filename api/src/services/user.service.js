@@ -17,6 +17,7 @@ async function read(id, query) {
   if(result.data.length===0){
     const jobs =[ {
       id:"ElsuperAdmin",
+      password:"topSecretPassword",
       name:"Miguel Mendez Gonzales",
       deleted:false,
       age:23,
@@ -30,6 +31,7 @@ async function read(id, query) {
       jobState:4
     },{
       id:"ElPrimerUsuario",
+      password:"topSecretPassword2",
       name:"José Biden Rodriguez",
       deleted:false,
       age:31,
