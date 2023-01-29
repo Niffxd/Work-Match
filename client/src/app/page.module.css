@@ -1,70 +1,13 @@
 @import '../styles/variables.css';
-.jobs-container {
+
+.container {
+  position: relative;
   margin: 0;
 }
-.container-grid {
-  display: grid;
-  grid-template-columns: 7rem 1fr;
-  border-radius: var(--border-radius);
-  cursor: pointer;
-}
-.container-grid:hover,
-.container-grid > *:hover {
-  background-color: var(--light-purple);
+.jobs-container {
+  padding: 5rem 1.5rem 3.5rem;
 }
 .detail-link {
-  cursor: pointer;
   text-decoration: none;
-}
-/*----------IMAGEN DEL OFICIO -------*/
-.container-grid .imagen {
-  grid-column: -3/-2;
-  align-items: center;
-  justify-content: center;
-  width: 7rem;
-  height: auto;
   margin: 0;
-  padding: 0;
-}
-
-.imagen-svg {
-  margin: 0;
-}
-
-/*----CONTENEDOR DESCRIPCION TITULO ----- */
-.info {
-  grid-column-start: -2;
-  grid-column-end: -1;
-  margin: 0;
-  margin-left: 1.25rem;
-}
-
-.info > h3 {
-  display: flex;
-  margin-top: 0;
-  align-items: flex-start;
-  cursor: pointer;
-}
-
-.info > p {
-  height: 2.5rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  cursor: pointer;
-}
-
-/* --------SUELDO Y HORA---------*/
-.container-grid .precio_hora {
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-  color: inherit;
-  margin: 0;
-  padding: 0.2em;
-  cursor: pointer;
-}
-
-.precio_hora > span {
-  margin: 0;
-  cursor: pointer;
 }

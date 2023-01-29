@@ -2,6 +2,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: absolute;
+  bottom: 0;
+  right: 50%;
+  transform: translateX(50%);
 }
 .button-pagination {
   margin: 0;
