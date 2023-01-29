@@ -48,7 +48,7 @@ module.exports = (sequelize) => {
       },
       bidder:{
         type: DataTypes.STRING,
-        allowNull:false,
+        //allowNull:false,
       },
       image:{
         type: DataTypes.STRING

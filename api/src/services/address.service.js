@@ -8,11 +8,37 @@ async function read(id, query) {
 
   const options = helper.findOptions(page, query);
 
-  const data = id ? await Address.findByPk(id) : await Address.findAll(options);
-  const result = {
+  var data = id ? await Address.findByPk(id) : await Address.findAll(options);
+  var result = {
     data,
     meta,
   };
+
+  if(result.data.length===0){
+    const jobs =[ {
+      city:1,
+      user:"ElsuperAdmin",
+      description:"Avenida siempre viva #21-1 ",
+      deleted:false,
+    },{
+      city:4,
+      user:"ElPrimerUsuario",
+      description:"La calle del Banco #33-29",
+      deleted:false,
+    }
+  ];
+    var i=0
+    while(i<jobs.length){
+       await Address.create(jobs[i]);
+      i++
+    }
+    data=await Address.findAll();
+     result = {
+      data,
+      meta,
+    };
+    return result
+}
   return result;
 }
 

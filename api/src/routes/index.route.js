@@ -9,6 +9,7 @@ const countryRouter = require('./country.route.js');
 const loginRouter = require('./login.route.js');
 const roleRouter = require('./role.route.js');
 const stateRouter = require('./state.route.js');
+const jobState = require('./jobState.route');
 
 const router = Router();
 
@@ -22,5 +23,6 @@ router.use('/country', countryRouter);
 router.use('/login', loginRouter);
 router.use('/role', roleRouter);
 router.use('/state', stateRouter);
+router.use('/jobState', jobState);
 
 module.exports = router;

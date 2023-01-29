@@ -34,7 +34,7 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { User, Project,Category,Bid,Role,Login,Address,City,State,Country } = sequelize.models;
+const { User, Project,Category,Bid,Role,Login,Address,City,State,Country,JobState } = sequelize.models;
 //FK category esta en Project
 Category.hasOne(Project,{
   foreignKey: "category",
@@ -44,7 +44,7 @@ Category.hasOne(Project,{
 // Ejemplo.belongsToMany(Ejemplo2);
 // Project  tiene muchos usuarios M/M
 //FK de user esta en Bid
-User.hasOne(Bid,{
+/*User.hasOne(Bid,{
   foreignKey: "user",
   foreignKeyConstraint: true
 })
@@ -52,7 +52,19 @@ User.hasOne(Bid,{
 Project.hasOne(Bid,{
   foreignKey: "project",
   foreignKeyConstraint: true
-})
+})*/
+
+
+User.belongsToMany(Project, {
+  through: "Bid",
+  foreignKey: "user",
+  foreignKeyConstraint: true
+});
+Project.belongsToMany(User, {
+  through: "Bid",
+  foreignKey: "project",
+  foreignKeyConstraint: true
+});
 //FK de role en user
 Role.hasOne(User,{
   foreignKey: "role",
@@ -66,6 +78,11 @@ User.hasOne(Login,{
 //FK  de user en address
 User.hasOne(Address,{
   foreignKey: "user",
+  foreignKeyConstraint: true
+})
+//FK  de jobState en user
+JobState.hasOne(User,{
+  foreignKey: "jobState",
   foreignKeyConstraint: true
 })
 //FK de city en address

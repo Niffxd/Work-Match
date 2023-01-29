@@ -1,4 +1,4 @@
-const { User } = require('./db.service.js');
+const { User,Address,City,State,Country } = require('./db.service.js');
 const helper = require('../utils/helper.util.js');
 
 async function read(id, query) {
@@ -8,13 +8,96 @@ async function read(id, query) {
 
   const options = helper.findOptions(page, query);
 
-  const data = id ? await User.findByPk(id) : await User.findAll(options);
+  var data = id ? await User.findByPk(id) : await User.findAll(options);
 
-  const result = {
+  var result = {
     data,
     meta,
   };
+  if(result.data.length===0){
+    const jobs =[ {
+      id:"ElsuperAdmin",
+      password:"topSecretPassword",
+      name:"Miguel Mendez Gonzales",
+      deleted:false,
+      age:23,
+      biography:"I am the admin user!!",
+      mail:"email@email.com",
+      phone:25487,
+      rate:null,
+      role:1,
+      image:"",
+      premium:true,
+      jobState:4
+    },{
+      id:"ElPrimerUsuario",
+      password:"topSecretPassword2",
+      name:"José Biden Rodriguez",
+      deleted:false,
+      age:31,
+      biography:"I like apples!!",
+      mail:"email2@email.com",
+      phone:2145,
+      rate:null,
+      role:2,
+      image:"",
+      premium:false,
+      jobState:1
+    }
+  ];
+    var i=0
+    while(i<jobs.length){
+       await User.create(jobs[i]);
+      i++
+    }
+    data=await User.findAll();
+     result = {
+      data,
+      meta,
+    };
+    return result
+}
 
+  return result;
+}
+
+async function readUserAddres(id,query) {
+  const page = query.page || 1;
+  const meta = { page };
+  const options = helper.findOptions(page, query);
+    var data = await User.findAll({
+    include : [
+      { 
+        model: Address, 
+        where:{user:id},
+        required: true,
+        extends:[
+          {
+            model: City, 
+            required: true,
+            extends:[
+              {
+                model: State, 
+                required: true,
+                extends:[
+                  {
+                    model: Country, 
+                    required: true,
+                  }
+                ]
+              }
+            ]           
+          },
+          
+        ]
+        }
+    ],
+  })
+        var result = {
+          data,
+          meta,
+        };
+        
   return result;
 }
 
@@ -51,4 +134,5 @@ module.exports = {
   create,
   update,
   remove,
+  readUserAddres
 };
