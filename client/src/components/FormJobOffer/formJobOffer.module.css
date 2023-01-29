@@ -1,4 +1,8 @@
-@import '../../styles/variables.css';
+@import "../../styles/variables.css";
+
+.form {
+  margin: 0;
+}
 
 /* Category */
 .categories-container {
@@ -14,8 +18,8 @@
   grid-template-columns: 4rem 1fr;
   grid-template-rows: repeat(2, min-content);
   grid-template-areas:
-    'image category'
-    'image description';
+    "image category"
+    "image description";
   margin: 0;
   padding: 1rem;
   border-radius: var(--border-radius);
@@ -114,12 +118,9 @@
   overflow: hidden;
 }
 
-@media (pointer: fine) {
-  .button-circular:hover {
-    transform: scale(1);
-  }
+.button-circular:hover {
+  transform: scale(1);
 }
-
 .button-delete {
   position: absolute;
   top: -0.35rem;
@@ -186,7 +187,7 @@
 
 .input-agreement::after {
   display: none;
-  content: '✓';
+  content: "✓";
   margin: 0;
   color: var(--dark-color);
   font-size: 1.5rem;
