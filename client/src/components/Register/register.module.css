@@ -1,0 +1,130 @@
+.register {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  background-color: #FFFEFB;
+}
+
+.desktop,
+.mobile {
+  height: 38rem;
+  background-color: #D0D6F2;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.desktop {
+  display: none;
+  width: 50rem;
+  margin-left: 2rem;
+}
+
+.desktop > h1 {
+  font-size: 3.5rem;
+}
+
+.desktop > h2 {
+  font-size: 1.7rem;
+  padding: 0 8rem 2rem;
+  text-align: center;
+}
+
+.desktop > ul > li > p {
+  font-size: 1.5rem;
+}
+
+.desktop > ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.desktop > ul > li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem;
+}
+
+.mobile {
+  width: 25rem;
+  margin-right: 2rem;
+}
+
+.add-photo-container {
+  position: relative;
+  margin: 1rem;
+  margin-bottom: 0;
+}
+
+.photo-container {
+  width: min(30vw, 10rem);
+  height: min(30vw, 10rem);
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.photo-profile {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: cover;
+}
+
+.info {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.info > label {
+  align-self: flex-start;
+  font-size: 1.5rem;
+  margin: .5rem 0;
+}
+
+.info > input,
+.info > select {
+  width: 100%;
+  height: 2.5rem;
+  border-radius: .5rem;
+  background-color: #fffefb;
+  border: none;
+  padding-left: 1rem;
+  font-size: 1.5rem;
+}
+
+.info > input:focus
+.info > select:focus {
+  outline: none;
+}
+
+.login {
+  display: flex;
+  gap: .2rem;
+}
+
+.login > a {
+  color: black;
+}
+
+.buttons-container {
+  display: flex;
+}
+
+@media screen and (min-width: 42em) and (orientation: landscape) {
+  .desktop {
+    display: flex;
+  }
+}

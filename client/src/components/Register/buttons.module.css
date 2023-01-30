@@ -1,0 +1,38 @@
+.add-photo {
+  position: relative;
+  bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.7rem;
+  margin: 0 auto;
+  padding: 0;
+  width: 2rem;
+  border-radius: 50%;
+  background-color: #FFFEFB;
+}
+
+.next-button,
+.back-button {
+  margin: 2rem 1rem 1.5rem;
+  padding: .5rem 2rem;
+  border-radius: 2rem;
+  display: inline-block;
+  font-size: 1.3rem;
+  color: #FFFEFB;
+  border: none;
+  background-color: #57BF7D;
+  font-weight: bolder;
+}
+
+.back-button,
+.exit-modal {
+  background-color: #6B7FD7;
+  color: #FFFEFB;
+}
+
+.next-button:focus,
+.back-button:focus,
+.exit-modal:focus {
+  outline: none;
+}
