@@ -1,6 +1,7 @@
 import {
   GET_ROLE,
   GET_JOB_STATE,
+  GET_ALL_USERS,
   GET_USER_ID,
   POST_USER,
   UPDATE_USER,
@@ -10,7 +11,8 @@ import {
 const initialState = {
   role: [],
   jobState: [],
-  user: [],
+  allUsers: [],
+  user: {},
   message: "",
 };
 
@@ -23,6 +25,8 @@ export default function userReducer(state = initialState, action) {
       return { ...state, jobState: payload };
     case GET_USER_ID:
       return { ...state, user: payload };
+    case GET_ALL_USERS:
+      return { ...state, allUsers: payload };
     case POST_USER:
       return { ...state, message: payload };
     case UPDATE_USER:

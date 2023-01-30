@@ -1,0 +1,68 @@
+@import "../../../styles/variables.css";
+
+/* Container */
+.container-grid {
+  display: grid;
+  grid-template-columns: 5rem 1fr;
+  align-items: center;
+  justify-items: start;
+  padding: 0 1rem;
+  border-radius: var(--border-radius);
+  background-color: var(--light-purple);
+}
+@media (pointer: fine) {
+  .container-grid,
+  .container-grid * {
+    cursor: pointer;
+  }
+  .container-grid:hover,
+  .container-grid > *:hover {
+    background-color: var(--light-purple);
+  }
+}
+
+/* Address */
+.address {
+  display: none;
+}
+
+/* Image */
+.imagen {
+  grid-column: -3/-2;
+  align-items: center;
+  justify-content: center;
+  width: 5rem;
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
+
+/* information */
+.information {
+  grid-column-start: -2;
+  grid-column-end: -1;
+  margin: 0;
+  margin-left: 1.25rem;
+}
+
+.information > p {
+  height: 2.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media screen and (min-width: 36em) {
+  .address {
+    display: block;
+  }
+  .container {
+    padding: 2rem 2.5rem;
+  }
+  .container-grid {
+    grid-template-columns: 7rem 1fr;
+    background: none;
+  }
+  .imagen {
+    width: 7rem;
+  }
+}
