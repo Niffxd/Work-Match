@@ -21,5 +21,6 @@
 
 header,
 footer {
-  display: none !important;
+  padding-left: 4rem !important;
+  padding-right: 4rem !important;
 }
