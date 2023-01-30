@@ -1,4 +1,4 @@
-const { DataTypes, BOOLEAN } = require('sequelize');
+const { DataTypes } = require('sequelize');
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
@@ -46,20 +46,19 @@ module.exports = (sequelize) => {
           isNumeric: true,
         },
       },
-       rate: {
-         type:DataTypes.INTEGER,
-       },
-       role: {
+      rate: {
+        type: DataTypes.INTEGER,
+      },
+      role: {
         type: DataTypes.INTEGER,
       },
       image: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
       },
-      premium:{
-        type:DataTypes.BOOLEAN,
-        defaultValue:false
-      }
-
+      premium: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
     }
     // TimeStamps will be used as determinant of seniority on the platform
   );
