@@ -121,7 +121,6 @@
 
 .buttons-container {
   display: flex;
-  gap: 1rem;
 }
 
 @media screen and (min-width: 42em) and (orientation: landscape) {
