@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import style from "./formJobOffer.module.css";
-import categories from "./helpers/categories";
+import { useSelector } from "react-redux";
 import validationsCreateJobOffer from "./helpers/validationsCreateJobOffer";
 import useForm from "./customHooks/useForm";
 
 const FormJobOffer = ({ initialForm, submitHandler, closeHandler }) => {
   //Variables
+  const categories = useSelector((state) => state.categories);
   const [visible, setVisible] = useState("invisible");
   const {
     form,
@@ -65,21 +66,21 @@ const FormJobOffer = ({ initialForm, submitHandler, closeHandler }) => {
                   src={category.image}
                   alt={category.name}
                   onClick={(event) => {
-                    categorySelectionHandler(event, category.category);
+                    categorySelectionHandler(event, category.id);
                   }}
                 />
                 <h4
                   className={`${style["category-name"]}`}
                   onClick={(event) => {
-                    categorySelectionHandler(event, category.category);
+                    categorySelectionHandler(event, category.id);
                   }}
                 >
-                  {category.category}
+                  {category.name}
                 </h4>
                 <p
                   className={`${style["sategory-description"]}`}
                   onClick={(event) => {
-                    categorySelectionHandler(event, category.category);
+                    categorySelectionHandler(event, category.id);
                   }}
                 >
                   {category.description}
