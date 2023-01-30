@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // URL
-const URL = "http://localhost:3001/category";
+const URL = "/category";
 
 // TYPES
 export const CATEGORIES = "CATEGORIES";

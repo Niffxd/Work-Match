@@ -11,7 +11,7 @@ const initialState = {
   country: [],
   state: [],
   city: [],
-  userAddress: [],
+  userAddress: {},
   message: "",
 };
 

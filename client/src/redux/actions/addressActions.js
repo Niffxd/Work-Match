@@ -1,11 +1,11 @@
 import axios from "axios";
 
 //URLS
-const URL_COUNTRY = "http://localhost:3001/country";
-const URL_STATE = "http://localhost:3001/state";
-const URL_CITY = "http://localhost:3001/city";
-const URL_ADDRESS = "http://localhost:3001/address";
-const URL_GET_ADDRESS = "http://localhost:3001/user";
+const URL_COUNTRY = "/country";
+const URL_STATE = "/state";
+const URL_CITY = "/city";
+const URL_ADDRESS = "/address";
+const URL_GET_ADDRESS = "/user";
 
 // TYPES
 export const GET_COUNTRY = "GET_COUNTRY";
@@ -38,11 +38,11 @@ export const getAddress = (idUser) => async (dispatch) => {
   dispatch({ type: GET_USER_ADDRESS, payload: address });
 };
 export const postAddress = (data) => async (dispatch) => {
-  const response = await axios.post(URL_ADDRESS, data);
+  await axios.post(URL_ADDRESS, data);
   dispatch({ type: POST_USER_ADDRESS, payload: "Dirección creada con éxito." });
 };
 export const putAddress = (data) => async (dispatch) => {
-  const response = await axios.put(URL_ADDRESS, data);
+  await axios.put(URL_ADDRESS, data);
   dispatch({
     type: PUT_USER_ADDRESS,
     payload: "Dirección actualizada con éxito.",

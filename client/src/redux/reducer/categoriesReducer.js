@@ -12,6 +12,7 @@ export default function categoriesReducer(state = initialState, action) {
         ...state,
         categories: payload,
       };
+
     default:
       return state;
   }
