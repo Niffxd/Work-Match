@@ -12,8 +12,8 @@ export default function Navigation() {
       <nav className={`${style["container-nav"]}`}>
         <button className='button-green'>
           <Link className={`${style["link-nav"]}`}
-                to='/create-job-offer'>
-            Publicar oferta
+                to='/register'>
+            Ingresar
           </Link>
         </button>
       </nav>
