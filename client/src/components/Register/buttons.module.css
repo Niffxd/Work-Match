@@ -8,14 +8,13 @@
   margin: 0 auto;
   padding: 0;
   width: 2rem;
-  height: 2rem;
   border-radius: 50%;
   background-color: #FFFEFB;
 }
 
 .next-button,
 .back-button {
-  margin: 2rem 0 1.5rem;
+  margin: 2rem 1rem 1.5rem;
   padding: .5rem 2rem;
   border-radius: 2rem;
   display: inline-block;
@@ -26,6 +25,14 @@
   font-weight: bolder;
 }
 
-.back-button {
+.back-button,
+.exit-modal {
   background-color: #6B7FD7;
+  color: #FFFEFB;
+}
+
+.next-button:focus,
+.back-button:focus,
+.exit-modal:focus {
+  outline: none;
 }
