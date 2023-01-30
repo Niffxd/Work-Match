@@ -3,7 +3,7 @@ export const POST_JOB = 'POST_JOB'
 
 const serverDeploy ='url-deploy-back'
 
-export const postRecipes = (newJob) => async dispatch => {
+export const postJobs = (newJob) => async dispatch => {
   const response = await fetch(`${serverDeploy}/jobs`,
     { method: 'POST',
       body: JSON.stringify(newJob),
@@ -19,7 +19,7 @@ export const postRecipes = (newJob) => async dispatch => {
   })
 }
 
-export const getRecipes = () => async dispatch => {
+export const getJobs = () => async dispatch => {
   const response = await fetch(`${serverDeploy}/jobs`)
   const jobs = await response.json()
   dispatch({
