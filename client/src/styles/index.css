@@ -1,0 +1,165 @@
+@import 'variables.css';
+
+/* Buttons */
+.buttons-container {
+  display: flex;
+  margin-bottom: 0;
+  width: 100%;
+  height: min-content;
+  align-items: center;
+  justify-content: center;
+}
+.buttons-container > button {
+  margin: 1rem 2vw;
+}
+.button-dark {
+  background-color: var(--dark-color);
+  color: var(--light-color);
+}
+.button-blue {
+  background-color: var(--dark-blue);
+  color: var(--light-color);
+}
+.button-green {
+  background-color: var(--green);
+  color: var(--light-color);
+}
+.button-purple {
+  background-color: var(--purple);
+  color: var(--light-color);
+}
+.button-white {
+  background-color: var(--light-color);
+  color: var(--dark-color);
+}
+.button-red {
+  background-color: var(--red);
+  color: var(--light-color);
+}
+
+/* Container */
+.container {
+  margin: 0 auto;
+  padding: 2rem 2.5rem;
+  width: 100vw;
+  min-height: calc(100vh - 17rem);
+  background-color: var(--light-color);
+}
+
+@media screen and (min-width: 36em) and (orientation: landscape) {
+  .container {
+    min-height: calc(100vh - 13rem);
+    padding: 3rem 5rem;
+    width: 65vw;
+  }
+}
+
+/* Error */
+.error {
+  display: block;
+  padding: 0.25rem 0.7rem;
+  color: var(--light-color);
+  border-radius: 0.3rem;
+  background-color: var(--red);
+}
+.error::before {
+  content: '⚠️';
+  margin-right: 0.5rem;
+}
+
+/* Font weight */
+.thin {
+  font-weight: var(--thin);
+}
+.thin-italic {
+  font-style: italic;
+  font-weight: var(--thin);
+}
+.regular {
+  font-weight: var(--regular);
+}
+.regular-italic {
+  font-style: italic;
+  font-weight: var(--regular);
+}
+.semibold {
+  font-weight: var(--semibold);
+}
+.semibold-italic {
+  font-style: italic;
+  font-weight: var(--semibold);
+}
+.bold {
+  font-weight: var(--bold);
+}
+.bold-italic {
+  font-style: italic;
+  font-weight: var(--bold);
+}
+
+/* Icons */
+.icon-button {
+  cursor: pointer;
+}
+.icon-dark {
+  filter: var(--filter-dark);
+}
+.icon-light {
+  filter: var(--filter-light);
+}
+.icon-purple {
+  filter: var(--filter-purple);
+}
+.icon-green {
+  filter: var(--filter-green);
+}
+
+@media (pointer: fine) {
+  .icon-button:hover {
+    transform: scale(1.07);
+  }
+  .icon-black-and-white {
+    filter: var(--filter-black-and-white);
+    cursor: pointer;
+  }
+  .icon-black-and-white:hover {
+    filter: var(--filter-color);
+  }
+}
+
+/* Inputs-text, inputs-number y text-area*/
+.input-light-purple {
+  background-color: var(--light-purple);
+}
+.input-light-purple:focus,
+.input-light-purple:active {
+  border: 0.15rem solid var(--baby-purple);
+  outline: none;
+}
+
+.input-gray {
+  background-color: var(--gray);
+  color: var(--light-color);
+}
+.input-gray:focus,
+.input-gray:active {
+  border: 0.15rem solid var(--dark-gray);
+  outline: none;
+}
+.input-gray::placeholder {
+  color: #e0dbdb;
+}
+.input-gray::-ms-input-placeholder {
+  color: #e0dbdb;
+}
+
+/* Link */
+.link {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Invisible object */
+.invisible {
+  display: none;
+}
