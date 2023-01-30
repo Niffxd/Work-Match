@@ -29,12 +29,12 @@ export default function CarouselComponent () {
           <div className={`${style['social-media-links']}`}>
             <ul className={`${style['social-links']}`}>
               <li>
-                <Link href=''>
+                <Link to=''>
                   <img src="https://cdn-icons-png.flaticon.com/512/1532/1532484.png" alt="linkedin" />
                 </Link>
               </li>
               <li>
-                <Link href=''>
+                <Link to=''>
                 <img src="https://cdn-icons-png.flaticon.com/512/1051/1051326.png" alt="github" />
                 </Link>
               </li>
@@ -57,12 +57,12 @@ export default function CarouselComponent () {
           <div className={`${style['social-media-links']}`}>
             <ul className={`${style['social-links']}`}>
               <li>
-                <Link href=''>
+                <Link to=''>
                   <img src="https://cdn-icons-png.flaticon.com/512/1532/1532484.png" alt="linkedin" />
                 </Link>
               </li>
               <li>
-                <Link href=''>
+                <Link to=''>
                 <img src="https://cdn-icons-png.flaticon.com/512/1051/1051326.png" alt="github" />
                 </Link>
               </li>
@@ -85,12 +85,12 @@ export default function CarouselComponent () {
           <div className={`${style['social-media-links']}`}>
             <ul className={`${style['social-links']}`}>
               <li>
-                <Link href=''>
+                <Link to=''>
                   <img src="https://cdn-icons-png.flaticon.com/512/1532/1532484.png" alt="linkedin" />
                 </Link>
               </li>
               <li>
-                <Link href=''>
+                <Link to=''>
                 <img src="https://cdn-icons-png.flaticon.com/512/1051/1051326.png" alt="github" />
                 </Link>
               </li>
@@ -113,12 +113,12 @@ export default function CarouselComponent () {
           <div className={`${style['social-media-links']}`}>
             <ul className={`${style['social-links']}`}>
               <li>
-                <Link href=''>
+                <Link to=''>
                   <img src="https://cdn-icons-png.flaticon.com/512/1532/1532484.png" alt="linkedin" />
                 </Link>
               </li>
               <li>
-                <Link href=''>
+                <Link to=''>
                 <img src="https://cdn-icons-png.flaticon.com/512/1051/1051326.png" alt="github" />
                 </Link>
               </li>
@@ -141,12 +141,12 @@ export default function CarouselComponent () {
           <div className={`${style['social-media-links']}`}>
             <ul className={`${style['social-links']}`}>
               <li>
-                <Link href=''>
+                <Link to=''>
                   <img src="https://cdn-icons-png.flaticon.com/512/1532/1532484.png" alt="linkedin" />
                 </Link>
               </li>
               <li>
-                <Link href=''>
+                <Link to=''>
                 <img src="https://cdn-icons-png.flaticon.com/512/1051/1051326.png" alt="github" />
                 </Link>
               </li>
@@ -169,12 +169,12 @@ export default function CarouselComponent () {
           <div className={`${style['social-media-links']}`}>
             <ul className={`${style['social-links']}`}>
               <li>
-                <Link href=''>
+                <Link to=''>
                   <img src="https://cdn-icons-png.flaticon.com/512/1532/1532484.png" alt="linkedin" />
                 </Link>
               </li>
               <li>
-                <Link href=''>
+                <Link to=''>
                 <img src="https://cdn-icons-png.flaticon.com/512/1051/1051326.png" alt="github" />
                 </Link>
               </li>
@@ -197,12 +197,12 @@ export default function CarouselComponent () {
           <div className={`${style['social-media-links']}`}>
             <ul className={`${style['social-links']}`}>
               <li>
-                <Link href=''>
+                <Link to=''>
                   <img src="https://cdn-icons-png.flaticon.com/512/1532/1532484.png" alt="linkedin" />
                 </Link>
               </li>
               <li>
-                <Link href=''>
+                <Link to=''>
                 <img src="https://cdn-icons-png.flaticon.com/512/1051/1051326.png" alt="github" />
                 </Link>
               </li>
@@ -225,12 +225,12 @@ export default function CarouselComponent () {
           <div className={`${style['social-media-links']}`}>
             <ul className={`${style['social-links']}`}>
               <li>
-                <Link href=''>
+                <Link to=''>
                   <img src="https://cdn-icons-png.flaticon.com/512/1532/1532484.png" alt="linkedin" />
                 </Link>
               </li>
               <li>
-                <Link href=''>
+                <Link to=''>
                 <img src="https://cdn-icons-png.flaticon.com/512/1051/1051326.png" alt="github" />
                 </Link>
               </li>
