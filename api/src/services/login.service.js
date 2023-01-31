@@ -76,7 +76,7 @@ async function Login(login) {
 var msg;
   result=await User.findAll({
     where: 
-      {id: login.username, password: login.password,} 
+      {username: login.username, password: login.password,} 
     ,attributes: ['id']
   });
 if(result.length>0){
