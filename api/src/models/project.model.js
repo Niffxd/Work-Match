@@ -19,16 +19,22 @@ module.exports = (sequelize) => {
         defaultValue: false,
       },
       description: {
+        type: DataTypes.TEXT,
+      },
+      date: {
+        type: DataTypes.STRING,
+      },
+      address: {
         type: DataTypes.STRING,
       },
       category: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        foreignKey:true,
+        foreignKey: true,
       },
       status: {
         type: DataTypes.BOOLEAN,
-        defaultValue: false,
+        defaultValue: true,
       },
       budget: {
         type: DataTypes.INTEGER,
@@ -42,21 +48,20 @@ module.exports = (sequelize) => {
         allowNull: false,
         defaultValue: false,
       },
-      owner:{
+      owner: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      bidder: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      image: {
         type: DataTypes.STRING,
-        allowNull:false,
       },
-      bidder:{
-        type: DataTypes.STRING,
-        //allowNull:false,
+      estimated: {
+        type: DataTypes.INTEGER,
       },
-      image:{
-        type: DataTypes.STRING
-      },
-      estimated:{
-        type:DataTypes.INTEGER,
-      }
-
     }
     // TimeStamps will used to know how long ago this job was offered
   );

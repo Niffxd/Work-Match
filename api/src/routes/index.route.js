@@ -10,7 +10,7 @@ const loginRouter = require('./login.route.js');
 const roleRouter = require('./role.route.js');
 const stateRouter = require('./state.route.js');
 const jobState = require('./jobState.route');
-
+const bidRouter = require('./bid.route.js');
 const router = Router();
 
 // Configurar los routers
@@ -24,5 +24,6 @@ router.use('/login', loginRouter);
 router.use('/role', roleRouter);
 router.use('/state', stateRouter);
 router.use('/jobState', jobState);
+router.use('/bid', bidRouter);
 
 module.exports = router;
