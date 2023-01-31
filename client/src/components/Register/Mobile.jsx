@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import NextButton from "./NextButton.jsx";
-import AddButton from "./addButton.jsx";
+import AddButton from "./AddButton.jsx";
 import user from "../../assets/images/user.png";
 import style from "./register.module.css";
 
