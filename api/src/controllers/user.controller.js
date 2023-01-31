@@ -35,6 +35,15 @@ async function update(req, res, next) {
   }
 }
 
+async function updateRate(req, res, next) {
+  try {
+    res.status(201).send(await user.update(req.body));
+  } catch (err) {
+    console.error(`Error while updating user's rate`, err.message);
+    next(err);
+  }
+}
+
 async function remove(req, res, next) {
   try {
     res.status(201).send(await user.remove(req.params.id));
@@ -48,6 +57,7 @@ module.exports = {
   read,
   create,
   update,
+  updateRate,
   remove,
-  readUserAddres
+  readUserAddres,
 };

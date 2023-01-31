@@ -1,6 +1,6 @@
-const { DataTypes } = require("sequelize");
+const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
-  sequelize.define("Bid", {
+  sequelize.define('Bid', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -14,6 +14,14 @@ module.exports = (sequelize) => {
     user: {
       type: DataTypes.INTEGER,
       allowNull: false,
+    },
+    owner: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    state: {
+      type: DataTypes.STRING,
+      defaultValue: 'Abierto',
     },
     deleted: {
       type: DataTypes.BOOLEAN,

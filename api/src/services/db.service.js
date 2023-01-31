@@ -34,17 +34,34 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { User, Project,Category,Bid,Role,Login,Address,City,State,Country,JobState } = sequelize.models;
+const {
+  User,
+  Project,
+  Category,
+  Bid,
+  Role,
+  Login,
+  Address,
+  City,
+  State,
+  Country,
+  JobState,
+} = sequelize.models;
 //FK category esta en Project
-Category.hasOne(Project,{
-  foreignKey: "category",
-  foreignKeyConstraint: true
+Category.hasMany(Project, {
+  foreignKey: 'category',
+  foreignKeyConstraint: true,
+});
+
+Project.belongsTo(Category, {
+  foreignKey: 'category',
+  foreignKeyConstraint: true,
 });
 // Aca vendrian las relaciones
-// Ejemplo.belongsToMany(Ejemplo2);
-// Project  tiene muchos usuarios M/M
+// Ejemplo.bet  tiene muchos usuarios M/M
 //FK de user esta en Bid
-/*User.hasOne(Bid,{
+/*UserlongsToMany(Ejemplo2);
+// Projec.hasOne(Bid,{
   foreignKey: "user",
   foreignKeyConstraint: true
 })
@@ -54,59 +71,70 @@ Project.hasOne(Bid,{
   foreignKeyConstraint: true
 })*/
 
-
 User.belongsToMany(Project, {
-  through: "Bid",
-  foreignKey: "user",
-  foreignKeyConstraint: true
+  through: 'Bid',
+  foreignKey: 'user',
+  foreignKeyConstraint: true,
 });
 Project.belongsToMany(User, {
-  through: "Bid",
-  foreignKey: "project",
-  foreignKeyConstraint: true
+  through: 'Bid',
+  foreignKey: 'project',
+  foreignKeyConstraint: true,
 });
 //FK de role en user
-Role.hasOne(User,{
-  foreignKey: "role",
-  foreignKeyConstraint: true
-})
+Role.hasOne(User, {
+  foreignKey: 'role',
+  foreignKeyConstraint: true,
+});
 //FK de user en login
 /*User.hasOne(Login,{
   foreignKey: "user",
   foreignKeyConstraint: true
 })*/
 //FK  de user en address
-User.hasOne(Address,{
-  foreignKey: "user",
-  foreignKeyConstraint: true
-})
+User.hasOne(Address, {
+  foreignKey: 'user',
+  foreignKeyConstraint: true,
+});
 //FK  de jobState en user
-JobState.hasOne(User,{
-  foreignKey: "jobState",
-  foreignKeyConstraint: true
-})
+JobState.hasOne(User, {
+  foreignKey: 'jobState',
+  foreignKeyConstraint: true,
+});
 //FK de city en address
 /*City.hasOne(Address,{
   foreignKey: "city",
   foreignKeyConstraint: true
 })*/
 //Fk de state en address
-State.hasOne(Address,{
-  foreignKey: "state",
-  foreignKeyConstraint: true
-})
+State.hasOne(Address, {
+  foreignKey: 'state',
+  foreignKeyConstraint: true,
+});
 //FK de state en city
 /*State.hasOne(City,{
   foreignKey: "state",
   foreignKeyConstraint: true
 })*/
 //FK de country en state
-Country.hasOne(State,{
-  foreignKey: "country",
-  foreignKeyConstraint: true
-})
+Country.hasOne(State, {
+  foreignKey: 'country',
+  foreignKeyConstraint: true,
+});
 module.exports = {
-  ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
+  User,
+  Project,
+  Category,
+  Bid,
+  Role,
+  Login,
+  Address,
+  City,
+  State,
+  Country,
+  JobState,
+  Address,
+  //...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   conn: sequelize, // para importart la conexión { conn } = require('./db.js');
   Op,
 };
