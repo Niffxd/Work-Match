@@ -10,6 +10,7 @@ import AboutUs from "./pages/AboutUs/About";
 import Register from "./pages/Register/Register";
 import PostUser from "./pages/Register/PostUser";
 import Login from "./pages/Login/Login";
+import CreateJobOffer from "./pages/CreateJobOffer/CreateJobOffer";
 
 axios.defaults.baseURL = "https://work-match-api.up.railway.app";
 
@@ -24,6 +25,7 @@ function App() {
         <Route exact path="/Login" component={Login} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/register/complete" component={PostUser} />
+        <Route exact path="/create-job-offer" component={CreateJobOffer} />
       </Switch>
       <Footer />
     </BrowserRouter>

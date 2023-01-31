@@ -8,12 +8,12 @@ async function read(id, query) {
 
   const options = helper.findOptions(page, query);
 
-  var data = id ? await City.findByPk(id) : await City.findAll(options);
+  var data = id ? await City.findAll({where:{id:id} }) : await City.findAll(options);
   var result = {
     data,
     meta,
   };
-  if(result.data.length===0){
+  if(!result.data || !result.data.length || result.data.length === 0){
     const jobs =[ {
       "state":1,
       "name":"Banfield",
@@ -34,7 +34,7 @@ async function read(id, query) {
       "name":"El Rodeo",
       "deleted":false
     },
-    {
+    /*{
       "state":3,
       "name":" Bolívar",
       "deleted":false
@@ -73,7 +73,7 @@ async function read(id, query) {
       "state":6,
       "name":"Santa Marta",
       "deleted":false
-    },
+    },*/
     ];
     var i=0
     while(i<jobs.length){

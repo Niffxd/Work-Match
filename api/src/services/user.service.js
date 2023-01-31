@@ -1,5 +1,7 @@
 const { User,Address,City,State,Country } = require('./db.service.js');
 const helper = require('../utils/helper.util.js');
+const role = require('../services/role.service.js');
+const jobState = require('../services/jobState.service.js');
 
 async function read(id, query) {
   const page = query.page || 1;
@@ -8,15 +10,17 @@ async function read(id, query) {
 
   const options = helper.findOptions(page, query);
 
-  var data = id ? await User.findByPk(id) : await User.findAll(options);
+  var data = id ? await User.findAll({where:{id:id} }) : await User.findAll(options);
 
   var result = {
     data,
     meta,
   };
-  if(result.data.length===0){
+  if(!result.data || !result.data.length || result.data.length === 0){
+    await role.read(1, { page: 1 });
+    await jobState.read(1, { page: 1 });
     const jobs =[ {
-      id:"ElsuperAdmin",
+      username:"ElsuperAdmin",
       password:"topSecretPassword",
       name:"Miguel Mendez Gonzales",
       deleted:false,
@@ -30,7 +34,7 @@ async function read(id, query) {
       premium:true,
       jobState:4
     },{
-      id:"ElPrimerUsuario",
+      username:"ElPrimerUsuario",
       password:"topSecretPassword2",
       name:"José Biden Rodriguez",
       deleted:false,
@@ -65,28 +69,17 @@ async function readUserAddres(id,query) {
   const page = query.page || 1;
   const meta = { page };
   const options = helper.findOptions(page, query);
-    var data = await User.findAll({
+  var userId=await User.findAll({where:{username:id },attributes: ['id'],raw: true })
+    var data = await Country.findAll({
     include : [
       { 
-        model: Address, 
-        where:{user:id},
+        model: State, 
         required: true,
-        extends:[
+        include:[
           {
-            model: City, 
+            model: Address, 
             required: true,
-            extends:[
-              {
-                model: State, 
-                required: true,
-                extends:[
-                  {
-                    model: Country, 
-                    required: true,
-                  }
-                ]
-              }
-            ]           
+            where:{user:userId[0].id}       
           },
           
         ]

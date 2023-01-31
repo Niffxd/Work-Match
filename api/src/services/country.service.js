@@ -8,23 +8,23 @@ async function read(id, query) {
 
   const options = helper.findOptions(page, query);
 
-  var data = id ? await Country.findByPk(id) : await Country.findAll(options);
+  var data = id ? await Country.findAll({where:{id:id} }) : await Country.findAll(options);
   var result = {
     data,
     meta,
   };
-  if(result.data.length===0){
+  if(!result.data || !result.data.length || result.data.length === 0){
     const jobs =[ {
       "name":"Argentina",
       "deleted":false
-    },{
+    }/*,{
       "name":"Venezuela",
       "deleted":false
     },
     {
       "name":"Colombia",
       "deleted":false
-    },
+    }*/,
     ];
     var i=0
     while(i<jobs.length){
