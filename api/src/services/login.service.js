@@ -8,7 +8,7 @@ async function read(id, query) {
 
   const options = helper.findOptions(page, query);
 
-  const data = id ? await Login.findByPk(id) : await Login.findAll(options);
+  const data = id ? await Login.findAll({where:{id:id} }) : await Login.findAll(options);
   const result = {
     data,
     meta,

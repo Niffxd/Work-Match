@@ -1,5 +1,7 @@
-const { Project,Bid,User,JobState } = require('./db.service.js');
+const { Project,Bid,User,JobState,Category } = require('./db.service.js');
 const helper = require('../utils/helper.util.js');
+const category = require('./category.service.js');
+const user = require('./user.service.js');
 
 async function read(id, query) {
   const page = query.page || 1;
@@ -7,15 +9,30 @@ async function read(id, query) {
   const meta = { page };
 
   const options = helper.findOptions(page, query);
-
-  var data = id ? await Project.findByPk(id) : await Project.findAll(options);
+    var data = id ? await Category.findAll({include : [
+    { 
+      model: Project, 
+      required: true,
+      where: {id:id}
+      }
+  ] }) : await Category.findAll({include : [
+    { 
+      model: Project, 
+      required: true,
+      }
+  ] });
 
   var result = {
     data,
     meta,
   };
 
-  if(result.data.length===0){
+  if(!result.data || !result.data.length || result.data.length === 0){
+    await category.read(1, { page: 1 });
+    var data2 =await User.findAll({limit: 1,options});
+    if(!data2 || !data2.length ||data2.length===0){
+      await user.read(1, { page: 1 });
+      }
     const jobs =[ {
       deleted:false,
       description:"una description",
@@ -55,16 +72,16 @@ async function read(id, query) {
 
   const bids =[ {
     project:1,
-    user:"ElsuperAdmin",
+    user:1,
     deleted:false,
   },{
     project:2,
-    user:"ElsuperAdmin",
+    user:2,
     deleted:false,
   },
   {
     project:3,
-    user:"ElPrimerUsuario",
+    user:2,
     deleted:false,
   }
 ];
@@ -81,7 +98,12 @@ async function read(id, query) {
     data,
     meta,
   };
-    data=await Project.findAll();
+    data=await Category.findAll({include : [
+      { 
+        model: Project, 
+        required: true,
+        }
+    ] });
      result = {
       data,
       meta,
@@ -92,18 +114,27 @@ async function read(id, query) {
   return result;
 }
 
+
 async function readByUser(id,query) {
   const page = query.page || 1;
   const meta = { page };
   const options = helper.findOptions(page, query);
  
-  var  data = await Project.findAll({
+  var  data =id ? await Project.findAll({
     where:{owner:id},
     include : [
       { 
         model: User, 
         required: true,
-        where: {id:id}
+        where: {username:id}
+        }
+    ]
+  }):await Project.findAll({
+    where:{owner:id},
+    include : [
+      { 
+        model: User, 
+        required: true,
         }
     ]
   })
@@ -125,7 +156,7 @@ async function readByPostulations(id,query) {
       { 
         model: User, 
         required: true,
-        where: {id:id},
+        where: {username:id},
         include:[
           {
             model: Project, 
@@ -203,10 +234,10 @@ async function create(project) {
 
 
   var data=await Project.create(project);
-
+  var userId=await User.findAll({where:{username:data.owner },attributes: ['id'],raw: true })
   const bids = {
     project:data.id,
-    user:project.owner,
+    user:userId[0].id,
     deleted:project.deleted,
   }
   await Bid.create(bids); 

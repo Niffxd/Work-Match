@@ -8,12 +8,12 @@ async function read(id, query) {
 
   const options = helper.findOptions(page, query);
 
-  var data = id ? await JobState.findByPk(id) : await JobState.findAll(options);
+  var data = id ? await JobState.findAll({where:{id:id} }): await JobState.findAll(options);
   var result = {
     data,
     meta,
   };
-  if(result.data.length===0){
+  if(!result.data || !result.data.length || result.data.length === 0){
       const jobs =[ {
         "id":1,
         "name":"Postulado",

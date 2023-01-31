@@ -71,10 +71,10 @@ Role.hasOne(User,{
   foreignKeyConstraint: true
 })
 //FK de user en login
-User.hasOne(Login,{
+/*User.hasOne(Login,{
   foreignKey: "user",
   foreignKeyConstraint: true
-})
+})*/
 //FK  de user en address
 User.hasOne(Address,{
   foreignKey: "user",
@@ -86,15 +86,20 @@ JobState.hasOne(User,{
   foreignKeyConstraint: true
 })
 //FK de city en address
-City.hasOne(Address,{
+/*City.hasOne(Address,{
   foreignKey: "city",
   foreignKeyConstraint: true
-})
-//FK de state en city
-State.hasOne(City,{
+})*/
+//Fk de state en address
+State.hasOne(Address,{
   foreignKey: "state",
   foreignKeyConstraint: true
 })
+//FK de state en city
+/*State.hasOne(City,{
+  foreignKey: "state",
+  foreignKeyConstraint: true
+})*/
 //FK de country en state
 Country.hasOne(State,{
   foreignKey: "country",

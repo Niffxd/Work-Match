@@ -7,12 +7,12 @@ module.exports = (sequelize) => {
         allowNull: false,
         autoIncrement: true,
       },
-      city:{
+      state:{
         type: DataTypes.INTEGER,
         allowNull: false,
       },
       user:{
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false,
       },
     description: {
