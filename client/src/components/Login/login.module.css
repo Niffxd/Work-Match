@@ -1,0 +1,191 @@
+/**
+ * CONTENEDOR PADRE DEL LOGIN
+ *
+ * @format
+ */
+@import "../../styles/variables.css";
+.container_padre {
+  display: grid;
+  grid-template-areas: "carrusel" "login";
+  background-color: var(--light-color);
+  margin: 0 auto;
+  padding: 3rem 3.5rem;
+  width: 100vw;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+/*  CONTENEDOR DEL CARRUSEL FALTAN AJUSTES*/
+.div_carrusel {
+  grid-area: carrusel;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 1rem 1.5rem;
+  overflow: hidden;
+}
+/* IMAGENES DEL CARRUSEL */
+.div_carrusel ul {
+  display: flex;
+  /* width: 300%; */
+  padding: 0;
+  margin-bottom: 0;
+}
+.div_carrusel li {
+  margin-bottom: 0;
+}
+
+.imagen_carrusel {
+  display: flex;
+  width: auto;
+  height: auto;
+  margin-bottom: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.div_carrusel h4 {
+  margin-top: 0;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+/* CONTENEDRO DEL LOGIN/INPUT/PASSWORD */
+.div_login {
+  grid-area: login;
+  margin-top: 0;
+  background-color: var(--baby-purple);
+  padding: 1rem 1.5rem;
+  border-bottom-right-radius: var(--border-radius);
+  border-bottom-left-radius: var(--border-radius);
+}
+/* Logo responsive */
+.div_logo {
+  display: none;
+}
+/* LABEL/INPUT/BOTON */
+.div_login label {
+  color: var(--dark-color);
+  margin-bottom: 1rem;
+}
+.div_login input {
+  width: 100%;
+  background-color: var(--cream);
+  margin-bottom: 1rem;
+}
+
+.div_login button {
+  font-weight: var(--semibold);
+  background-color: var(--green);
+  color: var(--cream);
+  margin-bottom: 1rem;
+}
+
+.div_login h5 {
+  /* font-size: 0.875rem; */
+  font-size: var(--regular);
+  text-align: center;
+}
+
+/*POR MEJORAR AWAIT */
+/* .google {
+    background-color: aliceblue;
+    border-radius: var(--border-radius);
+    width: auto;
+  }
+  .google_svg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    width: 28%;
+    height: 10%;
+  } */
+
+@media screen and (min-width: 60em) and (orientation: landscape) {
+  .container_padre {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-template-areas: "carrusel login";
+    justify-content: space-evenly;
+  }
+  .div_logo {
+    display: flex;
+    margin: 1rem 1rem 2rem 1rem;
+    justify-content: center;
+  }
+  .div_login {
+    border-radius: var(--border-radius);
+    /* width: auto; */
+    height: 80%;
+    margin-bottom: 0;
+  }
+  .div_login label {
+    margin-bottom: 0.3rem;
+  }
+  .div_login input {
+    margin-top: 0.2rem;
+    margin-bottom: 2rem;
+    outline: none;
+    padding: 1.3rem 1rem;
+  }
+
+  .div_login button {
+    margin-bottom: 2rem;
+  }
+
+  .div_carrusel {
+    /* width: 100%; */
+    height: 85%;
+    background-color: var(--baby-purple);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+  }
+
+  .div_carrusel ul {
+    display: flex;
+    padding: 0;
+    width: 400%;
+    animation: slide 20s infinite alternate ease-in-out;
+  }
+  .div_carrusel li {
+    margin: 0;
+    list-style: none;
+    width: 100%;
+  }
+  .div_carrusel li > h4 {
+    margin: 0;
+  }
+  .imagen_carrusel {
+    width: 50%;
+    height: 60%;
+  }
+
+  @keyframes slide {
+    0% {
+      margin-left: 0%;
+    }
+    20% {
+      margin-left: 0%;
+    }
+
+    25% {
+      margin-left: -100%;
+    }
+    45% {
+      margin-left: -100%;
+    }
+
+    50% {
+      margin-left: -200%;
+    }
+    70% {
+      margin-left: -200%;
+    }
+    75% {
+      margin-left: -300%;
+    }
+    95% {
+      margin-left: -300%;
+    }
+  }
+}
