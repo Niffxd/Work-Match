@@ -5,10 +5,10 @@ import styles from "./login.module.css";
 import { useForm } from "react-hook-form";
 import { regex } from "../../utils/helpers/validationLogin";
 import { SignInButton } from "./SignInbutton";
-import carrusel1 from "../../assets/image/imagecarousel1.png";
-import carrusel2 from "../../assets/image/imagecarousel2.png";
-import carrusel3 from "../../assets/image/imagecarrousel3.png";
-import carrusel4 from "../../assets/image/imagecarousel4.png";
+import carrusel1 from "../../assets/images/imagecarousel1.png";
+import carrusel2 from "../../assets/images/imagecarousel2.png";
+import carrusel3 from "../../assets/images/imagecarrousel3.png";
+import carrusel4 from "../../assets/images/imagecarousel4.png";
 
 export default function Login() {
   //CONTROL DEL FORMULARIO//

@@ -9,7 +9,7 @@ import JobOfferDetail from "./pages/JobOffer/JobOffer";
 import AboutUs from "./pages/AboutUs/About";
 import Register from "./pages/Register/Register";
 import PostUser from "./pages/Register/PostUser";
-import Login from "./pages/Login/Login";
+import Login from "./pages/Login/Login"
 import CreateJobOffer from "./pages/CreateJobOffer/CreateJobOffer";
 import EmployeeProfile from "./pages/UserProfile/EmployeeProfile/EmployeeProfile";
 import EmployerProfile from "./pages/UserProfile/EmployerProfile/EmployerProfile";

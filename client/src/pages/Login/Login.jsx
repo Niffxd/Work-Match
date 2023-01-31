@@ -2,10 +2,12 @@
 
 import LoginForm from "../../components/Login/LoginForm";
 
-export const Login = () => {
+const Login = () => {
   return (
     <>
       <LoginForm />
     </>
   );
 };
+
+export default Login;
