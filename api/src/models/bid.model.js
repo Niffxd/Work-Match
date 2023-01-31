@@ -12,7 +12,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     user: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     deleted: {

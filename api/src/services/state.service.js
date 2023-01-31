@@ -8,12 +8,12 @@ async function read(id, query) {
 
   const options = helper.findOptions(page, query);
 
-  var data = id ? await State.findByPk(id) : await State.findAll(options);
+  var data = id ? await State.findAll({where:{id:id} }): await State.findAll(options);
   var result = {
     data,
     meta,
   };
-  if(result.data.length===0){
+  if(!result.data || !result.data.length || result.data.length === 0){
     const jobs =[ {
       "country":1,
       "name":"Buenos Aires",
@@ -25,6 +25,111 @@ async function read(id, query) {
       "deleted":false
     },
     {
+      "country":1,
+      "name":"Chaco",
+      "deleted":false
+    },
+    {
+      "country":1,
+      "name":"Chubut",
+      "deleted":false
+    },
+    {
+      "country":1,
+      "name":"Córdoba",
+      "deleted":false
+    },
+    {
+      "country":1,
+      "name":"Corrientes",
+      "deleted":false
+    },
+    {
+      "country":1,
+      "name":"Entre Ríos",
+      "deleted":false
+    },
+    {
+      "country":1,
+      "name":"Formosa",
+      "deleted":false
+    },
+    {
+      "country":1,
+      "name":"Jujuy",
+      "deleted":false
+    },
+    {
+      "country":1,
+      "name":"La Pampa",
+      "deleted":false
+    },
+    {
+      "country":1,
+      "name":"La Rioja",
+      "deleted":false
+    },
+    {
+      "country":1,
+      "name":"Mendoza",
+      "deleted":false
+    },
+    {
+      "country":1,
+      "name":"Misiones",
+      "deleted":false
+    },
+    {
+      "country":1,
+      "name":"Neuquén",
+      "deleted":false
+    },
+    {
+      "country":1,
+      "name":"Río Negro",
+      "deleted":false
+    },
+    {
+      "country":1,
+      "name":"Salta",
+      "deleted":false
+    },
+    {
+      "country":1,
+      "name":"San Juan",
+      "deleted":false
+    },
+    {
+      "country":1,
+      "name":"San Luis",
+      "deleted":false
+    },
+    {
+      "country":1,
+      "name":"Santa Cruz",
+      "deleted":false
+    },
+    {
+      "country":1,
+      "name":"Santa Fe",
+      "deleted":false
+    },
+    {
+      "country":1,
+      "name":"Santiago del Estero",
+      "deleted":false
+    },
+    {
+      "country":1,
+      "name":"Tierra del Fuego, Antártida e Islas del Atlántico Sur",
+      "deleted":false
+    },
+    {
+      "country":1,
+      "name":"Tucumán",
+      "deleted":false
+    }
+    /*{
       "country":2,
       "name":"Aragua",
       "deleted":false
@@ -43,7 +148,7 @@ async function read(id, query) {
       "country":3,
       "name":"Magdalena",
       "deleted":false
-    },
+    }*/,
     ];
     var i=0
     while(i<jobs.length){

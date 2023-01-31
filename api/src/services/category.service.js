@@ -8,12 +8,12 @@ async function read(id, query) {
 
   const options = helper.findOptions(page, query);
 
-  var data = id ? await Category.findByPk(id) : await Category.findAll(options);
+  var data = id ? await Category.findAll({where:{id:id} }) : await Category.findAll(options);
   var result = {
     data,
     meta,
   };
-  if(result.data.length===0){
+  if(!result.data || !result.data.length || result.data.length === 0){
     const jobs =[  {
       name: 'Carpintería',
       image: 'https://cdn-icons-png.flaticon.com/512/1973/1973946.png',
