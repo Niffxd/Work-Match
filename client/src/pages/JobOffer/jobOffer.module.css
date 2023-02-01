@@ -1,8 +1,50 @@
 @import "../../styles/variables.css";
+/* Container */
+.job-offer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.info-container {
+  margin: 0;
+}
+/* Photo profile */
+.photo-container {
+  margin: 0;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.photo-profile {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+/* User data */
+.data-container {
+  display: grid;
+  grid-template-columns: min-content 1fr min-content;
+  align-items: center;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+.user-name {
+  margin: 0;
+  margin-left: 1rem;
+}
+.date {
+  margin: 0;
+}
+/* Features */
 .container-features {
   display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: repeat(4, 2.25rem);
+  grid-template-columns: 2rem 1fr;
+  align-items: center;
+  justify-content: start;
 }
 
 .div-time,
@@ -19,8 +61,7 @@
 .div-budget > h4,
 .div-agreement > h4,
 .div-address > h4 {
-  margin: 0;
-  margin-right: 0.5rem;
+  margin: 0 0.5rem;
 }
 .div-time > p,
 .div-budget > p,
@@ -29,30 +70,33 @@
   margin: 0;
 }
 
-.div-time > img,
-.div-budget > img,
-.div-agreement > img,
-.div-address > img {
+.image-time {
+  width: 1.25rem;
+  margin: 0.5rem auto;
+}
+.image-address {
   width: 1.5rem;
-  margin: 0 0.7rem 0 0.25rem;
+  margin: 0.5rem auto;
 }
-
-.div-budget > img,
-.div-agreement > img {
+.image-agreement {
   width: 2rem;
-  margin: 0;
-  margin-right: 0.5rem;
+  margin: 0.5rem auto;
+  margin-top: 0;
+}
+.image-budget {
+  width: 2rem;
+  margin: 0.5rem auto;
 }
 
-.h4-task {
-  margin-bottom: 0;
+/* Application */
+.application {
+  display: flex;
+  align-items: center;
 }
-
-.li-task {
-  list-style: inside;
-  list-style-type: disc;
+.application > h3 {
+  margin-left: 1rem;
+  color: var(--green);
 }
-
-.ul-task {
-  margin: 0;
+.check-icon {
+  width: 2.5rem;
 }
