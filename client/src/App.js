@@ -9,13 +9,14 @@ import JobOfferDetail from "./pages/JobOffer/JobOffer";
 import AboutUs from "./pages/AboutUs/About";
 import Register from "./pages/Register/Register";
 import PostUser from "./pages/Register/PostUser";
-import Login from "./pages/Login/Login"
+import Login from "./pages/Login/Login";
 import CreateJobOffer from "./pages/CreateJobOffer/CreateJobOffer";
 import EmployeeProfile from "./pages/UserProfile/EmployeeProfile/EmployeeProfile";
 import EmployerProfile from "./pages/UserProfile/EmployerProfile/EmployerProfile";
 import DashboardUser from "./pages/UserProfile/UserProfile";
+import Error404 from "./pages/Error404/Error404";
 
-axios.defaults.baseURL = "https://work-match-api.up.railway.app";
+axios.defaults.baseURL = "http://localhost:3001";
 
 function App() {
   return (
@@ -55,6 +56,7 @@ function App() {
           path='/my-profile/employer/publications'
           component={EmployerProfile}
         />
+        <Route path='*' component={Error404} />
       </Switch>
       <Footer />
     </BrowserRouter>

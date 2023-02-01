@@ -11,7 +11,6 @@ export const POST_USER_ADDRESS = "POST_USER_ADDRESS";
 export const PUT_USER_ADDRESS = "PUT_USER_ADDRESS";
 
 // ACTIONS
-
 export const getAddress = () => async (dispatch) => {
   const response = await axios.get(URL_ADDRESS);
   const address = response.data.data;
@@ -23,10 +22,12 @@ export const getState = () => async (dispatch) => {
   const state = response.data.data;
   dispatch({ type: GET_STATE, payload: state });
 };
+
 export const postAddress = (data) => async (dispatch) => {
   await axios.post(URL_ADDRESS, data);
   dispatch({ type: POST_USER_ADDRESS, payload: "Dirección creada con éxito." });
 };
+
 export const putAddress = (data) => async (dispatch) => {
   await axios.put(URL_ADDRESS, data);
   dispatch({

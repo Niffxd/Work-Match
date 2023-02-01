@@ -1,6 +1,6 @@
 import {
-  GET_STATE,
   GET_ADDRESS,
+  GET_STATE,
   POST_USER_ADDRESS,
   PUT_USER_ADDRESS,
 } from "../actions/addressActions";
