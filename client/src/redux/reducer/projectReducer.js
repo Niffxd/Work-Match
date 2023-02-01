@@ -5,11 +5,13 @@ import {
   POST_PROJECT,
   PUT_PROJECT,
   DELETE_PROJECT,
+  GET_OWNER,
 } from "../actions/projectActions";
 
 const initialState = {
   allProjects: [],
   oneProject: {},
+  owner: {},
   message: "",
 };
 
@@ -20,8 +22,10 @@ export default function projectReducer(state = initialState, action) {
       return { ...state, allProjects: payload };
     case GET_PROJECT_ID:
       return { ...state, oneProject: payload };
+    case GET_OWNER:
+      return { ...state, owner: payload };
     case CLEAR_PROJECT_ID:
-      return { ...state, oneProject: {} };
+      return { ...state, oneProject: {}, owner: {} };
     case POST_PROJECT:
       return { ...state, oneProject: payload };
     case PUT_PROJECT:

@@ -2,10 +2,12 @@ import axios from "axios";
 
 //URLS
 const URL_PROJECT = "/project";
+const URL_OWNER = "/user";
 
 // TYPES
 export const GET_PROJECTS = "GET_PROJECTS";
 export const GET_PROJECT_ID = "GET_PROJECT_ID";
+export const GET_OWNER = "GET_OWNER";
 export const CLEAR_PROJECT_ID = "CLEAR_PROJECT_ID";
 export const POST_PROJECT = "POST_PROJECT";
 export const PUT_PROJECT = "PUT_PROJECT";
@@ -23,6 +25,12 @@ export const getProjectId = (id) => async (dispatch) => {
   const response = await axios.get(`${URL_PROJECT}/${id}`);
   const projectId = response.data.data[0];
   dispatch({ type: GET_PROJECT_ID, payload: projectId });
+};
+
+export const getOwner = (id) => async (dispatch) => {
+  const response = await axios.get(`${URL_OWNER}/${id}`);
+  const owner = response.data.data[0];
+  dispatch({ type: GET_OWNER, payload: owner });
 };
 
 export const clearProjectId = () => async (dispatch) => {
