@@ -19,7 +19,7 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    state: {
+    status: {
       type: DataTypes.STRING,
       defaultValue: 'Abierto',
     },
