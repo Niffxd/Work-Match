@@ -1,5 +1,6 @@
 const { User } = require('./db.service.js');
 const helper = require('../utils/helper.util.js');
+const { where } = require('sequelize');
 
 async function read(id, query) {
   const page = query.page || 1;
@@ -80,7 +81,7 @@ var msg;
     ,attributes: ['id']
   });
 if(result.length>0){
-  msg=login.username+" is logged in"
+  msg=User.findAll({where:{username:login.username},})
 }else{
   msg="username or password incorrect"
 }
