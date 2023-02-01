@@ -29,5 +29,5 @@ module.exports = (sequelize) => {
     },
   }),
     { timestamps: false };
-  // TimeStamps won't be used
+  // TimeStamps won't be used.
 };
