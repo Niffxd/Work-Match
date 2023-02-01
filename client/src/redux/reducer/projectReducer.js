@@ -1,6 +1,7 @@
 import {
   GET_PROJECTS,
   GET_PROJECT_ID,
+  CLEAR_PROJECT_ID,
   POST_PROJECT,
   PUT_PROJECT,
   DELETE_PROJECT,
@@ -19,6 +20,8 @@ export default function projectReducer(state = initialState, action) {
       return { ...state, allProjects: payload };
     case GET_PROJECT_ID:
       return { ...state, oneProject: payload };
+    case CLEAR_PROJECT_ID:
+      return { ...state, oneProject: {} };
     case POST_PROJECT:
       return { ...state, oneProject: payload };
     case PUT_PROJECT:
