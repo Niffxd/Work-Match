@@ -1,18 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import JobOfferCard from "../../components/Cards/JobOfferCard/JobOfferCard";
-import {
-  getCity,
-  getCountry,
-  getState,
-} from "../../redux/actions/addressActions";
+import { getAddress, getState } from "../../redux/actions/addressActions";
 import { getCategories } from "../../redux/actions/categoriesActions";
 import { getProjects } from "../../redux/actions/projectActions";
-import {
-  getAllUsers,
-  getJobState,
-  getRole,
-} from "../../redux/actions/userActions";
+import { getAllUsers } from "../../redux/actions/userActions";
 import style from "./home.module.css";
 
 export default function Home() {
@@ -20,13 +12,10 @@ export default function Home() {
   const projectState = useSelector((state) => state.project);
   const { allProjects } = projectState;
   useEffect(() => {
-    dispatch(getCategories());
-    dispatch(getRole());
-    dispatch(getJobState());
     dispatch(getAllUsers());
-    dispatch(getCountry());
+    dispatch(getAddress());
     dispatch(getState());
-    dispatch(getCity());
+    dispatch(getCategories());
     dispatch(getProjects());
   }, []);
 
@@ -40,9 +29,12 @@ export default function Home() {
               <JobOfferCard
                 key={`job-offer-${jobOffer.id}`}
                 id={jobOffer.id}
-                category={jobOffer.category}
-                owner={jobOffer.owner}
+                category={jobOffer.Category.name}
+                image={jobOffer.Category.image}
                 description={jobOffer.description}
+                budget={jobOffer.budget}
+                estimated={jobOffer.estimated}
+                state={jobOffer.state}
               />
             ))}
           </>
