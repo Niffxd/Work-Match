@@ -21,7 +21,7 @@ export const getProjects = () => async (dispatch) => {
 
 export const getProjectId = (id) => async (dispatch) => {
   const response = await axios.get(`${URL_PROJECT}/${id}`);
-  const projectId = response.data.data;
+  const projectId = response.data.data[0];
   dispatch({ type: GET_PROJECT_ID, payload: projectId });
 };
 
