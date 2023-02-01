@@ -21,12 +21,14 @@ module.exports = (sequelize) => {
       description: {
         type: DataTypes.TEXT,
       },
-      date: {
+      information: {
         type: DataTypes.STRING,
       },
-      address: {
-        type: DataTypes.STRING,
+      state: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
       },
+
       category: {
         type: DataTypes.INTEGER,
         allowNull: false,
