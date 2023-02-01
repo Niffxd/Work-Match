@@ -49,7 +49,8 @@ async function read(id, query) {
         owner: 2,
         bidder: 2,
         estimated: 6,
-        address: 'Las Heras, Mendoza',
+        information: 'Las Heras, calle 1234',
+        state: 1,
       },
       {
         description:
@@ -59,8 +60,8 @@ async function read(id, query) {
         agreement: true,
         owner: 3,
         bidder: 3,
-        date: 'Sábado 10 de febrero, 12:00hs',
-        address: 'Restaurante Luz Azul',
+        information: 'Sábado 10 de febrero, 12:00hs, Restaurante Luz Azul',
+        state: 2,
       },
       {
         description:
@@ -70,8 +71,8 @@ async function read(id, query) {
         agreement: false,
         owner: 4,
         bidder: 4,
-        date: 'Sábado 15 de febrero, 20:00hs',
-        address: 'Salon de Fiesta 123',
+        information: 'Sábado 15 de febrero, 20:00hs, Salon de Fiesta 123',
+        state: 3,
       },
       {
         description:
@@ -82,8 +83,8 @@ async function read(id, query) {
         owner: 5,
         bidder: 5,
         estimated: 4,
-        date: 'Sábado 17 de febrero, 15:00hs',
-        address: 'Salon de Fiesta 123',
+        information: 'Sábado 17 de febrero, 15:00hs, Salon de Fiesta 123',
+        state: 4,
       },
       {
         description:
@@ -93,6 +94,7 @@ async function read(id, query) {
         agreement: true,
         owner: 6,
         bidder: 6,
+        state: 5,
       },
       {
         description:
@@ -102,6 +104,7 @@ async function read(id, query) {
         agreement: true,
         owner: 7,
         bidder: 7,
+        state: 6,
       },
       {
         description:
@@ -112,7 +115,8 @@ async function read(id, query) {
         owner: 8,
         bidder: 8,
         estimated: 3,
-        date: 'Viernes 25 de febrero, 10:00hs',
+        information: 'Viernes 25 de febrero, 10:00hs',
+        state: 7,
       },
       {
         description:
@@ -123,8 +127,8 @@ async function read(id, query) {
         owner: 1,
         bidder: 1,
         estimated: 3,
-        date: 'Sábado 17 de febrero, 15:00hs',
-        address: 'Salon de Fiesta 123',
+        information: 'Sábado 17 de febrero, 15:00hs, Salon de Fiesta 123',
+        state: 8,
       },
       {
         description:
@@ -135,6 +139,7 @@ async function read(id, query) {
         owner: 2,
         bidder: 2,
         estimated: 4,
+        state: 9,
       },
       {
         description:
@@ -145,6 +150,7 @@ async function read(id, query) {
         owner: 3,
         bidder: 3,
         estimated: 4,
+        state: 10,
       },
       {
         description:
@@ -155,6 +161,7 @@ async function read(id, query) {
         owner: 4,
         bidder: 4,
         estimated: 3,
+        state: 7,
       },
     ];
 
