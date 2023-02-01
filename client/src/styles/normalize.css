@@ -1,9 +1,9 @@
 @import 'variables.css';
 
 html,
-*,
-*:before,
-*:after {
+html *,
+html *:before,
+html *:after {
   font-family: var(--font-family);
   font-size: var(--font-size);
   font-weight: var(--regular);
