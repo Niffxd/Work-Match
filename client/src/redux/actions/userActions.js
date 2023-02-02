@@ -7,6 +7,7 @@ const URL_APPLICATION = "/bid";
 // TYPES
 export const GET_ALL_USERS = "GET_ALL_USERS";
 export const GET_USER = "GET_USER";
+export const CLEAR_USER = "CLEAR_USER";
 export const GET_PUBLICATION = "GET_PUBLICATION";
 export const POST_USER = "POST_USER";
 export const UPDATE_USER = "UPDATE_USER";
@@ -30,6 +31,9 @@ export const getUserId = (id) => async (dispatch) => {
   const getUser = response.data.data[0];
   dispatch({ type: GET_USER, payload: getUser });
 };
+
+//clear one user
+export const clearUser = () => ({ type: CLEAR_USER, payload: {} });
 
 //view one user's one publication
 export const getPublication = (idProject) => ({
