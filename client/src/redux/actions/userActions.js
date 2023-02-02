@@ -7,7 +7,7 @@ const URL_APPLICATION = "/bid";
 // TYPES
 export const GET_ALL_USERS = "GET_ALL_USERS";
 export const GET_USER = "GET_USER";
-export const GET_PUBLICATION = "GET_PUBLICATIOS";
+export const GET_PUBLICATION = "GET_PUBLICATION";
 export const POST_USER = "POST_USER";
 export const UPDATE_USER = "UPDATE_USER";
 export const UPDATE_USER_RATE = "UPDATE_USER_RATE";
@@ -63,10 +63,10 @@ export const putRateUser = (data) => async (dispatch) => {
 
 //create user application
 export const userApplication = (data) => async (dispatch) => {
-  await axios.post(URL_APPLICATION, data);
+  const newUser = await axios.post(URL_APPLICATION, data);
   dispatch({
     type: USER_APPLICATION,
-    payload: "El usuario se ha postulado con éxito.",
+    payload: newUser,
   });
 };
 

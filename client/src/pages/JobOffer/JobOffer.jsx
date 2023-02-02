@@ -58,11 +58,9 @@ export default function JobOfferDetail() {
         owner: owner.id,
       })
     );
-    // dispatch(getUserId(user.id));
+    dispatch(getUserId(user.id));
     dispatch(getPublication(id));
   };
-
-  console.log(user, userPublication);
   return (
     <article className={`container ${style["job-offer-container"]}`}>
       {!oneProject && !owner ? (
@@ -93,8 +91,11 @@ export default function JobOfferDetail() {
                 {new Date(oneProject.updatedAt).getFullYear()}
               </p>
             </div>
+            {/* Category */}
             <h4>{oneProject.Category && oneProject.Category.name}</h4>
+            {/* Description */}
             <p>{oneProject.description}</p>
+            {/* Details */}
             {oneProject.information && (
               <>
                 <h4>Detalles:</h4>
@@ -103,6 +104,7 @@ export default function JobOfferDetail() {
             )}
 
             <section className={`${style["container-features"]}`}>
+              {/* Time */}
               {oneProject.estimated && (
                 <>
                   <img
@@ -116,6 +118,7 @@ export default function JobOfferDetail() {
                   </div>
                 </>
               )}
+              {/* budget */}
               <img
                 className={`${style["image-budget"]}`}
                 src='https://cdn-icons-png.flaticon.com/512/9420/9420018.png'
@@ -125,6 +128,7 @@ export default function JobOfferDetail() {
                 <h4>Remuneración:</h4>
                 <p>{oneProject.budget} ARS</p>
               </div>
+              {/* agreement */}
               <img
                 className={`${style["image-agreement"]}`}
                 src='https://cdn-icons-png.flaticon.com/512/4878/4878245.png'
@@ -134,6 +138,7 @@ export default function JobOfferDetail() {
                 <h4>Negociable:</h4>
                 {oneProject.agreement ? <p>Si.</p> : <p>No.</p>}
               </div>
+              {/* address */}
               <img
                 className={`${style["image-address"]}`}
                 src='https://cdn-icons-png.flaticon.com/512/3082/3082383.png'
@@ -145,30 +150,26 @@ export default function JobOfferDetail() {
               </div>
             </section>
           </section>
-          {user.Projects &&
-            userPublication &&
-            userPublication.Bid.owner === userPublication.Bid.user && (
-              <div className='buttons-container'>
-                <button className='button-green' onClick={editHandler}>
-                  Editar
-                </button>
-                <button className='button-red' onClick={deleteHandler}>
-                  Eliminar
-                </button>
-              </div>
-            )}
-          {user.Projects &&
-            userPublication &&
-            userPublication.Bid.owner !== userPublication.Bid.user && (
-              <div className={`${style["application"]}`}>
-                <img
-                  className={`icon-green ${style["check-icon"]}`}
-                  src='https://cdn-icons-png.flaticon.com/512/87/87932.png'
-                  alt='Check'
-                />
-                <h3>Postulado</h3>
-              </div>
-            )}
+          {user.Projects && userPublication && userPublication === "owner" && (
+            <div className='buttons-container'>
+              <button className='button-green' onClick={editHandler}>
+                Editar
+              </button>
+              <button className='button-red' onClick={deleteHandler}>
+                Eliminar
+              </button>
+            </div>
+          )}
+          {user.Projects && userPublication && userPublication === "user" && (
+            <div className={`${style["application"]}`}>
+              <img
+                className={`icon-green ${style["check-icon"]}`}
+                src='https://cdn-icons-png.flaticon.com/512/87/87932.png'
+                alt='Check'
+              />
+              <h3>Postulado</h3>
+            </div>
+          )}
           {user.Projects && !userPublication && (
             <button className='button-green' onClick={applicationHandler}>
               Postularme
