@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import editIcon from '../../assets/images/edit.png'
-import settingsIcon from '../../assets/images/settings.png'
+import profileIcon from '../../assets/images/profile.png'
 import { useAuth0 } from '@auth0/auth0-react'
 import style from './navigation.module.css'
 
@@ -12,13 +12,13 @@ export default function Navigation() {
   const links = [
     {
       label: 'Mi Perfil',
-      route: '/',
-      icon: editIcon
+      route: '/my-profile',
+      icon: profileIcon
     },
     {
-      label: 'Ajustes',
-      route: '/',
-      icon: settingsIcon
+      label: 'Crear publicación',
+      route: '/create-job-offer',
+      icon: editIcon
     }
   ]
 
@@ -44,9 +44,10 @@ export default function Navigation() {
                   {
                     links.map(({label, route, icon}) => (
                       <li key={label}>
-                        <img className={style['icon-link']} src={icon} alt='icon' />
                         <Link className={style['profile-link']}
-                          to={route}> {label}
+                          to={route}>
+                            <img className={style['icon-link']} src={icon} alt='icon' />
+                            {label}
                         </Link>
                       </li>
                     ))
