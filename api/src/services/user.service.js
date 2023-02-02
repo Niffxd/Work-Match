@@ -5,6 +5,7 @@ const {
   State,
   Country,
   Project,
+  Category,
 } = require('./db.service.js');
 const helper = require('../utils/helper.util.js');
 const role = require('../services/role.service.js');
@@ -27,7 +28,13 @@ async function read(id, query) {
           },
           {
             model: Project,
-            attributes: ['id'],
+            attributes: ['id', 'description'],
+            include: [
+              {
+                model: Category,
+                attributes: ['id', 'name', 'image'],
+              },
+            ],
           },
         ],
       })
