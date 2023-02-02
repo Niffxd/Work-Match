@@ -1,10 +1,9 @@
 const validationEditProfile = (form) => {
   const errors = {};
-  const regexNumber = /^[0-9]+$/;
-  const regexUsername = /^[a-z\d]+$/;
-  const regexName = /^[ A-Za-zÑñÁáÉéÍíÓóÚúÜü]+$/i;
-  const regexEmail =
-    /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/;
+  const regexNumber = /^[0-9]+$/; // eslint-disable-next-line
+  const regexUsername = /^[a-z\d]+$/; 
+  const regexName = /^[ A-Za-zÑñÁáÉéÍíÓóÚúÜü]+$/i; // eslint-disable-next-line
+  const regexEmail = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/; 
 
   if (!form.name) {
     errors.name = "Por favor, agregue su nombre y apellido.";

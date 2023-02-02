@@ -15,10 +15,16 @@ import EmployeeProfile from "./pages/UserProfile/EmployeeProfile/EmployeeProfile
 import EmployerProfile from "./pages/UserProfile/EmployerProfile/EmployerProfile";
 import DashboardUser from "./pages/UserProfile/UserProfile";
 import Error404 from "./pages/Error404/Error404";
+import Loading from "./components/Register/Loading";
+import { useAuth0 } from "@auth0/auth0-react";
 
 axios.defaults.baseURL = "http://localhost:3001";
 
 function App() {
+  const { isLoading } = useAuth0()
+
+  if(isLoading) return <Loading/>
+
   return (
     <BrowserRouter>
       <Navigation />

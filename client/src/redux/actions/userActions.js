@@ -29,8 +29,8 @@ export const getUserId = (id) => async (dispatch) => {
 };
 
 export const postUser = (data) => async (dispatch) => {
-  await axios.post(URL_USER, data);
-  dispatch({ type: POST_USER, payload: "El usuario se ha creado con éxito." });
+  const newUser = await axios.post(URL_USER, data);
+  dispatch({ type: POST_USER, payload: newUser.data });
 };
 
 export const putUser = (data) => async (dispatch) => {
@@ -38,29 +38,6 @@ export const putUser = (data) => async (dispatch) => {
   dispatch({
     type: UPDATE_USER,
     payload: "Los datos del usuario se han actualizado con éxito.",
-  });
-};
-export const putRateUser = (data) => async (dispatch) => {
-  await axios.put(`${URL_USER}/rate`, data);
-  dispatch({
-    type: UPDATE_USER_RATE,
-    payload: "La puntuación del usuario se ha actualizado con éxito.",
-  });
-};
-
-export const userApplication = (data) => async (dispatch) => {
-  await axios.post(URL_APPLICATION, data);
-  dispatch({
-    type: USER_APPLICATION,
-    payload: "El usuario se ha postulado con éxito.",
-  });
-};
-
-export const updateApplicationStatus = (data) => async (dispatch) => {
-  await axios.put(URL_APPLICATION, data);
-  dispatch({
-    type: UPDATE_APPLICATION_STATUS,
-    payload: "El estado de la applicación se actualizó con éxito.",
   });
 };
 

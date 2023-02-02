@@ -129,6 +129,14 @@
   display: flex;
 }
 
+.loader {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media screen and (min-width: 42em) and (orientation: landscape) {
   .desktop {
     display: flex;

@@ -11,13 +11,16 @@ export default function Home() {
   const dispatch = useDispatch();
   const projectState = useSelector((state) => state.project);
   const { allProjects } = projectState;
+
+  
+
   useEffect(() => {
     dispatch(getAllUsers());
     dispatch(getAddress());
     dispatch(getState());
     dispatch(getCategories());
     dispatch(getProjects());
-  }, []);
+  }, [dispatch]);
 
   return (
     <main className={`${style["container"]}`}>
