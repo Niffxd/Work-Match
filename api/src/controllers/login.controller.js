@@ -18,6 +18,15 @@ async function create(req, res, next) {
   }
 }
 
+async function createEmailRequest(req, res, next) {
+  try {
+    res.status(201).send(await login.sendEmail(req.body));
+  } catch (err) {
+    console.error(`Error while sending email`, err.message);
+    next(err);
+  }
+}
+
 async function update(req, res, next) {
   try {
     res.status(201).send(await login.update(req.body));
@@ -40,4 +49,5 @@ module.exports = {
   create,
   update,
   remove,
+  createEmailRequest
 };
