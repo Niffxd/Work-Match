@@ -107,7 +107,7 @@ export default function JobOfferDetail() {
 
             <section className={`${style["container-features"]}`}>
               {/* Time */}
-              {oneProject.estimated && (
+              {(oneProject.estimated || oneProject.estimated > 0) && (
                 <>
                   <img
                     className={`${style["image-time"]}`}

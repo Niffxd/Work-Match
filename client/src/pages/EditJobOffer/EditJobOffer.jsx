@@ -33,22 +33,23 @@ export default function EditJobOffer() {
     try {
       setErrors(validationsCreateJobOffer(form));
       if (Object.keys(errors).length === 0) {
-        dispatch();
-        putProjects({
-          id: oneProject.id,
-          agreement: form.agreement,
-          budget: form.budget,
-          category: form.categoryId,
-          description: form.description,
-          estimated: form.estimated,
-          information: form.information,
-          state: form.addressId,
-        });
+        dispatch(
+          putProjects({
+            id: oneProject.id,
+            agreement: form.agreement,
+            budget: form.budget,
+            category: form.categoryId,
+            description: form.description,
+            estimated: form.estimated,
+            information: form.information,
+            state: form.addressId,
+          })
+        );
         alert("Tu oferta fue publicada con éxito");
         history.push(`/`);
       }
     } catch (error) {
-      console.log(error, error.message);
+      console.log(error, error);
       setErrors({ ...errors, form: error.message });
     }
   };
