@@ -16,8 +16,10 @@ export default function Mobile() {
   });
 
   const handleNameChange = (event) => {
+    const emailRegEx = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i
     setPreform({ ...preForm, email: event.target.value });
-    if (event.target.value.length > 0) setValidateEmail(true);
+    if (event.target.value.length > 0
+      && emailRegEx.test(event.target.value)) setValidateEmail(true);
     else setValidateEmail(false);
 
     if (validateEmail && validatePassword) setValidate(true);
@@ -26,7 +28,7 @@ export default function Mobile() {
 
   const handleLastnameChange = (event) => {
     setPreform({ ...preForm, password: event.target.value });
-    if (event.target.value.length > 0) setValidatePassword(true);
+    if (event.target.value.length >= 7) setValidatePassword(true);
     else setValidatePassword(false);
 
     if (validateEmail && validatePassword) setValidate(true);

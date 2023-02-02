@@ -23,16 +23,8 @@ export default function userReducer(state = initialState, action) {
     case GET_ALL_USERS:
       return { ...state, allUsers: payload };
     case GET_USER:
-      return { ...state, user: payload };
-    case GET_PUBLICATION:
-      const publication = state.user.Projects
-        ? state.user.Projects.find(
-            (project) => project.id === parseInt(payload)
-          )
-        : false;
-      return { ...state, userPublication: publication };
     case POST_USER:
-      return { ...state, message: payload };
+      return { ...state, user: payload };
     case UPDATE_USER:
       return { ...state, message: payload };
     case UPDATE_USER_RATE:

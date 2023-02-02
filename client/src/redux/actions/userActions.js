@@ -39,8 +39,8 @@ export const getPublication = (idProject) => ({
 
 //register user
 export const postUser = (data) => async (dispatch) => {
-  await axios.post(URL_USER, data);
-  dispatch({ type: POST_USER, payload: "El usuario se ha creado con éxito." });
+  const newUser = await axios.post(URL_USER, data);
+  dispatch({ type: POST_USER, payload: newUser.data });
 };
 
 //edit user

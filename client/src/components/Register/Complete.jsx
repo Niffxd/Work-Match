@@ -8,132 +8,42 @@ import style from './register.module.css'
 import btnStyle from './buttons.module.css'
 
 export default function Complete() {
-  // const states = [
-  //   {
-  //     value: 'buenosaires',
-  //     string: 'Buenos Aires'
-  //   },
-  //   {
-  //     value: 'caba',
-  //     string: 'Ciudad Autónoma de Buenos Aires'
-  //   },
-  //   {
-  //     value: 'catamarca',
-  //     string: 'Catamarca'
-  //   },
-  //   {
-  //     value: 'chaco',
-  //     string: 'Chaco'
-  //   },
-  //   {
-  //     value: 'chubut',
-  //     string: 'Chubut'
-  //   },
-  //   {
-  //     value: 'cordoba',
-  //     string: 'Córdoba'
-  //   },
-  //   {
-  //     value: 'corrientes',
-  //     string: 'Corrientes'
-  //   },
-  //   {
-  //     value: 'entrerios',
-  //     string: 'Entre Ríos'
-  //   },
-  //   {
-  //     value: 'formosa',
-  //     string: 'Formosa'
-  //   },
-  //   {
-  //     value: 'jujuy',
-  //     string: 'Jujuy'
-  //   },
-  //   {
-  //     value: 'lapampa',
-  //     string: 'La Pampa'
-  //   },
-  //   {
-  //     value: 'larioja',
-  //     string: 'La Rioja'
-  //   },
-  //   {
-  //     value: 'mendoza',
-  //     string: 'Mendoza'
-  //   },
-  //   {
-  //     value: 'misiones',
-  //     string: 'Misiones'
-  //   },
-  //   {
-  //     value: 'neuquen',
-  //     string: 'Neuquén'
-  //   },
-  //   {
-  //     value: 'rionegro',
-  //     string: 'Río Negro'
-  //   },
-  //   {
-  //     value: 'salta',
-  //     string: 'Salta'
-  //   },
-  //   {
-  //     value: 'sanjuan',
-  //     string: 'San Juan'
-  //   },
-  //   {
-  //     value: 'sanluis',
-  //     string: 'San Luis'
-  //   },
-  //   {
-  //     value: 'santacruz',
-  //     string: 'Santa Cruz'
-  //   },
-  //   {
-  //     value: 'santafe',
-  //     string: 'Santa Fé'
-  //   },
-  //   {
-  //     value: 'santiago',
-  //     string: 'Santiago del Estero'
-  //   },
-  //   {
-  //     value: 'tierradelfuego',
-  //     string: 'Tierra del Fuego'
-  //   },
-  //   {
-  //     value: 'tucuman',
-  //     string: 'Tucuman'
-  //   }
-  // ]
-
   const dispatch = useDispatch()
   const history = useHistory()
 
   const preForm = useLocation().state;
 
   const [ postUser, setPostUser ] = useState({
-    id: '',
+    username: '',
+    password: preForm.password,
     name: '',
     age: '',
+    biography: '',
     mail: preForm.email,
-    password: preForm.password,
     phone: '',
-    image: 'imagen',
-    role: 2
+    role: 2,
+    image: 'imagen'
+  })
+  
+  const [ postAddress, setPostAddress ] = useState({ // eslint-disable-line no-unused-vars
+    description: ''
   })
 
-  const [ postAddress, setPostAddress ] = useState({
-    user: '',
-    city: 1,
-    description: 'additional description'
-  })
+  const [ username, setUsername ] = useState('juan.perez')
 
   const handleName = (event) => {
     setPostUser({
       ...postUser,
-      id: event.target.value.split(' ').join('.'),
+      username: event.target.value.toLowerCase().split(' ').join('.'), //Nicolas Sanchez - nicolas.sanchez
       name: event.target.value
+    })
+    setUsername(event.target.value.toLowerCase().split(' ').join('.'))
+  }
+
+  const handleUsername = (event) => {
+    setPostUser({
+      ...postUser,
+      username: event.target.value
     })
   }
 
@@ -151,54 +61,33 @@ export default function Complete() {
     })
   }
 
-  const handleDescription = (event) => {
-    setPostAddress({
-      ...postAddress,
-      user: postUser.id,
-      description: event.target.value
-    })
-  }
-
   const handleSubmit = (event) => {
     event.preventDefault()
-    if(postUser.id !== ''
+    if(postUser.username !== ''
     && postUser.name !== ''
-    && postUser.mail !== ''
-    && postUser.password !== ''
-    && postUser.age >= 18
+    && postUser.age >= 16
     && postUser.phone !== ''){
       dispatch(userActions.postUser(postUser))
       dispatch(addressActions.postAddress(postAddress))
-      alert('Usuario registrado!')
-      history.push('/')
+      alert('Usuario registrado con éxito!')
+      history.push('/', postUser)
     }
     else{
       alert('Complete los campos requeridos!')
     }
-
   }
 
   return (
     <div className={`${style['mobile']}`}>
       <form className={`${style['info']}`}>
-        <label htmlFor="email">Nombre Completo:</label>
-        <input name='email' type='text' onChange={handleName} />
+        <label htmlFor="user">Nombre Completo:</label>
+        <input placeholder='Juan Perez' name='user' type='text' onChange={handleName} />
+        <label htmlFor="user">Usuario:</label>
+        <input placeholder={username} name='user' type='text' onChange={handleUsername} />
         <label htmlFor="age">Edad:</label>
-        <input name='age' type='number' onChange={handleAge} />
+        <input placeholder='16 años en adelante' name='age' type='number' onChange={handleAge} />
         <label htmlFor="phone">Teléfono:</label>
-        <input name='phone' type='number' onChange={handlePhone} />
-        <label htmlFor="country">País:</label>
-        <select name="country" id="country">
-          <option value="argentina">Argentina</option>
-        </select>
-        <label htmlFor="description">Descripción Adicional:</label>
-        <input name='description' type='text' onChange={handleDescription} />
-        {/* <label htmlFor="state">Provincia:</label>
-        <select name="state" id="state">
-          {states.map(state => {
-            return <option key={state.value} value={state.value}>{state.string}</option>
-          })}
-        </select> */}
+        <input placeholder='11 1234-5678' name='phone' type='number' onChange={handlePhone} />
       </form>
       <div className={`${style['buttons-container']}`}>
         <BackButton />
