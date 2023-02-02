@@ -3,11 +3,13 @@
 .job-offer-container {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
 }
 .info-container {
   margin: 0;
+  width: 100%;
 }
 /* Photo profile */
 .photo-container {

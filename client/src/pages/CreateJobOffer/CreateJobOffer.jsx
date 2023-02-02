@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import FormJobOffer from "../../components/FormJobOffer/FormJobOffer";
+import { newMessage } from "../../redux/actions/alertMessageActions";
 import { postProject } from "../../redux/actions/projectActions";
 import validationsCreateJobOffer from "../../utils/helpers/validationsCreateJobOffer";
 
@@ -50,12 +51,12 @@ const CreateJobOffer = () => {
             owner: user.id,
           })
         );
-        alert("Tu oferta fue publicada con éxito");
+        dispatch(newMessage("Tu oferta fue publicada con éxito", "success"));
         history.push(`/`);
       }
     } catch (error) {
-      console.log(error, error.message);
-      setErrors({ ...errors, form: error.message });
+      console.log(error);
+      dispatch(newMessage(error.message, "error"));
     }
   };
 

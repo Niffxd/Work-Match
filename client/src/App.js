@@ -18,6 +18,7 @@ import Error404 from "./pages/Error404/Error404";
 import Loading from "./components/Register/Loading";
 import { useAuth0 } from "@auth0/auth0-react";
 import EditJobOffer from "./pages/EditJobOffer/EditJobOffer";
+import AlertMessage from "./components/AlertMessage/AlertMessage";
 
 axios.defaults.baseURL = "http://localhost:3001";
 
@@ -28,6 +29,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <AlertMessage />
       <Navigation />
       <Switch>
         <Route exact path='/' component={Home} />

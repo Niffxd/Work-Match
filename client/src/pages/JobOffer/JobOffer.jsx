@@ -1,7 +1,9 @@
-import { use, useState } from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
+import ConfirmationMessage from "../../components/ConfirmationMessage/ConfirmationMessage";
+import { newMessage } from "../../redux/actions/alertMessageActions";
+import { confirmationOpen } from "../../redux/actions/confirmationMessageActions";
 import {
   deleteProjects,
   getOwner,
@@ -16,6 +18,7 @@ import {
 import style from "./jobOffer.module.css";
 
 export default function JobOfferDetail() {
+  //Variables
   const { id } = useParams();
   const history = useHistory();
   const dispatch = useDispatch();
@@ -30,6 +33,7 @@ export default function JobOfferDetail() {
   );
   const [visible, setVisible] = useState("visible");
 
+  //Use Effects
   useEffect(() => {
     dispatch(getProjectId(id));
     dispatch(getPublication(id));
@@ -39,17 +43,31 @@ export default function JobOfferDetail() {
     dispatch(getOwner(oneProject.owner));
   }, [oneProject]);
 
+  //Edit Publication
   const editHandler = (event) => {
     event.preventDefault();
     history.push(`/edit-job-offer`);
   };
 
-  const deleteHandler = (event) => {
-    event.preventDefault();
-    dispatch(deleteProjects(id));
-    history.push(`/`);
+  //Open confirmation message
+  const confirmationHandler = async (event) => {
+    event.stopPropagation();
+    dispatch(confirmationOpen());
   };
 
+  //delete publication
+  const deleteHandler = () => {
+    try {
+      dispatch(deleteProjects(id));
+      dispatch(newMessage("Tu oferta fue eliminada con éxito", "success"));
+      history.push(`/`);
+    } catch (error) {
+      console.log(error);
+      dispatch(newMessage(error.message, "error"));
+    }
+  };
+
+  //new application
   const applicationHandler = async (event) => {
     event.preventDefault();
     dispatch(
@@ -63,122 +81,115 @@ export default function JobOfferDetail() {
     dispatch(getUserId(user.id));
     dispatch(getPublication(id));
   };
+
   return (
-    <article className={`container ${style["job-offer-container"]}`}>
-      {!oneProject && !owner ? (
-        <h1>Page not Found</h1>
-      ) : (
-        <>
-          <section className={`${style["info-container"]}`}>
-            <div className={`${style["data-container"]}`}>
-              {/* Photo profile */}
-              <div className={`${style["photo-container"]}`}>
-                <img
-                  className={`${style["photo-profile"]}`}
-                  src='https://i.pinimg.com/736x/b5/49/41/b5494197b2d462c940f88988b203d290.jpg'
-                  alt='Photo profile.'
-                />
-                {/* <img
+    <>
+      <ConfirmationMessage
+        message='¿Quieres eliminar esta oferta de trabajo?'
+        handler={deleteHandler}
+      />
+      <article className={`container ${style["job-offer-container"]}`}>
+        {!oneProject && !owner ? (
+          <h1>Page not Found</h1>
+        ) : (
+          <>
+            <section className={`${style["info-container"]}`}>
+              <div className={`${style["data-container"]}`}>
+                {/* Photo profile */}
+                <div className={`${style["photo-container"]}`}>
+                  <img
+                    className={`${style["photo-profile"]}`}
+                    src='https://i.pinimg.com/736x/b5/49/41/b5494197b2d462c940f88988b203d290.jpg'
+                    alt='Photo profile.'
+                  />
+                  {/* <img
               className={`${style["photo-profile"]}`}
               src={owner.image}
               alt='Photo profile'
             /> */}
+                </div>
+                {/* Name */}
+                <p className={`${style["user-name"]}`}>{owner.name}</p>
+                {/* Date */}
+                <p className={`${style["date"]}`}>
+                  {new Date(oneProject.updatedAt).getDate()}/
+                  {new Date(oneProject.updatedAt).getMonth()}/
+                  {new Date(oneProject.updatedAt).getFullYear()}
+                </p>
               </div>
-              {/* Name */}
-              <p className={`${style["user-name"]}`}>{owner.name}</p>
-              {/* Date */}
-              <p className={`${style["date"]}`}>
-                {new Date(oneProject.updatedAt).getDate()}/
-                {new Date(oneProject.updatedAt).getMonth()}/
-                {new Date(oneProject.updatedAt).getFullYear()}
-              </p>
-            </div>
-            {/* Category */}
-            <h4>{oneProject.Category && oneProject.Category.name}</h4>
-            {/* Description */}
-            <p>{oneProject.description}</p>
-            {/* Details */}
-            {oneProject.information && (
-              <>
-                <h4>Detalles:</h4>
-                <p>{oneProject.information}</p>
-              </>
-            )}
-
-            <section className={`${style["container-features"]}`}>
-              {/* Time */}
-              {(oneProject.estimated || oneProject.estimated > 0) && (
+              {/* Category */}
+              <h4>{oneProject.Category && oneProject.Category.name}</h4>
+              {/* Description */}
+              <p>{oneProject.description}</p>
+              {/* Details */}
+              {oneProject.information && (
                 <>
-                  <img
-                    className={`${style["image-time"]}`}
-                    src='https://cdn-icons-png.flaticon.com/512/3936/3936550.png'
-                    alt='time estimated'
-                  />
-                  <div className={`${style["div-time"]}`}>
-                    <h4>Duración estimada:</h4>
-                    <p>{oneProject.estimated}h</p>
-                  </div>
+                  <h4>Detalles:</h4>
+                  <p>{oneProject.information}</p>
                 </>
               )}
-              {/* budget */}
-              <img
-                className={`${style["image-budget"]}`}
-                src='https://cdn-icons-png.flaticon.com/512/9420/9420018.png'
-                alt='budget'
-              />
-              <div className={`${style["div-budget"]}`}>
-                <h4>Remuneración:</h4>
-                <p>{oneProject.budget} ARS</p>
-              </div>
-              {/* agreement */}
-              <img
-                className={`${style["image-agreement"]}`}
-                src='https://cdn-icons-png.flaticon.com/512/4878/4878245.png'
-                alt='agreement'
-              />
-              <div className={`${style["div-agreement"]}`}>
-                <h4>Negociable:</h4>
-                {oneProject.agreement ? <p>Si.</p> : <p>No.</p>}
-              </div>
-              {/* address */}
-              <img
-                className={`${style["image-address"]}`}
-                src='https://cdn-icons-png.flaticon.com/512/3082/3082383.png'
-                alt='address'
-              />
-              <div className={`${style["div-address"]}`}>
-                <h4>Ubcación:</h4>
-                <p>{addressJob && addressJob.name}, Argentina.</p>
-              </div>
+
+              <section className={`${style["container-features"]}`}>
+                {/* Time */}
+                {(oneProject.estimated || oneProject.estimated > 0) && (
+                  <>
+                    <img
+                      className={`${style["image-time"]}`}
+                      src='https://cdn-icons-png.flaticon.com/512/3936/3936550.png'
+                      alt='time estimated'
+                    />
+                    <div className={`${style["div-time"]}`}>
+                      <h4>Duración estimada:</h4>
+                      <p>{oneProject.estimated}h</p>
+                    </div>
+                  </>
+                )}
+                {/* budget */}
+                <img
+                  className={`${style["image-budget"]}`}
+                  src='https://cdn-icons-png.flaticon.com/512/9420/9420018.png'
+                  alt='budget'
+                />
+                <div className={`${style["div-budget"]}`}>
+                  <h4>Remuneración:</h4>
+                  <p>{oneProject.budget} ARS</p>
+                </div>
+                {/* agreement */}
+                <img
+                  className={`${style["image-agreement"]}`}
+                  src='https://cdn-icons-png.flaticon.com/512/4878/4878245.png'
+                  alt='agreement'
+                />
+                <div className={`${style["div-agreement"]}`}>
+                  <h4>Negociable:</h4>
+                  {oneProject.agreement ? <p>Si.</p> : <p>No.</p>}
+                </div>
+                {/* address */}
+                <img
+                  className={`${style["image-address"]}`}
+                  src='https://cdn-icons-png.flaticon.com/512/3082/3082383.png'
+                  alt='address'
+                />
+                <div className={`${style["div-address"]}`}>
+                  <h4>Ubcación:</h4>
+                  <p>{addressJob && addressJob.name}, Argentina.</p>
+                </div>
+              </section>
             </section>
-          </section>
-          {user.Projects && userPublication && userPublication === "owner" && (
-            <div className='buttons-container'>
-              <button className='button-green' onClick={editHandler}>
-                Editar
-              </button>
-              <button className='button-red' onClick={deleteHandler}>
-                Eliminar
-              </button>
-            </div>
-          )}
-          {user.Projects && userPublication && userPublication === "user" && (
-            <div className={`${style["application"]}`}>
-              <img
-                className={`icon-green ${style["check-icon"]}`}
-                src='https://cdn-icons-png.flaticon.com/512/87/87932.png'
-                alt='Check'
-              />
-              <h3>Postulado</h3>
-            </div>
-          )}
-          {user.Projects && !userPublication && (
-            <>
-              <div
-                className={`${visible === "visible" && "invisible"} ${
-                  style["application"]
-                }`}
-              >
+            {user.Projects &&
+              userPublication &&
+              userPublication === "owner" && (
+                <div className='buttons-container'>
+                  <button className='button-green' onClick={editHandler}>
+                    Editar
+                  </button>
+                  <button className='button-red' onClick={confirmationHandler}>
+                    Eliminar
+                  </button>
+                </div>
+              )}
+            {user.Projects && userPublication && userPublication === "user" && (
+              <div className={`${style["application"]}`}>
                 <img
                   className={`icon-green ${style["check-icon"]}`}
                   src='https://cdn-icons-png.flaticon.com/512/87/87932.png'
@@ -186,16 +197,32 @@ export default function JobOfferDetail() {
                 />
                 <h3>Postulado</h3>
               </div>
-              <button
-                className={`${visible} button-green`}
-                onClick={applicationHandler}
-              >
-                Postularme
-              </button>
-            </>
-          )}
-        </>
-      )}
-    </article>
+            )}
+            {user.Projects && !userPublication && (
+              <>
+                <div
+                  className={`${visible === "visible" && "invisible"} ${
+                    style["application"]
+                  }`}
+                >
+                  <img
+                    className={`icon-green ${style["check-icon"]}`}
+                    src='https://cdn-icons-png.flaticon.com/512/87/87932.png'
+                    alt='Check'
+                  />
+                  <h3>Postulado</h3>
+                </div>
+                <button
+                  className={`${visible} button-green`}
+                  onClick={applicationHandler}
+                >
+                  Postularme
+                </button>
+              </>
+            )}
+          </>
+        )}
+      </article>
+    </>
   );
 }

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import FormJobOffer from "../../components/FormJobOffer/FormJobOffer";
 import { putProjects } from "../../redux/actions/projectActions";
 import validationsCreateJobOffer from "../../utils/helpers/validationsCreateJobOffer";
+import { newMessage } from "../../redux/actions/alertMessageActions";
 
 export default function EditJobOffer() {
   // Variables
@@ -45,12 +46,12 @@ export default function EditJobOffer() {
             state: form.addressId,
           })
         );
-        alert("Tu oferta fue publicada con éxito");
+        dispatch(newMessage("Tu oferta fue actualizada con éxito", "success"));
         history.push(`/`);
       }
     } catch (error) {
-      console.log(error, error);
-      setErrors({ ...errors, form: error.message });
+      console.log(error);
+      dispatch(newMessage(error.message, "error"));
     }
   };
   return (

@@ -30,15 +30,19 @@
   margin: 0;
 }
 
-.error {
-  padding: 0.5rem 0.7rem;
-  color: #8d080e;
+.error,
+.success {
   font-size: 1.25rem;
+  text-align: center;
   margin: 0;
-  border-left: 0.4rem solid var(--red);
   border-top-left-radius: 0.4rem;
   border-bottom-left-radius: 0.4rem;
   backdrop-filter: blur(2rem);
+}
+.error {
+  padding: 0.5rem 0.7rem;
+  color: #8d080e;
+  border-left: 0.4rem solid var(--red);
   background-color: #f8979ba4;
 }
 .error-icon {
@@ -49,12 +53,7 @@
 .success {
   padding: 0.7rem 0.7rem;
   color: #4d791b;
-  font-size: 1.25rem;
-  margin: 0;
   border-left: 0.4rem solid var(--green);
-  border-top-left-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
-  backdrop-filter: blur(2rem);
   background-color: #d8ecc5c0;
 }
 .success-icon {
