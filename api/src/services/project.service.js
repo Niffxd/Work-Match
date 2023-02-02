@@ -372,7 +372,8 @@ async function create(project) {
   const data = await Project.create(project);
   const bids = {
     project: data.id,
-    user: data.owner,
+    user: data.bidder,
+    owner: data.owner,
     deleted: project.deleted,
   };
   await Bid.create(bids);

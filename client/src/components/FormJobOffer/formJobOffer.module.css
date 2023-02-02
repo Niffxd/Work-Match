@@ -1,9 +1,28 @@
-@import "./variables.css";
+@import "../../styles/variables.css";
 
 .form {
   margin: 0;
 }
 
+/* Address */
+.address-container {
+  margin: 0;
+  max-height: 12rem;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  background-color: var(--light-purple);
+  overflow-y: auto;
+}
+.address-name {
+  margin: 0;
+  padding: 1rem;
+}
+@media (pointer: fine) {
+  .address-name:hover {
+    font-weight: var(--semibold);
+    background-color: var(--baby-purple);
+    cursor: pointer;
+  }
+}
 /* Category */
 .categories-container {
   margin: 0;
@@ -12,7 +31,6 @@
   background-color: var(--light-purple);
   overflow-y: auto;
 }
-
 .category-container {
   display: grid;
   grid-template-columns: 4rem 1fr;
