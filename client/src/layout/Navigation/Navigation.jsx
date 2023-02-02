@@ -33,42 +33,34 @@ export default function Navigation() {
         <img src="/small_logo.png" alt="logo-header"/>
       </Link>
       {
-        !isAuthenticated && !userLocation
-        ? <nav className={`${style["container-nav"]}`}>
-            <button className={`${style['btn-session']}`}>
-              <Link className={`${style["link-nav"]}`}
-                    to='/register'>
-                Ingresar
-              </Link>
+        isAuthenticated
+        ? <nav className={style['container-links']}>
+            <div 
+              className={style['user-profile']}
+              onClick={handleDisplayOptions}
+              >
+                ¡Hola {user.given_name.split(' ')[0]}!
+                <ul className={style['profile-links']}>
+                  {
+                    links.map(({label, route, icon}) => (
+                      <li key={label}>
+                        <img className={style['icon-link']} src={icon} alt='icon' />
+                        <Link className={style['profile-link']}
+                          to={route}> {label}
+                        </Link>
+                      </li>
+                    ))
+                  }
+                </ul>
+            </div>
+            <button 
+              className={style['btn-session']}
+              onClick={() => logout()}>
+                Cerrar Sesión
             </button>
           </nav>
-        : isAuthenticated
+        : userLocation && userLocation.name
           ? <nav className={style['container-links']}>
-              <div 
-                className={style['user-profile']}
-                onClick={handleDisplayOptions}
-                >
-                  ¡Hola {user.given_name.split(' ')[0]}!
-                  <ul className={style['profile-links']}>
-                    {
-                      links.map(({label, route, icon}) => (
-                        <li key={label}>
-                          <img className={style['icon-link']} src={icon} alt='icon' />
-                          <Link className={style['profile-link']}
-                            to={route}> {label}
-                          </Link>
-                        </li>
-                      ))
-                    }
-                  </ul>
-              </div>
-              <button 
-                className={style['btn-session']}
-                onClick={() => logout()}>
-                  Cerrar Sesión
-              </button>
-            </nav>
-          : <nav className={style['container-links']}>
               <div 
                 className={style['user-profile']}
                 onClick={handleDisplayOptions}
@@ -91,6 +83,14 @@ export default function Navigation() {
                 className={style['btn-session']}
                 onClick={() => logout()}>
                   Cerrar Sesión
+              </button>
+            </nav>
+          : <nav className={`${style["container-nav"]}`}>
+              <button className={`${style['btn-session']}`}>
+                <Link className={`${style["link-nav"]}`}
+                      to='/register'>
+                  Ingresar
+                </Link>
               </button>
             </nav>
       }
