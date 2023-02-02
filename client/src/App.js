@@ -17,6 +17,7 @@ import DashboardUser from "./pages/UserProfile/UserProfile";
 import Error404 from "./pages/Error404/Error404";
 import Loading from "./components/Register/Loading";
 import { useAuth0 } from "@auth0/auth0-react";
+import EditJobOffer from "./pages/EditJobOffer/EditJobOffer";
 
 axios.defaults.baseURL = "http://localhost:3001";
 
@@ -39,6 +40,7 @@ function App() {
         <Route exact path='/register' component={Register} />
         <Route exact path='/register/complete' component={PostUser} />
         <Route exact path='/create-job-offer' component={CreateJobOffer} />
+        <Route exact path='/edit-job-offer' component={EditJobOffer} />
         <Route exact path='/my-profile' component={DashboardUser} />
         <Route
           exact

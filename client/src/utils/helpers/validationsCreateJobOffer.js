@@ -8,7 +8,7 @@ const validationsCreateJobOffer = (form) => {
     errors.description = "Por favor, ingrese una descripción.";
   } else if (
     form.estimated &&
-    (!regexNumber.test(form.estimated) || parseInt(form.estimated) <= 0)
+    (!regexNumber.test(form.estimated) || parseInt(form.estimated) < 0)
   ) {
     errors.estimated =
       "El tiempo estimado debe ser un número entero positivo, mayor que cero.";
