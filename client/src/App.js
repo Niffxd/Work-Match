@@ -1,7 +1,7 @@
 /** @format */
 
 import axios from "axios";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Navigation from "./layout/Navigation/Navigation";
 import Footer from "./layout/Footer/Footer";
 import Home from "./pages/Home/Home";
@@ -21,15 +21,18 @@ import { useAuth0 } from "@auth0/auth0-react";
 axios.defaults.baseURL = "http://localhost:3001";
 
 function App() {
-  const { isLoading } = useAuth0()
+  const { isLoading } = useAuth0();
 
-  if(isLoading) return <Loading/>
+  if (isLoading) return <Loading />;
 
   return (
     <BrowserRouter>
       <Navigation />
       <Switch>
         <Route exact path='/' component={Home} />
+        <Route exact path='/home'>
+          <Redirect to='/' />
+        </Route>
         <Route exact path='/job-offer/:id' component={JobOfferDetail} />
         <Route exact path='/about-us' component={AboutUs} />
         <Route exact path='/Login' component={Login} />
