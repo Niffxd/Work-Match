@@ -1,4 +1,4 @@
-import { use } from "react";
+import { use, useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
@@ -7,7 +7,11 @@ import {
   getOwner,
   getProjectId,
 } from "../../redux/actions/projectActions";
-import { getUserId, userApplication } from "../../redux/actions/userActions";
+import {
+  getPublication,
+  getUserId,
+  userApplication,
+} from "../../redux/actions/userActions";
 
 import style from "./jobOffer.module.css";
 
@@ -18,10 +22,7 @@ export default function JobOfferDetail() {
   const jobOfferState = useSelector((state) => state.project);
   const { oneProject, owner } = jobOfferState;
   const userState = useSelector((state) => state.user);
-  const { user } = userState;
-  let application =
-    user.Projects &&
-    user.Projects.find((project) => project.id === oneProject.id);
+  const { user, userPublication } = userState;
   const addressState = useSelector((state) => state.address);
   const { states } = addressState;
   const addressJob = states.find(
@@ -30,11 +31,11 @@ export default function JobOfferDetail() {
 
   useEffect(() => {
     dispatch(getProjectId(id));
+    dispatch(getPublication(id));
   }, []);
 
-  useEffect(() => {
+  useEffect(async () => {
     dispatch(getOwner(oneProject.owner));
-    dispatch(getUserId(2));
   }, [oneProject]);
 
   const editHandler = (event) => {
@@ -44,24 +45,24 @@ export default function JobOfferDetail() {
 
   const deleteHandler = (event) => {
     event.preventDefault();
-    dispatch(deleteProjects(oneProject.id));
+    dispatch(deleteProjects(id));
     history.push(`/`);
   };
 
-  const applicationHandler = (event) => {
+  const applicationHandler = async (event) => {
     event.preventDefault();
     dispatch(
       userApplication({
-        project: oneProject.id,
+        project: id,
         user: user.id,
         owner: owner.id,
       })
     );
-    application =
-      user.Projects &&
-      user.Projects.find((project) => project.id === oneProject.id);
+    // dispatch(getUserId(user.id));
+    dispatch(getPublication(id));
   };
 
+  console.log(user, userPublication);
   return (
     <article className={`container ${style["job-offer-container"]}`}>
       {!oneProject && !owner ? (
@@ -145,8 +146,8 @@ export default function JobOfferDetail() {
             </section>
           </section>
           {user.Projects &&
-            application &&
-            application.Bid.owner === application.Bid.user && (
+            userPublication &&
+            userPublication.Bid.owner === userPublication.Bid.user && (
               <div className='buttons-container'>
                 <button className='button-green' onClick={editHandler}>
                   Editar
@@ -157,8 +158,8 @@ export default function JobOfferDetail() {
               </div>
             )}
           {user.Projects &&
-            application &&
-            application.Bid.owner !== application.Bid.user && (
+            userPublication &&
+            userPublication.Bid.owner !== userPublication.Bid.user && (
               <div className={`${style["application"]}`}>
                 <img
                   className={`icon-green ${style["check-icon"]}`}
@@ -168,7 +169,7 @@ export default function JobOfferDetail() {
                 <h3>Postulado</h3>
               </div>
             )}
-          {user.Projects && !application && (
+          {user.Projects && !userPublication && (
             <button className='button-green' onClick={applicationHandler}>
               Postularme
             </button>
