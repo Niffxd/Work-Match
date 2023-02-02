@@ -51,7 +51,7 @@ export default function JobOfferDetail() {
 
   //Open confirmation message
   const confirmationHandler = async (event) => {
-    event.stopPropagation();
+    event.preventDefault();
     dispatch(confirmationOpen());
   };
 

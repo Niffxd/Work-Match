@@ -22,10 +22,10 @@ const ConfirmationMessage = ({ message, handler }) => {
       <p className={`${style["message"]}`}>{message}</p>
       <div className='buttons-container'>
         <button className='button-red' onClick={cancelHandler}>
-          No
+          Cancelar
         </button>
         <button className='button-green' onClick={acceptHandler}>
-          Yes
+          Aceptar
         </button>
       </div>
     </div>
