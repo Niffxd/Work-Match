@@ -1,0 +1,49 @@
+@import "../../styles/variables.css";
+
+@keyframes animationShow {
+  from {
+    transform: translateY(-150%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+
+.container {
+  position: fixed;
+  top: min(5vw, 2.5rem);
+  left: 5vw;
+  z-index: 910;
+  padding: 2rem;
+  padding-bottom: 1rem;
+  margin: 0;
+  font-size: 1.3rem;
+  color: var(--light-color);
+  width: 90vw;
+  height: auto;
+  transform: translateY(-150%);
+  border-radius: 1rem;
+  box-shadow: 0.5rem 0.5rem 0.5rem 0 #4e49533f;
+  background-color: var(--light-purple);
+  cursor: default;
+}
+.container div {
+  margin: 0;
+}
+.message {
+  margin: 0;
+}
+.invisible {
+  display: none;
+}
+.visible {
+  animation: animationShow 1s ease forwards;
+  transition: transform 1s;
+}
+@media screen and (min-width: 60em) {
+  .container {
+    left: 25vw;
+    width: 50vw;
+    font-size: 1.5rem;
+  }
+}
