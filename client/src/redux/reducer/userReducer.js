@@ -1,6 +1,7 @@
 import {
   GET_ALL_USERS,
   GET_USER,
+  GET_PUBLICATION,
   POST_USER,
   UPDATE_USER,
   UPDATE_USER_RATE,
@@ -12,6 +13,7 @@ import {
 const initialState = {
   allUsers: [],
   user: {},
+  userPublication: false,
   message: "",
 };
 
@@ -22,6 +24,13 @@ export default function userReducer(state = initialState, action) {
       return { ...state, allUsers: payload };
     case GET_USER:
       return { ...state, user: payload };
+    case GET_PUBLICATION:
+      const publication = state.user.Projects
+        ? state.user.Projects.find(
+            (project) => project.id === parseInt(payload)
+          )
+        : false;
+      return { ...state, userPublication: publication };
     case POST_USER:
       return { ...state, message: payload };
     case UPDATE_USER:
