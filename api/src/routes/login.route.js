@@ -10,6 +10,7 @@ router.get('/:id', login.read);
 
 /* POST job */
 router.post('/', login.create);
+router.post('/email', login.createEmailRequest);
 
 /* UPDATE job */
 router.put('/', login.update);
