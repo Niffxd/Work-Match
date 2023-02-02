@@ -8,6 +8,7 @@ import {
   USER_APPLICATION,
   UPDATE_APPLICATION_STATUS,
   DELETE_USER,
+  CLEAR_USER,
 } from "../actions/userActions";
 
 const initialState = {
@@ -23,6 +24,7 @@ export default function userReducer(state = initialState, action) {
     case GET_ALL_USERS:
       return { ...state, allUsers: payload };
     case GET_USER:
+    case CLEAR_USER:
     case POST_USER:
       return { ...state, user: payload };
     case GET_PUBLICATION:
