@@ -28,6 +28,7 @@ export default function JobOfferDetail() {
   const addressJob = states.find(
     (state) => state.id === parseInt(oneProject.state)
   );
+  const [visible, setVisible] = useState("visible");
 
   useEffect(() => {
     dispatch(getProjectId(id));
@@ -40,7 +41,7 @@ export default function JobOfferDetail() {
 
   const editHandler = (event) => {
     event.preventDefault();
-    history.push(`/create-job-offer`);
+    history.push(`/edit-job-offer`);
   };
 
   const deleteHandler = (event) => {
@@ -58,6 +59,7 @@ export default function JobOfferDetail() {
         owner: owner.id,
       })
     );
+    setVisible("invisible");
     dispatch(getUserId(user.id));
     dispatch(getPublication(id));
   };
@@ -171,9 +173,26 @@ export default function JobOfferDetail() {
             </div>
           )}
           {user.Projects && !userPublication && (
-            <button className='button-green' onClick={applicationHandler}>
-              Postularme
-            </button>
+            <>
+              <div
+                className={`${visible === "visible" && "invisible"} ${
+                  style["application"]
+                }`}
+              >
+                <img
+                  className={`icon-green ${style["check-icon"]}`}
+                  src='https://cdn-icons-png.flaticon.com/512/87/87932.png'
+                  alt='Check'
+                />
+                <h3>Postulado</h3>
+              </div>
+              <button
+                className={`${visible} button-green`}
+                onClick={applicationHandler}
+              >
+                Postularme
+              </button>
+            </>
           )}
         </>
       )}
