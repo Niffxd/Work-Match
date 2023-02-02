@@ -1,6 +1,7 @@
 import {
   GET_ALL_USERS,
   GET_USER,
+  GET_PUBLICATION,
   POST_USER,
   UPDATE_USER,
   UPDATE_USER_RATE,
@@ -12,6 +13,7 @@ import {
 const initialState = {
   allUsers: [],
   user: {},
+  userPublication: false,
   message: "",
 };
 
