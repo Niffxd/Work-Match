@@ -5,6 +5,8 @@
  */
 @import "../../styles/variables.css";
 .container_padre {
+  position: absolute;
+  top: 0;
   display: grid;
   grid-template-areas: "carrusel" "login";
   background-color: var(--light-color);
