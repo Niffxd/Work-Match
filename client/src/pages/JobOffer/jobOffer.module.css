@@ -104,3 +104,11 @@
   width: 2.5rem;
   margin: 0;
 }
+
+/* Not available */
+.not-available {
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  color: var(--light-color);
+  background-color: var(--red);
+}
