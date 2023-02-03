@@ -35,8 +35,8 @@
   margin-bottom: 0.5rem;
 }
 
-/* Budget */
-.budget {
+/* Budget and status*/
+.budget-status {
   grid-area: budget;
   display: flex;
   align-items: center;
@@ -45,14 +45,20 @@
   padding-left: 0.5rem;
   background-color: var(--light-purple);
 }
-.budget > img {
+.budget-status > img {
   display: none;
   height: 2rem;
   margin: 0;
   margin-right: 0.5rem;
 }
-.budget > p {
+.budget-status > p {
   margin: 0;
+}
+.status {
+  padding: 0.2rem 0.5rem;
+  color: var(--light-color);
+  border-radius: 0.3rem;
+  background-color: var(--red);
 }
 /* Category */
 .category {
@@ -79,10 +85,10 @@
 }
 
 @media screen and (min-width: 36em) {
-  .budget {
+  .budget-status {
     background: none;
   }
-  .budget > img {
+  .budget-status > img {
     display: inline;
   }
   .container-grid {

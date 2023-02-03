@@ -9,6 +9,8 @@ export default function JobOfferCard({
   image,
   budget,
   state,
+  deleted,
+  status,
 }) {
   const history = useHistory();
   const stateState = useSelector((state) => state.address);
@@ -31,8 +33,8 @@ export default function JobOfferCard({
       {/* State */}
       {jobState && <p className={`${style["address"]}`}>{jobState.name}</p>}
       {/* Budget */}
-      <div className={`${style["budget"]}`}>
-        {budget && (
+      <div className={`${style["budget-status"]}`}>
+        {budget && !deleted && status ? (
           <>
             <img
               className='icon-dark'
@@ -41,6 +43,8 @@ export default function JobOfferCard({
             />
             <p>{budget} ARS</p>
           </>
+        ) : (
+          <p className={`${style["status"]}`}>No disponible</p>
         )}
       </div>
       {/* Description */}

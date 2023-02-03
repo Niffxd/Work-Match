@@ -48,6 +48,8 @@ export default function Home() {
                 budget={jobOffer.budget}
                 estimated={jobOffer.estimated}
                 state={jobOffer.state}
+                deleted={jobOffer.deleted}
+                status={jobOffer.status}
               />
             ))}
           </div>

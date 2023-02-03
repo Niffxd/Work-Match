@@ -8,6 +8,7 @@ import {
   deleteProjects,
   getOwner,
   getProjectId,
+  putProjects,
 } from "../../redux/actions/projectActions";
 import {
   getPublication,
@@ -67,19 +68,42 @@ export default function JobOfferDetail() {
     }
   };
 
+  //reactive publication
+  const reactivateHandler = (event) => {
+    event.preventDefault();
+    try {
+      dispatch(
+        putProjects({
+          id: oneProject.id,
+          deleted: false,
+        })
+      );
+      dispatch(getPublication(id));
+      history.push(`/`);
+      dispatch(newMessage("Tu oferta fue reactivada con éxito", "success"));
+    } catch (error) {
+      console.log(error);
+      dispatch(newMessage(error.message, "error"));
+    }
+  };
   //new application
   const applicationHandler = async (event) => {
     event.preventDefault();
-    dispatch(
-      userApplication({
-        project: id,
-        user: user.id,
-        owner: owner.id,
-      })
-    );
-    setVisible("invisible");
-    dispatch(getUserId(user.id));
-    dispatch(getPublication(id));
+    try {
+      dispatch(
+        userApplication({
+          project: id,
+          user: user.id,
+          owner: owner.id,
+        })
+      );
+      setVisible("invisible");
+      dispatch(getUserId(user.id));
+      dispatch(getPublication(id));
+    } catch (error) {
+      console.log(error);
+      dispatch(newMessage(error.message, "error"));
+    }
   };
 
   return (
@@ -176,7 +200,23 @@ export default function JobOfferDetail() {
                 </div>
               </section>
             </section>
-            {user.Projects &&
+            {(oneProject.deleted || !oneProject.status) &&
+              user.Projects &&
+              userPublication &&
+              userPublication === "user" && (
+                <p className={`${style["not-available"]}`}>No disponible.</p>
+              )}
+            {(oneProject.deleted || !oneProject.status) &&
+              user.Projects &&
+              userPublication &&
+              userPublication === "owner" && (
+                <button className='button-green' onClick={reactivateHandler}>
+                  Activar publicación
+                </button>
+              )}
+            {!oneProject.deleted &&
+              oneProject.status &&
+              user.Projects &&
               userPublication &&
               userPublication === "owner" && (
                 <div className='buttons-container'>
@@ -188,23 +228,12 @@ export default function JobOfferDetail() {
                   </button>
                 </div>
               )}
-            {user.Projects && userPublication && userPublication === "user" && (
-              <div className={`${style["application"]}`}>
-                <img
-                  className={`icon-green ${style["check-icon"]}`}
-                  src='https://cdn-icons-png.flaticon.com/512/87/87932.png'
-                  alt='Check'
-                />
-                <h3>Postulado</h3>
-              </div>
-            )}
-            {user.Projects && !userPublication && (
-              <>
-                <div
-                  className={`${visible === "visible" && "invisible"} ${
-                    style["application"]
-                  }`}
-                >
+            {!oneProject.deleted &&
+              oneProject.status &&
+              user.Projects &&
+              userPublication &&
+              userPublication === "user" && (
+                <div className={`${style["application"]}`}>
                   <img
                     className={`icon-green ${style["check-icon"]}`}
                     src='https://cdn-icons-png.flaticon.com/512/87/87932.png'
@@ -212,14 +241,32 @@ export default function JobOfferDetail() {
                   />
                   <h3>Postulado</h3>
                 </div>
-                <button
-                  className={`${visible} button-green`}
-                  onClick={applicationHandler}
-                >
-                  Postularme
-                </button>
-              </>
-            )}
+              )}
+            {!oneProject.deleted &&
+              oneProject.status &&
+              user.Projects &&
+              !userPublication && (
+                <>
+                  <div
+                    className={`${visible === "visible" && "invisible"} ${
+                      style["application"]
+                    }`}
+                  >
+                    <img
+                      className={`icon-green ${style["check-icon"]}`}
+                      src='https://cdn-icons-png.flaticon.com/512/87/87932.png'
+                      alt='Check'
+                    />
+                    <h3>Postulado</h3>
+                  </div>
+                  <button
+                    className={`${visible} button-green`}
+                    onClick={applicationHandler}
+                  >
+                    Postularme
+                  </button>
+                </>
+              )}
           </>
         )}
       </article>
