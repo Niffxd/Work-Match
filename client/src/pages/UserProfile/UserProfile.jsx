@@ -28,19 +28,19 @@ export default function DashboardUser() {
   const address = states.find((element) => element.id === user.Address.id);
   // initial state of form
   const initialForm = {
-    address: address.name,
-    addressId: user.Address.id,
-    age: user.age,
+    address: address.name || "Selecciona una dirección",
+    addressId: user.Address.id || 0,
+    age: user.age || "",
     biography: user.biography || "",
-    direction: user.Address.description,
-    image: user.image,
-    username: user.username,
-    mail: user.mail,
-    name: user.name,
+    direction: user.Address.description || "",
+    image: user.image || "",
+    username: user.username || "",
+    mail: user.mail || "",
+    name: user.name || "",
     password: "",
-    phone: user.phone,
+    phone: user.phone || "",
     repeatPassword: "",
-    username: user.username,
+    username: user.username || "",
   };
 
   // custom hook form
@@ -447,9 +447,6 @@ export default function DashboardUser() {
                   <p className='error'>{errors.repeatPassword}</p>
                 )}
             </>
-          )}
-          {errors && Object.keys(errors).length > 0 && errors.form && (
-            <p className='error'>{errors.form}</p>
           )}
           <div className='buttons-container'>
             <button className='button-purple' onClick={resetHandler}>
