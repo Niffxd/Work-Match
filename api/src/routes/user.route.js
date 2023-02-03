@@ -14,6 +14,7 @@ router.post('/', user.create);
 /* PUT user */
 router.put('/', user.update);
 router.put('/rate', user.updateRate);
+router.put('/:id', user.reactivateAccount);
 
 /* DELETE user */
 router.delete('/:id', user.remove);

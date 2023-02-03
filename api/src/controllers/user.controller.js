@@ -53,6 +53,15 @@ async function remove(req, res, next) {
   }
 }
 
+async function reactivateAccount(req, res, next) {
+  try {
+    res.status(201).send(await user.reactivateAccount(req.params.id));
+  } catch (err) {
+    console.error(`Error while reactiveAccount`, err.message);
+    next(err);
+  }
+}
+
 module.exports = {
   read,
   create,
@@ -60,4 +69,5 @@ module.exports = {
   updateRate,
   remove,
   readUserAddres,
+  reactivateAccount,
 };
