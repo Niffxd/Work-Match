@@ -13,8 +13,8 @@ export default function Error404 (){
             <div className={`${style["container-right"]}`}>
                 <div className={`${style["error-container"]}`}>
                     <h3 className={`${style["error-h3"]}`}>Error 404</h3>
-                    <p className={`${style["error-p1"]}`}>Oops... Page Not Found!</p>
-                    <p>The page you're looking for doesn't exist.</p>
+                    <p className={`${style["error-p1"]}`}>Vaya... ¡Página no encontrada!</p>
+                    <p>La página que buscas no existe.</p>
                 </div>
                 <div className={`${style["container-but"]}`}>
                     <button className={`${style["error-button"]}`}>
