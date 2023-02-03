@@ -80,8 +80,7 @@
 }
 .add-photo-container {
   position: relative;
-  margin: 1rem;
-  margin-bottom: 0;
+  margin: 0 1rem;
 }
 .photo-container {
   margin: 0;
@@ -140,6 +139,7 @@
   width: auto;
 }
 .margin {
+  text-align: center;
   margin: 0.5rem auto;
 }
 
@@ -156,6 +156,51 @@
   .margin {
     margin: 0.5rem 0;
   }
+}
+
+/* Address */
+.address-container {
+  margin: 0;
+  max-height: 12rem;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  background-color: var(--light-purple);
+  overflow-y: auto;
+}
+.address-name {
+  margin: 0;
+  padding: 1rem;
+}
+@media (pointer: fine) {
+  .address-name:hover {
+    font-weight: var(--semibold);
+    background-color: var(--baby-purple);
+    cursor: pointer;
+  }
+}
+.down-arrow {
+  margin: 0;
+  width: 1rem;
+}
+.select-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0.35rem 1rem;
+  width: 100%;
+  border-radius: var(--border-radius);
+  background-color: var(--baby-purple);
+  cursor: pointer;
+}
+
+.select-button-text {
+  margin: 0;
+  cursor: pointer;
+}
+.select-menu {
+  position: relative;
+  border-radius: var(--border-radius);
+  background-color: var(--baby-purple);
 }
 
 /* Questions */
