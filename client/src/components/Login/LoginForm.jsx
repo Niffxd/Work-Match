@@ -4,11 +4,12 @@
 import styles from "./login.module.css";
 import { useForm } from "react-hook-form";
 import { regex } from "../../utils/helpers/validationLogin";
-import { SignInButton } from "./SignInbutton";
+import { Link } from 'react-router-dom';
 import carrusel1 from "../../assets/images/imagecarousel1.png";
 import carrusel2 from "../../assets/images/imagecarousel2.png";
 import carrusel3 from "../../assets/images/imagecarrousel3.png";
 import carrusel4 from "../../assets/images/imagecarousel4.png";
+import logo from '../../assets/images/small_logo.png';
 
 export default function Login() {
   //CONTROL DEL FORMULARIO//
@@ -74,13 +75,13 @@ export default function Login() {
         </ul>
       </div>
       {/* //FORMULARIO */}
-      <form onSubmit={handleSubmit(onLoginUser)} noValidate>
+      <form onSubmit={handleSubmit(onLoginUser)} className={styles['form-login']} noValidate>
         <div className={styles[`div_login`]}>
           <div className={styles[`div_logo`]}>
-            <h2>LOGO</h2>
+            <img src={logo} width='200' alt="" />
           </div>
 
-          <label>Correo</label>
+          <label>Correo electrónico</label>
           <input
             type="email"
             placeholder="correo@gmail.com"
@@ -118,8 +119,9 @@ export default function Login() {
 
           <button type="submit">Iniciar sesion</button>
           <h5>¿No tienes cuenta?</h5>
-
-          <SignInButton />
+          <Link to='/register' className={styles['btn-register']}>
+            <button>Registrate</button>
+          </Link>
         </div>
       </form>
     </div>

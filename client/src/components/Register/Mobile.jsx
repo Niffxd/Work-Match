@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import NextButton from "./NextButton.jsx";
 import AddButton from "./AddButton.jsx";
+import { SignInButton } from "../Login/SignInbutton.jsx";
 import user from "../../assets/images/user.png";
 import style from "./register.module.css";
 
@@ -64,6 +65,7 @@ export default function Mobile() {
           <Link to="/login">Inicia sesión</Link>
         </div>
       </div>
+      <SignInButton/>
     </div>
   );
 }
