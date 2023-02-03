@@ -3,15 +3,11 @@ import style from './footer.module.css'
 
 const links = [
   {
-    label: 'Terms',
+    label: 'Terminos y Condiciones',
     route: '/terms-and-conditions',
   },
   {
-    label: 'Copyright',
-    route: '/copyright',
-  },
-  {
-    label: 'About us',
+    label: 'Nosotros',
     route: '/about-us',
   }
 ]

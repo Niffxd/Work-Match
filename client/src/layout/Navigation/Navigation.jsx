@@ -39,7 +39,7 @@ export default function Navigation() {
               className={style['user-profile']}
               onClick={handleDisplayOptions}
               >
-                ¡Hola {user.given_name.split(' ')[0]}!
+                ¡Hola, {user.given_name.split(' ')[0]}!
                 <ul className={style['profile-links']}>
                   {
                     links.map(({label, route, icon}) => (
@@ -66,7 +66,7 @@ export default function Navigation() {
                 className={style['user-profile']}
                 onClick={handleDisplayOptions}
                 >
-                  ¡Hola {userLocation.name.split(' ')[0]}!
+                  ¡Hola, {userLocation.name.split(' ')[0]}!
                   <ul className={style['profile-links']}>
                     {
                       links.map(({label, route, icon}) => (
