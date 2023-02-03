@@ -168,6 +168,14 @@ async function read(id, query) {
   return result;
 }
 
+async function getUserName(username) {
+  const userFound = await User.findOne({
+    where: { username },
+  });
+
+  return User ? userFound : 'not found';
+}
+
 async function readUserAddres(id, query) {
   const page = query.page || 1;
   const meta = { page };
@@ -313,4 +321,5 @@ module.exports = {
   remove,
   reactivateAccount,
   readUserAddres,
+  getUserName,
 };
