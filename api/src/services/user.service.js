@@ -38,7 +38,21 @@ async function read(id, query) {
           },
         ],
       })
-    : await User.findAll(options);
+    : await User.findAll({
+        ...options,
+        include: [
+          {
+            model: Project,
+            attributes: ['id'],
+            include: [
+              {
+                model: Category,
+                attributes: ['id', 'name'],
+              },
+            ],
+          },
+        ],
+      });
 
   var result = {
     data,
