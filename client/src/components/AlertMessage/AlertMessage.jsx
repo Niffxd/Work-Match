@@ -13,7 +13,7 @@ const AlertMessage = () => {
     setTimeout(function () {
       dispatch(hiddenMessage());
     }, 5000);
-  }, [className]);
+  }, [className, dispatch]);
 
   return (
     <div className={`${style["container"]} ${style[className]}`}>

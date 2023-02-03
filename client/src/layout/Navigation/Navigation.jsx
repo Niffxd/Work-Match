@@ -57,7 +57,7 @@ export default function Navigation() {
             <button 
               className={style['btn-session']}
               onClick={() => logout()}>
-                Cerrar Sesión
+                Cerrar sesión
             </button>
           </nav>
         : userLocation && userLocation.name
@@ -83,7 +83,7 @@ export default function Navigation() {
               <button 
                 className={style['btn-session']}
                 onClick={() => logout()}>
-                  Cerrar Sesión
+                  Cerrar sesión
               </button>
             </nav>
           : <nav className={`${style["container-nav"]}`}>
