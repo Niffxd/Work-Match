@@ -28,7 +28,7 @@ async function read(id, query) {
           },
           {
             model: Project,
-            attributes: ['id', 'description'],
+            attributes: ['id', 'description', 'deleted', 'status'],
             include: [
               {
                 model: Category,
@@ -217,7 +217,67 @@ async function update(user) {
   });
 }
 
+async function reactivateAccount(id) {
+  const userFound = await User.findAll({
+    where: { id },
+    include: [
+      {
+        model: Project,
+        attributes: ['id', 'owner'],
+      },
+    ],
+  });
+  for (let i in userFound[0].Projects) {
+    if (userFound[0].Projects[i].owner === parseInt(id)) {
+      await Project.update(
+        {
+          deleted: false,
+        },
+        {
+          where: {
+            id: userFound[0].Projects[i].id,
+          },
+        }
+      );
+    }
+  }
+  await User.update(
+    {
+      deleted: false,
+    },
+    {
+      where: {
+        id,
+      },
+    }
+  );
+  return userFound;
+}
+
 async function remove(id) {
+  const userFound = await User.findAll({
+    where: { id },
+    include: [
+      {
+        model: Project,
+        attributes: ['id', 'owner'],
+      },
+    ],
+  });
+  for (let i in userFound[0].Projects) {
+    if (userFound[0].Projects[i].owner === parseInt(id)) {
+      await Project.update(
+        {
+          deleted: true,
+        },
+        {
+          where: {
+            id: userFound[0].Projects[i].id,
+          },
+        }
+      );
+    }
+  }
   const result = await User.update(
     {
       deleted: true,
@@ -237,5 +297,6 @@ module.exports = {
   update,
   updateRate,
   remove,
+  reactivateAccount,
   readUserAddres,
 };
