@@ -17,6 +17,16 @@ async function readUserAddres(req, res, next) {
   }
 }
 
+async function readUsername(req, res, next) {
+  try {
+    res.status(200).send(await user.getUserName(req.params.username));
+    console.log(req.params.username);
+  } catch (err) {
+    console.error(`Error while taking user`, err.message);
+    next(err);
+  }
+}
+
 async function create(req, res, next) {
   try {
     res.status(201).send(await user.create(req.body));
@@ -70,4 +80,5 @@ module.exports = {
   remove,
   readUserAddres,
   reactivateAccount,
+  readUsername,
 };
