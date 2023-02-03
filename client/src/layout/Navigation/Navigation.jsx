@@ -89,7 +89,7 @@ export default function Navigation() {
           : <nav className={`${style["container-nav"]}`}>
               <button className={`${style['btn-session']}`}>
                 <Link className={`${style["link-nav"]}`}
-                      to='/register'>
+                      to='/login'>
                   Ingresar
                 </Link>
               </button>

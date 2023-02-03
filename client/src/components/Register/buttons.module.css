@@ -36,3 +36,8 @@
 .exit-modal:focus {
   outline: none;
 }
+
+.login-auth0 {
+  background-color: #57BF7D;
+  color: #FFFEFB;
+}

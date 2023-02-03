@@ -17,6 +17,7 @@
 }
 /*  CONTENEDOR DEL CARRUSEL FALTAN AJUSTES*/
 .div_carrusel {
+  display: none;
   grid-area: carrusel;
   margin-top: 0;
   margin-bottom: 0;
@@ -50,6 +51,12 @@
 }
 
 /* CONTENEDRO DEL LOGIN/INPUT/PASSWORD */
+.form-login {
+  min-width: 21rem;
+  min-height: 40rem;
+  overflow-y: hidden;
+}
+
 .div_login {
   grid-area: login;
   margin-top: 0;
@@ -101,6 +108,15 @@
     height: 10%;
   } */
 
+  .btn-register {
+    text-decoration: none;
+  }
+
+  .btn-register button {
+    font-size: 1.3rem;
+    margin-bottom: 3rem;
+  }
+
 @media screen and (min-width: 60em) and (orientation: landscape) {
   .container_padre {
     display: grid;
@@ -115,7 +131,6 @@
   }
   .div_login {
     border-radius: var(--border-radius);
-    /* width: auto; */
     height: 80%;
     margin-bottom: 0;
   }
@@ -134,8 +149,8 @@
   }
 
   .div_carrusel {
-    /* width: 100%; */
-    height: 85%;
+    display: grid;
+    height: 40rem;
     background-color: var(--baby-purple);
     border-radius: var(--border-radius);
     overflow: hidden;
@@ -143,14 +158,17 @@
 
   .div_carrusel ul {
     display: flex;
-    padding: 0;
     width: 400%;
+    height: 100%;
+    align-items: center;
+    padding: 0;
     animation: slide 20s infinite alternate ease-in-out;
   }
   .div_carrusel li {
     margin: 0;
     list-style: none;
     width: 100%;
+    height: fit-content;
   }
   .div_carrusel li > h4 {
     margin: 0;
@@ -187,5 +205,10 @@
     95% {
       margin-left: -300%;
     }
+  }
+
+  .btn-register button {
+    font-size: 1.3rem;
+    margin-bottom: 4rem;
   }
 }
