@@ -15,7 +15,7 @@ export const UPDATE_USER_RATE = "UPDATE_USER_RATE";
 export const USER_APPLICATION = "USER_APPLICATION";
 export const UPDATE_APPLICATION_STATUS = "UPDATE_APPLICATION_STATUS";
 export const DELETE_USER = "DELETE_USER";
-
+export const REACTIVE_ACCOUNT = "REACTIVE_ACCOUNT";
 // ACTIONS
 
 //all users
@@ -87,4 +87,12 @@ export const updateApplicationStatus = (data) => async (dispatch) => {
 export const deleteUser = (id) => async (dispatch) => {
   await axios.delete(`${URL_USER}/${id}`);
   dispatch({ type: DELETE_USER, payload: "El usuario ha sido eliminado." });
+};
+
+//reactive user account
+export const reactiveAccount = (id) => async (dispatch) => {
+  await axios.put(`${URL_USER}/${id}`);
+  const response = await axios.get(`${URL_USER}/${id}`);
+  const getUser = response.data.data[0];
+  dispatch({ type: REACTIVE_ACCOUNT, payload: getUser });
 };
