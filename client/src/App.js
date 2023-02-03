@@ -46,27 +46,12 @@ function App() {
         <Route exact path='/my-profile' component={DashboardUser} />
         <Route
           exact
-          path='/my-profile/employee/applications'
+          path='/my-profile/employee/:type'
           component={EmployeeProfile}
         />
         <Route
           exact
-          path='/my-profile/employee/matches'
-          component={EmployeeProfile}
-        />
-        <Route
-          exact
-          path='/my-profile/employer/matches'
-          component={EmployerProfile}
-        />
-        <Route
-          exact
-          path='/my-profile/employer/postulates'
-          component={EmployerProfile}
-        />
-        <Route
-          exact
-          path='/my-profile/employer/publications'
+          path='/my-profile/employer/:type'
           component={EmployerProfile}
         />
         <Route path='*' component={Error404} />
