@@ -1,0 +1,58 @@
+@import "../../styles/variables.css";
+
+/* LIGHT THEME */
+.button {
+  margin: 1rem 0;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+.text {
+  margin: 1rem 0;
+  padding: 0.5rem;
+  cursor: default;
+}
+.current-page {
+  margin: 1rem 0.5rem;
+  padding: 0.5rem 0.2rem 0;
+  height: min-content;
+  position: relative;
+  font-weight: var(--bold);
+  border-radius: 0;
+  border-bottom: 0.13rem solid var(--dark-color);
+}
+/* .current-page::after {
+  position: absolute;
+  top: 0;
+  left: 25%;
+  content: "";
+  width: 100%;
+  height: 1rem;
+  background-color: var(--dark-color);
+} */
+.paged {
+  margin: 1rem auto;
+  display: flex;
+  justify-content: center;
+}
+.paged > * {
+  font-size: 1.2rem;
+  color: var(--dark-color);
+  background: none;
+}
+
+@media (pointer: fine) {
+  .button:hover {
+    color: var(--purple);
+  }
+  .text:hover {
+    transform: scale(1);
+  }
+}
+@media screen and (min-width: 36em) {
+  .button {
+    padding: 0.5rem 1rem;
+  }
+  .text {
+    padding: 0.5rem 1rem;
+  }
+}

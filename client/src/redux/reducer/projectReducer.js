@@ -6,12 +6,16 @@ import {
   PUT_PROJECT,
   DELETE_PROJECT,
   GET_OWNER,
+  ITEMS_PER_PAGE,
+  CURRENT_PAGE,
 } from "../actions/projectActions";
 
 const initialState = {
   allProjects: [],
   oneProject: {},
   owner: {},
+  projectsPerPage: [],
+  currentPage: 1,
   message: "",
 };
 
@@ -32,6 +36,11 @@ export default function projectReducer(state = initialState, action) {
       return { ...state, message: payload };
     case DELETE_PROJECT:
       return { ...state, message: payload };
+    case ITEMS_PER_PAGE:
+      const itemsPerPage = state.allProjects.slice(payload.min, payload.max);
+      return { ...state, projectsPerPage: itemsPerPage };
+    case CURRENT_PAGE:
+      return { ...state, currentPage: payload };
     default:
       return state;
   }
