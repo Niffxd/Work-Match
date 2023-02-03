@@ -5,6 +5,7 @@ const URL_PROJECT = "/project";
 const URL_OWNER = "/user";
 
 // TYPES
+//projects
 export const GET_PROJECTS = "GET_PROJECTS";
 export const GET_PROJECT_ID = "GET_PROJECT_ID";
 export const GET_OWNER = "GET_OWNER";
@@ -12,9 +13,12 @@ export const CLEAR_PROJECT_ID = "CLEAR_PROJECT_ID";
 export const POST_PROJECT = "POST_PROJECT";
 export const PUT_PROJECT = "PUT_PROJECT";
 export const DELETE_PROJECT = "DELETE_PROJECT";
+//pagination
+export const ITEMS_PER_PAGE = "ITEMS_PER_PAGE";
+export const CURRENT_PAGE = "CURRENT_PAGE";
 
 // ACTIONS
-
+//projects
 export const getProjects = () => async (dispatch) => {
   const response = await axios.get(URL_PROJECT);
   const projects = response.data.data;
@@ -58,3 +62,14 @@ export const deleteProjects = (id) => async (dispatch) => {
     payload: "Oferta de trabajo eliminada con éxito.",
   });
 };
+
+//pagination
+export const itemsPerPage = (min, max) => ({
+  type: ITEMS_PER_PAGE,
+  payload: { min, max },
+});
+
+export const currentPg = (page) => ({
+  type: CURRENT_PAGE,
+  payload: page,
+});
