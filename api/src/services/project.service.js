@@ -12,9 +12,7 @@ async function read(id, query) {
   var data = id
     ? await Project.findAll({
         where: { id: id },
-        order: [
-          ['id', 'DESC'],
-      ],
+        order: [['id', 'DESC']],
         include: [
           {
             model: Category,
@@ -23,9 +21,7 @@ async function read(id, query) {
         ],
       })
     : await Project.findAll({
-      order: [
-        ['id', 'DESC'],
-        ],
+        order: [['id', 'DESC']],
         include: [
           {
             model: Category,
@@ -175,56 +171,67 @@ async function read(id, query) {
       {
         project: 1,
         user: 2,
+        status: 'Owner',
         owner: 2,
       },
       {
         project: 2,
         user: 3,
+        status: 'Owner',
         owner: 3,
       },
       {
         project: 3,
         user: 4,
+        status: 'Owner',
         owner: 4,
       },
       {
         project: 4,
         user: 5,
+        status: 'Owner',
         owner: 5,
       },
       {
         project: 5,
         user: 6,
+        status: 'Owner',
         owner: 6,
       },
       {
         project: 6,
         user: 7,
+        status: 'Owner',
         owner: 7,
       },
       {
         project: 7,
         user: 8,
+        status: 'Owner',
         owner: 8,
       },
       {
         project: 8,
         user: 1,
+        status: 'Owner',
         owner: 1,
       },
       {
         project: 9,
         user: 2,
+        status: 'Owner',
         owner: 2,
       },
       {
         project: 10,
         user: 3,
+        status: 'Owner',
         owner: 3,
       },
       {
         project: 11,
         user: 4,
+        status: 'Owner',
         owner: 4,
       },
     ];
@@ -242,9 +249,7 @@ async function read(id, query) {
       meta,
     };
     data = await Project.findAll({
-      order: [
-        ['id', 'DESC'],
-        ],
+      order: [['id', 'DESC']],
       include: [
         {
           model: Category,
@@ -280,9 +285,7 @@ async function readByUser(id, query) {
       })
     : await Project.findAll({
         where: { owner: id },
-        order: [
-          ['id', 'DESC'],
-          ],
+        order: [['id', 'DESC']],
         include: [
           {
             model: User,
@@ -325,17 +328,15 @@ async function readByPostulations(id, query) {
 }
 
 async function create(project) {
-
-
   const data = await Project.create(project);
   const bids = {
     project: data.id,
     user: data.bidder,
     owner: data.owner,
+    status: 'Owner',
     deleted: project.deleted,
-    owner:data.owner
   };
-  console.log(bids)
+  console.log(bids);
   await Bid.create(bids);
   return data;
 }
@@ -351,7 +352,6 @@ async function update(project) {
 }
 
 async function remove(id) {
-
   const result = await Project.update(
     {
       deleted: true,
