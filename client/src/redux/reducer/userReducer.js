@@ -11,6 +11,7 @@ import {
   DELETE_USER,
   CLEAR_USER,
   REACTIVE_ACCOUNT,
+  ID_BID,
 } from "../actions/userActions";
 
 const initialState = {
@@ -18,19 +19,27 @@ const initialState = {
   user: {},
   userPublication: false,
   message: "",
+  idBid: null,
 };
 
 export default function userReducer(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
     case GET_ALL_USERS:
-      return { ...state, allUsers: payload };
     case GET_USER:
     case GET_USERNAME:
     case CLEAR_USER:
     case POST_USER:
     case REACTIVE_ACCOUNT:
       return { ...state, user: payload };
+    case UPDATE_USER:
+    case UPDATE_USER_RATE:
+    case USER_APPLICATION:
+    case UPDATE_APPLICATION_STATUS:
+    case DELETE_USER:
+      return { ...state, message: payload };
+    case ID_BID:
+      return { ...state, idBid: payload };
     case GET_PUBLICATION:
       const publication = state.user.Projects
         ? state.user.Projects.find(
@@ -43,16 +52,6 @@ export default function userReducer(state = initialState, action) {
         ? "owner"
         : "user";
       return { ...state, userPublication: userStatus };
-    case UPDATE_USER:
-      return { ...state, message: payload };
-    case UPDATE_USER_RATE:
-      return { ...state, message: payload };
-    case USER_APPLICATION:
-      return { ...state, message: payload };
-    case UPDATE_APPLICATION_STATUS:
-      return { ...state, message: payload };
-    case DELETE_USER:
-      return { ...state, message: payload };
     default:
       return state;
   }

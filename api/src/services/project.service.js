@@ -234,13 +234,59 @@ async function read(id, query) {
         status: 'Owner',
         owner: 4,
       },
+      {
+        project: 2,
+        user: 2,
+        status: 'Abierto',
+        owner: 3,
+      },
+      {
+        project: 3,
+        user: 2,
+        status: 'Match',
+        owner: 4,
+      },
+      {
+        project: 4,
+        user: 2,
+        status: 'Rechazado',
+        owner: 5,
+      },
+      {
+        project: 5,
+        user: 2,
+        status: 'Puntuar',
+        owner: 6,
+      },
+      {
+        project: 6,
+        user: 2,
+        status: 'Puntuar al postulado',
+        owner: 7,
+      },
+      {
+        project: 7,
+        user: 2,
+        status: 'Puntuar al empleador',
+        owner: 8,
+      },
+      {
+        project: 11,
+        user: 2,
+        status: 'Finalizado',
+        owner: 4,
+      },
     ];
 
     var i = 0;
     while (i < jobs.length) {
       await Project.create(jobs[i]);
-      await Bid.create(bids[i]);
       i++;
+    }
+    var j = 0;
+    while (j < bids.length) {
+      await Bid.create(bids[j]);
+      j++;
     }
 
     data = await Bid.findAll();

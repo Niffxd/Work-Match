@@ -1,6 +1,8 @@
 import { useSelector } from "react-redux";
 import PostulateCard from "../../Cards/PostulateCard/PostulateCard";
+import NotFound from "../../NotFound/NotFound";
 //status:
+//0 Owner -> Creador/Propietario
 //1 Abierto -> No hay match === 'Pendiente'
 //2.1 Match -> Hubo Match
 //2.2 Rechazado -> No hubo match
@@ -11,29 +13,37 @@ import PostulateCard from "../../Cards/PostulateCard/PostulateCard";
 export default function EmployerPostulates() {
   const userState = useSelector((state) => state.user);
   const { user } = userState;
-  const userApplications = user.Projects.filter(
-    (project) => project.Bid.user !== user.id
+  const usersProjects = user.Projects.filter(
+    (project) => project.Users.length > 1
+    // project.Bid.owner === user.id && project.Bid.owner !== project.Bid.user
   );
-  const userMatches = userApplications.filter((application) => {
+  const userPostulates = [];
+  for (let project of usersProjects) {
+    project.Users.forEach((user) => {
+      if (user.Bid.user !== user.Bid.owner) {
+        userPostulates.push({ ...user, project: project.Category.name });
+      }
+    });
+  }
+  const postulatesOpen = userPostulates.filter((application) => {
     return application.Bid.status === "Abierto";
   });
   return (
     <>
-      <PostulateCard />
-      {/* {Array.isArray(filteredPostulates) && filteredPostulates.length > 0 ? (
-          filteredPostulates.map((match) => (
-            <PostulateCard
-              key={`match-${match.id}`}
-              id={match.id}
-              image={match.image}
-              name={match.name}
-              category={match.category}
-              biography={match.biography}
-            />
-          ))
-        ) : (
-          <h1>Aun no tienes postulados.</h1>
-        )} */}
+      {postulatesOpen.length === 0 ? (
+        <NotFound message='Aún no tienes postulados.' />
+      ) : (
+        postulatesOpen.map((user, index) => (
+          <PostulateCard
+            key={`postulate-${index}`}
+            id={user.id}
+            image={user.image}
+            name={user.name}
+            category={user.category}
+            biography={user.biography}
+          />
+        ))
+      )}
     </>
   );
 }

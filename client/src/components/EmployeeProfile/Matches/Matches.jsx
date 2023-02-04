@@ -1,13 +1,7 @@
 import { useSelector } from "react-redux";
 import MatchCard from "../../Cards/MatchCard/MatchCard";
-//status:
-//1 Abierto -> No hay match === 'Pendiente'
-//2.1 Match -> Hubo Match
-//2.2 Rechazado -> No hubo match
-//3.1 Puntuar -> Faltan ambos por puntuar
-//3.2 Puntuar al Postulado -> falta el empleador por puntuar
-//3.3 Puntuar al empleador -> falta el postulado por puntuar
-//4 Finalizado -> Ambos puntuaron
+import NotFound from "../../NotFound/NotFound";
+
 export default function EmployeeMatches() {
   const userState = useSelector((state) => state.user);
   const { user } = userState;
@@ -26,16 +20,20 @@ export default function EmployeeMatches() {
   return (
     <section className={``}>
       {userMatches.length === 0 ? (
-        <h1>Aun no tienen matches. ¡Sigue intentando!</h1>
+        <NotFound message='Aun no tienen matches. ¡Sigue intentando!' />
       ) : (
-        userMatches.map((match) => (
-          <MatchCard
-            key={`match-${match.id}`}
-            category={match.Category.name}
-            user={match.Bid.owner}
-            status={match.Bid.status}
-          />
-        ))
+        userMatches.map((match) => {
+          const owner = match.Users.find((user) => user.Bid.status === "Owner");
+          return (
+            <MatchCard
+              key={`match-${match.id}`}
+              category={match.Category.name}
+              bid={match.Bid.id}
+              owner={owner}
+              status={match.Bid.status}
+            />
+          );
+        })
       )}
     </section>
   );

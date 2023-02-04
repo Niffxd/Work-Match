@@ -33,7 +33,7 @@ export default function EmployerProfile() {
           </NavLink>
         </nav>
       </header>
-      <div className='container'>
+      <div className={`container ${style["container"]}`}>
         {type === "publications" && <EmployerPublications />}
         {type === "postulates" && <EmployerPostulates />}
         {type === "matches" && <EmployerMatches />}
