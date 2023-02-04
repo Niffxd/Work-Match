@@ -22,7 +22,7 @@ async function read(id, query) {
   };
 
   if (!result.data || !result.data.length || result.data.length === 0) {
-    await country.read(1, { page: 1 });
+    // await country.read(1, { page: 1 });
     await state.read(1, { page: 1 });
     //await city.read(1, { page: 1 });
     if (!data2 || !data2.length || data2.length === 0) {

@@ -1,17 +1,14 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import JobOfferCard from "../../components/Cards/JobOfferCard/JobOfferCard";
 import Pagination from "../../components/Pagination/Pagination";
 import { getAddress, getState } from "../../redux/actions/addressActions";
 import { getCategories } from "../../redux/actions/categoriesActions";
 import { getProjects, itemsPerPage } from "../../redux/actions/projectActions";
-import {
-  getAllUsers,
-  getUserId,
-  getUsername,
-} from "../../redux/actions/userActions";
+import { getAllUsers, getUserId } from "../../redux/actions/userActions";
 import { useAuth0 } from "@auth0/auth0-react";
 import style from "./home.module.css";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -25,11 +22,12 @@ export default function Home() {
   const { user } = useAuth0();
 
   useEffect(() => {
-    dispatch(getAllUsers());
-    dispatch(getAddress());
-    dispatch(getState());
-    dispatch(getCategories());
-    dispatch(getProjects());
+    dispatch(getAllUsers())
+      .then(() => dispatch(getState()))
+      .then(() => dispatch(getAddress()))
+      .then(() => dispatch(getCategories()))
+      .then(() => dispatch(getProjects()))
+      .catch((error) => console.log(error));
   }, []);
 
   useEffect(() => {
@@ -45,6 +43,7 @@ export default function Home() {
     <main className={`${style["container"]}`}>
       <section className={`container ${style["jobs-container"]}`}>
         {/* <Filter onSortChange={handleSort} /> */}
+        <Link to='/my-profile'>My profile</Link>
         {allProjects.length === 0 ? (
           <h1>No hay trabajos disponibles en este momento</h1>
         ) : (

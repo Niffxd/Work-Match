@@ -12,9 +12,7 @@ async function read(id, query) {
   var data = id
     ? await Project.findAll({
         where: { id: id },
-        order: [
-          ['id', 'DESC'],
-      ],
+        order: [['id', 'DESC']],
         include: [
           {
             model: Category,
@@ -23,9 +21,7 @@ async function read(id, query) {
         ],
       })
     : await Project.findAll({
-      order: [
-        ['id', 'DESC'],
-        ],
+        order: [['id', 'DESC']],
         include: [
           {
             model: Category,
@@ -242,9 +238,7 @@ async function read(id, query) {
       meta,
     };
     data = await Project.findAll({
-      order: [
-        ['id', 'DESC'],
-        ],
+      order: [['id', 'DESC']],
       include: [
         {
           model: Category,
@@ -280,9 +274,7 @@ async function readByUser(id, query) {
       })
     : await Project.findAll({
         where: { owner: id },
-        order: [
-          ['id', 'DESC'],
-          ],
+        order: [['id', 'DESC']],
         include: [
           {
             model: User,
@@ -325,17 +317,14 @@ async function readByPostulations(id, query) {
 }
 
 async function create(project) {
-
-
   const data = await Project.create(project);
   const bids = {
     project: data.id,
     user: data.bidder,
     owner: data.owner,
     deleted: project.deleted,
-    owner:data.owner
   };
-  console.log(bids)
+  console.log(bids);
   await Bid.create(bids);
   return data;
 }
@@ -351,7 +340,6 @@ async function update(project) {
 }
 
 async function remove(id) {
-
   const result = await Project.update(
     {
       deleted: true,

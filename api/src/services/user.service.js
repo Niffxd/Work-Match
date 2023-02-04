@@ -34,6 +34,17 @@ async function read(id, query) {
                 model: Category,
                 attributes: ['id', 'name', 'image'],
               },
+              {
+                model: User,
+                attributes: [
+                  'id',
+                  'name',
+                  'biography',
+                  'phone',
+                  'image',
+                  'premium',
+                ],
+              },
             ],
           },
         ],
@@ -60,7 +71,7 @@ async function read(id, query) {
   };
   if (!result.data || !result.data.length || result.data.length === 0) {
     await role.read(1, { page: 1 });
-    await jobState.read(1, { page: 1 });
+    // await jobState.read(1, { page: 1 });
     const jobs = [
       {
         username: 'admin',
