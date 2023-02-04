@@ -153,10 +153,12 @@ export default function Login() {
             <small className="error">{errors.password.message}</small>
           )}
           <button onClick={handleCheckUser}>Ingresa</button>
-          <h5>¿No tienes cuenta?</h5>
-          <Link to='/register' className={styles['btn-register']}>
-            <button>Registrate</button>
-          </Link>
+          <h5 className={styles['btn-register']}>
+            ¿No tienes cuenta? {' '}
+            <Link to='/register'>
+              Registrate
+            </Link>
+          </h5>
         </div>
       </form>
     </div>

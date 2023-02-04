@@ -114,15 +114,10 @@
     text-decoration: none;
   }
 
-  .btn-register button {
-    font-size: 1.3rem;
-    margin-bottom: 3rem;
-  }
-
 @media screen and (min-width: 60em) and (orientation: landscape) {
   .container_padre {
     display: grid;
-    grid-template-columns: 60% 40%;
+    grid-template-columns: 60% 25%;
     grid-template-areas: "carrusel login";
     justify-content: space-evenly;
   }
@@ -132,11 +127,14 @@
     justify-content: center;
   }
   .div_login {
+    display: grid;
     border-radius: var(--border-radius);
-    height: 80%;
+    min-height: 40rem;
     margin-bottom: 0;
+    padding: 2rem;
   }
   .div_login label {
+    width: 100%;
     margin-bottom: 0.3rem;
   }
   .div_login input {
