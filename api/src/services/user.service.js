@@ -173,7 +173,7 @@ async function getUserName(username) {
     where: { username },
   });
 
-  return User ? userFound : 'not found';
+  return User ? userFound : new Error('User not found');
 }
 
 async function readUserAddres(id, query) {

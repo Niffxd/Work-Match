@@ -3,10 +3,12 @@ import axios from "axios";
 //URLS
 const URL_USER = "/user";
 const URL_APPLICATION = "/bid";
+const URL_USERNAME = "/user/username";
 
 // TYPES
 export const GET_ALL_USERS = "GET_ALL_USERS";
 export const GET_USER = "GET_USER";
+export const GET_USERNAME = "GET_USERNAME";
 export const CLEAR_USER = "CLEAR_USER";
 export const GET_PUBLICATION = "GET_PUBLICATION";
 export const POST_USER = "POST_USER";
@@ -23,6 +25,13 @@ export const getAllUsers = () => async (dispatch) => {
   const response = await axios.get(`${URL_USER}`);
   const getUsers = response.data.data;
   dispatch({ type: GET_ALL_USERS, payload: getUsers });
+};
+
+//get username
+export const getUsername = (username) => async (dispatch) => {
+  const response = await axios.get(`${URL_USERNAME}/${username}`);
+  const getUsername = response.data;
+  dispatch({ type: GET_USERNAME, payload: getUsername });
 };
 
 //one user

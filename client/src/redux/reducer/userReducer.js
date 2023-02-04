@@ -1,6 +1,7 @@
 import {
   GET_ALL_USERS,
   GET_USER,
+  GET_USERNAME,
   GET_PUBLICATION,
   POST_USER,
   UPDATE_USER,
@@ -25,6 +26,7 @@ export default function userReducer(state = initialState, action) {
     case GET_ALL_USERS:
       return { ...state, allUsers: payload };
     case GET_USER:
+    case GET_USERNAME:
     case CLEAR_USER:
     case POST_USER:
     case REACTIVE_ACCOUNT:

@@ -25,7 +25,7 @@ export default function DashboardUser() {
   const { states } = addressState;
   const [premium, setPremium] = useState(null);
   const [visibleAddress, setVisibleAddress] = useState("invisible");
-  const address = states.find((element) => element.id === user.Address.id);
+  const address = states ? states.find((element) => element.id === user.Address.id) : []
   // initial state of form
   const initialForm = {
     address: address.name || "Selecciona una dirección",
@@ -40,7 +40,6 @@ export default function DashboardUser() {
     password: "",
     phone: user.phone || "",
     repeatPassword: "",
-    username: user.username || "",
   };
 
   // custom hook form
