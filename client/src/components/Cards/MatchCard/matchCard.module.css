@@ -29,6 +29,10 @@
   margin: 0;
 }
 
+.error {
+  text-align: center;
+}
+
 .finalized {
   display: flex;
   align-items: center;
@@ -48,10 +52,11 @@
   margin: 0;
   overflow: visible;
 }
-.form > input {
+.input {
   max-width: 13.5rem;
   text-align: center;
   margin-top: 0;
+  background-color: #daeee1;
 }
 .name {
   margin-top: 0.5rem;
@@ -81,6 +86,10 @@
   object-position: center;
 }
 
+.invisible {
+  display: none;
+}
+
 @media (pointer: fine) {
   .card-container:hover {
     background-color: var(--light-purple);
@@ -88,8 +97,11 @@
 }
 
 @media screen and (min-width: 36em) {
+  .button {
+    font-size: 1.2rem;
+  }
   .card-container {
-    grid-template-columns: 7rem 1fr 14rem;
+    grid-template-columns: 7rem 1fr 15rem;
     grid-template-rows: min-content;
     align-items: center;
     justify-content: start;

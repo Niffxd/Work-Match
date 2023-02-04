@@ -8,6 +8,7 @@ import { getProjects, itemsPerPage } from "../../redux/actions/projectActions";
 import { getAllUsers, getUserId } from "../../redux/actions/userActions";
 import { useAuth0 } from "@auth0/auth0-react";
 import style from "./home.module.css";
+import NotFound from "../../components/NotFound/NotFound";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -43,7 +44,7 @@ export default function Home() {
       <section className={`container ${style["jobs-container"]}`}>
         {/* <Filter onSortChange={handleSort} /> */}
         {allProjects.length === 0 ? (
-          <h1>No hay trabajos disponibles en este momento</h1>
+          <NotFound message='No hay trabajos disponibles en este momento.' />
         ) : (
           <div className={`${style["all-jobs"]}`}>
             {projectsPerPage.map((jobOffer) => (

@@ -25,7 +25,7 @@ export default function EmployeeProfile() {
           </NavLink>
         </nav>
       </header>
-      <div className='container'>
+      <div className={`container ${style["container"]}`}>
         {type === "applications" && <EmployeeApplications />}
         {type === "matches" && <EmployeeMatches />}
       </div>

@@ -1,0 +1,25 @@
+@import "../../styles/variables.css";
+
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  min-height: calc(100vh - 24.35rem);
+}
+
+.not-found-image {
+  width: 35%;
+  margin: 0;
+  margin-bottom: 1rem;
+}
+.not-found-message {
+  color: var(--red);
+}
+
+@media screen and (min-width: 36em) and (orientation: landscape) {
+  .not-found-container {
+    min-height: calc(100vh - 22.35rem);
+  }
+}

@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import ApplicationCard from "../../Cards/ApplicationCard/Applications";
+import NotFound from "../../NotFound/NotFound";
 
 export default function EmployeeApplications() {
   const userState = useSelector((state) => state.user);
@@ -10,7 +11,7 @@ export default function EmployeeApplications() {
   return (
     <>
       {userApplications.length === 0 ? (
-        <h1>No tienes ninguna postulación.</h1>
+        <NotFound message='No tienes ninguna postulación.' />
       ) : (
         <>
           {userApplications.map((project) => (

@@ -7,14 +7,22 @@ async function create(bid) {
 }
 
 async function update(bid) {
-  const { id, state } = bid;
-  const bidFound = await Bid.findByPk(id, {
-    attributes: ['state'],
-  });
-  bidFound.state = state;
-  await bidFound.save();
+  const { id, status } = bid;
+  // const bidFound = await Bid.findByPk(id, {
+  //   attributes: ['status'],
+  // });
+  // bidFound.status = status;
+  // await bidFound.save();
 
-  return bidFound;
+  // return bidFound;
+  return Bid.update(
+    { status },
+    {
+      where: {
+        id,
+      },
+    }
+  );
 }
 
 module.exports = {

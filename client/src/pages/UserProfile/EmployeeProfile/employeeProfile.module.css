@@ -1,5 +1,15 @@
 @import "../../../styles/variables.css";
 
+.container {
+  min-height: calc(100vh - 20.35rem);
+}
+
+@media screen and (min-width: 36em) and (orientation: landscape) {
+  .container {
+    min-height: calc(100vh - 16.35rem);
+  }
+}
+
 .header {
   margin: 0;
   background-color: var(--baby-purple);

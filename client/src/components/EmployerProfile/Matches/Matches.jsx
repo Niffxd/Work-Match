@@ -1,11 +1,20 @@
 import { useSelector } from "react-redux";
 import MatchCard from "../../Cards/MatchCard/MatchCard";
-
+import NotFound from "../../NotFound/NotFound";
+//status:
+//1 Abierto -> No hay match === 'Pendiente'
+//2.1 Match -> Hubo Match
+//2.2 Rechazado -> No hubo match
+//3.1 Puntuar -> Faltan ambos por puntuar
+//3.2 Puntuar al postulado -> falta el empleador por puntuar
+//3.3 Puntuar al empleador -> falta el postulado por puntuar
+//4 Finalizado -> Ambos puntuaron
 export default function EmployerMatches() {
   const userState = useSelector((state) => state.user);
   const { user } = userState;
   const userApplications = user.Projects.filter(
-    (project) => project.Bid.owner === user.id
+    (project) =>
+      project.Bid.owner === user.id && project.Bid.owner !== project.Bid.user
   );
   const userMatches = userApplications.filter((application) => {
     return (
@@ -19,7 +28,7 @@ export default function EmployerMatches() {
   return (
     <>
       {userMatches.length === 0 ? (
-        <h1>Aun no haz hecho match.</h1>
+        <NotFound message='Aún no haz hecho match.' />
       ) : (
         userMatches.map((match) => (
           <MatchCard

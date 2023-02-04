@@ -15,6 +15,7 @@ export const POST_USER = "POST_USER";
 export const UPDATE_USER = "UPDATE_USER";
 export const UPDATE_USER_RATE = "UPDATE_USER_RATE";
 export const USER_APPLICATION = "USER_APPLICATION";
+export const ID_BID = "ID_BID";
 export const UPDATE_APPLICATION_STATUS = "UPDATE_APPLICATION_STATUS";
 export const DELETE_USER = "DELETE_USER";
 export const REACTIVE_ACCOUNT = "REACTIVE_ACCOUNT";
@@ -83,12 +84,15 @@ export const userApplication = (data) => async (dispatch) => {
   });
 };
 
+//save id bid
+export const saveIdBid = (idBid) => ({ type: ID_BID, payload: idBid });
+
 //update application status
 export const updateApplicationStatus = (data) => async (dispatch) => {
   await axios.put(URL_APPLICATION, data);
   dispatch({
     type: UPDATE_APPLICATION_STATUS,
-    payload: "El estado de la applicación se actualizó con éxito.",
+    payload: "El estado de la aplicación se actualizó con éxito.",
   });
 };
 
