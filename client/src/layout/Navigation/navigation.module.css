@@ -1,11 +1,11 @@
-@import '../../styles/variables.css';
+@import "../../styles/variables.css";
 
 .container-header {
-  width: 100vw;
-  height: 5rem;
+  display: flex;
   margin: 0;
   padding: 0 1rem;
-  display: flex;
+  width: 100vw;
+  height: 5rem;
   justify-content: center;
   align-items: center;
   background-color: var(--purple);
@@ -26,19 +26,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: none;
-  border-radius: 2rem;
-  background-color: #57BF7D;
-  cursor: pointer;
-  color: #FFFEFB;
+  color: var(--light-color);
   text-decoration: none;
   font-weight: 500;
   margin: 1rem;
+  border: none;
+  border-radius: 2rem;
+  background-color: var(--green);
+  cursor: pointer;
 }
-
-.btn-session:hover {
-  transform: scale(1.05);
-}  
 
 .link-nav {
   margin: 0;
@@ -51,7 +47,7 @@
   width: 16rem;
   text-align: center;
   font-size: 1.3rem;
-  color: #FFFEFB;
+  color: var(--light-color);
   cursor: pointer;
 }
 
@@ -62,18 +58,10 @@
 
 .profile-links li {
   display: flex;
+  padding: 0 1rem;
   justify-content: space-between;
   align-items: center;
   margin: 0;
-}
-
-.profile-links li:hover {
-  background-color: #6B7FD7;
-}
-
-.profile-links li:last-child:hover {
-  background-color: #6B7FD7;
-  border-radius: 0 0 1rem 1rem;
 }
 
 .profile-links li a {
@@ -83,7 +71,7 @@
   display: flex;
   justify-content: flex-end;
   text-decoration: none;
-  color: #142129;
+  color: var(--dark-color);
 }
 
 .show-links {
@@ -92,17 +80,33 @@
   top: 5rem;
   left: 0;
   margin: 0;
-  padding: 0 1rem;
+  padding: 0;
   border-radius: 0 0 1rem 1rem;
   position: absolute;
-  background-color: #D0D5F0;
+  background-color: var(--baby-purple);
   z-index: 5;
 }
 
 .icon-link {
   margin: 0;
   width: 1.3rem;
-  filter: invert(34%) sepia(9%) saturate(0%) hue-rotate(242deg) brightness(109%) contrast(92%);
+  filter: invert(34%) sepia(9%) saturate(0%) hue-rotate(242deg) brightness(109%)
+    contrast(92%);
+}
+
+@media (pointer: fine) {
+  .btn-session:hover {
+    transform: scale(1.05);
+  }
+
+  .profile-links li:hover {
+    background-color: var(--purple);
+  }
+
+  .profile-links li:last-child:hover {
+    background-color: var(--purple);
+    border-radius: 0 0 1rem 1rem;
+  }
 }
 
 @media screen and (min-width: 36em) and (orientation: landscape) {

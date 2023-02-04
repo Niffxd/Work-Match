@@ -5,7 +5,11 @@ import Pagination from "../../components/Pagination/Pagination";
 import { getAddress, getState } from "../../redux/actions/addressActions";
 import { getCategories } from "../../redux/actions/categoriesActions";
 import { getProjects, itemsPerPage } from "../../redux/actions/projectActions";
-import { getAllUsers, getUserId, getUsername } from "../../redux/actions/userActions";
+import {
+  getAllUsers,
+  getUserId,
+  getUsername,
+} from "../../redux/actions/userActions";
 import { useAuth0 } from "@auth0/auth0-react";
 import style from "./home.module.css";
 
@@ -18,10 +22,10 @@ export default function Home() {
     variable = numberPerPage * (currentPage - 1),
     initialIndex = 0 + variable,
     finalIndex = numberPerPage + variable;
-    const { user } = useAuth0();
-    
-    useEffect(() => {
-      dispatch(getAllUsers());
+  const { user } = useAuth0();
+
+  useEffect(() => {
+    dispatch(getAllUsers());
     dispatch(getAddress());
     dispatch(getState());
     dispatch(getCategories());
@@ -33,9 +37,9 @@ export default function Home() {
   }, [currentPage, allProjects]);
 
   useEffect(() => {
-    !Object.keys(actualUser.user).length ? console.log('no user loged') : dispatch(getUserId(actualUser.user.id))
-    console.log('id: ', actualUser.user.id)
-  }, [actualUser.user.id])
+    Object.keys(actualUser.user).length !== 0 &&
+      dispatch(getUserId(actualUser.user.id));
+  }, [actualUser.user.id]);
 
   return (
     <main className={`${style["container"]}`}>
