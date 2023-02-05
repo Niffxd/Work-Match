@@ -28,7 +28,14 @@ async function read(id, query) {
           },
           {
             model: Project,
-            attributes: ['id', 'description', 'deleted', 'status'],
+            attributes: [
+              'id',
+              'description',
+              'deleted',
+              'status',
+              'budget',
+              'state',
+            ],
             include: [
               {
                 model: Category,

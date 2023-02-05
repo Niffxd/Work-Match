@@ -102,6 +102,9 @@
   display: flex;
   align-items: center;
 }
+.premium-button {
+  margin: 1rem;
+}
 .premium-icon {
   margin: 0 0.5rem;
   width: 2rem;
@@ -140,7 +143,7 @@
 }
 .margin {
   text-align: center;
-  margin: 0.5rem auto;
+  margin: 0.5rem 1rem;
 }
 
 @media screen and (min-width: 40em) {
@@ -151,10 +154,10 @@
     justify-content: flex-start;
   }
   .user-data {
-    padding: 0 2.5rem;
+    padding: 0 1.5rem;
   }
   .margin {
-    margin: 0.5rem 0;
+    margin: 0.5rem 1rem;
   }
 }
 

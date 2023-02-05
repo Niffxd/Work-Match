@@ -265,7 +265,7 @@ export default function DashboardUser() {
                 <button
                   className={`button-green ${
                     premium === "premium true" && "invisible"
-                  }`}
+                  } ${style["premium-button"]}`}
                   onClick={premiumHandler}
                 >
                   Activar Premium
