@@ -1,32 +1,34 @@
+import { useHistory } from "react-router-dom";
+
 import style from "./error404.module.css";
-import { Link } from "react-router-dom";
 
-export default function Error404 (){
-    return(
-        <div className={`${style["container"]}`}>
-            <div className={`${style["container-left"]}`}>
-                <div className={`${style["img-container"]}`}>
-                    <img src="/small_logo.png" alt="logo-header"/>
-                </div>
-            </div>
-            <div>
-            <div className={`${style["container-right"]}`}>
-                <div className={`${style["error-container"]}`}>
-                    <h3 className={`${style["error-h3"]}`}>Error 404</h3>
-                    <p className={`${style["error-p1"]}`}>Vaya... ¡Página no encontrada!</p>
-                    <p>La página que buscas no existe.</p>
-                </div>
-                <div className={`${style["container-but"]}`}>
-                    <button className={`${style["error-button"]}`}>
-                    <Link className={`${style["link-nav"]}`}
-                        to='/'>
-                        HOME
-                    </Link>
-                    </button>
-                </div>
-            </div>
-            </div>
-        </div>
-    )
+export default function Error404() {
+  const history = useHistory();
+
+  const homeHandler = (event) => {
+    event.preventDefault();
+    history.push(`/`);
+  };
+  return (
+    <article className={`${style["container"]}`}>
+      <img
+        className={`${style["error-image"]}`}
+        src='/small_logo.png'
+        alt='logo-header'
+      />
+      <section className={`${style["error-container"]}`}>
+        <h1 className={`${style["error-h1"]}`}>Error 404</h1>
+        <h3 className={`${style["error-h3"]}`}>
+          Vaya... ¡Página no encontrada!
+        </h3>
+        <p className={`${style["error-p"]}`}>La página que buscas no existe.</p>
+        <button
+          className={`button-green ${style["error-button"]}`}
+          onClick={homeHandler}
+        >
+          HOME
+        </button>
+      </section>
+    </article>
+  );
 }
-
