@@ -123,14 +123,9 @@ export default function JobOfferDetail() {
                 <div className={`${style["photo-container"]}`}>
                   <img
                     className={`${style["photo-profile"]}`}
-                    src='https://i.pinimg.com/736x/b5/49/41/b5494197b2d462c940f88988b203d290.jpg'
-                    alt='Photo profile.'
+                    src={owner.image}
+                    alt='Photo profile'
                   />
-                  {/* <img
-              className={`${style["photo-profile"]}`}
-              src={owner.image}
-              alt='Photo profile'
-            /> */}
                 </div>
                 {/* Name */}
                 <p className={`${style["user-name"]}`}>{owner.name}</p>

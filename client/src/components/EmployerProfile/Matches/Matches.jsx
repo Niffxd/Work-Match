@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import MatchCard from "../../Cards/MatchCard/MatchCard";
+import EmployerMatchCard from "../../Cards/MatchCard/EmployerMatchCard";
 import NotFound from "../../NotFound/NotFound";
 //status:
 //1 Abierto -> No hay match === 'Pendiente'
@@ -31,7 +31,7 @@ export default function EmployerMatches() {
         <NotFound message='Aún no haz hecho match.' />
       ) : (
         userMatches.map((match) => (
-          <MatchCard
+          <EmployerMatchCard
             key={`match-${match.id}`}
             category={match.Category.name}
             user={match.Bid.bidder}

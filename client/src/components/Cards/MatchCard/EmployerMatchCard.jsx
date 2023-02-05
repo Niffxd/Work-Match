@@ -11,101 +11,97 @@ import {
 import ConfirmationMessage from "../../ConfirmationMessage/ConfirmationMessage";
 import style from "./matchCard.module.css";
 
-export default function MatchCard({ bid, category, owner, status }) {
-  //variables
-  const dispatch = useDispatch();
-  const regexNumber = /^[0-5]+$/;
-  //states
-  const [rate, setRate] = useState("");
-  const [errors, setErrors] = useState("");
-  const [visible, setVisible] = useState("visible");
-  const userState = useSelector((state) => state.user);
-  const { user, idBid } = userState;
+export default function EmployerMatchCard({ bid, category, owner, status }) {
+  //   //variables
+  //   const dispatch = useDispatch();
+  //   const regexNumber = /^[0-5]+$/;
+  //   //states
+  //   const [rate, setRate] = useState("");
+  //   const [errors, setErrors] = useState("");
+  //   const [visible, setVisible] = useState("visible");
+  //   const userState = useSelector((state) => state.user);
+  //   const { user, idBid } = userState;
 
-  // input change handler
-  const changeHandler = (event) => {
-    const { value } = event.target;
-    setRate(value);
-    if (
-      !regexNumber.test(value) ||
-      parseInt(value) < 0 ||
-      parseInt(value) > 5
-    ) {
-      setErrors("La puntuación debe ser un número entero entre 0 y 5");
-    } else {
-      setErrors("");
-    }
-  };
+  //   // input change handler
+  //   const changeHandler = (event) => {
+  //     const { value } = event.target;
+  //     setRate(value);
+  //     if (
+  //       !regexNumber.test(value) ||
+  //       parseInt(value) < 0 ||
+  //       parseInt(value) > 5
+  //     ) {
+  //       setErrors("La puntuación debe ser un número entero entre 0 y 5");
+  //     } else {
+  //       setErrors("");
+  //     }
+  //   };
 
-  //change the status from accepted to completed
-  const finalizedHandler = () => {
-    try {
-      dispatch(updateApplicationStatus({ id: idBid, status: "Puntuar" }));
-      // setVisible("invisible");
-      dispatch(getUserId(user.id));
-    } catch (error) {
-      console.log(error);
-      dispatch(newMessage(error.message, "error"));
-    }
-  };
+  //   //change the status from accepted to completed
+  //   const finalizedHandler = () => {
+  //     try {
+  //       dispatch(updateApplicationStatus({ id: idBid, status: "Puntuar" }));
+  //       // setVisible("invisible");
+  //       dispatch(getUserId(user.id));
+  //     } catch (error) {
+  //       console.log(error);
+  //       dispatch(newMessage(error.message, "error"));
+  //     }
+  //   };
 
-  //Open confirmation message
-  const confirmationHandler = async (event) => {
-    event.preventDefault();
-    dispatch(saveIdBid(bid));
-    dispatch(confirmationOpen());
-  };
+  //   //Open confirmation message
+  //   const confirmationHandler = async (event) => {
+  //     event.preventDefault();
+  //     dispatch(saveIdBid(bid));
+  //     dispatch(confirmationOpen());
+  //   };
 
-  //submit score and change the status from completed to closed
-  const scoreHandler = (event, rate, id) => {
-    event.preventDefault();
-    if (
-      !rate ||
-      !regexNumber.test(rate) ||
-      parseInt(rate) < 0 ||
-      parseInt(rate) > 5
-    ) {
-      setErrors("La puntuación debe ser un número entero entre 0 y 5");
-    } else {
-      try {
-        dispatch(putRateUser({ rate, id }));
-        status === "Puntuar" &&
-          dispatch(
-            updateApplicationStatus({
-              id: bid,
-              status: "Puntuar al postulado",
-            })
-          );
-        status === "Puntuar al empleador" &&
-          dispatch(updateApplicationStatus({ id: bid, status: "Finalizado" }));
-        dispatch(getUserId(user.id));
-        setVisible("invisible");
-        setRate("");
-      } catch (error) {
-        console.log(error);
-        dispatch(newMessage(error.message, "error"));
-      }
-    }
-  };
+  //   //submit score and change the status from completed to closed
+  //   const scoreHandler = (event, rate, id) => {
+  //     event.preventDefault();
+  //     if (
+  //       !rate ||
+  //       !regexNumber.test(rate) ||
+  //       parseInt(rate) < 0 ||
+  //       parseInt(rate) > 5
+  //     ) {
+  //       setErrors("La puntuación debe ser un número entero entre 0 y 5");
+  //     } else {
+  //       try {
+  //         dispatch(putRateUser({ rate, id }));
+  //         status === "Puntuar" &&
+  //           dispatch(
+  //             updateApplicationStatus({
+  //               id: bid,
+  //               status: "Puntuar al postulado",
+  //             })
+  //           );
+  //         status === "Puntuar al empleador" &&
+  //           dispatch(updateApplicationStatus({ id: bid, status: "Finalizado" }));
+  //         dispatch(getUserId(user.id));
+  //         setVisible("invisible");
+  //         setRate("");
+  //       } catch (error) {
+  //         console.log(error);
+  //         dispatch(newMessage(error.message, "error"));
+  //       }
+  //     }
+  //   };
 
   return (
     <>
-      <ConfirmationMessage
+      {/* <ConfirmationMessage
         message='¿Aceptas y confirmas que el trabajo ya fue finalizado en su totalidad?'
         handler={finalizedHandler}
-      />
-      <article className={`${style["card-container"]}`}>
+      /> */}
+      <h1>Tarjeta Match</h1>
+      {/* <article className={`${style["card-container"]}`}>
         <div className={`${style["photo-container"]}`}>
           <img
             className={`${style["photo-profile"]}`}
-            src='https://i.pinimg.com/736x/5c/84/3b/5c843bd1b68bbf8935e6239c301dc342.jpg'
+            src={owner.image}
             alt='Photo profile'
           />
-          {/* <img
-              className={`${style['photo-profile']}`}
-              src={owner.image}
-              alt="Photo profile"
-            /> */}
         </div>
         <div className={`${style["category-name"]}`}>
           <p className={`${style["category"]}`}>{category}</p>
@@ -169,7 +165,7 @@ export default function MatchCard({ bid, category, owner, status }) {
             <p className={`${style["finalized-text"]}`}>Finalizado</p>
           </div>
         )}
-      </article>
+      </article> */}
     </>
   );
 }
