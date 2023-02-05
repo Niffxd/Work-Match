@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import MatchCard from "../../Cards/MatchCard/MatchCard";
+import EmployeeMatchCard from "../../Cards/MatchCard/EmployeeMatchCard";
 import NotFound from "../../NotFound/NotFound";
 
 export default function EmployeeMatches() {
@@ -25,7 +25,7 @@ export default function EmployeeMatches() {
         userMatches.map((match) => {
           const owner = match.Users.find((user) => user.Bid.status === "Owner");
           return (
-            <MatchCard
+            <EmployeeMatchCard
               key={`match-${match.id}`}
               category={match.Category.name}
               bid={match.Bid.id}
