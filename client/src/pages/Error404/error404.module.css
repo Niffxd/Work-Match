@@ -1,81 +1,70 @@
 @import "../../styles/variables.css";
 
-@import "../../styles/variables.css";
-
 .container {
-    display: flex;
-    position:absolute;
-    z-index:100;
-    top:0;
-    left:0;
-    background-color: var(--light-color);
-    justify-content: center;
-    justify-items: center;
-    align-items: center;
-    align-content: center;
-    width:100vw;
-    height:100vh;
-}
-.container-left{
-    height:449px;
-    position: relative;
-    border-right: 1px solid var(--dark-color);;
-}
-.container-right{
-   height:449px;
-}
-
-.img-container{
-    position: relative;
-    top: 130px;
-    padding: 0rem 3rem 3.5rem;
-}
-
-
-.error-container {
-  padding: 7rem 3rem 3.5rem;
-  justify-content: center;
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--light-color);
+}
+.error-image {
+  width: 60%;
+}
+.error-h1 {
+  font-size: max(3rem, 12vw);
+}
+.error-h3,
+.error-p {
+  margin: 0;
   text-align: center;
-  position: relative;
-  top: 10px;
+  font-weight: var(--regular);
+}
+.error-h3 {
+  font-size: max(1.4rem, 3vw);
+}
+.error-p {
+  font-size: max(1rem, 2.25vw);
+}
+.error-button {
+  font-size: max(1.3rem, 2.5vw);
+}
+.error-container {
+  border-top: 1px solid var(--dark-color);
 }
 
-.error-h3{
-    font-size: 5.5em;
-}
-.error-p1{
-    font-size: 1.3em;
-}
-.container-but{
-    height: 100px;
-}
-.error-button{
-    position: relative;
-    top: 10px;
-    left:184px;
-    background-color: var(--green);
-}
-
-.link-nav {
-    margin: 0;
-    text-decoration: none;
-    color: var(--light-color);
-    font-size: max(1.2rem, 1.5vw);
+@media screen and (min-width: 36em) and (orientation: landscape) {
+  .container {
+    display: flex;
+    flex-direction: row;
   }
-
-
-@media screen and (max-width: 36em) and (orientation: landscape) {
-    .container {
-      gap: 0;
-      display: flex;
-      flex-direction: column;
-    }
-    .container-left{
-        height:449px;
-        position: relative;
-        border-right: none;
-    }
-
+  .error-image {
+    width: max(17rem, 20%);
+    margin: 0 3rem;
+  }
+  .error-container {
+    margin: 0;
+    padding: 0 3rem;
+    border-top: none;
+    border-left: 1px solid var(--dark-color);
+  }
+  .error-h1 {
+    font-size: max(3rem, 7vw);
+  }
+  .error-h3 {
+    font-size: 1.4rem;
+  }
+  .error-p {
+    font-size: 1rem;
+  }
+  .error-button {
+    margin-top: 3.5rem;
+    font-size: 1.3rem;
+  }
 }
-  
