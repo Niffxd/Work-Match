@@ -1,12 +1,12 @@
 import { useSelector } from "react-redux";
-import PublicationCard from "../../Cards/PublicationCard/PublicationCard";
+import JobOfferCard from "../../Cards/JobOfferCard/JobOfferCard";
 import NotFound from "../../NotFound/NotFound";
 
 export default function EmployerPublications() {
   const userState = useSelector((state) => state.user);
   const { user } = userState;
   const userApplications = user.Projects.filter(
-    (project) => project.Bid.user === project.Bid.owner
+    (project) => project.Bid.status === "Owner"
   );
   return (
     <>
@@ -14,11 +14,16 @@ export default function EmployerPublications() {
         <NotFound message='Aún no tienes publicaciones.' />
       ) : (
         userApplications.map((publication) => (
-          <PublicationCard
+          <JobOfferCard
             key={`publication-${publication.id}`}
+            id={publication.id}
             category={publication.Category.name}
-            image={publication.Category.image}
             description={publication.description}
+            image={publication.Category.image}
+            budget={publication.budget}
+            state={publication.state}
+            deleted={publication.deleted}
+            status={publication.status}
           />
         ))
       )}
