@@ -35,6 +35,8 @@ export default function EmployerPostulates() {
             name={postulate.name}
             category={postulate.category}
             biography={postulate.biography}
+            premium={postulate.premium}
+            rate={postulate.rate}
           />
         ))
       )}
