@@ -19,6 +19,7 @@ import Loading from "./components/Register/Loading";
 import { useAuth0 } from "@auth0/auth0-react";
 import EditJobOffer from "./pages/EditJobOffer/EditJobOffer";
 import AlertMessage from "./components/AlertMessage/AlertMessage";
+import ProtectedRoute from "./components/protected-route"
 
 axios.defaults.baseURL = "http://localhost:3001";
 
@@ -40,16 +41,16 @@ function App() {
         <Route exact path='/about-us' component={AboutUs} />
         <Route exact path='/Login' component={Login} />
         <Route exact path='/register' component={Register} />
-        <Route exact path='/register/complete' component={PostUser} />
-        <Route exact path='/create-job-offer' component={CreateJobOffer} />
-        <Route exact path='/edit-job-offer' component={EditJobOffer} />
-        <Route exact path='/my-profile' component={DashboardUser} />
-        <Route
+        <ProtectedRoute exact path='/register/complete' component={PostUser} />
+        <ProtectedRoute exact path='/create-job-offer' component={CreateJobOffer} />
+        <ProtectedRoute exact path='/edit-job-offer' component={EditJobOffer} />
+        <ProtectedRoute exact path='/my-profile' component={DashboardUser} />
+        <ProtectedRoute
           exact
           path='/my-profile/employee/:type'
           component={EmployeeProfile}
         />
-        <Route
+        <ProtectedRoute
           exact
           path='/my-profile/employer/:type'
           component={EmployerProfile}
