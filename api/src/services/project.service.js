@@ -12,9 +12,7 @@ async function read(id, query) {
   var data = id
     ? await Project.findAll({
         where: { id: id },
-        order: [
-          ['id', 'DESC'],
-      ],
+        order: [['id', 'DESC']],
         include: [
           {
             model: Category,
@@ -23,9 +21,7 @@ async function read(id, query) {
         ],
       })
     : await Project.findAll({
-      order: [
-        ['id', 'DESC'],
-        ],
+        order: [['id', 'DESC']],
         include: [
           {
             model: Category,
@@ -46,6 +42,7 @@ async function read(id, query) {
       await user.read(1, { page: 1 });
     }
     const jobs = [
+      //1
       {
         description:
           'Nos encontramos en la búsqueda de personal con experiencia comprobable en carpintería y uso de herramientas manuales para el armado de paneles. Requerimos a una persona responsable, organizada y puntual.',
@@ -58,6 +55,7 @@ async function read(id, query) {
         information: 'Las Heras, calle 1234',
         state: 1,
       },
+      //2
       {
         description:
           'Se busca cocinero para cumpleaños. Deberá preparar la entrada, plato principal y postre. Se requiere a una persona resolutiva, proactiva, entusiasta, con buena comunicación y relaciones interpersonales.',
@@ -69,7 +67,9 @@ async function read(id, query) {
         information: 'Sábado 10 de febrero, 12:00hs, Restaurante Luz Azul',
         state: 2,
       },
+      //3
       {
+        status: false,
         description:
           'Se busca chef particular para evento. Lorem ipsum dolor sit amet consectetur adipiscing elit, urna consequat felis vehicula class ultricies mollis dictumst, aenean non a in donec nulla. Phasellus ante pellentesque erat cum risus consequat imperdiet aliquam, integer placerat et turpis mi eros nec lobortis taciti, vehicula nisl litora tellus ligula porttitor metus.',
         category: 2, //cocina
@@ -80,6 +80,7 @@ async function read(id, query) {
         information: 'Sábado 15 de febrero, 20:00hs, Salon de Fiesta 123',
         state: 3,
       },
+      //4
       {
         description:
           'Estamos en busca de fotógrafo de bodas. Lorem ipsum dolor sit amet consectetur adipiscing elit, urna consequat felis vehicula class ultricies mollis dictumst, aenean non a in donec nulla. Phasellus ante pellentesque erat cum risus consequat imperdiet aliquam, integer placerat et turpis mi eros nec lobortis taciti, vehicula nisl litora tellus ligula porttitor metus.',
@@ -92,7 +93,9 @@ async function read(id, query) {
         information: 'Sábado 17 de febrero, 15:00hs, Salon de Fiesta 123',
         state: 4,
       },
+      //5
       {
+        status: false,
         description:
           'Se rquiere plomero. Lorem ipsum dolor sit amet consectetur adipiscing elit, urna consequat felis vehicula class ultricies mollis dictumst, aenean non a in donec nulla. Phasellus ante pellentesque erat cum risus consequat imperdiet aliquam, integer placerat et turpis mi eros nec lobortis taciti, vehicula nisl litora tellus ligula porttitor metus.',
         category: 9, //plomeria
@@ -102,7 +105,9 @@ async function read(id, query) {
         bidder: 6,
         state: 5,
       },
+      //6
       {
+        status: false,
         description:
           'Se busca electricista. Lorem ipsum dolor sit amet consectetur adipiscing elit, urna consequat felis vehicula class ultricies mollis dictumst, aenean non a in donec nulla. Phasellus ante pellentesque erat cum risus consequat imperdiet aliquam, integer placerat et turpis mi eros nec lobortis taciti, vehicula nisl litora tellus ligula porttitor metus.',
         category: 3, //electricidad
@@ -112,7 +117,9 @@ async function read(id, query) {
         bidder: 7,
         state: 6,
       },
+      //7
       {
+        status: false,
         description:
           'Se busca peluquero. Lorem ipsum dolor sit amet consectetur adipiscing elit, urna consequat felis vehicula class ultricies mollis dictumst, aenean non a in donec nulla. Phasellus ante pellentesque erat cum risus consequat imperdiet aliquam, integer placerat et turpis mi eros nec lobortis taciti, vehicula nisl litora tellus ligula porttitor metus.',
         category: 4, //estilismo
@@ -124,6 +131,7 @@ async function read(id, query) {
         information: 'Viernes 25 de febrero, 10:00hs',
         state: 7,
       },
+      //8
       {
         description:
           'Se busca fotógrafo. Lorem ipsum dolor sit amet consectetur adipiscing elit, urna consequat felis vehicula class ultricies mollis dictumst, aenean non a in donec nulla. Phasellus ante pellentesque erat cum risus consequat imperdiet aliquam, integer placerat et turpis mi eros nec lobortis taciti, vehicula nisl litora tellus ligula porttitor metus.',
@@ -136,6 +144,7 @@ async function read(id, query) {
         information: 'Sábado 17 de febrero, 15:00hs, Salon de Fiesta 123',
         state: 8,
       },
+      //9
       {
         description:
           'Se busca jardinero. Lorem ipsum dolor sit amet consectetur adipiscing elit, urna consequat felis vehicula class ultricies mollis dictumst, aenean non a in donec nulla. Phasellus ante pellentesque erat cum risus consequat imperdiet aliquam, integer placerat et turpis mi eros nec lobortis taciti, vehicula nisl litora tellus ligula porttitor metus.',
@@ -147,6 +156,7 @@ async function read(id, query) {
         estimated: 4,
         state: 9,
       },
+      //10
       {
         description:
           'Se busca fotógrafo. Lorem ipsum dolor sit amet consectetur adipiscing elit, urna consequat felis vehicula class ultricies mollis dictumst, aenean non a in donec nulla. Phasellus ante pellentesque erat cum risus consequat imperdiet aliquam, integer placerat et turpis mi eros nec lobortis taciti, vehicula nisl litora tellus ligula porttitor metus.',
@@ -158,7 +168,9 @@ async function read(id, query) {
         estimated: 4,
         state: 10,
       },
+      //11
       {
+        status: false,
         description:
           'Se busca plomero. Lorem ipsum dolor sit amet consectetur adipiscing elit, urna consequat felis vehicula class ultricies mollis dictumst, aenean non a in donec nulla. Phasellus ante pellentesque erat cum risus consequat imperdiet aliquam, integer placerat et turpis mi eros nec lobortis taciti, vehicula nisl litora tellus ligula porttitor metus.',
         category: 9, //plomeria
@@ -175,65 +187,146 @@ async function read(id, query) {
       {
         project: 1,
         user: 2,
+        status: 'Owner',
         owner: 2,
       },
       {
         project: 2,
         user: 3,
+        status: 'Owner',
         owner: 3,
       },
       {
         project: 3,
         user: 4,
+        status: 'Owner',
         owner: 4,
       },
       {
         project: 4,
         user: 5,
+        status: 'Owner',
         owner: 5,
       },
       {
         project: 5,
         user: 6,
+        status: 'Owner',
         owner: 6,
       },
       {
         project: 6,
         user: 7,
+        status: 'Owner',
         owner: 7,
       },
       {
         project: 7,
         user: 8,
+        status: 'Owner',
         owner: 8,
       },
       {
         project: 8,
         user: 1,
+        status: 'Owner',
         owner: 1,
       },
       {
         project: 9,
         user: 2,
+        status: 'Owner',
         owner: 2,
       },
       {
         project: 10,
         user: 3,
+        status: 'Owner',
         owner: 3,
       },
       {
         project: 11,
         user: 4,
+        status: 'Owner',
         owner: 4,
+      },
+      {
+        project: 2,
+        user: 2,
+        status: 'Abierto',
+        owner: 3,
+      },
+      {
+        project: 3,
+        user: 2,
+        status: 'Match',
+        owner: 4,
+      },
+      {
+        project: 4,
+        user: 2,
+        status: 'Rechazado',
+        owner: 5,
+      },
+      {
+        project: 5,
+        user: 2,
+        status: 'Puntuar',
+        owner: 6,
+      },
+      {
+        project: 6,
+        user: 2,
+        status: 'Puntuar al postulado',
+        owner: 7,
+      },
+      {
+        project: 7,
+        user: 2,
+        status: 'Puntuar al empleador',
+        owner: 8,
+      },
+      {
+        project: 11,
+        user: 2,
+        status: 'Finalizado',
+        owner: 4,
+      },
+      {
+        project: 1,
+        user: 3,
+        status: 'Abierto',
+        owner: 2,
+      },
+      {
+        project: 1,
+        user: 4,
+        status: 'Abierto',
+        owner: 2,
+      },
+      {
+        project: 1,
+        user: 5,
+        status: 'Abierto',
+        owner: 2,
+      },
+      {
+        project: 1,
+        user: 6,
+        status: 'Abierto',
+        owner: 2,
       },
     ];
 
     var i = 0;
     while (i < jobs.length) {
       await Project.create(jobs[i]);
-      await Bid.create(bids[i]);
       i++;
+    }
+    var j = 0;
+    while (j < bids.length) {
+      await Bid.create(bids[j]);
+      j++;
     }
 
     data = await Bid.findAll();
@@ -242,9 +335,7 @@ async function read(id, query) {
       meta,
     };
     data = await Project.findAll({
-      order: [
-        ['id', 'DESC'],
-        ],
+      order: [['id', 'DESC']],
       include: [
         {
           model: Category,
@@ -280,9 +371,7 @@ async function readByUser(id, query) {
       })
     : await Project.findAll({
         where: { owner: id },
-        order: [
-          ['id', 'DESC'],
-          ],
+        order: [['id', 'DESC']],
         include: [
           {
             model: User,
@@ -325,17 +414,15 @@ async function readByPostulations(id, query) {
 }
 
 async function create(project) {
-
-
   const data = await Project.create(project);
   const bids = {
     project: data.id,
     user: data.bidder,
     owner: data.owner,
+    status: 'Owner',
     deleted: project.deleted,
-    owner:data.owner
   };
-  console.log(bids)
+  console.log(bids);
   await Bid.create(bids);
   return data;
 }
@@ -351,7 +438,6 @@ async function update(project) {
 }
 
 async function remove(id) {
-
   const result = await Project.update(
     {
       deleted: true,

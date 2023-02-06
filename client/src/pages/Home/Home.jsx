@@ -7,10 +7,12 @@ import { getCategories } from "../../redux/actions/categoriesActions";
 import { getProjects, itemsPerPage } from "../../redux/actions/projectActions";
 import { getAllUsers, getUserId } from "../../redux/actions/userActions";
 import style from "./home.module.css";
+import NotFound from "../../components/NotFound/NotFound";
 
 export default function Home() {
   const dispatch = useDispatch();
   const projectState = useSelector((state) => state.project);
+  const actualUser = useSelector((state) => state.user);
   const { allProjects, projectsPerPage, currentPage } = projectState;
   const numberPerPage = 6,
     variable = numberPerPage * (currentPage - 1),
@@ -18,24 +20,29 @@ export default function Home() {
     finalIndex = numberPerPage + variable;
 
   useEffect(() => {
-    dispatch(getAllUsers());
-    dispatch(getAddress());
-    dispatch(getState());
-    dispatch(getCategories());
-    dispatch(getProjects());
-    dispatch(getUserId(2));
-  }, [dispatch]);
+    dispatch(getAllUsers())
+      .then(() => dispatch(getState()))
+      .then(() => dispatch(getAddress()))
+      .then(() => dispatch(getCategories()))
+      .then(() => dispatch(getProjects()))
+      .catch((error) => console.log(error));
+  }, []);
 
   useEffect(() => {
     dispatch(itemsPerPage(initialIndex, finalIndex));
   }, [currentPage, allProjects]);
+
+  useEffect(() => {
+    Object.keys(actualUser.user).length !== 0 &&
+      dispatch(getUserId(actualUser.user.id));
+  }, [actualUser.user.id]);
 
   return (
     <main className={`${style["container"]}`}>
       <section className={`container ${style["jobs-container"]}`}>
         {/* <Filter onSortChange={handleSort} /> */}
         {allProjects.length === 0 ? (
-          <h1>No hay trabajos disponibles en este momento</h1>
+          <NotFound message='No hay trabajos disponibles en este momento.' />
         ) : (
           <div className={`${style["all-jobs"]}`}>
             {projectsPerPage.map((jobOffer) => (

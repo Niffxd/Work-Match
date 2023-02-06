@@ -28,11 +28,29 @@ async function read(id, query) {
           },
           {
             model: Project,
-            attributes: ['id', 'description', 'deleted', 'status'],
+            attributes: [
+              'id',
+              'description',
+              'deleted',
+              'status',
+              'budget',
+              'state',
+            ],
             include: [
               {
                 model: Category,
                 attributes: ['id', 'name', 'image'],
+              },
+              {
+                model: User,
+                attributes: [
+                  'id',
+                  'name',
+                  'biography',
+                  'phone',
+                  'image',
+                  'premium',
+                ],
               },
             ],
           },
@@ -60,7 +78,7 @@ async function read(id, query) {
   };
   if (!result.data || !result.data.length || result.data.length === 0) {
     await role.read(1, { page: 1 });
-    await jobState.read(1, { page: 1 });
+    // await jobState.read(1, { page: 1 });
     const jobs = [
       {
         username: 'admin',
@@ -71,30 +89,30 @@ async function read(id, query) {
         mail: 'miguel123@email.com',
         phone: 2548773945,
         role: 1,
-        image: '',
+        image: 'https://cdn-icons-png.flaticon.com/512/6186/6186344.png',
         premium: true,
       },
       {
         username: 'dari',
         password: '1234',
         name: 'Dariana Rengifo',
-        age: 31,
+        age: 25,
         biography: '',
         mail: 'darianarengifo@gmail.com',
         phone: 3517739445,
         role: 2,
-        image: '',
+        image: 'https://cdn-icons-png.flaticon.com/512/2335/2335153.png',
       },
       {
         username: 'nico',
         password: '1234',
         name: 'Nicolas sanchez',
-        age: 31,
+        age: 26,
         biography: '',
         mail: 'nicosanchez673@gmail.com',
         phone: 5493816631856,
         role: 2,
-        image: '',
+        image: 'https://cdn-icons-png.flaticon.com/512/1785/1785888.png',
       },
       {
         username: 'pedro',
@@ -105,7 +123,7 @@ async function read(id, query) {
         mail: 'aristiguetam97@gmail.com',
         phone: 51959734026,
         role: 2,
-        image: '',
+        image: 'https://cdn-icons-png.flaticon.com/512/2566/2566158.png',
       },
       {
         username: 'diego',
@@ -116,7 +134,7 @@ async function read(id, query) {
         mail: 'diegoezequielguillen@gmail.com',
         phone: 5492665031781,
         role: 2,
-        image: '',
+        image: 'https://cdn-icons-png.flaticon.com/512/4086/4086679.png',
       },
       {
         username: 'marcos',
@@ -127,7 +145,7 @@ async function read(id, query) {
         mail: 'marcoscarbajales96@gmail.com',
         phone: 5493815128406,
         role: 2,
-        image: '',
+        image: 'https://cdn-icons-png.flaticon.com/512/2566/2566162.png',
       },
       {
         username: 'mateo',
@@ -138,7 +156,7 @@ async function read(id, query) {
         mail: 'mateo.rng@gmail.com',
         phone: 5492215978443,
         role: 2,
-        image: '',
+        image: 'https://cdn-icons-png.flaticon.com/512/4140/4140048.png',
       },
       {
         username: 'daniel',
@@ -149,7 +167,7 @@ async function read(id, query) {
         mail: 'daniel@gmail.com',
         phone: 573116886868,
         role: 2,
-        image: '',
+        image: 'https://cdn-icons-png.flaticon.com/512/4128/4128176.png',
       },
     ];
     var i = 0;
@@ -172,8 +190,7 @@ async function getUserName(username) {
   const userFound = await User.findOne({
     where: { username },
   });
-
-  return User ? userFound : 'not found';
+  return userFound;
 }
 
 async function readUserAddres(id, query) {

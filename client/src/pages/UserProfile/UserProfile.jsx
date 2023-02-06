@@ -25,14 +25,16 @@ export default function DashboardUser() {
   const { states } = addressState;
   const [premium, setPremium] = useState(null);
   const [visibleAddress, setVisibleAddress] = useState("invisible");
-  const address = states.find((element) => element.id === user.Address.id);
+  const address = user.Address
+    ? states.find((element) => element.id === user.Address.id)
+    : null;
   // initial state of form
   const initialForm = {
-    address: address.name || "Selecciona una dirección",
-    addressId: user.Address.id || 0,
+    address: address ? address.name : "Selecciona una dirección",
+    addressId: user.Address ? user.Address.id : 1,
     age: user.age || "",
     biography: user.biography || "",
-    direction: user.Address.description || "",
+    direction: user.Address ? user.Address.description : "",
     image: user.image || "",
     username: user.username || "",
     mail: user.mail || "",
@@ -40,7 +42,6 @@ export default function DashboardUser() {
     password: "",
     phone: user.phone || "",
     repeatPassword: "",
-    username: user.username || "",
   };
 
   // custom hook form
@@ -218,14 +219,9 @@ export default function DashboardUser() {
               <div className={`${style["photo-container"]}`}>
                 <img
                   className={`${style["photo-profile"]}`}
-                  src='https://i.pinimg.com/736x/b5/49/41/b5494197b2d462c940f88988b203d290.jpg'
-                  alt='Photo profile.'
-                />
-                {/* <img
-                  className={`${style['photo-profile']}`}
                   src={user.image}
-                  alt="Photo profile"
-                /> */}
+                  alt='Photo profile'
+                />
               </div>
               <button
                 className={`${style["add-photo"]}`}
@@ -264,7 +260,7 @@ export default function DashboardUser() {
                 <button
                   className={`button-green ${
                     premium === "premium true" && "invisible"
-                  }`}
+                  } ${style["premium-button"]}`}
                   onClick={premiumHandler}
                 >
                   Activar Premium

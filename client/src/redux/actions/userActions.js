@@ -3,16 +3,19 @@ import axios from "axios";
 //URLS
 const URL_USER = "/user";
 const URL_APPLICATION = "/bid";
+const URL_USERNAME = "/user/username";
 
 // TYPES
 export const GET_ALL_USERS = "GET_ALL_USERS";
 export const GET_USER = "GET_USER";
+export const GET_USERNAME = "GET_USERNAME";
 export const CLEAR_USER = "CLEAR_USER";
 export const GET_PUBLICATION = "GET_PUBLICATION";
 export const POST_USER = "POST_USER";
 export const UPDATE_USER = "UPDATE_USER";
 export const UPDATE_USER_RATE = "UPDATE_USER_RATE";
 export const USER_APPLICATION = "USER_APPLICATION";
+export const ID_BID = "ID_BID";
 export const UPDATE_APPLICATION_STATUS = "UPDATE_APPLICATION_STATUS";
 export const DELETE_USER = "DELETE_USER";
 export const REACTIVE_ACCOUNT = "REACTIVE_ACCOUNT";
@@ -23,6 +26,13 @@ export const getAllUsers = () => async (dispatch) => {
   const response = await axios.get(`${URL_USER}`);
   const getUsers = response.data.data;
   dispatch({ type: GET_ALL_USERS, payload: getUsers });
+};
+
+//get username
+export const getUsername = (username) => async (dispatch) => {
+  const response = await axios.get(`${URL_USERNAME}/${username}`);
+  const getUsername = response.data;
+  dispatch({ type: GET_USERNAME, payload: getUsername });
 };
 
 //one user
@@ -74,12 +84,15 @@ export const userApplication = (data) => async (dispatch) => {
   });
 };
 
+//save id bid
+export const saveIdBid = (idBid) => ({ type: ID_BID, payload: idBid });
+
 //update application status
 export const updateApplicationStatus = (data) => async (dispatch) => {
   await axios.put(URL_APPLICATION, data);
   dispatch({
     type: UPDATE_APPLICATION_STATUS,
-    payload: "El estado de la applicación se actualizó con éxito.",
+    payload: "El estado de la aplicación se actualizó con éxito.",
   });
 };
 
