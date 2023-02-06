@@ -41,7 +41,6 @@ export default function EmployeeMatchCard({ bid, category, owner, status }) {
   const finalizedHandler = () => {
     try {
       dispatch(updateApplicationStatus({ id: idBid, status: "Puntuar" }));
-      // setVisible("invisible");
       dispatch(getUserId(user.id));
     } catch (error) {
       console.log(error);
