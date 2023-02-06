@@ -9,9 +9,6 @@ const TermsYCopyright = () => {
       <div className={styles["terms"]}>
         <Terms />
       </div>
-      <div className={styles["copyright"]}>
-        <Copyright />
-      </div>
     </div>
   );
 };

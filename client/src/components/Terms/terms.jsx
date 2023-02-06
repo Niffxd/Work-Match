@@ -61,21 +61,20 @@ const Terms = () => {
               <h5>►4.1 Reglas generales</h5>
               <p>
                 Queda prohibido a los Usuario utilizar el Sitio Web o los Sitios
-                Web Afiliados a Bolsadetrabajo.com para transmitir, distribuir,
-                guardar o destruir material, incluyendo sin limitación, el
-                Contenido Propiedad de Bolsadetrabajo.com en los casos en que
-                dicho uso: (a) cause la violación de cualquier norma jurídica
-                aplicable; (b) infrinja los derechos de autor, marcas
-                registradas, secretos industriales u otros derechos de propiedad
-                intelectual o industrial de terceros; (c) viole la
-                confidencialidad, privacidad u otros derechos de terceros, o;
-                (d) resulte en la publicación de material difamatorio, obsceno,
-                amenazador, injurioso o despectivo. Bolsadetrabajo.com se
-                reserva el derecho de suspender el uso a cualquier Usuario que
-                realice actos que contravengan este apartado; asimismo,
-                Bolsadetrabajo.com podrá suspender en el uso del Sitio Web a
-                cualquier Usuario cuando la suspensión sea ordenada por
-                autoridad competente.
+                Web Afiliados a Work-Match para transmitir, distribuir, guardar
+                o destruir material, incluyendo sin limitación, el Contenido
+                Propiedad de Work-Match en los casos en que dicho uso: (a) cause
+                la violación de cualquier norma jurídica aplicable; (b) infrinja
+                los derechos de autor, marcas registradas, secretos industriales
+                u otros derechos de propiedad intelectual o industrial de
+                terceros; (c) viole la confidencialidad, privacidad u otros
+                derechos de terceros, o; (d) resulte en la publicación de
+                material difamatorio, obsceno, amenazador, injurioso o
+                despectivo. Work-Match se reserva el derecho de suspender el uso
+                a cualquier Usuario que realice actos que contravengan este
+                apartado; asimismo, Work-Match podrá suspender en el uso del
+                Sitio Web a cualquier Usuario cuando la suspensión sea ordenada
+                por autoridad competente.
               </p>
             </li>
             <li>
@@ -83,21 +82,21 @@ const Terms = () => {
               <p>
                 Se prohíbe a los Usuarios el violar o intentar violar la
                 seguridad del Sitio Web y de los Sitios Web Afiliados de
-                Bolsadetrabajo.com; quedan prohibidas al Usuario, entre otras
-                acciones: (a) el acceder a datos a los cuales el Usuario no se
-                encuentra autorizado para utilizar o iniciar sesión en un
-                servidor o en una cuenta para la que el Usuario no tiene acceso
-                autorizado; (b) el intentar examinar, escanear o probar la
-                vulnerabilidad de un sistema de informática o de una red o
-                quebrantar las medidas de seguridad o autenticación sin la
-                debida autorización; (c) el intentar interferir con el uso de
-                cualquier otro Usuario, servicio de hospedaje o red, incluyendo,
-                sin limitación, el transmitir un virus al Sitio Web; causar una
-                saturación de dichos sitios mediante "inundación" (flooding),
-                "envío de correo no deseado" (spamming), "bombardeo de correo"
-                (mailbombing) o "generación de fallas" (crashing); (d) el envío
-                de correos electrónicos no solicitados, incluyendo promociones
-                y/o publicidad de productos o servicios, o; (e) el falsificar
+                Work-Match; quedan prohibidas al Usuario, entre otras acciones:
+                (a) el acceder a datos a los cuales el Usuario no se encuentra
+                autorizado para utilizar o iniciar sesión en un servidor o en
+                una cuenta para la que el Usuario no tiene acceso autorizado;
+                (b) el intentar examinar, escanear o probar la vulnerabilidad de
+                un sistema de informática o de una red o quebrantar las medidas
+                de seguridad o autenticación sin la debida autorización; (c) el
+                intentar interferir con el uso de cualquier otro Usuario,
+                servicio de hospedaje o red, incluyendo, sin limitación, el
+                transmitir un virus al Sitio Web; causar una saturación de
+                dichos sitios mediante "inundación" (flooding), "envío de correo
+                no deseado" (spamming), "bombardeo de correo" (mailbombing) o
+                "generación de fallas" (crashing); (d) el envío de correos
+                electrónicos no solicitados, incluyendo promociones y/o
+                publicidad de productos o servicios, o; (e) el falsificar
                 cualquier encabezado de paquete TCP/IP o cualquier parte de la
                 información del encabezado en cualquier correo electrónico o
                 publicación en grupo de noticias. El Usuario reconoce que las
@@ -173,6 +172,77 @@ const Terms = () => {
             los usos de su cuenta, ya sean autorizados o no por el Usuario. El
             Usuario acepta notificar de inmediato a Work-Match sobre cualquier
             uso no autorizado de su cuenta o contraseña.
+          </p>
+        </li>
+        <li>
+          <h4>8. Responsabilidad de Work-Match</h4>
+          <p>
+            El Sitio Web permite a los empleadores publiquen oportunidades de
+            trabajo y a los candidatos postularse a las mismas. Work-Match no
+            elige ni censura los Contenidos del Usuario que se publica en el
+            Sitio Web. Work-Match no participa en ninguna transacción entre los
+            empleadores y los candidatos, por lo tanto, Work-Match no tiene
+            control alguno sobre la calidad, seguridad o legalidad de los
+            empleos publicados, la veracidad o la precisión de las ofertas, la
+            capacidad de los empleadores de ofrecer oportunidades de trabajo a
+            los candidatos o la capacidad de los candidatos de postularse.
+            Además, el Usuario reconoce que existen riesgos, incluyendo sin
+            limitación los riesgos de daño físico derivados de tratar con
+            extraños, extranjeros, menores de edad o personas que actúan bajo
+            falsas intenciones o identidades. El Usuario asume todos los riesgos
+            relacionados con el trato con otros Usuarios con los que tenga
+            contacto a través del Sitio Web.
+          </p>
+          <p>
+            Por su propia naturaleza, la información de otros Usuarios puede ser
+            ofensiva, dañina o incorrecta y, en algunos casos, se presentará de
+            forma engañosa. Se recomienda a los Usuarios actuar con diligencia y
+            precaución al utilizar el Sitio Web.
+          </p>
+          <p>
+            Debido a que la identificación de Usuarios en Internet resulta
+            difícil, Work-Match no puede garantizar y no garantiza que cada uno
+            de los Usuarios sea quien dice ser. En tanto que Work-Match no
+            participa y no puede participar en los acuerdo entre Usuarios ni
+            controlar el comportamiento de los Usuarios en el Sitio Web.
+          </p>
+        </li>
+        <li>
+          <h4>9. Exención de Responsabilidad</h4>
+          <p>
+            Work-Match no se obliga a que el Sitio Web operarán sin errores o
+            que el Sitio Web y su servidor de datos se encuentran libres de
+            virus informáticos o de otros programas de computación nocivos. Si
+            el uso del Sitio Web o del material contenido en el mismo ocasiona
+            la necesidad de realizar servicio o reemplazo de equipo informático
+            o datos, los costos de dichos servicios o reemplazos no serán
+            atribuibles a Work-Match.
+          </p>
+        </li>
+        <li>
+          <h4>10. LIMITE DE RESPONSABILIDAD</h4>
+          <p>
+            El Usuario al utilizar el Sitio Web reconoce que Work-Match no
+            tienen responsabilidad alguna por ningún motivo por lo que el límite
+            de responsabilidad máximo es $0 EE.UU. dólares (Cero)
+          </p>
+        </li>
+        <li>
+          <h4>11. Cesión o uso comercial NO autorizado</h4>
+          <p>
+            El Usuario acuerda no comercializar o ceder sus derechos u
+            obligaciones adquiridos bajo estos Términos de Uso. También acuerda
+            no hacer ningún uso comercial no autorizado del Sitio Web.
+          </p>
+        </li>
+        <li>
+          <h4>12. Terminación</h4>
+          <p>
+            Estos Términos se mantendrán en vigor mientras el Usuario continúe
+            utilizando el Sitio Web. Sin perjuicio de lo anterior, Work-Match se
+            reserva el derecho a terminar este contrato a su entera discreción
+            por incumplimiento de estos Términos o cualquier otra causa que
+            considere suficiente para ello.
           </p>
         </li>
       </ul>
