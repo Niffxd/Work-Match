@@ -220,7 +220,7 @@ export default function DashboardUser() {
                 <img
                   className={`${style["photo-profile"]}`}
                   src={user.image}
-                  alt='Photo profile'
+                  alt='profile'
                 />
               </div>
               <button

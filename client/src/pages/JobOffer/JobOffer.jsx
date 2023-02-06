@@ -38,11 +38,11 @@ export default function JobOfferDetail() {
   useEffect(() => {
     dispatch(getProjectId(id));
     dispatch(getPublication(id));
-  }, []);
+  }, []); //eslint-disable-line 
 
-  useEffect(async () => {
+  useEffect(async () => { //eslint-disable-line 
     dispatch(getOwner(oneProject.owner));
-  }, [oneProject]);
+  }, [oneProject]);//eslint-disable-line
 
   //Edit Publication
   const editHandler = (event) => {
@@ -124,7 +124,7 @@ export default function JobOfferDetail() {
                   <img
                     className={`${style["photo-profile"]}`}
                     src={owner.image}
-                    alt='Photo profile'
+                    alt='profile'
                   />
                 </div>
                 {/* Name */}

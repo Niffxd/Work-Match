@@ -98,7 +98,7 @@ export default function EmployeeMatchCard({ bid, category, owner, status }) {
           <img
             className={`${style["photo-profile"]}`}
             src={owner.image}
-            alt='Photo profile'
+            alt='profile'
           />
         </div>
         <div className={`${style["category-name"]}`}>
