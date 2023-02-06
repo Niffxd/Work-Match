@@ -20,7 +20,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import EditJobOffer from "./pages/EditJobOffer/EditJobOffer";
 import AlertMessage from "./components/AlertMessage/AlertMessage";
 
-axios.defaults.baseURL = "http://localhost:3001";
+axios.defaults.baseURL = process.env.REACT_APP_API_URL || "http://localhost:3001";
 
 function App() {
   const { isLoading } = useAuth0();
