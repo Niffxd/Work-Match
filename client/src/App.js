@@ -19,6 +19,7 @@ import Loading from "./components/Register/Loading";
 import { useAuth0 } from "@auth0/auth0-react";
 import EditJobOffer from "./pages/EditJobOffer/EditJobOffer";
 import AlertMessage from "./components/AlertMessage/AlertMessage";
+import TermsYCopyright from "./pages/TermsYCopyright/TermsYCopyright";
 import ProtectedRoute from "./components/protected-route"
 
 axios.defaults.baseURL = "http://localhost:3001";
@@ -33,10 +34,13 @@ function App() {
       <AlertMessage />
       <Navigation />
       <Switch>
-        <Route exact path='/' component={Home} />
-        <Route exact path='/home'>
-          <Redirect to='/' />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/home">
+          <Redirect to="/" />
         </Route>
+
+     
+
         <Route exact path='/job-offer/:id' component={JobOfferDetail} />
         <Route exact path='/about-us' component={AboutUs} />
         <Route exact path='/Login' component={Login} />
@@ -47,15 +51,16 @@ function App() {
         <ProtectedRoute exact path='/my-profile' component={DashboardUser} />
         <ProtectedRoute
           exact
-          path='/my-profile/employee/:type'
+          path="/my-profile/employee/:type"
           component={EmployeeProfile}
         />
         <ProtectedRoute
           exact
-          path='/my-profile/employer/:type'
+          path="/my-profile/employer/:type"
           component={EmployerProfile}
         />
-        <Route path='*' component={Error404} />
+        <Route exact path="/terms-and-copyright" component={TermsYCopyright} />
+        <Route path="*" component={Error404} />
       </Switch>
       <Footer />
     </BrowserRouter>
