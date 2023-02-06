@@ -2,7 +2,7 @@
 
 import styles from "./login.module.css";
 import { useState, useEffect } from "react";
-import { get, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from 'react-router-dom';
 import { regex } from "../../utils/helpers/validationLogin";
@@ -11,7 +11,7 @@ import carrusel2 from "../../assets/images/imagecarousel2.png";
 import carrusel3 from "../../assets/images/imagecarrousel3.png";
 import carrusel4 from "../../assets/images/imagecarousel4.png";
 import logo from '../../assets/images/small_logo.png';
-import { getAllUsers, getUserId, getUsername } from "../../redux/actions/userActions";
+import { getAllUsers, getUserId } from "../../redux/actions/userActions";
 
 export default function Login() {
   const history = useHistory();
@@ -21,7 +21,7 @@ export default function Login() {
   
   useEffect(() => {
     dispatch(getAllUsers());
-  },[])
+  },[]) //eslint-disable-line 
   
   const [ actualUser, setActualUser ] = useState({
     username: '',
