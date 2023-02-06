@@ -26,16 +26,16 @@ export default function Home() {
       .then(() => dispatch(getCategories()))
       .then(() => dispatch(getProjects()))
       .catch((error) => console.log(error));
-  }, []);
+  }, []); //eslint-disable-line 
 
   useEffect(() => {
     dispatch(itemsPerPage(initialIndex, finalIndex));
-  }, [currentPage, allProjects]);
+  }, [currentPage, allProjects]); //eslint-disable-line 
 
   useEffect(() => {
     Object.keys(actualUser.user).length !== 0 &&
       dispatch(getUserId(actualUser.user.id));
-  }, [actualUser.user.id]);
+  }, [actualUser.user.id]); //eslint-disable-line 
 
   return (
     <main className={`${style["container"]}`}>
