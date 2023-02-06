@@ -116,3 +116,4 @@ api/package-lock.json
 client/.env
 client/.env.local
 client/package-lock.json
+api/.env
