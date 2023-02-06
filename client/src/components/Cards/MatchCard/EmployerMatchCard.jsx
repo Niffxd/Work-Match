@@ -1,15 +1,15 @@
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { newMessage } from "../../../redux/actions/alertMessageActions";
-import { confirmationOpen } from "../../../redux/actions/confirmationMessageActions";
-import {
-  getUserId,
-  putRateUser,
-  saveIdBid,
-  updateApplicationStatus,
-} from "../../../redux/actions/userActions";
-import ConfirmationMessage from "../../ConfirmationMessage/ConfirmationMessage";
-import style from "./matchCard.module.css";
+// import { useState } from "react"; 
+// import { useDispatch, useSelector } from "react-redux";
+// import { newMessage } from "../../../redux/actions/alertMessageActions";
+// import { confirmationOpen } from "../../../redux/actions/confirmationMessageActions";
+// import {
+//   getUserId,
+//   putRateUser,
+//   saveIdBid,
+//   updateApplicationStatus,
+// } from "../../../redux/actions/userActions";
+// import ConfirmationMessage from "../../ConfirmationMessage/ConfirmationMessage";
+// import style from "./matchCard.module.css";
 
 export default function EmployerMatchCard({ bid, category, owner, status }) {
   //   //variables
