@@ -1,5 +1,5 @@
-import { useState } from "react";
-import style from "./postulateCard.module.css";
+// import { useState } from "react";
+// import style from "./postulateCard.module.css";
 
 export default function PostulateCard({ name, image, category, biography }) {
   //   const [moreInformation, setMoreInformation] = useState('none');
