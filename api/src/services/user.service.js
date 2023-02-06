@@ -117,6 +117,8 @@ async function read(id, query) {
         phone: 5493816631856,
         role: 2,
         image: 'https://cdn-icons-png.flaticon.com/512/1785/1785888.png',
+        premium: true,
+        rate: 4,
       },
       {
         username: 'pedro',
@@ -129,6 +131,7 @@ async function read(id, query) {
         phone: 51959734026,
         role: 2,
         image: 'https://cdn-icons-png.flaticon.com/512/2566/2566158.png',
+        premium: true,
       },
       {
         username: 'diego',
@@ -141,6 +144,7 @@ async function read(id, query) {
         phone: 5492665031781,
         role: 2,
         image: 'https://cdn-icons-png.flaticon.com/512/4086/4086679.png',
+        rate: 5,
       },
       {
         username: 'marcos',
@@ -153,6 +157,7 @@ async function read(id, query) {
         phone: 5493815128406,
         role: 2,
         image: 'https://cdn-icons-png.flaticon.com/512/2566/2566162.png',
+        rate: 4,
       },
       {
         username: 'mateo',
@@ -165,6 +170,7 @@ async function read(id, query) {
         phone: 5492215978443,
         role: 2,
         image: 'https://cdn-icons-png.flaticon.com/512/4140/4140048.png',
+        premium: true,
       },
       {
         username: 'daniel',
@@ -177,6 +183,7 @@ async function read(id, query) {
         phone: 573116886868,
         role: 2,
         image: 'https://cdn-icons-png.flaticon.com/512/4128/4128176.png',
+        premium: true,
       },
     ];
     var i = 0;

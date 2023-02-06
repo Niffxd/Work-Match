@@ -101,9 +101,10 @@ export default function EmployeeMatchCard({ bid, category, owner, status }) {
             alt='profile'
           />
         </div>
-        <div className={`${style["category-name"]}`}>
-          <p className={`${style["category"]}`}>{category}</p>
-          <p className={`${style["name"]}`}>{owner.name}</p>
+        <div className={`${style["info-container"]}`}>
+          <h4 className={`${style["name"]}`}>{owner.name}</h4>
+          <h4 className={`${style["category"]}`}>{category}</h4>
+          <p className={`${style["phone"]}`}>Tlf: {owner.phone}</p>
         </div>
         {status === "Match" && (
           <button

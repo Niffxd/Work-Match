@@ -109,9 +109,10 @@ export default function EmployerMatchCard({
             alt='Photo profile'
           />
         </div>
-        <div className={`${style["category-name"]}`}>
+        <div className={`${style["info-container"]}`}>
+          <h4 className={`${style["name"]}`}>{name}</h4>
           <p className={`${style["category"]}`}>{category}</p>
-          <p className={`${style["name"]}`}>{name}</p>
+          <p className={`${style["phone"]}`}>Tlf: {phone}</p>
         </div>
         {status === "Match" && (
           <button
