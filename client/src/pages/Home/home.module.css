@@ -1,12 +1,19 @@
 @import "../../styles/variables.css";
 
+.all-jobs {
+  margin: 0;
+}
 .container {
   position: relative;
   margin: 0;
 }
 
 .jobs-container {
-  padding: 5rem 1.5rem 3.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 5rem 1.5rem 3rem;
 }
 
 .detail-link {

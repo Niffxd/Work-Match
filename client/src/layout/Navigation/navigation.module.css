@@ -1,12 +1,12 @@
-@import '../../styles/variables.css';
+@import "../../styles/variables.css";
 
 .container-header {
+  display: flex;
+  margin: 0;
+  padding: 0 1rem;
   width: 100vw;
   height: 5rem;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   background-color: var(--purple);
   overflow: hidden;
@@ -20,29 +20,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 2rem;
 }
 
 .btn-session {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: .7rem 3rem;
-  border: none;
-  border-radius: 2rem;
-  background-color: #57BF7D;
-  cursor: pointer;
-}
-
-.btn-session:hover {
-  transform: scale(1.05);
-}
-
-.btn-session {
-  color: #FFFEFB;
+  color: var(--light-color);
   text-decoration: none;
   font-weight: 500;
   margin: 1rem;
+  border: none;
+  border-radius: 2rem;
+  background-color: var(--green);
+  cursor: pointer;
 }
 
 .link-nav {
@@ -54,9 +45,9 @@
 
 .user-profile {
   width: 16rem;
-  text-align: right;
+  text-align: center;
   font-size: 1.3rem;
-  color: #FFFEFB;
+  color: var(--light-color);
   cursor: pointer;
 }
 
@@ -67,43 +58,60 @@
 
 .profile-links li {
   display: flex;
+  padding: 0 1rem;
   justify-content: space-between;
   align-items: center;
   margin: 0;
 }
 
-.profile-links li:hover {
-  background-color: #6B7FD7;
-}
-
-.profile-links li:last-child:hover {
-  background-color: #6B7FD7;
-  border-radius: 0 0 1rem 1rem;
-}
-
 .profile-links li a {
+  width: 100%;
+  margin: 0;
+  padding: 1.1rem;
+  display: flex;
+  justify-content: flex-end;
   text-decoration: none;
-  color: #142129;
+  color: var(--dark-color);
 }
 
 .show-links {
-  width: 16rem;
+  width: 100vw;
   display: block;
   top: 5rem;
+  left: 0;
   margin: 0;
+  padding: 0;
   border-radius: 0 0 1rem 1rem;
   position: absolute;
-  background-color: #D0D5F0;
-  z-index: 1;
+  background-color: var(--baby-purple);
+  z-index: 5;
 }
 
 .icon-link {
+  margin: 0;
   width: 1.3rem;
-  filter: invert(34%) sepia(9%) saturate(0%) hue-rotate(242deg) brightness(109%) contrast(92%);
+  filter: invert(34%) sepia(9%) saturate(0%) hue-rotate(242deg) brightness(109%)
+    contrast(92%);
+}
+
+@media (pointer: fine) {
+  .btn-session:hover {
+    transform: scale(1.05);
+  }
+
+  .profile-links li:hover {
+    background-color: var(--purple);
+  }
+
+  .profile-links li:last-child:hover {
+    background-color: var(--purple);
+    border-radius: 0 0 1rem 1rem;
+  }
 }
 
 @media screen and (min-width: 36em) and (orientation: landscape) {
-  .container-header {
-    gap: 0;
+  .show-links {
+    width: 15rem;
+    left: auto;
   }
 }

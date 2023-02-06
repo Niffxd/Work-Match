@@ -3,11 +3,13 @@
 .job-offer-container {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
 }
 .info-container {
   margin: 0;
+  width: 100%;
 }
 /* Photo profile */
 .photo-container {
@@ -94,9 +96,19 @@
   align-items: center;
 }
 .application > h3 {
+  margin: 0;
   margin-left: 1rem;
   color: var(--green);
 }
 .check-icon {
   width: 2.5rem;
+  margin: 0;
+}
+
+/* Not available */
+.not-available {
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius);
+  color: var(--light-color);
+  background-color: var(--red);
 }

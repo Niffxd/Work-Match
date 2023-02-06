@@ -1,7 +1,7 @@
 /** @format */
 
 import axios from "axios";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Navigation from "./layout/Navigation/Navigation";
 import Footer from "./layout/Footer/Footer";
 import Home from "./pages/Home/Home";
@@ -17,49 +17,41 @@ import DashboardUser from "./pages/UserProfile/UserProfile";
 import Error404 from "./pages/Error404/Error404";
 import Loading from "./components/Register/Loading";
 import { useAuth0 } from "@auth0/auth0-react";
+import EditJobOffer from "./pages/EditJobOffer/EditJobOffer";
+import AlertMessage from "./components/AlertMessage/AlertMessage";
 
 axios.defaults.baseURL = "http://localhost:3001";
 
 function App() {
-  const { isLoading } = useAuth0()
+  const { isLoading } = useAuth0();
 
-  if(isLoading) return <Loading/>
+  if (isLoading) return <Loading />;
 
   return (
     <BrowserRouter>
+      <AlertMessage />
       <Navigation />
       <Switch>
         <Route exact path='/' component={Home} />
+        <Route exact path='/home'>
+          <Redirect to='/' />
+        </Route>
         <Route exact path='/job-offer/:id' component={JobOfferDetail} />
         <Route exact path='/about-us' component={AboutUs} />
         <Route exact path='/Login' component={Login} />
         <Route exact path='/register' component={Register} />
         <Route exact path='/register/complete' component={PostUser} />
         <Route exact path='/create-job-offer' component={CreateJobOffer} />
+        <Route exact path='/edit-job-offer' component={EditJobOffer} />
         <Route exact path='/my-profile' component={DashboardUser} />
         <Route
           exact
-          path='/my-profile/employee/applications'
+          path='/my-profile/employee/:type'
           component={EmployeeProfile}
         />
         <Route
           exact
-          path='/my-profile/employee/matches'
-          component={EmployeeProfile}
-        />
-        <Route
-          exact
-          path='/my-profile/employer/matches'
-          component={EmployerProfile}
-        />
-        <Route
-          exact
-          path='/my-profile/employer/postulates'
-          component={EmployerProfile}
-        />
-        <Route
-          exact
-          path='/my-profile/employer/publications'
+          path='/my-profile/employer/:type'
           component={EmployerProfile}
         />
         <Route path='*' component={Error404} />

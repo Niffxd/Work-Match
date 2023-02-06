@@ -24,12 +24,12 @@ export default function Complete() {
     role: 2,
     image: 'imagen'
   })
+
+  const [ username, setUsername ] = useState('juan.perez')
   
   const [ postAddress, setPostAddress ] = useState({ // eslint-disable-line no-unused-vars
     description: ''
   })
-
-  const [ username, setUsername ] = useState('juan.perez')
 
   const handleName = (event) => {
     setPostUser({

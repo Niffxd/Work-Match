@@ -1,8 +1,8 @@
 import { Link, useHistory } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAddress } from "../../redux/actions/addressActions";
 import {
+  clearUser,
   deleteUser,
   getUserId,
   putUser,
@@ -10,42 +10,61 @@ import {
 import style from "./userProfile.module.css";
 import useForm from "../../utils/customHooks/useForm";
 import validationEditProfile from "../../utils/helpers/validationsEditProfile";
+import { confirmationOpen } from "../../redux/actions/confirmationMessageActions";
+import { newMessage } from "../../redux/actions/alertMessageActions";
+import ConfirmationMessage from "../../components/ConfirmationMessage/ConfirmationMessage";
 
 export default function DashboardUser() {
-  //view links
+  //variables
   const dispatch = useDispatch();
   const history = useHistory();
   const [menu, setMenu] = useState("invisible");
   const userState = useSelector((state) => state.user);
   const { user } = userState;
   const addressState = useSelector((state) => state.address);
-  const { userAddress, city, state, country } = addressState;
-
-  //TO DO 1/1: Este use Effect se elimana y el usuario se
-  // guarda al iniciar sesion.
-  useEffect(() => {
-    dispatch(getUserId("usuario1"));
-    dispatch(getAddress("usuario1"));
-  }, [user]);
-
+  const { states } = addressState;
+  const [premium, setPremium] = useState(null);
+  const [visibleAddress, setVisibleAddress] = useState("invisible");
+  const address = user.Address
+    ? states.find((element) => element.id === user.Address.id)
+    : null;
   // initial state of form
   const initialForm = {
-    id: user.id,
-    name: user.name,
-    age: user.age,
-    mail: user.mail,
-    password: "",
-    phone: user.phone,
+    address: address ? address.name : "Selecciona una dirección",
+    addressId: user.Address ? user.Address.id : 1,
+    age: user.age || "",
     biography: user.biography || "",
+    direction: user.Address ? user.Address.description : "",
+    image: user.image || "",
+    username: user.username || "",
+    mail: user.mail || "",
+    name: user.name || "",
+    password: "",
+    phone: user.phone || "",
     repeatPassword: "",
   };
-  // custom hook form
-  const { form, errors, setErrors, resetHandler, changeHandler } = useForm(
-    initialForm,
-    validationEditProfile
-  );
 
-  //   //view links
+  // custom hook form
+  const { form, errors, setForm, setErrors, resetHandler, changeHandler } =
+    useForm(initialForm, validationEditProfile);
+
+  //Address
+  const addressMenuHandler = (event) => {
+    event.preventDefault();
+    if (visibleAddress === "invisible") {
+      setVisibleAddress("visible");
+    } else {
+      setVisibleAddress("invisible");
+    }
+  };
+  const addressSelectionHandler = (event, address, addressId) => {
+    event.preventDefault();
+    event.stopPropagation();
+    setForm({ ...form, address, addressId });
+    setVisibleAddress("invisible");
+  };
+
+  // view links
   const menuHandler = (event) => {
     event.preventDefault();
     if (menu === "invisible") {
@@ -55,58 +74,82 @@ export default function DashboardUser() {
     }
   };
 
-  //   //change photo profile
-  //   const addImageHandler = (event) => {
-  //     event.preventDefault();
-  //     //TO DO 2/5: Agregar foto de perfil de los archivos del usuario.
-  //     alert("agrega una foto de perfil");
-  //   };
-
-  const deleteHandler = async (event) => {
+  // change photo profile
+  const addImageHandler = (event) => {
     event.preventDefault();
+    //TO DO 1/2: Agregar foto de perfil de los archivos del usuario.
+    alert("agrega una foto de perfil");
+  };
+
+  //Open confirmation message
+  const confirmationHandler = async (event) => {
+    event.preventDefault();
+    dispatch(confirmationOpen());
+  };
+
+  // delete account
+  const deleteHandler = () => {
     try {
       dispatch(deleteUser(user.id));
-      alert("cuenta eliminada");
-      history.push(`/login`);
+      dispatch(clearUser());
+      dispatch(newMessage("Tu cuenta fue eliminada con éxito", "success"));
+      history.push(`/`);
     } catch (error) {
-      setErrors({ ...errors, form: error.message });
+      console.log(error);
+      dispatch(newMessage(error.message, "error"));
     }
   };
 
+  // update user premium
   const premiumHandler = async (event) => {
     event.preventDefault();
+    //TO DO 2/2: introducir pasarela de pagos
     try {
       if (user.premium) {
         dispatch(putUser({ id: user.id, premium: false }));
         dispatch(getUserId(user.id));
-        alert("Puedes volver a activar el premium cuando desees.");
+        setPremium("premium false");
+        dispatch(
+          newMessage(
+            "Puedes volver a activar los beneficios premium cuando quieras.",
+            "success"
+          )
+        );
       } else {
         dispatch(putUser({ id: user.id, premium: true }));
         dispatch(getUserId(user.id));
-        alert("Ahora tienes cuenta premium.");
+        setPremium("premium true");
+        dispatch(
+          newMessage("¡Felicidades! Ahora tienes cuenta premium.", "success")
+        );
       }
     } catch (error) {
-      setErrors({ ...errors, form: error.message });
+      console.log(error);
+      dispatch(newMessage(error.message, "error"));
     }
   };
+
   //  update user data
   const submitHandler = async (event) => {
     event.preventDefault();
     try {
       setErrors(validationEditProfile(form));
       if (Object.keys(errors).length === 0) {
-        dispatch(putUser(form));
+        dispatch(putUser({ id: user.id, ...form }));
         dispatch(getUserId(user.id));
-
-        alert("datos actualizados");
+        dispatch(newMessage("Tus datos se actualizaron con éxito.", "success"));
       }
     } catch (error) {
-      setErrors({ ...errors, form: error.message });
+      console.log(error);
+      dispatch(newMessage(error.message, "error"));
     }
   };
-
   return (
     <>
+      <ConfirmationMessage
+        message='¿Quieres eliminar esta cuenta?'
+        handler={deleteHandler}
+      />
       {/* User's Navigation Bar */}
       <nav className={`${style["user-navigation"]}`}>
         <div className={`${style["icon-container"]}`}>
@@ -169,37 +212,81 @@ export default function DashboardUser() {
           </details>
         </div>
         {/* Form to edit data */}
-        <div className={`${style["user-data"]}`}>
-          <div className={`${style["premium"]}`}>
-            <h2 className={`${style["margin"]}`}>Hola, {user.name}</h2>
-            {user.premium && (
-              <img
-                className={`${style["premium-icon"]}`}
-                src='https://cdn-icons-png.flaticon.com/512/5253/5253963.png'
-                alt='verificate'
-              />
-            )}
-          </div>
-          {user.rate && (
-            <div className={`${style["score-container"]} ${style["margin"]}`}>
-              <p className={`${style["text-score"]}`}>Puntuación:</p>
-              <img
-                className={`${style["star-icon"]}`}
-                src='https://cdn-icons-png.flaticon.com/512/5583/5583265.png'
-                alt='Star'
-              />
-              <p>{user.rate}</p>
-            </div>
-          )}
-          {!user.premium && (
-            <button className='button-green' onClick={premiumHandler}>
-              Activar premium
-            </button>
-          )}
-        </div>
         <form>
+          {/* Image */}
+          <div className={`${style["user-banner"]}`}>
+            <div className={`${style["add-photo-container"]}`}>
+              <div className={`${style["photo-container"]}`}>
+                <img
+                  className={`${style["photo-profile"]}`}
+                  src={user.image}
+                  alt='Photo profile'
+                />
+              </div>
+              <button
+                className={`${style["add-photo"]}`}
+                onClick={addImageHandler}
+              >
+                +
+              </button>
+            </div>
+            <div className={`${style["user-data"]}`}>
+              <div className={`${style["premium"]}`}>
+                <h2 className={`${style["margin"]}`}>{user.name}</h2>
+                {(user.premium || premium === "premium true") && (
+                  <img
+                    className={`${style["premium-icon"]} ${
+                      premium === "premium false" && "invisible"
+                    }`}
+                    src='https://cdn-icons-png.flaticon.com/512/5253/5253963.png'
+                    alt='verificate'
+                  />
+                )}
+              </div>
+              <div className={`${style["score-container"]} ${style["margin"]}`}>
+                {user.rate && (
+                  <>
+                    <p className={`${style["text-score"]}`}>Puntuación:</p>
+                    <img
+                      className={`${style["star-icon"]}`}
+                      src='https://cdn-icons-png.flaticon.com/512/5583/5583265.png'
+                      alt='Star'
+                    />
+                    <p>{user.rate}</p>
+                  </>
+                )}
+              </div>
+              {(!user.premium || premium === "premium false") && (
+                <button
+                  className={`button-green ${
+                    premium === "premium true" && "invisible"
+                  } ${style["premium-button"]}`}
+                  onClick={premiumHandler}
+                >
+                  Activar Premium
+                </button>
+              )}
+            </div>
+          </div>
+
+          {/* Username */}
+          <label htmlFor='username'>Nombre de usuario</label>
+          <input
+            id='username'
+            type='text'
+            name='username'
+            placeholder='Ej: juan.perez'
+            value={form.username}
+            onChange={changeHandler}
+            onBlur={changeHandler}
+            autoComplete='off'
+          />
+          {errors && Object.keys(errors).length > 0 && errors.username && (
+            <p className='error'>{errors.username}</p>
+          )}
+
           {/* Name */}
-          <label htmlFor='name'>Nombre</label>
+          <label htmlFor='name'>Nombre completo</label>
           <input
             id='name'
             type='text'
@@ -210,7 +297,9 @@ export default function DashboardUser() {
             onBlur={changeHandler}
             autoComplete='off'
           />
-          {errors.name && <p className='error'>{errors.name}</p>}
+          {errors && Object.keys(errors).length > 0 && errors.name && (
+            <p className='error'>{errors.name}</p>
+          )}
           {/* Age */}
           <label htmlFor='age'>Edad</label>
           <input
@@ -223,7 +312,9 @@ export default function DashboardUser() {
             onBlur={changeHandler}
             autoComplete='off'
           />
-          {errors.age && <p className='error'>{errors.age}</p>}
+          {errors && Object.keys(errors).length > 0 && errors.age && (
+            <p className='error'>{errors.age}</p>
+          )}
           {/* Mail */}
           <label htmlFor='mail'>Correo electrónico</label>
           <input
@@ -236,7 +327,9 @@ export default function DashboardUser() {
             onBlur={changeHandler}
             autoComplete='off'
           />
-          {errors.mail && <p className='error'>{errors.mail}</p>}
+          {errors && Object.keys(errors).length > 0 && errors.mail && (
+            <p className='error'>{errors.mail}</p>
+          )}
           {/* Phone */}
           <label htmlFor='phone'>Teléfono</label>
           <input
@@ -249,20 +342,59 @@ export default function DashboardUser() {
             onBlur={changeHandler}
             autoComplete='off'
           />
-          {errors.phone && <p className='error'>{errors.phone}</p>}
-          {/* Address */}
-          {/* <label htmlFor='address'>Dirección</label>
+          {errors && Object.keys(errors).length > 0 && errors.phone && (
+            <p className='error'>{errors.phone}</p>
+          )}
+          {/* Address-state */}
+          <label htmlFor='address'>Estado</label>
+          <div className={`${style["select-menu"]}`}>
+            <div
+              className={`${style["select-button"]}`}
+              onClick={addressMenuHandler}
+            >
+              <span className={`${style["select-button-text"]}`}>
+                {form.address}
+              </span>
+              <img
+                className={`${style["down-arrow"]}`}
+                src={"https://cdn-icons-png.flaticon.com/512/656/656979.png"}
+                alt='Down arrow.'
+              />
+            </div>
+            <ul className={`${visibleAddress} ${style["address-container"]}`}>
+              {states.map((address, index) => {
+                return (
+                  <li
+                    key={`address-${index}`}
+                    className={`${style["address-name"]}`}
+                    onClick={(event) =>
+                      addressSelectionHandler(event, address.name, address.id)
+                    }
+                  >
+                    {address.name}
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+          {errors && Object.keys(errors).length > 0 && errors.address && (
+            <p className='error'>{errors.address}</p>
+          )}
+          {/* Address-Direction */}
+          <label htmlFor='direction'>Dirección</label>
           <input
-            id='address'
+            id='direction'
             type='text'
-            name='address'
+            name='direction'
             placeholder='Ej: Mendoza, Argentina'
-            value={form.address}
+            value={form.direction}
             onChange={changeHandler}
             onBlur={changeHandler}
             autoComplete='off'
           />
-          {errors.address && <p className='error'>{errors.address}</p>} */}
+          {errors && Object.keys(errors).length > 0 && errors.direction && (
+            <p className='error'>{errors.direction}</p>
+          )}
           {/* Biography */}
           <label htmlFor='biography'>Sobre mi</label>
           <textarea
@@ -274,7 +406,9 @@ export default function DashboardUser() {
             onBlur={changeHandler}
             autoComplete='off'
           />
-          {errors.biography && <p className='error'>{errors.biography}</p>}
+          {errors && Object.keys(errors).length > 0 && errors.biography && (
+            <p className='error'>{errors.biography}</p>
+          )}
           {/* Password */}
           <label htmlFor='password'>Nueva contraseña</label>
           <input
@@ -287,9 +421,11 @@ export default function DashboardUser() {
             onBlur={changeHandler}
             autoComplete='off'
           />
-          {errors.password && <p className='error'>{errors.password}</p>}
+          {errors && Object.keys(errors).length > 0 && errors.password && (
+            <p className='error'>{errors.password}</p>
+          )}
           {/* Repeat Password */}
-          {form.password && (
+          {form.password.length > 0 && (
             <>
               <label htmlFor='repeatPassword'>Repetir contraseña</label>
               <input
@@ -308,7 +444,6 @@ export default function DashboardUser() {
                 )}
             </>
           )}
-          {errors.form && <p className='error'>{errors.form}</p>}
           <div className='buttons-container'>
             <button className='button-purple' onClick={resetHandler}>
               Limpiar
@@ -335,12 +470,23 @@ export default function DashboardUser() {
                 confianza y más personas querrán trabajar contigo.
               </li>
             </ul>
-            {user.premium ? (
-              <button className='button-red' onClick={premiumHandler}>
+            {(user.premium || premium === "premium true") && (
+              <button
+                className={`button-red ${
+                  premium === "premium false" && "invisible"
+                }`}
+                onClick={premiumHandler}
+              >
                 Desactivar Premium
               </button>
-            ) : (
-              <button className='button-green' onClick={premiumHandler}>
+            )}
+            {(!user.premium || premium === "premium false") && (
+              <button
+                className={`button-green ${
+                  premium === "premium true" && "invisible"
+                }`}
+                onClick={premiumHandler}
+              >
                 Activar Premium
               </button>
             )}
@@ -354,7 +500,7 @@ export default function DashboardUser() {
               Al desactivar tu cuenta nadie podrá acceder a tus publicaciones ni
               a tu perfil.
             </p>
-            <button className='button-red' onClick={deleteHandler}>
+            <button className='button-red' onClick={confirmationHandler}>
               Eliminar cuenta
             </button>
           </details>
@@ -363,26 +509,3 @@ export default function DashboardUser() {
     </>
   );
 }
-
-//       {/* Image */}
-//       <div className={`${style["user-banner"]}`}>
-//         <div className={`${style["add-photo-container"]}`}>
-//           <div className={`${style["photo-container"]}`}>
-//             <Image
-//               className={`${style["photo-profile"]}`}
-//               src={image}
-//               alt='Photo profile'
-//             />
-//           </div>
-//           <button
-//             className={`${style["add-photo"]}`}
-//             onClick={addImageHandler}
-//           >
-//             +
-//           </button>
-//         </div>
-
-//       </div>
-
-//     </form>
-// </>

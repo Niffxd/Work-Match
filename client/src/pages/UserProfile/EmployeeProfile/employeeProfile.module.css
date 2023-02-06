@@ -1,0 +1,39 @@
+@import "../../../styles/variables.css";
+
+.container {
+  min-height: calc(100vh - 20.35rem);
+}
+
+@media screen and (min-width: 36em) and (orientation: landscape) {
+  .container {
+    min-height: calc(100vh - 16.35rem);
+  }
+}
+
+.header {
+  margin: 0;
+  background-color: var(--baby-purple);
+}
+
+.nav {
+  display: flex;
+  justify-content: space-around;
+  max-width: 50rem;
+  margin: 0 auto;
+}
+
+.link {
+  font-size: 1.2rem;
+  text-decoration: none;
+  margin: 1rem 0;
+}
+
+.active {
+  font-weight: var(--semibold);
+}
+
+@media (pointer: fine) {
+  .link:hover {
+    font-weight: var(--semibold);
+  }
+}

@@ -18,9 +18,3 @@
   margin: auto;
   border-radius: 2rem;
 }
-
-header,
-footer {
-  padding-left: 4rem !important;
-  padding-right: 4rem !important;
-}

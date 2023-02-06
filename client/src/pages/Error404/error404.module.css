@@ -1,1 +1,70 @@
 @import "../../styles/variables.css";
+
+.container {
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--light-color);
+}
+.error-image {
+  width: 60%;
+}
+.error-h1 {
+  font-size: max(3rem, 12vw);
+}
+.error-h3,
+.error-p {
+  margin: 0;
+  text-align: center;
+  font-weight: var(--regular);
+}
+.error-h3 {
+  font-size: max(1.4rem, 3vw);
+}
+.error-p {
+  font-size: max(1rem, 2.25vw);
+}
+.error-button {
+  font-size: max(1.3rem, 2.5vw);
+}
+.error-container {
+  border-top: 1px solid var(--dark-color);
+}
+
+@media screen and (min-width: 36em) and (orientation: landscape) {
+  .container {
+    display: flex;
+    flex-direction: row;
+  }
+  .error-image {
+    width: max(17rem, 20%);
+    margin: 0 3rem;
+  }
+  .error-container {
+    margin: 0;
+    padding: 0 3rem;
+    border-top: none;
+    border-left: 1px solid var(--dark-color);
+  }
+  .error-h1 {
+    font-size: max(3rem, 7vw);
+  }
+  .error-h3 {
+    font-size: 1.4rem;
+  }
+  .error-p {
+    font-size: 1rem;
+  }
+  .error-button {
+    margin-top: 3.5rem;
+    font-size: 1.3rem;
+  }
+}

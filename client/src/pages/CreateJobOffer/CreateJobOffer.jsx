@@ -1,60 +1,68 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import FormJobOffer from "../../components/FormJobOffer/FormJobOffer";
-import validationsCreateJobOffer from "../../components/FormJobOffer/helpers/validationsCreateJobOffer";
+import { newMessage } from "../../redux/actions/alertMessageActions";
+import { postProject } from "../../redux/actions/projectActions";
+import validationsCreateJobOffer from "../../utils/helpers/validationsCreateJobOffer";
 
 const CreateJobOffer = () => {
-  //initial State Form & hooks
+  //Variables
+  const dispatch = useDispatch();
   const history = useHistory();
+  const userState = useSelector((state) => state.user);
+  const { user } = userState;
+  const stateState = useSelector((state) => state.address);
+  const { states } = stateState;
+  const stateName = user.Address
+    ? states.find((element) => element.id === user.Address.state)
+    : false;
+  const jobState = stateName ? stateName.name : "Selecciona una dirección";
+
+  //initial State Form
   const initialForm = {
-    owner: "user",
-    address: "",
+    address: jobState,
+    addressId: (user.Address && user.Address.state) || 1,
     agreement: false,
-    budget: 0,
+    budget: "",
     category: "Selecciona una categoría",
+    categoryId: 0,
     description: "",
-    // estimated: 0,
-    // tasks: [],
+    estimated: 0,
+    information: "",
   };
 
   //Submit handler & post function
-  const submitHandler = async (event, form, errors, setErrors) => {
+  const submitHandler = (event, form, errors, setErrors) => {
     event.preventDefault();
     try {
       setErrors(validationsCreateJobOffer(form));
       if (Object.keys(errors).length === 0) {
-        await post({
-          address: form.address,
-          agreement: form.agreement,
-          budget: parseInt(form.budget),
-          description: form.description,
-          category: form.category,
-        });
-        alert("Tu oferta fue publicada con éxito");
-        history.goBack();
+        dispatch(
+          postProject({
+            agreement: form.agreement,
+            bidder: user.id,
+            budget: form.budget,
+            category: form.categoryId,
+            description: form.description,
+            estimated: form.estimated,
+            information: form.information,
+            state: form.addressId,
+            owner: user.id,
+          })
+        );
+        dispatch(newMessage("Tu oferta fue publicada con éxito", "success"));
+        history.push(`/`);
       }
     } catch (error) {
-      console.log(error, error.message);
-      setErrors({ ...errors, form: error.message });
+      console.log(error);
+      dispatch(newMessage(error.message, "error"));
     }
-  };
-  const post = async (data) => {
-    const JSONdata = JSON.stringify(data);
-    const endpoint = "http://localhost:3001/project";
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSONdata,
-    };
-    const response = await fetch(endpoint, options);
-    return await response.json();
   };
 
   //view
   return (
-    <div className="container">
+    <div className='container'>
       <FormJobOffer
         initialForm={initialForm}
         submitHandler={submitHandler}

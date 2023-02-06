@@ -1,0 +1,79 @@
+@import "../../styles/variables.css";
+
+@keyframes animationShow {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes animationHidden {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+.container {
+  position: fixed;
+  z-index: 900;
+  right: -90vw;
+  top: 1rem;
+  width: 90vw;
+  height: auto;
+  font-size: 1.3rem;
+  cursor: default;
+  margin: 0;
+}
+
+.error,
+.success {
+  font-size: 1.25rem;
+  text-align: center;
+  margin: 0;
+  border-top-left-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
+  backdrop-filter: blur(2rem);
+}
+.error {
+  padding: 0.5rem 0.7rem;
+  color: #8d080e;
+  border-left: 0.4rem solid var(--red);
+  background-color: #f8979ba4;
+}
+.error-icon {
+  font-weight: 900;
+  font-size: 1.7rem;
+  color: #8d080e;
+}
+.success {
+  padding: 0.7rem 0.7rem;
+  color: #4d791b;
+  border-left: 0.4rem solid var(--green);
+  background-color: #d8ecc5c0;
+}
+.success-icon {
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: #4d791b;
+}
+.msg-hidden {
+  animation: animationHidden 1s ease forwards;
+  transition: transform 1s;
+}
+.msg-show {
+  animation: animationShow 1s ease forwards;
+  transition: transform 1s;
+}
+
+@media screen and (min-width: 60em) {
+  .container {
+    right: -50vw;
+    width: 50vw;
+    font-size: 1.5rem;
+  }
+}
