@@ -108,3 +108,11 @@ package-lock.json
 
 #Last projetc next13 version
 Work-Match.rar
+docker-compose.yml
+Dockerfile
+api/.dockerignore
+api/.env
+api/package-lock.json
+client/.env
+client/.env.local
+client/package-lock.json
