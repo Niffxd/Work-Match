@@ -1,6 +1,5 @@
 import React from "react";
 import Terms from "../../components/Terms/terms";
-import Copyright from "../../components/Copyright/Copyright";
 import styles from "./TermsYCopyright.module.css";
 
 const TermsYCopyright = () => {
