@@ -28,7 +28,7 @@ export default function EmployerMatches() {
     }
   });
 
-  console.log(userMatches);
+  // console.log(userMatches);
   return (
     <>
       <p>Falta la funcionalidad.</p>

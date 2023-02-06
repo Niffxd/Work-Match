@@ -33,6 +33,8 @@ export default function PostulateCard({
   const moreInformationHandler = (event) => {
     event.preventDefault();
     event.stopPropagation();
+    dispatch(saveIdBid(bid));
+    dispatch(getProjectId(project));
     if (moreInformation === "none") {
       setMoreInformation("more-information");
     } else {
@@ -45,7 +47,6 @@ export default function PostulateCard({
     event.preventDefault();
     event.stopPropagation();
     try {
-      dispatch(saveIdBid(bid));
       dispatch(updateApplicationStatus({ id: idBid, status: "Rechazado" }));
       dispatch(getUserId(user.id));
       setVisible("invisible");
@@ -59,43 +60,20 @@ export default function PostulateCard({
   const matchHandler = (event) => {
     event.preventDefault();
     event.stopPropagation();
-    // try {
-    //   dispatch(saveIdBid(bid));
-    //   dispatch(getProjectId(project));
-    //   dispatch(updateApplicationStatus({ id: idBid, status: "Match" }));
-    //   dispatch(
-    //     putProjects({
-    //       id: oneProject.id,
-    //       status: false,
-    //     })
-    //   );
-    //   dispatch(getUserId(user.id));
-    //   setVisible("invisible");
-    // } catch (error) {
-    //   console.log(error);
-    //   dispatch(newMessage(error.message, "error"));
-    // }
-    dispatch(saveIdBid(bid))
-      .then(() => dispatch(getProjectId(project)))
-      .then(() =>
-        dispatch(updateApplicationStatus({ id: idBid, status: "Match" }))
-      )
-      .then(() =>
-        dispatch(
-          putProjects({
-            id: oneProject.id,
-            status: false,
-          })
-        )
-      )
-      .then(() => {
-        dispatch(getUserId(user.id));
-        setVisible("invisible");
-      })
-      .catch((error) => {
-        console.log(error);
-        dispatch(newMessage(error.message, "error"));
-      });
+    try {
+      dispatch(updateApplicationStatus({ id: idBid, status: "Match" }));
+      dispatch(
+        putProjects({
+          id: oneProject.id,
+          status: false,
+        })
+      );
+      dispatch(getUserId(user.id));
+      setVisible("invisible");
+    } catch (error) {
+      console.log(error);
+      dispatch(newMessage(error.message, "error"));
+    }
   };
 
   return (
