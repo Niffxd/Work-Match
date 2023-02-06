@@ -10,7 +10,6 @@ import {
 } from "../../../redux/actions/userActions";
 import ConfirmationMessage from "../../ConfirmationMessage/ConfirmationMessage";
 import style from "./matchCard.module.css";
-//TO DO 1/1: ACOMODAR FUNCIONALIDAD
 export default function EmployerMatchCard({
   id,
   bid,
@@ -81,10 +80,10 @@ export default function EmployerMatchCard({
           dispatch(
             updateApplicationStatus({
               id: bid,
-              status: "Puntuar al postulado",
+              status: "Puntuar al empleador",
             })
           );
-        status === "Puntuar al empleador" &&
+        status === "Puntuar al postulado" &&
           dispatch(updateApplicationStatus({ id: bid, status: "Finalizado" }));
         dispatch(getUserId(user.id));
         setVisible("invisible");
@@ -122,7 +121,7 @@ export default function EmployerMatchCard({
             Finalizar trabajo
           </button>
         )}
-        {(status === "Puntuar" || status === "Puntuar al empleador") && (
+        {(status === "Puntuar" || status === "Puntuar al postulado") && (
           <>
             <form className={`${visible} ${style["form"]}`}>
               <input
@@ -162,7 +161,7 @@ export default function EmployerMatchCard({
           </>
         )}
 
-        {(status === "Finalizado" || status === "Puntuar al postulado") && (
+        {(status === "Finalizado" || status === "Puntuar al empleador") && (
           <div className={`${style["button"]} ${style["finalized"]}`}>
             <img
               className={`icon-green ${style["check-icon"]}`}
