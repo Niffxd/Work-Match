@@ -41,7 +41,7 @@ function App() {
         <Route exact path='/about-us' component={AboutUs} />
         <Route exact path='/Login' component={Login} />
         <Route exact path='/register' component={Register} />
-        <ProtectedRoute exact path='/register/complete' component={PostUser} />
+        <Route exact path='/register/complete' component={PostUser} />
         <ProtectedRoute exact path='/create-job-offer' component={CreateJobOffer} />
         <ProtectedRoute exact path='/edit-job-offer' component={EditJobOffer} />
         <ProtectedRoute exact path='/my-profile' component={DashboardUser} />
