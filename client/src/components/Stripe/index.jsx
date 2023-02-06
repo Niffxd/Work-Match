@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './index.module.css';
 
-const API_HOST = process.env.API_HOST || 'http://localhost:3001';
+const url = process.env.REACT_APP_API_URL || 'http://localhost:3001';
 
 const ProductDisplay = () => (
   <section>
@@ -12,7 +12,7 @@ const ProductDisplay = () => (
         <h5>$20.00 / month</h5>
       </div>
     </div>
-    <form action={API_HOST + "/stripe/create-checkout-session"} method="POST">
+    <form action={url + "/stripe/create-checkout-session"} method="POST">
       {/* Add a hidden field with the lookup_key of your Price */}
       <input type="hidden" name="lookup_key" value="SP20" />
       
@@ -32,7 +32,7 @@ const SuccessDisplay = ({ sessionId }) => {
           <h3>Subscription to starter plan successful!</h3>
         </div>
       </div>
-      <form action={API_HOST + "/stripe/create-portal-session"} method="POST">
+      <form action={url + "/stripe/create-portal-session"} method="POST">
         <input
           type="hidden"
           id="session-id"
