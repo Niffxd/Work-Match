@@ -12,30 +12,39 @@ import NotFound from "../../NotFound/NotFound";
 export default function EmployerMatches() {
   const userState = useSelector((state) => state.user);
   const { user } = userState;
-  const userApplications = user.Projects.filter(
-    (project) =>
-      project.Bid.owner === user.id && project.Bid.owner !== project.Bid.user
+  //User's publications
+  const userProjects = user.Projects.filter(
+    (project) => project.Bid.status === "Owner"
   );
-  const userMatches = userApplications.filter((application) => {
-    return (
-      application.Bid.status === "Match" ||
-      application.Bid.status === "Puntuar" ||
-      application.Bid.status === "Puntuar al postulado" ||
-      application.Bid.status === "Puntuar al empleador" ||
-      application.Bid.status === "Finalizado"
-    );
+  //User matches
+  const userMatches = [];
+
+  //Filter close applications
+  userProjects.forEach((project) => {
+    for (let postulate of project.Users) {
+      if (postulate.Bid.status === "Match") {
+        userMatches.push({ ...postulate, category: project.Category.name });
+      }
+    }
   });
+
+  console.log(userMatches);
   return (
     <>
+      <p>Falta la funcionalidad.</p>
       {userMatches.length === 0 ? (
         <NotFound message='Aún no haz hecho match.' />
       ) : (
-        userMatches.map((match) => (
+        userMatches.map((match, index) => (
           <EmployerMatchCard
-            key={`match-${match.id}`}
-            category={match.Category.name}
-            user={match.Bid.bidder}
+            id={match.id}
+            key={`match-${index}`}
+            bid={match.Bid.id}
+            category={match.category}
+            image={match.image}
             status={match.Bid.status}
+            phone={match.phone}
+            name={match.name}
           />
         ))
       )}

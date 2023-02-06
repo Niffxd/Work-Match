@@ -49,6 +49,7 @@ async function read(id, query) {
                   'biography',
                   'phone',
                   'image',
+                  'rate',
                   'premium',
                 ],
               },
@@ -85,7 +86,8 @@ async function read(id, query) {
         password: '1234',
         name: 'Miguel Mendez Gonzales',
         age: 35,
-        biography: '',
+        biography:
+          'Lorem qui dolorem ipsum, quia dolor sit amet consectetur adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem',
         mail: 'miguel123@email.com',
         phone: 2548773945,
         role: 1,
@@ -97,7 +99,8 @@ async function read(id, query) {
         password: '1234',
         name: 'Dariana Rengifo',
         age: 25,
-        biography: '',
+        biography:
+          'Lorem qui dolorem ipsum, quia dolor sit amet consectetur adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem',
         mail: 'darianarengifo@gmail.com',
         phone: 3517739445,
         role: 2,
@@ -108,7 +111,8 @@ async function read(id, query) {
         password: '1234',
         name: 'Nicolas sanchez',
         age: 26,
-        biography: '',
+        biography:
+          'Lorem qui dolorem ipsum, quia dolor sit amet consectetur adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem',
         mail: 'nicosanchez673@gmail.com',
         phone: 5493816631856,
         role: 2,
@@ -119,7 +123,8 @@ async function read(id, query) {
         password: '1234',
         name: 'Pedro Aristigueta',
         age: 31,
-        biography: '',
+        biography:
+          'Lorem qui dolorem ipsum, quia dolor sit amet consectetur adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem',
         mail: 'aristiguetam97@gmail.com',
         phone: 51959734026,
         role: 2,
@@ -130,7 +135,8 @@ async function read(id, query) {
         password: '1234',
         name: 'Diego Ezequiel Guillén',
         age: 31,
-        biography: '',
+        biography:
+          'Lorem qui dolorem ipsum, quia dolor sit amet consectetur adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem',
         mail: 'diegoezequielguillen@gmail.com',
         phone: 5492665031781,
         role: 2,
@@ -141,7 +147,8 @@ async function read(id, query) {
         password: '1234',
         name: 'Marcos Carbajales',
         age: 31,
-        biography: '',
+        biography:
+          'Lorem qui dolorem ipsum, quia dolor sit amet consectetur adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem',
         mail: 'marcoscarbajales96@gmail.com',
         phone: 5493815128406,
         role: 2,
@@ -152,7 +159,8 @@ async function read(id, query) {
         password: '1234',
         name: 'Mateo Colombatti',
         age: 31,
-        biography: '',
+        biography:
+          'Lorem qui dolorem ipsum, quia dolor sit amet consectetur adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem',
         mail: 'mateo.rng@gmail.com',
         phone: 5492215978443,
         role: 2,
@@ -163,7 +171,8 @@ async function read(id, query) {
         password: '1234',
         name: 'Daniel Valencia Giraldo',
         age: 31,
-        biography: '',
+        biography:
+          'Lorem qui dolorem ipsum, quia dolor sit amet consectetur adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem',
         mail: 'daniel@gmail.com',
         phone: 573116886868,
         role: 2,
