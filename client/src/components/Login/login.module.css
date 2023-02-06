@@ -60,17 +60,20 @@
 }
 
 .div_login {
+  min-height: 36rem;
   grid-area: login;
   margin-top: 0;
   background-color: var(--baby-purple);
   padding: 1rem 1.5rem;
-  border-bottom-right-radius: var(--border-radius);
-  border-bottom-left-radius: var(--border-radius);
+  border-radius: var(--border-radius);
 }
 /* Logo responsive */
 .div_logo {
-  display: none;
+  display: flex;
+  margin: 1rem 1rem 2rem 1rem;
+  justify-content: center;
 }
+
 /* LABEL/INPUT/BOTON */
 .div_login label {
   color: var(--dark-color);
@@ -121,11 +124,7 @@
     grid-template-areas: "carrusel login";
     justify-content: space-evenly;
   }
-  .div_logo {
-    display: flex;
-    margin: 1rem 1rem 2rem 1rem;
-    justify-content: center;
-  }
+
   .div_login {
     display: grid;
     border-radius: var(--border-radius);

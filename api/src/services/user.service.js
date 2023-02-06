@@ -183,8 +183,7 @@ async function getUserName(username) {
   const userFound = await User.findOne({
     where: { username },
   });
-
-  return User ? userFound : new Error('User not found');
+  return userFound;
 }
 
 async function readUserAddres(id, query) {

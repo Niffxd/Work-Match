@@ -26,6 +26,7 @@ export default function userReducer(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
     case GET_ALL_USERS:
+      return { ...state, allUsers: payload };
     case GET_USER:
     case GET_USERNAME:
     case CLEAR_USER:
