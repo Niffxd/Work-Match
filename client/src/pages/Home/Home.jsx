@@ -6,7 +6,6 @@ import { getAddress, getState } from "../../redux/actions/addressActions";
 import { getCategories } from "../../redux/actions/categoriesActions";
 import { getProjects, itemsPerPage } from "../../redux/actions/projectActions";
 import { getAllUsers, getUserId } from "../../redux/actions/userActions";
-import { useAuth0 } from "@auth0/auth0-react";
 import style from "./home.module.css";
 import NotFound from "../../components/NotFound/NotFound";
 
@@ -19,7 +18,6 @@ export default function Home() {
     variable = numberPerPage * (currentPage - 1),
     initialIndex = 0 + variable,
     finalIndex = numberPerPage + variable;
-  const { user } = useAuth0();
 
   useEffect(() => {
     dispatch(getAllUsers())
