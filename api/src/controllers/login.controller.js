@@ -17,10 +17,10 @@ async function create(req, res, next) {
     next(err);
   }
 }
-
+//
 async function createEmailRequest(req, res, next) {
   try {
-    res.status(201).send(await login.sendEmail(req.body));
+    res.status(201).send(await login.sendEmailRegister(req.body));
   } catch (err) {
     console.error(`Error while sending email`, err.message);
     next(err);
