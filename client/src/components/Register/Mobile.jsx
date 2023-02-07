@@ -7,6 +7,8 @@ import user from "../../assets/images/user.png";
 import style from "./register.module.css";
 
 export default function Mobile() {
+  const [ image, setImage ] = useState(user)
+  const [ load, setLoad ] = useState(false)
   const [validateEmail, setValidateEmail] = useState(false);
   const [validatePassword, setValidatePassword] = useState(false);
   const [validate, setValidate] = useState(false);
@@ -14,6 +16,7 @@ export default function Mobile() {
   const [preForm, setPreform] = useState({
     email: "",
     password: "",
+    image: 'https://cdn-icons-png.flaticon.com/512/64/64572.png'
   });
 
   const handleNameChange = (event) => {
@@ -36,19 +39,46 @@ export default function Mobile() {
     else setValidate(false);
   };
 
+  const handlerImage = async event => {
+    const tempImage = event.target.files[0]
+    const data = new FormData()
+    data.append('file', tempImage)
+    data.append('upload_preset', 'Images')
+    setLoad(true)
+    const res = await fetch(
+      'https://api.cloudinary.com/v1_1/djr3toaxt/image/upload',
+      {
+        method: 'POST',
+        body: data
+      }
+    )
+    const img_url = await res.json()
+    setImage(img_url.secure_url)
+    setLoad(false)
+  };
+
+  const uploadPhoto = () => {
+    setPreform({
+      ...preForm,
+      image
+    })
+    document.getElementById('modalProfile').close()
+    document.getElementById('modalProfile').classList.remove('showModal')
+  }
+
   return (
     <div className={`${style["mobile"]}`}>
       <div className={`${style["add-photo-container"]}`}>
         <div className={`${style["photo-container"]}`}>
           <img
             className={`${style["photo-profile"]}`}
-            src={user}
+            src={image}
             width={100}
             height={100}
             alt="profile"
           />
         </div>
-        <AddButton />
+        <AddButton handlerImage={handlerImage} uploadPhoto={uploadPhoto} states={{image, load}}/>
       </div>
       <div className={`${style["info"]}`}>
         <label htmlFor="email">Email:</label>
