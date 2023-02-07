@@ -41,7 +41,6 @@ export default function EmployeeMatchCard({ bid, category, owner, status }) {
   const finalizedHandler = () => {
     try {
       dispatch(updateApplicationStatus({ id: idBid, status: "Puntuar" }));
-      // setVisible("invisible");
       dispatch(getUserId(user.id));
     } catch (error) {
       console.log(error);
@@ -99,12 +98,13 @@ export default function EmployeeMatchCard({ bid, category, owner, status }) {
           <img
             className={`${style["photo-profile"]}`}
             src={owner.image}
-            alt='Photo profile'
+            alt='profile'
           />
         </div>
-        <div className={`${style["category-name"]}`}>
-          <p className={`${style["category"]}`}>{category}</p>
-          <p className={`${style["name"]}`}>{owner.name}</p>
+        <div className={`${style["info-container"]}`}>
+          <h4 className={`${style["name"]}`}>{owner.name}</h4>
+          <h4 className={`${style["category"]}`}>{category}</h4>
+          <p className={`${style["phone"]}`}>Tlf: {owner.phone}</p>
         </div>
         {status === "Match" && (
           <button

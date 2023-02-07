@@ -5,20 +5,24 @@
   grid-template-columns: 5rem 1fr;
   grid-template-rows: repeat(4, min-content);
   grid-template-areas:
-    "image category"
     "image name"
+    "image category"
+    "image rate"
     "image biography"
     "action action";
   column-gap: 1.5rem;
   align-items: center;
+  justify-content: center;
   padding: 1rem;
-  padding-bottom: 0;
   border-radius: var(--border-radius);
   background-color: var(--light-purple);
 }
 .actions {
   grid-area: action;
   margin: 0;
+}
+.actions > button {
+  font-size: 1rem;
 }
 .biography {
   grid-area: biography;
@@ -30,14 +34,27 @@
 }
 .category {
   grid-area: category;
-  margin: 0;
+  font-size: 1.1rem;
+  margin: 0.25rem 0 0;
 }
 .more-information {
   height: auto;
 }
-.name {
+.name-container {
   grid-area: name;
-  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+.name {
+  font-weight: var(--bold);
+  margin: 0;
+}
+.premium-icon {
+  margin: 0;
+  margin-left: 0.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 .photo-container {
   grid-area: image;
@@ -55,6 +72,30 @@
   object-fit: cover;
   object-position: center;
 }
+/* Rate */
+.rate-container {
+  grid-area: rate;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 0.5rem 0;
+}
+.text-score {
+  font-weight: var(--semibold);
+  margin: 0;
+}
+.star-icon {
+  margin: 0 0.5rem;
+  width: 1rem;
+  height: auto;
+}
+.score {
+  margin: 0;
+}
+
+.invisible {
+  display: none;
+}
 
 @media (pointer: fine) {
   .card-container:hover,
@@ -69,15 +110,19 @@
     background: none;
     column-gap: 2rem;
     grid-template-areas:
-      "image category"
       "image name"
+      "image category"
+      "image rate"
       "image biography"
-      "action action";
+      ". action";
   }
   .actions {
     grid-area: action;
-    justify-self: end;
+    justify-self: center;
     width: min-content;
     margin: 0;
+  }
+  .actions > button {
+    font-size: max(1.2rem, 1.2vw);
   }
 }

@@ -47,7 +47,7 @@ export default function EditJobOffer() {
           })
         );
         dispatch(newMessage("Tu oferta fue actualizada con éxito", "success"));
-        history.push(`/`);
+        history.goBack();
       }
     } catch (error) {
       console.log(error);
