@@ -258,7 +258,7 @@ async function sendEmailRegister(emailInfo) {
       pass: 'xgevyobvubntykvx'
     }
   });
-  
+  //
   var mailOptions = {
     from: 'workmatch2023@gmail.com',
     to: emailInfo.mail,

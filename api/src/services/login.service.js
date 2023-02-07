@@ -50,6 +50,7 @@ if(result.length>0){
     return msg
   }
 */
+//send Email
   async function sendEmailRegister(emailInfo) {
  
     var nodemailer = require('nodemailer');
