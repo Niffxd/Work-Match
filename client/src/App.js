@@ -24,7 +24,6 @@ import DashboardAdmin from "./components/DashboardAdmin/DashboardAdmin";
 import DashboardEditAdmin from "./components/DashboardAdmin/DashboardAdminForm/DashboardEditAdmin";
 import TermsYCopyright from "./pages/TermsYCopyright/TermsYCopyright";
 import LoaderPage from "./components/LoaderPage/LoaderPage"
-// import ProtectedRoute from "./components/protected-route"
 
 axios.defaults.baseURL = "http://localhost:3001";
 
@@ -66,23 +65,13 @@ function App() {
         <Route exact path='/my-profile/employer/:type'>
           {!Object.keys(user).length ? <Redirect to="/redirect" /> : <EmployerProfile />}
         </Route>
+        <Route exact path='/my-profile/admin'>
+          {!Object.keys(user).length && user.role !== 1? <Redirect to="/redirect" /> : <DashboardAdmin />}
+        </Route>
+        <Route exact path='/my-profile/admin/:id'>
+          {!Object.keys(user).length && user.role !== 1? <Redirect to="/redirect" /> : <DashboardEditAdmin />}
+        </Route>
         {/* Protected Routes */}
-
-        {/* <ProtectedRoute exact path='/create-job-offer' component={CreateJobOffer} />
-        <ProtectedRoute exact path='/edit-job-offer' component={EditJobOffer} />
-        <ProtectedRoute exact path='/my-profile' component={DashboardUser} />
-        <Route exact path='/my-profile/admin' component={DashboardAdmin} />
-        <Route exact path='/my-profile/admin/:id' component={DashboardEditAdmin} />
-        <ProtectedRoute
-          exact
-          path="/my-profile/employee/:type"
-          component={EmployeeProfile}
-        />
-        <ProtectedRoute
-          exact
-          path="/my-profile/employer/:type"
-          component={EmployerProfile}
-        /> */}
 
         <Route exact path="/terms-and-copyright" component={TermsYCopyright} />
         <Route path="*" component={Error404} />
