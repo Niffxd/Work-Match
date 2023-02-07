@@ -38,11 +38,12 @@ export default function JobOfferDetail() {
   useEffect(() => {
     dispatch(getProjectId(id));
     dispatch(getPublication(id));
-  }, []); //eslint-disable-line 
+  }, []); //eslint-disable-line
 
-  useEffect(async () => { //eslint-disable-line 
+  useEffect(async () => {
+    //eslint-disable-line
     dispatch(getOwner(oneProject.owner));
-  }, [oneProject]);//eslint-disable-line
+  }, [oneProject]); //eslint-disable-line
 
   //Edit Publication
   const editHandler = (event) => {
@@ -90,7 +91,7 @@ export default function JobOfferDetail() {
   const applicationHandler = async (event) => {
     event.preventDefault();
     try {
-      dispatch(
+      await dispatch(
         userApplication({
           project: id,
           user: user.id,
