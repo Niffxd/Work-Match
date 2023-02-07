@@ -18,7 +18,7 @@ const DashboardAdmin = () => {
     .then(() => dispatch(getCategories()))
     .then(() => dispatch(getProjects()))
  .catch((error) => console.log(error));
-  }, []);
+  }, []); //eslint-disable-line
 
 
 

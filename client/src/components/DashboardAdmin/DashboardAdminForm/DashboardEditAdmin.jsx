@@ -25,7 +25,7 @@ const DashboardEditAdmin = () => {
 
   useEffect(()=> {
   dispatch(getUserId(id))
-  }, [id])
+  }, [id]) //eslint-disable-line
    
     const handleSubmit =(e) => {
       e.preventDefault();

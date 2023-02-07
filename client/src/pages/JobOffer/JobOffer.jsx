@@ -40,10 +40,10 @@ export default function JobOfferDetail() {
     dispatch(getPublication(id));
   }, []); //eslint-disable-line
 
-  useEffect(async () => {
+  useEffect(async () => { //eslint-disable-line
     //eslint-disable-line
-    dispatch(getOwner(oneProject.owner));
-  }, [oneProject]); //eslint-disable-line
+    dispatch(getOwner(oneProject.owner)); 
+  }, [oneProject]); //eslint-disable-line 
 
   //Edit Publication
   const editHandler = (event) => {
