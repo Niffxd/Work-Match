@@ -87,7 +87,7 @@ export default function PostulateCard({
         <img
           className={`${style["photo-profile"]}`}
           src={image}
-          alt='Photo profile'
+          alt='profile'
         />
       </div>
       <div className={`${style["name-container"]}`}>

@@ -37,7 +37,21 @@
   outline: none;
 }
 
-.login-auth0 {
+.login-auth0,
+.success-upload {
   background-color: #57BF7D;
   color: #FFFEFB;
+}
+
+.buttons-container {
+  display: flex;
+  gap: 1rem;
+}
+
+.upload-image {
+  height: 3rem;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
