@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { clearUser, getUserId, getUsername, postUser } from '../../redux/actions/userActions'
 import { clearProjectId } from "../../redux/actions/projectActions";
 import editIcon from '../../assets/images/edit.png'
+import settingsIcon from '../../assets/images/settings.png'
 import profileIcon from '../../assets/images/profile.png'
 import style from './navigation.module.css'
 
@@ -44,6 +45,12 @@ export default function Navigation() {
       icon: editIcon
     }
   ]
+
+  if(allUsers.user.role === 1) links.push({
+    label: 'Panel de Administrador',
+    route: '/my-profile/admin',
+    icon: settingsIcon
+  })
 
   const handleDisplayOptions = () => {
     document.querySelector(`.${style['profile-links']}`).classList.toggle(`${style['show-links']}`)
