@@ -21,6 +21,8 @@ import EditJobOffer from "./pages/EditJobOffer/EditJobOffer";
 import AlertMessage from "./components/AlertMessage/AlertMessage";
 import DashboardAdmin from "./components/DashboardAdmin/DashboardAdmin";
 import DashboardEditAdmin from "./components/DashboardAdmin/DashboardAdminForm/DashboardEditAdmin";
+import TermsYCopyright from "./pages/TermsYCopyright/TermsYCopyright";
+import ProtectedRoute from "./components/protected-route"
 
 axios.defaults.baseURL = "http://localhost:3001";
 
@@ -34,31 +36,35 @@ function App() {
       <AlertMessage />
       <Navigation />
       <Switch>
-        <Route exact path='/' component={Home} />
-        <Route exact path='/home'>
-          <Redirect to='/' />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/home">
+          <Redirect to="/" />
         </Route>
+
+     
+
         <Route exact path='/job-offer/:id' component={JobOfferDetail} />
         <Route exact path='/about-us' component={AboutUs} />
         <Route exact path='/Login' component={Login} />
         <Route exact path='/register' component={Register} />
         <Route exact path='/register/complete' component={PostUser} />
-        <Route exact path='/create-job-offer' component={CreateJobOffer} />
-        <Route exact path='/edit-job-offer' component={EditJobOffer} />
-        <Route exact path='/my-profile' component={DashboardUser} />
+        <ProtectedRoute exact path='/create-job-offer' component={CreateJobOffer} />
+        <ProtectedRoute exact path='/edit-job-offer' component={EditJobOffer} />
+        <ProtectedRoute exact path='/my-profile' component={DashboardUser} />
         <Route exact path='/my-profile/admin' component={DashboardAdmin} />
         <Route exact path='/my-profile/admin/:id' component={DashboardEditAdmin} />
-        <Route
+        <ProtectedRoute
           exact
-          path='/my-profile/employee/:type'
+          path="/my-profile/employee/:type"
           component={EmployeeProfile}
         />
-        <Route
+        <ProtectedRoute
           exact
-          path='/my-profile/employer/:type'
+          path="/my-profile/employer/:type"
           component={EmployerProfile}
         />
-        <Route path='*' component={Error404} />
+        <Route exact path="/terms-and-copyright" component={TermsYCopyright} />
+        <Route path="*" component={Error404} />
       </Switch>
       <Footer />
     </BrowserRouter>

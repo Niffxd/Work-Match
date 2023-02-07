@@ -18,11 +18,12 @@ async function readUserAddres(req, res, next) {
 }
 
 async function readUsername(req, res, next) {
+  const { username } = req.params;
   try {
-    res.status(200).send(await user.getUserName(req.params.username));
-    console.log(req.params.username);
+    const data = await user.getUserName(username);
+    if (!data.length) return res.status(200).send(data);
   } catch (err) {
-    console.error(`Error while taking user`, err.message);
+    res.status(404).send('Something went wrong!');
     next(err);
   }
 }

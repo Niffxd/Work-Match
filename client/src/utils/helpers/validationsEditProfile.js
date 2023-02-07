@@ -4,7 +4,7 @@ const validationEditProfile = (form) => {
   const regexUsername = /^[a-z_-\d]+$/;
   const regexName = /^[ A-Za-zÑñÁáÉéÍíÓóÚúÜü]+$/i; // eslint-disable-next-line
   const regexEmail =
-    /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/;
+    /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/; //eslint-disable-line 
 
   if (!form.username) {
     errors.username = "Por favor, agregue un nombre de usuario.";

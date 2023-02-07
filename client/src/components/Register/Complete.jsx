@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useLocation, useHistory } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import * as userActions from '../../redux/actions/userActions'
 import * as addressActions from '../../redux/actions/addressActions'
 import BackButton from './BackButton'
@@ -10,6 +10,11 @@ import btnStyle from './buttons.module.css'
 export default function Complete() {
   const dispatch = useDispatch()
   const history = useHistory()
+  const { allUsers } = useSelector(state => state.user)
+
+  useEffect(() => {
+    dispatch(userActions.getAllUsers)
+  }, [dispatch])
 
   const preForm = useLocation().state;
 
@@ -63,14 +68,17 @@ export default function Complete() {
 
   const handleSubmit = (event) => {
     event.preventDefault()
+
+    console.log(allUsers)
     if(postUser.username !== ''
     && postUser.name !== ''
-    && postUser.age >= 16
-    && postUser.phone !== ''){
+    && postUser.age >= 16 && postUser.age >= 90
+    && postUser.phone !== '' && postUser.phone.length >= 9 && postUser.phone.length <= 12){
       dispatch(userActions.postUser(postUser))
       dispatch(addressActions.postAddress(postAddress))
-      alert('Usuario registrado con éxito!')
-      history.push('/', postUser)
+
+      alert('Usuario registrado con éxito!. Por favor loguate para comenzar a trabajar!')
+      history.push('/login')
     }
     else{
       alert('Complete los campos requeridos!')
