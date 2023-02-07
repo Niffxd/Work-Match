@@ -12,6 +12,7 @@ import carrusel3 from "../../assets/images/imagecarrousel3.png";
 import carrusel4 from "../../assets/images/imagecarousel4.png";
 import logo from '../../assets/images/small_logo.png';
 import { getAllUsers, getUserId } from "../../redux/actions/userActions";
+import { newMessage } from "../../redux/actions/alertMessageActions";
 
 export default function Login() {
   const history = useHistory();
@@ -50,20 +51,22 @@ export default function Login() {
     })
   }
 
-  const handleCheckUser = (event) => {
+  const handleCheckUser = async (event) => {
     event.preventDefault()
     if (actualUser.username === '' || actualUser.password === '') {
-      alert('Ingrese todos los campos.');
+      dispatch(newMessage('Ingrese todos los campos.', 'error'))
     } else {
       try {
         const tryUser = allUsers.filter(user => user.username === actualUser.username)[0]
         if(tryUser.password === actualUser.password){
-          alert('Usuario logueado con éxito!')
-          dispatch(getUserId(tryUser.id))
-          history.push('/')
+          dispatch(newMessage('Usuario logueado con éxito!', 'success'))
+          setTimeout(() => {
+            dispatch(getUserId(tryUser.id))
+            history.push('/')
+          }, 2000)
         }
         else{
-          alert('Usuario o contraseña incorrectos.')
+          dispatch(newMessage('Usuario o contraseña incorrectos.', 'error'))
         }
       }
       catch(err) {
