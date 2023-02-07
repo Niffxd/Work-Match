@@ -54,6 +54,10 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
+      ownerName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       bidder: {
         type: DataTypes.INTEGER,
         allowNull: false,

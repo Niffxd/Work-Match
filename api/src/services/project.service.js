@@ -50,6 +50,7 @@ async function read(id, query) {
         budget: 15000,
         agreement: false,
         owner: 2,
+        ownerName: 'Dariana Rengifo',
         bidder: 2,
         estimated: 6,
         information: 'Las Heras, calle 1234',
@@ -63,6 +64,7 @@ async function read(id, query) {
         budget: 20000,
         agreement: true,
         owner: 3,
+        ownerName: 'Nicolas Sanchez',
         bidder: 3,
         information: 'Sábado 10 de febrero, 12:00hs, Restaurante Luz Azul',
         state: 2,
@@ -76,6 +78,7 @@ async function read(id, query) {
         budget: 28000,
         agreement: false,
         owner: 4,
+        ownerName: 'Pedro Aristigueta',
         bidder: 4,
         information: 'Sábado 15 de febrero, 20:00hs, Salon de Fiesta 123',
         state: 3,
@@ -88,6 +91,7 @@ async function read(id, query) {
         budget: 15000,
         agreement: false,
         owner: 5,
+        ownerName: 'Diego Ezequiel Guillén',
         bidder: 5,
         estimated: 4,
         information: 'Sábado 17 de febrero, 15:00hs, Salon de Fiesta 123',
@@ -102,6 +106,7 @@ async function read(id, query) {
         budget: 5000,
         agreement: true,
         owner: 6,
+        ownerName: 'Marcos Carbajales',
         bidder: 6,
         state: 5,
       },
@@ -114,6 +119,7 @@ async function read(id, query) {
         budget: 5000,
         agreement: true,
         owner: 7,
+        ownerName: 'Mateo Colombatti',
         bidder: 7,
         state: 6,
       },
@@ -126,6 +132,7 @@ async function read(id, query) {
         budget: 2000,
         agreement: true,
         owner: 8,
+        ownerName: 'Daniel Valencia Giraldo',
         bidder: 8,
         estimated: 3,
         information: 'Viernes 25 de febrero, 10:00hs',
@@ -138,8 +145,9 @@ async function read(id, query) {
         category: 5, //fotografia
         budget: 5000,
         agreement: false,
-        owner: 1,
-        bidder: 1,
+        owner: 2,
+        ownerName: 'Dariana Rengifo',
+        bidder: 2,
         estimated: 3,
         information: 'Sábado 17 de febrero, 15:00hs, Salon de Fiesta 123',
         state: 8,
@@ -151,8 +159,9 @@ async function read(id, query) {
         category: 6, //jardineria
         budget: 5000,
         agreement: false,
-        owner: 2,
-        bidder: 2,
+        owner: 3,
+        ownerName: 'Nicolas Sanchez',
+        bidder: 3,
         estimated: 4,
         state: 9,
       },
@@ -163,8 +172,9 @@ async function read(id, query) {
         category: 5, //fotografia
         budget: 6500,
         agreement: false,
-        owner: 3,
-        bidder: 3,
+        owner: 4,
+        ownerName: 'Pedro Aristigueta',
+        bidder: 4,
         estimated: 4,
         state: 10,
       },
@@ -176,8 +186,9 @@ async function read(id, query) {
         category: 9, //plomeria
         budget: 48,
         agreement: false,
-        owner: 4,
-        bidder: 4,
+        owner: 5,
+        ownerName: 'Diego Ezequiel Guillén',
+        bidder: 5,
         estimated: 3,
         state: 7,
       },
@@ -422,10 +433,59 @@ async function create(project) {
     status: 'Owner',
     deleted: project.deleted,
   };
-  console.log(bids);
+
   await Bid.create(bids);
+
+  var data1 = await User.findAll({
+    attributes: ['mail'],
+    include: [
+      {
+        model: Project,
+        required: true,
+        where: { id: data.id },
+      },
+    ],
+  });
+  sendEmailProject(data1[0].mail)
   return data;
 }
+
+async function sendEmailProject(emailInfo) {
+ 
+  var nodemailer = require('nodemailer');
+
+  var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'workmatch2023@gmail.com',
+      pass: 'xgevyobvubntykvx'
+    }
+  });
+  //
+  var mailOptions = {
+    from: 'workmatch2023@gmail.com',
+    to: emailInfo,
+    subject: 'Notificación de workmatch',
+    text: 'Hola ! '+emailInfo,
+    html: `<br>Tu oferta se publico correctamente!!</p>
+    <br> <img src="cid:logo">
+    <br> Atentamente: Equipo Work-Match`,
+    attachments: [{
+      filename: 'small_logo.png',
+      path: __dirname +'/small_logo.png',
+      cid: 'logo'
+  }]
+  };
+  
+  transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+    }
+  }); 
+
+  }
 
 async function update(project) {
   const { id } = project;

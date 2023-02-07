@@ -17,16 +17,18 @@ export default function EditJobOffer() {
 
   //   Initial State Form
   const initialForm = {
-    address: jobState.name,
-    addressId: oneProject.state,
-    agreement: oneProject.agreement,
-    budget: oneProject.budget,
-    category: oneProject.Category.name,
-    categoryId: oneProject.Category.id,
-    description: oneProject.description,
-    estimated: oneProject.estimated,
-    information: oneProject.information,
+    address: jobState.name || "",
+    addressId: oneProject.state || "",
+    agreement: oneProject.agreement ,
+    budget: oneProject.budget , 
+    category: oneProject.Category.name ,
+    categoryId: oneProject.Category.id ,
+    description: oneProject.description ,
+    estimated: oneProject.estimated ,
+    information: oneProject.information ,
   };
+  console.log(oneProject)
+  console.log(states)
 
   //Submit
   const submitHandler = (event, form, errors, setErrors) => {
@@ -47,7 +49,7 @@ export default function EditJobOffer() {
           })
         );
         dispatch(newMessage("Tu oferta fue actualizada con éxito", "success"));
-        history.push(`/`);
+        history.goBack();
       }
     } catch (error) {
       console.log(error);
