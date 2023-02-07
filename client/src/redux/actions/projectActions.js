@@ -6,6 +6,7 @@ const URL_OWNER = "/user";
 
 // TYPES
 //projects
+export const ORIGINAL_PROJECTS = "ORIGINAL_PROJECTS";
 export const GET_PROJECTS = "GET_PROJECTS";
 export const GET_PROJECT_ID = "GET_PROJECT_ID";
 export const GET_OWNER = "GET_OWNER";
@@ -16,9 +17,17 @@ export const DELETE_PROJECT = "DELETE_PROJECT";
 //pagination
 export const ITEMS_PER_PAGE = "ITEMS_PER_PAGE";
 export const CURRENT_PAGE = "CURRENT_PAGE";
-
+// filter
+export const FILTERED_PROJECTS = "FILTERED_PROJECTS";
+export const FILTERS = "FILTERS";
 // ACTIONS
 //projects
+export const getOriginalProjects = () => async (dispatch) => {
+  const response = await axios.get(URL_PROJECT);
+  const projects = response.data.data;
+  dispatch({ type: ORIGINAL_PROJECTS, payload: projects });
+};
+
 export const getProjects = () => async (dispatch) => {
   const response = await axios.get(URL_PROJECT);
   const projects = response.data.data;
@@ -72,4 +81,11 @@ export const itemsPerPage = (min, max) => ({
 export const currentPg = (page) => ({
   type: CURRENT_PAGE,
   payload: page,
+});
+
+//filters
+export const filters = (filters) => ({ type: FILTERS, payload: filters });
+
+export const filteredProjects = () => ({
+  type: FILTERED_PROJECTS,
 });
