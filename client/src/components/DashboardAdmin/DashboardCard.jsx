@@ -9,7 +9,6 @@ import deletet from "../../assets/images/delete.png";
 import trespuntos from "../../assets/images/trespuntos.png";
 import edit from "../../assets/images/edit.png";
 const DashboardCard = ({ id, imagen, Nombre, publicaciones }) => {
-  console.log(publicaciones)
   const dispatch = useDispatch()
   const history = useHistory()
   const user = useSelector((state) => state.user);
