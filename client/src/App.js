@@ -19,6 +19,8 @@ import Loading from "./components/Register/Loading";
 import { useAuth0 } from "@auth0/auth0-react";
 import EditJobOffer from "./pages/EditJobOffer/EditJobOffer";
 import AlertMessage from "./components/AlertMessage/AlertMessage";
+import DashboardAdmin from "./components/DashboardAdmin/DashboardAdmin";
+import DashboardEditAdmin from "./components/DashboardAdmin/DashboardAdminForm/DashboardEditAdmin";
 
 axios.defaults.baseURL = "http://localhost:3001";
 
@@ -44,6 +46,8 @@ function App() {
         <Route exact path='/create-job-offer' component={CreateJobOffer} />
         <Route exact path='/edit-job-offer' component={EditJobOffer} />
         <Route exact path='/my-profile' component={DashboardUser} />
+        <Route exact path='/my-profile/admin' component={DashboardAdmin} />
+        <Route exact path='/my-profile/admin/:id' component={DashboardEditAdmin} />
         <Route
           exact
           path='/my-profile/employee/:type'

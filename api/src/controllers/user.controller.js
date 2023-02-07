@@ -38,12 +38,21 @@ async function create(req, res, next) {
 
 async function update(req, res, next) {
   try {
-    res.status(201).send(await user.update(req.body));
+    res.status(201).send(await user.update(req.body, req.params.id));
   } catch (err) {
     console.error(`Error while updating user`, err.message);
     next(err);
   }
 }
+
+// async function update(req, res, next) {
+//   try {
+//     const { id } = req.params;
+//     res.status(201).send(await user.update(req.body, id));
+//   } catch (err) {
+//     console.error(`Error while updating user`, err.message);
+//     next(err);
+//   }
 
 async function updateRate(req, res, next) {
   try {
