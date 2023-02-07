@@ -1,13 +1,13 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import JobOfferCard from "../../components/Cards/JobOfferCard/JobOfferCard";
-import Pagination from "../../components/Pagination/Pagination";
 import { getAddress, getState } from "../../redux/actions/addressActions";
 import { getCategories } from "../../redux/actions/categoriesActions";
 import { getProjects, itemsPerPage } from "../../redux/actions/projectActions";
 import { getAllUsers, getUserId } from "../../redux/actions/userActions";
-import style from "./home.module.css";
+import JobOfferCard from "../../components/Cards/JobOfferCard/JobOfferCard";
+import Pagination from "../../components/Pagination/Pagination";
 import NotFound from "../../components/NotFound/NotFound";
+import style from "./home.module.css";
 
 export default function Home() {
   const dispatch = useDispatch();
