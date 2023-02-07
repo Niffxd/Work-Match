@@ -65,6 +65,10 @@ module.exports = (sequelize) => {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
       },
+      blocked: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
     }
     // TimeStamps will be used as determinant of seniority on the platform
   );

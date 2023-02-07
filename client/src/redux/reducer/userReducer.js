@@ -12,6 +12,7 @@ import {
   CLEAR_USER,
   REACTIVE_ACCOUNT,
   ID_BID,
+  DELETE_USER_ADMIN
 } from "../actions/userActions";
 
 const initialState = {
@@ -38,6 +39,7 @@ export default function userReducer(state = initialState, action) {
     case USER_APPLICATION:
     case UPDATE_APPLICATION_STATUS:
     case DELETE_USER:
+    case DELETE_USER_ADMIN:
       return { ...state, message: payload };
     case ID_BID:
       return { ...state, idBid: payload };

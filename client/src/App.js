@@ -19,6 +19,8 @@ import Loading from "./components/Register/Loading";
 import { useAuth0 } from "@auth0/auth0-react";
 import EditJobOffer from "./pages/EditJobOffer/EditJobOffer";
 import AlertMessage from "./components/AlertMessage/AlertMessage";
+import DashboardAdmin from "./components/DashboardAdmin/DashboardAdmin";
+import DashboardEditAdmin from "./components/DashboardAdmin/DashboardAdminForm/DashboardEditAdmin";
 import TermsYCopyright from "./pages/TermsYCopyright/TermsYCopyright";
 import ProtectedRoute from "./components/protected-route"
 
@@ -49,6 +51,8 @@ function App() {
         <ProtectedRoute exact path='/create-job-offer' component={CreateJobOffer} />
         <ProtectedRoute exact path='/edit-job-offer' component={EditJobOffer} />
         <ProtectedRoute exact path='/my-profile' component={DashboardUser} />
+        <Route exact path='/my-profile/admin' component={DashboardAdmin} />
+        <Route exact path='/my-profile/admin/:id' component={DashboardEditAdmin} />
         <ProtectedRoute
           exact
           path="/my-profile/employee/:type"

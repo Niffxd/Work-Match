@@ -19,6 +19,8 @@ export const ID_BID = "ID_BID";
 export const UPDATE_APPLICATION_STATUS = "UPDATE_APPLICATION_STATUS";
 export const DELETE_USER = "DELETE_USER";
 export const REACTIVE_ACCOUNT = "REACTIVE_ACCOUNT";
+export const DELETE_USER_ADMIN = "DELETE_USER_ADMIN";
+
 // ACTIONS
 
 //all users
@@ -101,6 +103,13 @@ export const deleteUser = (id) => async (dispatch) => {
   await axios.delete(`${URL_USER}/${id}`);
   dispatch({ type: DELETE_USER, payload: "El usuario ha sido eliminado." });
 };
+
+//delete user admin
+export const deleteUserAdmin = (id) => async (dispatch) => {
+    await axios.delete(`${URL_USER}/${id}`);
+    dispatch({ type: DELETE_USER_ADMIN, payload: "El usuario ha sido eliminado." })
+    dispatch(getAllUsers())
+  };
 
 //reactive user account
 export const reactiveAccount = (id) => async (dispatch) => {
