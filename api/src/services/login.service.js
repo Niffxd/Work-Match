@@ -50,7 +50,7 @@ if(result.length>0){
     return msg
   }
 */
-  async function sendEmail(emailInfo) {
+  async function sendEmailRegister(emailInfo) {
  
     var nodemailer = require('nodemailer');
 
@@ -67,7 +67,18 @@ if(result.length>0){
       to: emailInfo.email,
       subject: 'Notificación de workmatch',
       text: 'Hola ! '+emailInfo,
-      html: `Hola !!, <strong>${emailInfo.email}</strong>, Felicidades por crearte una cuenta en Workmatch, espero disfutes tu experiencia :) </p>`
+      html: `Hola <strong>${emailInfo.name}</strong>.
+      <br>!Bienvenido a Work-Match!, Aqui podras postularte 
+      a tu trabajo ideal o encontrar al candidato perfecto para realizar un trabajo </p>
+      <br>
+      <br> <img src="cid:logo">
+      <br>
+      <br> Atentamente: Equipo Work-Match`,
+      attachments: [{
+        filename: 'small_logo.png',
+        path: __dirname +'/small_logo.png',
+        cid: 'logo'
+    }]
     };
     
     transporter.sendMail(mailOptions, function(error, info){
@@ -109,5 +120,5 @@ module.exports = {
   Login,
   update,
   remove,
-  sendEmail
+  sendEmailRegister
 };

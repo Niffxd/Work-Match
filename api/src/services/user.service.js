@@ -179,7 +179,7 @@ async function read(id, query) {
         age: 31,
         biography:
           'Lorem qui dolorem ipsum, quia dolor sit amet consectetur adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem',
-        mail: 'daniel@gmail.com',
+        mail: 'valenciadaniel8022015@gmail.com',
         phone: 573116886868,
         role: 2,
         image: 'https://cdn-icons-png.flaticon.com/512/4128/4128176.png',
@@ -242,8 +242,51 @@ async function readUserAddres(id, query) {
 }
 
 async function create(user) {
-  return User.create(user);
+  const data=await User.create(user);
+  sendEmailRegister(data)
+  return data;
 }
+
+async function sendEmailRegister(emailInfo) {
+ 
+  var nodemailer = require('nodemailer');
+
+  var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'workmatch2023@gmail.com',
+      pass: 'xgevyobvubntykvx'
+    }
+  });
+  
+  var mailOptions = {
+    from: 'workmatch2023@gmail.com',
+    to: emailInfo.mail,
+    subject: 'Notificación de workmatch',
+    text: 'Hola ! '+emailInfo,
+    html: `Hola <strong>${emailInfo.name}</strong>.
+    <br>!Bienvenido a Work-Match!, Aqui podras postularte 
+    a tu trabajo ideal o encontrar al candidato perfecto para realizar un trabajo </p>
+    <br>
+    <br> <img src="cid:logo">
+    <br>
+    <br> Atentamente: Equipo Work-Match`,
+    attachments: [{
+      filename: 'small_logo.png',
+      path: __dirname +'/small_logo.png',
+      cid: 'logo'
+  }]
+  };
+  
+  transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+    }
+  }); 
+
+  }
 
 async function updateRate(user) {
   const { rate, id } = user;
@@ -343,8 +386,48 @@ async function remove(id) {
       },
     }
   );
+  sendEmailRemoveAccount(userFound[0])
   return result;
 }
+
+async function sendEmailRemoveAccount(emailInfo) {
+  var nodemailer = require('nodemailer');
+  var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'workmatch2023@gmail.com',
+      pass: 'xgevyobvubntykvx'
+    }
+  });
+  var mailOptions = {
+    from: 'workmatch2023@gmail.com',
+    to: emailInfo.mail,
+    subject: 'Notificación de workmatch',
+    text: 'Hola ! '+emailInfo,
+    html: `Hola <strong>${emailInfo.name}</strong>.
+    <br> Tu cuenta fue desactivada con exito.
+    <br> Puedes rectivarla cuando gustes .
+    <br> Esperamos verte pronto </p>
+    <br>
+    <br> <img src="cid:logo">
+    <br>
+    <br> Atentamente: Equipo Work-Match`,
+    attachments: [{
+      filename: 'small_logo.png',
+      path: __dirname +'/small_logo.png',
+      cid: 'logo'
+  }]
+  };
+  
+  transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+    }
+  }); 
+
+  }
 
 module.exports = {
   read,

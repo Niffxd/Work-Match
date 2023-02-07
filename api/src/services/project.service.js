@@ -422,10 +422,59 @@ async function create(project) {
     status: 'Owner',
     deleted: project.deleted,
   };
-  console.log(bids);
+
   await Bid.create(bids);
+
+  var data1 = await User.findAll({
+    attributes: ['mail'],
+    include: [
+      {
+        model: Project,
+        required: true,
+        where: { id: data.id },
+      },
+    ],
+  });
+  sendEmailProject(data1[0].mail)
   return data;
 }
+
+async function sendEmailProject(emailInfo) {
+ 
+  var nodemailer = require('nodemailer');
+
+  var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'workmatch2023@gmail.com',
+      pass: 'xgevyobvubntykvx'
+    }
+  });
+  
+  var mailOptions = {
+    from: 'workmatch2023@gmail.com',
+    to: emailInfo,
+    subject: 'Notificación de workmatch',
+    text: 'Hola ! '+emailInfo,
+    html: `<br>Tu oferta se publico correctamente!!</p>
+    <br> <img src="cid:logo">
+    <br> Atentamente: Equipo Work-Match`,
+    attachments: [{
+      filename: 'small_logo.png',
+      path: __dirname +'/small_logo.png',
+      cid: 'logo'
+  }]
+  };
+  
+  transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+    }
+  }); 
+
+  }
 
 async function update(project) {
   const { id } = project;
