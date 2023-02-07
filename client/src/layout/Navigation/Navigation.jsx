@@ -2,6 +2,7 @@ import { Link, useHistory } from "react-router-dom";
 import { useAuth0 } from '@auth0/auth0-react'
 import { useDispatch, useSelector } from 'react-redux'
 import { clearUser, getUserId, getUsername, postUser } from '../../redux/actions/userActions'
+import { clearProjectId } from "../../redux/actions/projectActions";
 import editIcon from '../../assets/images/edit.png'
 import profileIcon from '../../assets/images/profile.png'
 import style from './navigation.module.css'
@@ -49,19 +50,30 @@ export default function Navigation() {
   }
 
   const handlerLogout = () => {
-    if(isAuthenticated) logout()
-    else {
+    if(isAuthenticated) {
+      logout()
+      history.push('/redirect')
       dispatch(clearUser())
-      history.push('/')
     }
+    else {
+      history.push('/redirect')
+      dispatch(clearUser())
+    }
+  }
+
+  const handlerHome = async () => {
+    await dispatch(clearProjectId())
+    history.push('/redirect')
   }
 
   return(
     <header className={`${style["container-header"]}`}>
-      <Link className={`${style["logo-header"]}`}
-        to='/'>
-        <img src="/small_logo.png" alt="logo-header"/>
-      </Link>
+      <img
+        className={`${style["logo-header"]}`}
+        src="/small_logo.png"
+        alt="logo-header"
+        onClick={handlerHome}
+      />
       {
         !!Object.keys(allUsers.user).length
           ? <nav className={style['container-links']}>
