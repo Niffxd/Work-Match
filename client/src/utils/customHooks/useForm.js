@@ -1,14 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import useLocalStorage from "./useLocalStorage";
 
 const useForm = (initialForm, validationForm) => {
-  const [form, setForm] = useState(initialForm);
+  const [form, setForm] = useLocalStorage("form", initialForm);
   const [errors, setErrors] = useState({});
 
   const changeHandler = (event) => {
     const { name, value } = event.target;
     setForm({ ...form, [name]: value });
+    console.log(form, localStorage);
     setErrors(validationForm(form));
   };
 
