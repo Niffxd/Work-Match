@@ -213,6 +213,7 @@
 }
 .questions-container > summary {
   list-style: none;
+  text-decoration: underline;
 }
 .unordered-list > li {
   list-style: inside;
