@@ -41,6 +41,10 @@
 .date {
   margin: 0;
 }
+/* h4 */
+.details {
+  text-align: start;
+}
 /* Features */
 .container-features {
   display: grid;

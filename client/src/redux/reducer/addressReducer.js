@@ -1,3 +1,4 @@
+import { getItem, setItem } from "../../utils/customHooks/useLocalStorage";
 import {
   GET_ADDRESS,
   GET_STATE,
@@ -11,17 +12,24 @@ const initialState = {
   message: "",
 };
 
-export default function addressReducer(state = initialState, action) {
+export default function addressReducer(
+  state = getItem("address", initialState),
+  action
+) {
   const { type, payload } = action;
   switch (type) {
     case GET_ADDRESS:
-      return { ...state, address: payload };
+      setItem("address", { ...state, address: payload });
+      return getItem("address", initialState);
     case GET_STATE:
-      return { ...state, states: payload };
+      setItem("address", { ...state, states: payload });
+      return getItem("address", initialState);
     case POST_USER_ADDRESS:
-      return { ...state, message: payload };
+      setItem("address", { ...state, message: payload });
+      return getItem("address", initialState);
     case PUT_USER_ADDRESS:
-      return { ...state, message: payload };
+      setItem("address", { ...state, message: payload });
+      return getItem("address", initialState);
     default:
       return state;
   }

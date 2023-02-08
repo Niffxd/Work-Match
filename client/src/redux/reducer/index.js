@@ -5,8 +5,7 @@ import categoriesReducer from "./categoriesReducer";
 import confirmationReducer from "./confirmationMessageReducer";
 import projectReducer from "./projectReducer";
 import userReducer from "./userReducer";
-import dashboardReducer from "./dashboardReducer"
-
+import dashboardReducer from "./dashboardReducer";
 
 const reducer = combineReducers({
   address: addressReducer,
@@ -15,7 +14,7 @@ const reducer = combineReducers({
   confirmation: confirmationReducer,
   project: projectReducer,
   user: userReducer,
-  admin: dashboardReducer
+  admin: dashboardReducer,
 });
 
 export default reducer;
