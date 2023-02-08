@@ -124,7 +124,7 @@ export default function Login() {
           <label>Usuario</label>
           <input
             type='email'
-            placeholder='username'
+            placeholder='Usuario'
             {...register("email", {
               required: {
                 value: true,
@@ -143,7 +143,7 @@ export default function Login() {
           <label>Contraseña</label>
           <input
             type='password'
-            placeholder='contraseña'
+            placeholder='Contraseña'
             {...register("password", {
               required: {
                 value: true,
