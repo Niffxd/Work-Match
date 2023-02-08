@@ -2,12 +2,14 @@ import {
     GET_USER_EDIT,
     DELETE_USER_ADMIN,
     UPDATE_USER_ADMIN ,
-    GET_ALL_USERS
+    GET_ALL_USERS,
+    GET_USER_ID_ADMIN,
   } from "../actions/dashboardAdmin";
 const initialState = {
     allUsers: [],
     userEdit: {},
     message: "",
+    id: null
    
   };
   
@@ -24,8 +26,15 @@ const initialState = {
       
         case DELETE_USER_ADMIN:
         return { ...state, message: payload };
-      default:
+
+        case GET_USER_ID_ADMIN : 
+        return {
+          ...state, id: payload
+        }
+      
+        default:
         return state;
+
     }
   }
   
