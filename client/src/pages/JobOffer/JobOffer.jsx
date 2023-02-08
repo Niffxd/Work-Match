@@ -43,9 +43,8 @@ export default function JobOfferDetail() {
 
   useEffect(() => {
     //eslint-disable-line
-    //eslint-disable-line
     dispatch(getOwner(oneProject.owner));
-  }, [oneProject]); //eslint-disable-line
+  }, []); //eslint-disable-line
 
   //Edit Publication
   const editHandler = (event) => {
