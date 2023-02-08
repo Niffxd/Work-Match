@@ -1,142 +1,130 @@
 /** @format */
 
-import styles from "./login.module.css";
+import style from "./login.module.css";
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory } from "react-router-dom";
 import { regex } from "../../utils/helpers/validationLogin";
-import carrusel1 from "../../assets/images/imagecarousel1.png";
-import carrusel2 from "../../assets/images/imagecarousel2.png";
-import carrusel3 from "../../assets/images/imagecarrousel3.png";
-import carrusel4 from "../../assets/images/imagecarousel4.png";
-import logo from '../../assets/images/small_logo.png';
+import carrusel1 from "../../assets/images/image-carousel-1.png";
+import carrusel2 from "../../assets/images/image-carousel-2.png";
+import carrusel3 from "../../assets/images/image-carousel-3.png";
+import carrusel4 from "../../assets/images/image-carousel-4.png";
+import logo from "../../assets/images/small_logo.png";
 import { getAllUsers, getUserId } from "../../redux/actions/userActions";
 import { newMessage } from "../../redux/actions/alertMessageActions";
 
 export default function Login() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const { allUsers } = useSelector(state => state.user)
+  const { allUsers } = useSelector((state) => state.user);
 
-  
   useEffect(() => {
     dispatch(getAllUsers());
-  },[]) //eslint-disable-line 
-  
-  const [ actualUser, setActualUser ] = useState({
-    username: '',
-    password: ''
+  }, []); //eslint-disable-line
+
+  const [actualUser, setActualUser] = useState({
+    username: "",
+    password: "",
   });
-  
+
   // console.log(allUsers)
-  
+
   //CONTROL DEL FORMULARIO//
   const {
     register,
     formState: { errors },
   } = useForm();
-  
+
   const handleUsername = (event) => {
     setActualUser({
       ...actualUser,
-      username: event.target.value
-    })
-  }
+      username: event.target.value,
+    });
+  };
 
   const handlePass = (event) => {
     setActualUser({
       ...actualUser,
-      password: event.target.value
-    })
-  }
+      password: event.target.value,
+    });
+  };
 
   const handleCheckUser = async (event) => {
-    event.preventDefault()
-    if (actualUser.username === '' || actualUser.password === '') {
-      dispatch(newMessage('Ingrese todos los campos.', 'error'))
+    event.preventDefault();
+    if (actualUser.username === "" || actualUser.password === "") {
+      dispatch(newMessage("Ingrese todos los campos.", "error"));
     } else {
       try {
-        const tryUser = allUsers.filter(user => user.username === actualUser.username)[0]
-        if(tryUser.password === actualUser.password){
-          dispatch(newMessage('Usuario logueado con éxito!', 'success'))
+        const tryUser = allUsers.filter(
+          (user) => user.username === actualUser.username
+        )[0];
+        if (tryUser.password === actualUser.password) {
+          dispatch(newMessage("Usuario logueado con éxito!", "success"));
           setTimeout(() => {
-            dispatch(getUserId(tryUser.id))
-            history.push('/')
-          }, 2000)
+            dispatch(getUserId(tryUser.id));
+            history.push("/");
+          }, 2000);
+        } else {
+          dispatch(newMessage("Usuario o contraseña incorrectos.", "error"));
         }
-        else{
-          dispatch(newMessage('Usuario o contraseña incorrectos.', 'error'))
-        }
-      }
-      catch(err) {
-        alert(err)
+      } catch (err) {
+        alert(err);
       }
     }
-  }
+  };
 
   return (
     //INTENTANDO UN CARRUSEL
-    <div className={styles[`container_padre`]}>
-      <div className={styles.div_carrusel}>
-        <ul>
-          <li>
-            <img
-              src={carrusel1}
-              alt="carrusel1"
-              className={styles[`imagen_carrusel`]}
-            />
-            <h4>
-              Haz match con el candidato ideal <br />
-              para el trabajo que necesitas
+    <div className={style[`container`]}>
+      <section className={style["grid-cell"]}>
+        <div className={style["carousel"]}>
+          <article className={`${style["item-carousel"]}`}>
+            <div className={style["image-carousel"]}>
+              <img src={carrusel1} alt='Work Match' />
+            </div>
+            <h4 className={style["text-carousel"]}>
+              Busca, encuentra y haz match con tu trabajo ideal.
             </h4>
-          </li>
-          <li>
-            <img
-              src={carrusel2}
-              alt="carrusel2"
-              className={styles[`imagen_carrusel`]}
-            />
-            <h4>
-              Haz match con el candidato ideal <br />
-              para el trabajo que necesitas
+          </article>
+          <article className={`${style["item-carousel"]}`}>
+            <div className={style["image-carousel"]}>
+              <img src={carrusel2} alt='Work Match' />
+            </div>
+            <h4 className={style["text-carousel"]}>
+              Gana dinero rápido con trabajos simples.
             </h4>
-          </li>
-          <li>
-            <img
-              src={carrusel3}
-              alt="carrusel3"
-              className={styles[`imagen_carrusel`]}
-            />
-            <h4>
-              Haz match con el candidato ideal <br />
-              para el trabajo que necesitas
+          </article>
+          <article
+            className={`${style["blurred-style"]} ${style["item-carousel"]}`}
+          >
+            <div className={style["image-carousel"]}>
+              <img src={carrusel3} alt='Work Match' />
+            </div>
+            <h4 className={style["text-carousel"]}>
+              Publica tus propias ofertas de trabajo.
             </h4>
-          </li>
-          <li>
-            <img
-              src={carrusel4}
-              alt="carrusel4"
-              className={styles[`imagen_carrusel`]}
-            />
-            <h4>
-              Haz match con el candidato ideal <br />
-              para el trabajo que necesitas
+          </article>
+          <article
+            className={`${style["blurred-style"]} ${style["item-carousel"]}`}
+          >
+            <div className={style["image-carousel"]}>
+              <img src={carrusel4} alt='Work Match' />
+            </div>
+            <h4 className={style["text-carousel"]}>
+              Elige a los mejores candidatos para realizar ese trabajo.
             </h4>
-          </li>
-        </ul>
-      </div>
+          </article>
+        </div>
+      </section>
       {/* //FORMULARIO */}
-      <form className={styles['form-login']} noValidate>
-        <div className={styles[`div_login`]}>
-          <div className={styles[`div_logo`]}>
-            <img src={logo} width='200' alt="" />
-          </div>
-
+      <form className={style["login-form"]} noValidate>
+        <img className={style["logo"]} src={logo} alt='Logo' />
+        <div className={style["form-container"]}>
           <label>Usuario</label>
           <input
-            type="email"
-            placeholder="username"
+            type='email'
+            placeholder='username'
             {...register("email", {
               required: {
                 value: true,
@@ -150,14 +138,12 @@ export default function Login() {
             })}
             onChange={handleUsername}
           />
-          {errors.email && (
-            <small className="error">{errors.email.message}</small>
-          )}
+          {errors.email && <p className='error'>{errors.email.message}</p>}
 
           <label>Contraseña</label>
           <input
-            type="password"
-            placeholder="contraseña"
+            type='password'
+            placeholder='contraseña'
             {...register("password", {
               required: {
                 value: true,
@@ -168,16 +154,16 @@ export default function Login() {
             onChange={handlePass}
           />
           {errors.password && (
-            <small className="error">{errors.password.message}</small>
+            <p className='error'>{errors.password.message}</p>
           )}
-          <button onClick={handleCheckUser}>Ingresa</button>
-          <h5 className={styles['btn-register']}>
-            ¿No tienes cuenta? {' '}
-            <Link to='/register'>
-              Registrate
-            </Link>
-          </h5>
+          <button className='button-green' onClick={handleCheckUser}>
+            Ingresar
+          </button>
         </div>
+        <h5 className={style["options-container"]}>
+          ¿No tienes cuenta? <Link to='/register'>Registrate</Link>
+          <br />Ó ingresa como <Link to='/'>invitado</Link>
+        </h5>
       </form>
     </div>
   );
