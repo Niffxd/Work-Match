@@ -10,7 +10,6 @@ const useForm = (initialForm, validationForm) => {
   const changeHandler = (event) => {
     const { name, value } = event.target;
     setForm({ ...form, [name]: value });
-    console.log(form, localStorage);
     setErrors(validationForm(form));
   };
 
