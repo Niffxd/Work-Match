@@ -49,6 +49,7 @@ const CreateJobOffer = () => {
             information: form.information,
             state: form.addressId,
             owner: user.id,
+            ownerName: user.name,
           })
         );
         dispatch(newMessage("Tu oferta fue publicada con éxito", "success"));

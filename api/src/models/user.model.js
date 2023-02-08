@@ -60,8 +60,13 @@ module.exports = (sequelize) => {
       },
       image: {
         type: DataTypes.STRING,
+        defaultValue: 'https://cdn-icons-png.flaticon.com/512/64/64572.png',
       },
       premium: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
+      blocked: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
       },

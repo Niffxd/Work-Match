@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 import ConfirmationMessage from "../../components/ConfirmationMessage/ConfirmationMessage";
+import NotFound from "../../components/NotFound/NotFound";
 import { newMessage } from "../../redux/actions/alertMessageActions";
 import { confirmationOpen } from "../../redux/actions/confirmationMessageActions";
 import {
@@ -38,11 +39,13 @@ export default function JobOfferDetail() {
   useEffect(() => {
     dispatch(getProjectId(id));
     dispatch(getPublication(id));
-  }, []); //eslint-disable-line 
+  }, []); //eslint-disable-line
 
-  useEffect(async () => { //eslint-disable-line 
+  useEffect(() => {
+    //eslint-disable-line
+    //eslint-disable-line
     dispatch(getOwner(oneProject.owner));
-  }, [oneProject]);//eslint-disable-line
+  }, [oneProject]); //eslint-disable-line
 
   //Edit Publication
   const editHandler = (event) => {
@@ -90,7 +93,7 @@ export default function JobOfferDetail() {
   const applicationHandler = async (event) => {
     event.preventDefault();
     try {
-      dispatch(
+      await dispatch(
         userApplication({
           project: id,
           user: user.id,
@@ -114,7 +117,7 @@ export default function JobOfferDetail() {
       />
       <article className={`container ${style["job-offer-container"]}`}>
         {!oneProject && !owner ? (
-          <h1>Page not Found</h1>
+          <NotFound message='La oferta de trabajo que buscas no existe.' />
         ) : (
           <>
             <section className={`${style["info-container"]}`}>
@@ -137,13 +140,15 @@ export default function JobOfferDetail() {
                 </p>
               </div>
               {/* Category */}
-              <h4>{oneProject.Category && oneProject.Category.name}</h4>
+              <h4 className={`${style["category"]}`}>
+                {oneProject.Category && oneProject.Category.name}
+              </h4>
               {/* Description */}
               <p>{oneProject.description}</p>
               {/* Details */}
               {oneProject.information && (
                 <>
-                  <h4>Detalles:</h4>
+                  <h4 className={`${style["details"]}`}>Detalles:</h4>
                   <p>{oneProject.information}</p>
                 </>
               )}
@@ -190,7 +195,7 @@ export default function JobOfferDetail() {
                   alt='address'
                 />
                 <div className={`${style["div-address"]}`}>
-                  <h4>Ubcación:</h4>
+                  <h4>Ubicación:</h4>
                   <p>{addressJob && addressJob.name}, Argentina.</p>
                 </div>
               </section>

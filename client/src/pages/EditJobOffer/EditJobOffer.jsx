@@ -17,8 +17,8 @@ export default function EditJobOffer() {
 
   //   Initial State Form
   const initialForm = {
-    address: jobState.name,
-    addressId: oneProject.state,
+    address: jobState.name || "",
+    addressId: oneProject.state || "",
     agreement: oneProject.agreement,
     budget: oneProject.budget,
     category: oneProject.Category.name,
@@ -27,14 +27,16 @@ export default function EditJobOffer() {
     estimated: oneProject.estimated,
     information: oneProject.information,
   };
+  console.log(oneProject);
+  console.log(states);
 
   //Submit
-  const submitHandler = (event, form, errors, setErrors) => {
+  const submitHandler = async (event, form, errors, setErrors) => {
     event.preventDefault();
     try {
       setErrors(validationsCreateJobOffer(form));
       if (Object.keys(errors).length === 0) {
-        dispatch(
+        await dispatch(
           putProjects({
             id: oneProject.id,
             agreement: form.agreement,

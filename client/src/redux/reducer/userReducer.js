@@ -1,3 +1,4 @@
+import { getItem, setItem } from "../../utils/customHooks/useLocalStorage";
 import {
   GET_ALL_USERS,
   GET_USER,
@@ -12,6 +13,7 @@ import {
   CLEAR_USER,
   REACTIVE_ACCOUNT,
   ID_BID,
+  DELETE_USER_ADMIN,
 } from "../actions/userActions";
 
 const initialState = {
@@ -22,25 +24,33 @@ const initialState = {
   idBid: null,
 };
 
-export default function userReducer(state = initialState, action) {
+export default function userReducer(
+  state = getItem("user", initialState),
+  action
+) {
   const { type, payload } = action;
   switch (type) {
     case GET_ALL_USERS:
-      return { ...state, allUsers: payload };
+      setItem("user", { ...state, allUsers: payload });
+      return getItem("user", initialState);
     case GET_USER:
     case GET_USERNAME:
     case CLEAR_USER:
     case POST_USER:
     case REACTIVE_ACCOUNT:
-      return { ...state, user: payload };
+      setItem("user", { ...state, user: payload });
+      return getItem("user", initialState);
     case UPDATE_USER:
     case UPDATE_USER_RATE:
     case USER_APPLICATION:
     case UPDATE_APPLICATION_STATUS:
     case DELETE_USER:
-      return { ...state, message: payload };
+    case DELETE_USER_ADMIN:
+      setItem("user", { ...state, message: payload });
+      return getItem("user", initialState);
     case ID_BID:
-      return { ...state, idBid: payload };
+      setItem("user", { ...state, idBid: payload });
+      return getItem("user", initialState);
     case GET_PUBLICATION:
       const publication = state.user.Projects
         ? state.user.Projects.find(
@@ -52,7 +62,8 @@ export default function userReducer(state = initialState, action) {
         : publication.Bid.owner === publication.Bid.user
         ? "owner"
         : "user";
-      return { ...state, userPublication: userStatus };
+      setItem("user", { ...state, userPublication: userStatus });
+      return getItem("user", initialState);
     default:
       return state;
   }

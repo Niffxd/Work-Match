@@ -71,6 +71,7 @@
   display: flex;
   justify-content: flex-end;
   text-decoration: none;
+  text-align: right;
   color: var(--dark-color);
 }
 

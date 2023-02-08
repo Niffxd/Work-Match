@@ -15,8 +15,12 @@ import { newMessage } from "../../redux/actions/alertMessageActions";
 import ConfirmationMessage from "../../components/ConfirmationMessage/ConfirmationMessage";
 import Stripe from "../../components/Stripe";
 
+<<<<<<< HEAD
 export default function DashboardUser() {
   const location = useLocation();
+=======
+export default function UserProfile() {
+>>>>>>> react
   //variables
   const dispatch = useDispatch();
   const history = useHistory();
@@ -33,6 +37,7 @@ export default function DashboardUser() {
     ? states.find((element) => element.id === user.Address.id)
     : null;
   // initial state of form
+  console.log(user);
   const initialForm = {
     address: address ? address.name : "Selecciona una dirección",
     addressId: user.Address ? user.Address.id : 1,
@@ -292,9 +297,7 @@ export default function DashboardUser() {
             onBlur={changeHandler}
             autoComplete='off'
           />
-          {errors && Object.keys(errors).length > 0 && errors.username && (
-            <p className='error'>{errors.username}</p>
-          )}
+          {errors.username && <p className='error'>{errors.username}</p>}
 
           {/* Name */}
           <label htmlFor='name'>Nombre completo</label>
@@ -308,9 +311,7 @@ export default function DashboardUser() {
             onBlur={changeHandler}
             autoComplete='off'
           />
-          {errors && Object.keys(errors).length > 0 && errors.name && (
-            <p className='error'>{errors.name}</p>
-          )}
+          {errors.name && <p className='error'>{errors.name}</p>}
           {/* Age */}
           <label htmlFor='age'>Edad</label>
           <input
@@ -323,9 +324,7 @@ export default function DashboardUser() {
             onBlur={changeHandler}
             autoComplete='off'
           />
-          {errors && Object.keys(errors).length > 0 && errors.age && (
-            <p className='error'>{errors.age}</p>
-          )}
+          {errors.age && <p className='error'>{errors.age}</p>}
           {/* Mail */}
           <label htmlFor='mail'>Correo electrónico</label>
           <input
@@ -338,9 +337,7 @@ export default function DashboardUser() {
             onBlur={changeHandler}
             autoComplete='off'
           />
-          {errors && Object.keys(errors).length > 0 && errors.mail && (
-            <p className='error'>{errors.mail}</p>
-          )}
+          {errors.mail && <p className='error'>{errors.mail}</p>}
           {/* Phone */}
           <label htmlFor='phone'>Teléfono</label>
           <input
@@ -353,9 +350,7 @@ export default function DashboardUser() {
             onBlur={changeHandler}
             autoComplete='off'
           />
-          {errors && Object.keys(errors).length > 0 && errors.phone && (
-            <p className='error'>{errors.phone}</p>
-          )}
+          {errors.phone && <p className='error'>{errors.phone}</p>}
           {/* Address-state */}
           <label htmlFor='address'>Estado</label>
           <div className={`${style["select-menu"]}`}>
@@ -388,9 +383,7 @@ export default function DashboardUser() {
               })}
             </ul>
           </div>
-          {errors && Object.keys(errors).length > 0 && errors.address && (
-            <p className='error'>{errors.address}</p>
-          )}
+          {errors.address && <p className='error'>{errors.address}</p>}
           {/* Address-Direction */}
           <label htmlFor='direction'>Dirección</label>
           <input
@@ -403,9 +396,7 @@ export default function DashboardUser() {
             onBlur={changeHandler}
             autoComplete='off'
           />
-          {errors && Object.keys(errors).length > 0 && errors.direction && (
-            <p className='error'>{errors.direction}</p>
-          )}
+          {errors.direction && <p className='error'>{errors.direction}</p>}
           {/* Biography */}
           <label htmlFor='biography'>Sobre mi</label>
           <textarea
@@ -417,9 +408,7 @@ export default function DashboardUser() {
             onBlur={changeHandler}
             autoComplete='off'
           />
-          {errors && Object.keys(errors).length > 0 && errors.biography && (
-            <p className='error'>{errors.biography}</p>
-          )}
+          {errors.biography && <p className='error'>{errors.biography}</p>}
           {/* Password */}
           <label htmlFor='password'>Nueva contraseña</label>
           <input
@@ -432,11 +421,9 @@ export default function DashboardUser() {
             onBlur={changeHandler}
             autoComplete='off'
           />
-          {errors && Object.keys(errors).length > 0 && errors.password && (
-            <p className='error'>{errors.password}</p>
-          )}
+          {errors.password && <p className='error'>{errors.password}</p>}
           {/* Repeat Password */}
-          {form.password.length > 0 && (
+          {form.password && (
             <>
               <label htmlFor='repeatPassword'>Repetir contraseña</label>
               <input
@@ -448,11 +435,9 @@ export default function DashboardUser() {
                 onBlur={changeHandler}
                 autoComplete='off'
               />
-              {errors &&
-                Object.keys(errors).length > 0 &&
-                errors.repeatPassword && (
-                  <p className='error'>{errors.repeatPassword}</p>
-                )}
+              {errors.repeatPassword && (
+                <p className='error'>{errors.repeatPassword}</p>
+              )}
             </>
           )}
           <div className='buttons-container'>
