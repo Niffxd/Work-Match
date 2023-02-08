@@ -3,13 +3,15 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import {newMessage} from "../../redux/actions/alertMessageActions" 
-import { deleteUser, getPublication } from "../../redux/actions/userActions";
+import { getPublication } from "../../redux/actions/userActions";
 import { getProjectId } from "../../redux/actions/projectActions"
 import ConfirmationMessage from "../ConfirmationMessage/ConfirmationMessage"
 import deletet from "../../assets/images/delete.png";
 import trespuntos from "../../assets/images/trespuntos.png";
 import edit from "../../assets/images/edit.png";
 import { confirmationOpen } from "../../redux/actions/confirmationMessageActions";
+import { deleteUserAdmin, getUserIdAmin } from "../../redux/actions/dashboardAdmin";
+
 
 const DashboardCard = ({ id, imagen, Nombre, publicaciones }) => {
   const dispatch = useDispatch()
@@ -53,15 +55,17 @@ let blocked = usuario.map((x) => {
 })
 // console.log(blocked)
 
-  const confirmationHandler = async (event) => {
-    event.preventDefault()
-  await dispatch(confirmationOpen())
-  }
-  const handleDelete = (id) => {  
-    dispatch(newMessage("El usuario fue eliminado con exito", "success"))
-    dispatch(deleteUser(id))
-    setVisible("invisible");    
-  }
+const confirmationHandler = async (event,id) => {
+  event.preventDefault()
+  dispatch(getUserIdAmin(id))
+ dispatch(confirmationOpen())
+}
+
+const handleDelete = () => {  
+  dispatch(newMessage("El usuario fue eliminado con exito", "success"))
+  dispatch( deleteUserAdmin(user.id))
+  setVisible("invisible");    
+}
 
   const handleUpdate= (id) => {
     history.push(`/my-profile/admin/${id}`);
@@ -106,7 +110,7 @@ let blocked = usuario.map((x) => {
                src={deletet}
                alt="btn_delete"
                className={`${styles["buttonDelete_edit"]}`} 
-               onClick={() => handleDelete(id)} 
+               onClick={(event) => confirmationHandler(event,id)} 
                />
    
                </div>
