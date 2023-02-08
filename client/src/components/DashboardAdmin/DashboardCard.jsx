@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import {newMessage} from "../../redux/actions/alertMessageActions" 
 import { deleteUser, getPublication } from "../../redux/actions/userActions";
-import {getProjectId} from "../../redux/actions/projectActions"
+import { getProjectId } from "../../redux/actions/projectActions"
 import ConfirmationMessage from "../ConfirmationMessage/ConfirmationMessage"
 import deletet from "../../assets/images/delete.png";
 import trespuntos from "../../assets/images/trespuntos.png";
@@ -15,7 +15,7 @@ const DashboardCard = ({ id, imagen, Nombre, publicaciones }) => {
   const dispatch = useDispatch()
   const history = useHistory()
   const [visible, setVisible] = useState("visible");
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.admin);
   
 
  let rol      = "Inactivo";

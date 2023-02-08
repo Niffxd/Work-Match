@@ -7,7 +7,7 @@ const URL_USER = "/user";
 export const GET_ALL_USERS = "GET_ALL_USERS";
 export const DELETE_USER_ADMIN = "DELETE_USER_ADMIN";
 export const UPDATE_USER_ADMIN = "UPDATE_USER_ADMIN";
-export const GET_USER_EDIT = "GET_USER";
+export const GET_USER_EDIT = "GET_USER_EDIT";
 
 
 // ACTIONS
