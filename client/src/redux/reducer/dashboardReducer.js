@@ -1,12 +1,12 @@
 import {
-    GET_USER,
+    GET_USER_EDIT,
     DELETE_USER_ADMIN,
     UPDATE_USER_ADMIN ,
     GET_ALL_USERS
   } from "../actions/dashboardAdmin";
 const initialState = {
     allUsers: [],
-    user: {},
+    userEdit: {},
     message: "",
    
   };
@@ -16,8 +16,8 @@ const initialState = {
     switch (type) {
         case GET_ALL_USERS:
         return {...state, allUsers: payload}
-      case GET_USER:
-        return { ...state, user: payload };
+      case GET_USER_EDIT:
+        return { ...state, userEdit: payload };
       
       case UPDATE_USER_ADMIN:
         return { ...state, message: payload };

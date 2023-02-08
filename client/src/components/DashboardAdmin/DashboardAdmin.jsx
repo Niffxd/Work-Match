@@ -18,9 +18,7 @@ const DashboardAdmin = () => {
     .then(() => dispatch(getCategories()))
     .then(() => dispatch(getProjects()))
  .catch((error) => console.log(error));
-  }, []); //eslint-disable-line
-
-
+  }, [dispatch]);
 
   return (
     <div className={`${styles["container"]}`}>
@@ -40,7 +38,7 @@ const DashboardAdmin = () => {
           </li>
         </ul>
         <hr />
-        {user.allUsers.map((x) => (
+        {user.allUsers && Object.values(user.allUsers).length > 0 ? user.allUsers.map((x) => (
           <DashboardCard
             key={x.id}
             id={x.id}
@@ -48,7 +46,7 @@ const DashboardAdmin = () => {
             Nombre={x.name}
             publicaciones={x.Projects}
           />
-        ))}
+        )): <div><h4>NO HAY USUARIOS</h4></div>} 
       </div>
     </div>
   );
