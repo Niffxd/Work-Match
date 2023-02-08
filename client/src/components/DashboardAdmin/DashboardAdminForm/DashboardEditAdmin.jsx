@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import {useParams} from "react-router-dom"
 import styles from "./dashboardEditAdmin.module.css"
-import { getUserId } from "../../../redux/actions/dashboardAdmin";
+import { getUserEdit } from "../../../redux/actions/dashboardAdmin";
 import { putUserAdmin } from "../../../redux/actions/dashboardAdmin";
 import { useHistory } from "react-router-dom";
 
@@ -24,7 +24,7 @@ const DashboardEditAdmin = () => {
   })
 
   useEffect(()=> {
-  dispatch(getUserId(id))
+  dispatch(getUserEdit(id))
   }, [id]) //eslint-disable-line
    
     const handleSubmit =(e) => {
