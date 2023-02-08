@@ -15,13 +15,10 @@ import { newMessage } from "../../redux/actions/alertMessageActions";
 import ConfirmationMessage from "../../components/ConfirmationMessage/ConfirmationMessage";
 import Stripe from "../../components/Stripe";
 
-<<<<<<< HEAD
-export default function DashboardUser() {
-  const location = useLocation();
-=======
+
 export default function UserProfile() {
->>>>>>> react
-  //variables
+    //variables
+  const location = useLocation();
   const dispatch = useDispatch();
   const history = useHistory();
   const [menu, setMenu] = useState("invisible");
@@ -37,7 +34,6 @@ export default function UserProfile() {
     ? states.find((element) => element.id === user.Address.id)
     : null;
   // initial state of form
-  console.log(user);
   const initialForm = {
     address: address ? address.name : "Selecciona una dirección",
     addressId: user.Address ? user.Address.id : 1,
@@ -143,7 +139,7 @@ export default function UserProfile() {
     const searchParams = new URLSearchParams(location.search);
     const success = searchParams.get('success');
     if (success === 'true') premiumHandler();
-  }, [location]);
+  }, [location]); //eslint-disable-line
 
   //  update user data
   const submitHandler = async (event) => {
