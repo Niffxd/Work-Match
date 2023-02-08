@@ -69,7 +69,7 @@ export default function Filter() {
           <input
             className={`${style["search-input"]}`}
             type='text'
-            placeholder='buscar...'
+            placeholder='Buscar usuario'
             name='search'
             value={form.search}
             onChange={changeHandler}
