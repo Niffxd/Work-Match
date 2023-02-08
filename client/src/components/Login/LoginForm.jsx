@@ -136,7 +136,7 @@ export default function Login() {
           <label>Usuario</label>
           <input
             type="email"
-            placeholder="correo@gmail.com"
+            placeholder="username"
             {...register("email", {
               required: {
                 value: true,

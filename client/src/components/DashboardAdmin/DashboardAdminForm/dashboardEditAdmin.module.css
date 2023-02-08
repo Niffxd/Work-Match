@@ -1,35 +1,37 @@
 @import "../../../styles/variables.css";
-.background{
-    background-color:var(--light-purple);
-    width: 100vw;
-    height: 100vh;
+
+.form{
+  margin:0;
+} 
+
+.btn_back button{
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin: 0;
 }
 
-.form {
-    margin: 0 auto;
-  }
-.background{
-    background-color: var(--cream);
-    width: 100vw;
+.select{
+  width: 100%;
+  padding: .5rem;
+  background-color: var(--baby-purple);
+  margin: 0;
+  border-radius: var(--border-radius);
 }
-  .container {
-    display: grid;
-    margin: 0 auto;
-    padding: 2rem 2.5rem;
-    width: 80vw;
-    min-height: calc(100vh - 17rem);
-    background-color: var(--light-color);
-  }
 
-  .container input{
-    width: 100%;
-    
-  }
+.div_checked{
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+  margin:0;
+}
 
-  .div_checked label{
-margin: 0;
-  }
-  .checked{
-    margin:0;
-  }
-  
+.label_checked{
+  margin: 1rem 0;
+}
+
+.checked{
+  display: inline;
+  width: 2rem;
+  margin:0;
+}
