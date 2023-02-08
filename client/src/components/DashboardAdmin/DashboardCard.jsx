@@ -12,15 +12,14 @@ import edit from "../../assets/images/edit.png";
 import { confirmationOpen } from "../../redux/actions/confirmationMessageActions";
 import { deleteUserAdmin, getUserIdAmin } from "../../redux/actions/dashboardAdmin";
 
-
 const DashboardCard = ({ id, imagen, Nombre, publicaciones }) => {
   const dispatch = useDispatch()
   const history = useHistory()
   const [visible, setVisible] = useState("visible");
-  const user = useSelector((state) => state.admin);
-  
+  const userEdit = useSelector((state) => state.admin);
 
- let rol      = "Inactivo";
+ 
+let rol       = "Inactivo";
 let empleador = false;
 let empleado  = false;
 let flag      = true;
@@ -43,17 +42,7 @@ while (flag && i < publicaciones.length) {
  empleador  && !empleado  &&   (rol = 'Empleador')
 !empleador  &&  empleado  &&   (rol = 'Empleado')
 
-let  usuario = Object.values(user.allUsers).map( x => x )
 
- 
-let blocked = usuario.map((x) => {
-    if(x.blocked === true){
-    return "bloqueado"
-  } else {
-    return "desbloqueado"
-  }
-})
-// console.log(blocked)
 
 const confirmationHandler = async (event,id) => {
   event.preventDefault()
@@ -63,7 +52,7 @@ const confirmationHandler = async (event,id) => {
 
 const handleDelete = () => {  
   dispatch(newMessage("El usuario fue eliminado con exito", "success"))
-  dispatch( deleteUserAdmin(user.id))
+  dispatch( deleteUserAdmin(userEdit.id))
   setVisible("invisible");    
 }
 
@@ -84,7 +73,7 @@ const handleDelete = () => {
       handler={handleDelete}
       />
     <details className={`${ visible ==="invisible"? styles["invisible"] : styles[""]}`} >
-      <summary className={`${ blocked === "bloqueado" ? styles["marco_rojo"] : styles["summary"]  }`}>
+      <summary className={`${ styles["summary"]  }`}>
         <ul className={`${ styles["ul_items"] }`} >
           <li>
             <h4>
