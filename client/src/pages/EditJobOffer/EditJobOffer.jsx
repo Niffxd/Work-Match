@@ -19,24 +19,24 @@ export default function EditJobOffer() {
   const initialForm = {
     address: jobState.name || "",
     addressId: oneProject.state || "",
-    agreement: oneProject.agreement ,
-    budget: oneProject.budget , 
-    category: oneProject.Category.name ,
-    categoryId: oneProject.Category.id ,
-    description: oneProject.description ,
-    estimated: oneProject.estimated ,
-    information: oneProject.information ,
+    agreement: oneProject.agreement,
+    budget: oneProject.budget,
+    category: oneProject.Category.name,
+    categoryId: oneProject.Category.id,
+    description: oneProject.description,
+    estimated: oneProject.estimated,
+    information: oneProject.information,
   };
-  console.log(oneProject)
-  console.log(states)
+  console.log(oneProject);
+  console.log(states);
 
   //Submit
-  const submitHandler = (event, form, errors, setErrors) => {
+  const submitHandler = async (event, form, errors, setErrors) => {
     event.preventDefault();
     try {
       setErrors(validationsCreateJobOffer(form));
       if (Object.keys(errors).length === 0) {
-        dispatch(
+        await dispatch(
           putProjects({
             id: oneProject.id,
             agreement: form.agreement,
