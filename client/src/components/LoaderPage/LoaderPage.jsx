@@ -8,7 +8,7 @@ export default function LoaderPage() {
   useEffect(() => {
     setTimeout(() => {
       setTimeout(history.push('/'))
-    }, 2000)
+    }, 1300)
   })
 
   return <Loader styles={'complete'}/>

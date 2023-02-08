@@ -14,7 +14,7 @@ export default function Complete() {
 
   useEffect(() => {
     dispatch(userActions.getAllUsers)
-  }, [dispatch])
+  }, [allUsers]) //eslint-disable-line
 
   const preForm = useLocation().state;
 
@@ -28,8 +28,6 @@ export default function Complete() {
     role: 2,
     image: preForm.image
   })
-
-  console.log(postUser)
 
   const [ username, setUsername ] = useState('juan.perez')
   
@@ -68,15 +66,15 @@ export default function Complete() {
     })
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
 
-    console.log(allUsers)
     if(postUser.username !== ''
     && postUser.name !== ''
     && postUser.age >= 16 && postUser.age <= 90
     && postUser.phone !== '' && postUser.phone.length >= 9 && postUser.phone.length <= 12){
-      dispatch(userActions.postUser(postUser))
+      await dispatch(userActions.postUser(postUser))
+      dispatch(userActions.getAllUsers())
       dispatch(newMessage('Usuario registrado con éxito!. Por favor loguate para comenzar a trabajar!', 'success'))
       history.push('/login')
     }
