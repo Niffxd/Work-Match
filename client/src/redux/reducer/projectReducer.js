@@ -1,3 +1,4 @@
+import { getItem, setItem } from "../../utils/customHooks/useLocalStorage";
 import {
   GET_PROJECTS,
   GET_PROJECT_ID,
@@ -30,21 +31,30 @@ const initialState = {
   },
 };
 
-export default function projectReducer(state = initialState, action) {
+export default function projectReducer(
+  state = getItem("project", initialState),
+  action
+) {
   const { type, payload } = action;
   switch (type) {
     case ORIGINAL_PROJECTS:
-      return { ...state, originalProjects: payload };
+      setItem("project", { ...state, originalProjects: payload });
+      return getItem("project", initialState);
     case GET_PROJECTS:
-      return { ...state, allProjects: payload };
+      setItem("project", { ...state, allProjects: payload });
+      return getItem("project", initialState);
     case GET_PROJECT_ID:
-      return { ...state, oneProject: payload };
+      setItem("project", { ...state, oneProject: payload });
+      return getItem("project", initialState);
     case GET_OWNER:
-      return { ...state, owner: payload };
+      setItem("project", { ...state, owner: payload });
+      return getItem("project", initialState);
     case CLEAR_PROJECT_ID:
-      return { ...state, oneProject: {}, owner: {} };
+      setItem("project", { ...state, oneProject: {}, owner: {} });
+      return getItem("project", initialState);
     case POST_PROJECT:
-      return { ...state, oneProject: payload };
+      setItem("project", { ...state, oneProject: payload });
+      return getItem("project", initialState);
     case PUT_PROJECT:
       return { ...state, message: payload };
     case DELETE_PROJECT:

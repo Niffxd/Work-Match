@@ -261,7 +261,10 @@ export default function FormJobOffer({
         </button>
         <button
           className='button-green'
-          onClick={(event) => submitHandler(event, form, errors, setErrors)}
+          onClick={(event) => {
+            submitHandler(event, form, errors, setErrors);
+            resetHandler(event);
+          }}
         >
           Publicar
         </button>
