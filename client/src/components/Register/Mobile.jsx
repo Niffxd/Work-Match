@@ -1,17 +1,26 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { SignInButton } from "../Login/SignInbutton.jsx";
+import { useDispatch, useSelector } from "react-redux";
 import NextButton from "./NextButton.jsx";
 import AddButton from "./AddButton.jsx";
-import { SignInButton } from "../Login/SignInbutton.jsx";
 import user from "../../assets/images/user.png";
 import style from "./register.module.css";
+import { getAllUsers } from "../../redux/actions/userActions.js";
 
 export default function Mobile() {
+  const dispatch = useDispatch()
   const [ image, setImage ] = useState(user)
   const [ load, setLoad ] = useState(false)
   const [validateEmail, setValidateEmail] = useState(false);
   const [validatePassword, setValidatePassword] = useState(false);
   const [validate, setValidate] = useState(false);
+
+  const { allUsers } = useSelector(state => state.user)
+
+  useEffect(() => {
+    dispatch(getAllUsers)
+  }, [allUsers]) //eslint-disable-line
 
   const [preForm, setPreform] = useState({
     email: "",
