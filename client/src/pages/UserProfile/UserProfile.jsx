@@ -1,5 +1,5 @@
-import { Link, useHistory } from "react-router-dom";
-import { useState } from "react";
+import { Link, useHistory, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   clearUser,
@@ -13,8 +13,10 @@ import validationEditProfile from "../../utils/helpers/validationsEditProfile";
 import { confirmationOpen } from "../../redux/actions/confirmationMessageActions";
 import { newMessage } from "../../redux/actions/alertMessageActions";
 import ConfirmationMessage from "../../components/ConfirmationMessage/ConfirmationMessage";
+import Stripe from "../../components/Stripe";
 
 export default function DashboardUser() {
+  const location = useLocation();
   //variables
   const dispatch = useDispatch();
   const history = useHistory();
@@ -25,6 +27,8 @@ export default function DashboardUser() {
   const { states } = addressState;
   const [premium, setPremium] = useState(null);
   const [visibleAddress, setVisibleAddress] = useState("invisible");
+  const [subscription, setSubscription] = useState(false);
+
   const address = user.Address
     ? states.find((element) => element.id === user.Address.id)
     : null;
@@ -101,9 +105,9 @@ export default function DashboardUser() {
   };
 
   // update user premium
-  const premiumHandler = async (event) => {
-    event.preventDefault();
-    //TO DO 2/2: introducir pasarela de pagos
+  const premiumHandler = async () => {
+    // event.preventDefault();
+    //TO DO 2/2: introducir pasarela de pagos   
     try {
       if (user.premium) {
         dispatch(putUser({ id: user.id, premium: false }));
@@ -127,7 +131,14 @@ export default function DashboardUser() {
       console.log(error);
       dispatch(newMessage(error.message, "error"));
     }
+    setSubscription(false);
   };
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const success = searchParams.get('success');
+    if (success === 'true') premiumHandler();
+  }, [location]);
 
   //  update user data
   const submitHandler = async (event) => {
@@ -145,7 +156,7 @@ export default function DashboardUser() {
     }
   };
   return (
-    <>
+    (subscription && <Stripe />) || <>         
       <ConfirmationMessage
         message='¿Quieres eliminar esta cuenta?'
         handler={deleteHandler}
@@ -261,7 +272,7 @@ export default function DashboardUser() {
                   className={`button-green ${
                     premium === "premium true" && "invisible"
                   } ${style["premium-button"]}`}
-                  onClick={premiumHandler}
+                  onClick={() => setSubscription(true)}
                 >
                   Activar Premium
                 </button>

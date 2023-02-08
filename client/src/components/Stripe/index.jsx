@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './index.module.css';
+// import './index.module.css';
 
 const url = process.env.REACT_APP_API_URL || 'http://localhost:3001';
 

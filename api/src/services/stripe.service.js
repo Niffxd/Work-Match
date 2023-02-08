@@ -20,8 +20,8 @@ async function createCheckoutSession({ lookup_key }) {
       },
     ],
     mode: 'subscription',
-    success_url: `${YOUR_DOMAIN}/?success=true&session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `${YOUR_DOMAIN}?canceled=true`,
+    success_url: `${YOUR_DOMAIN}/my-profile?success=true&session_id={CHECKOUT_SESSION_ID}`,
+    cancel_url: `${YOUR_DOMAIN}/my-profile?canceled=true`,
   });
 
   return session.url;
