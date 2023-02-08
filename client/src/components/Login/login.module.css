@@ -153,8 +153,12 @@
     padding: 2rem;
     height: 65vh;
     border-radius: var(--border-radius);
+    background-color: var(--baby-purple);
   }
 
+  .login-form input {
+    background-color: var(--light-purple);
+  }
   .logo {
     margin: 0;
     width: min(55%, 16rem);
