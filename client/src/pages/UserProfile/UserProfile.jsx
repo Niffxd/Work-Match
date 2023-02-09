@@ -54,6 +54,11 @@ export default function UserProfile() {
   const { form, errors, setForm, setErrors, resetHandler, changeHandler } =
     useForm(initialForm, validationEditProfile);
 
+  //Use Effects
+  useEffect(() => {
+    setForm(initialForm);
+  }, [user.id]); //eslint-disable-line
+
   //Address
   const addressMenuHandler = (event) => {
     event.preventDefault();
@@ -82,7 +87,7 @@ export default function UserProfile() {
 
   // change photo profile
   const uploadPhoto = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     setForm({
       ...form,
       image,
