@@ -1,3 +1,5 @@
+/** @format */
+
 import styles from "./dashboardAdmin.module.css";
 import DashboardCard from "./DashboardCard";
 import { useSelector, useDispatch } from "react-redux";
@@ -10,14 +12,14 @@ import { getAllUsers } from "../../redux/actions/userActions";
 const DashboardAdmin = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
-
-  useEffect(()  => {
-     dispatch(getAllUsers())
-    .then(() => dispatch(getState()))
-    .then(() => dispatch(getAddress()))
-    .then(() => dispatch(getCategories()))
-    .then(() => dispatch(getProjects()))
- .catch((error) => console.log(error));
+  //Hola Mundo
+  useEffect(() => {
+    dispatch(getAllUsers())
+      .then(() => dispatch(getState()))
+      .then(() => dispatch(getAddress()))
+      .then(() => dispatch(getCategories()))
+      .then(() => dispatch(getProjects()))
+      .catch((error) => console.log(error));
   }, [dispatch]);
 
   return (
@@ -38,10 +40,11 @@ const DashboardAdmin = () => {
           </li>
         </ul>
         <hr />
-        {
-          !!user.allUsers.length
-            ? user.allUsers.filter(item => item.id !== user.user.id).map(cardUser => {
-              return(
+        {!!user.allUsers.length ? (
+          user.allUsers
+            .filter((item) => item.id !== user.user.id)
+            .map((cardUser) => {
+              return (
                 <DashboardCard
                   key={cardUser.id}
                   id={cardUser.id}
@@ -49,10 +52,13 @@ const DashboardAdmin = () => {
                   Nombre={cardUser.name}
                   publicaciones={cardUser.Projects}
                 />
-              )
+              );
             })
-            : <div><h4>NO HAY USUARIOS</h4></div>
-        }
+        ) : (
+          <div>
+            <h4>NO HAY USUARIOS</h4>
+          </div>
+        )}
       </div>
     </div>
   );
