@@ -1,5 +1,16 @@
 @import "../../styles/variables.css";
 
+.button {
+  position: sticky;
+  bottom: 0;
+  margin: 0;
+  padding: 0.5rem;
+  background-color: var(--baby-purple);
+}
+
+.button-fake {
+  height: 3rem;
+}
 .details,
 .filter-navigation {
   margin: 0;
