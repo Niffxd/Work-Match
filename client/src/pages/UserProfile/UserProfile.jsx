@@ -15,6 +15,7 @@ import { newMessage } from "../../redux/actions/alertMessageActions";
 import ConfirmationMessage from "../../components/ConfirmationMessage/ConfirmationMessage";
 import Stripe from "../../components/Stripe";
 import AddPhoto from "../../components/AddPhoto/AddPhoto";
+import Stars from "../../components/StarRating/Stars";
 
 export default function UserProfile() {
   //variables
@@ -271,12 +272,13 @@ export default function UserProfile() {
                   {user.rate && (
                     <>
                       <p className={`${style["text-score"]}`}>Puntuación:</p>
-                      <img
+                      {/* <img
                         className={`${style["star-icon"]}`}
                         src='https://cdn-icons-png.flaticon.com/512/5583/5583265.png'
                         alt='Star'
                       />
-                      <p>{user.rate}</p>
+                      <p>{user.rate}</p> */}
+                      <Stars rate={user.rate} />
                     </>
                   )}
                 </div>

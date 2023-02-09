@@ -121,11 +121,11 @@
 .score-container > * {
   margin: 0;
 }
-.star-icon {
+/* .star-icon {
   margin: 0 0.5rem;
   width: 1rem;
   height: auto;
-}
+} */
 .user-banner {
   display: flex;
   align-items: center;
