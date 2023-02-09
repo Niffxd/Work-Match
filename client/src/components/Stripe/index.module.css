@@ -1,82 +1,87 @@
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #242d60;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-    'Helvetica Neue', 'Ubuntu', sans-serif;
-    height: 100vh;
-    margin: 0;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+@import "../../styles/variables.css";
+/* Product Display */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100%;
+}
+
+.container,
+.title-container,
+.text-container > div,
+.form,
+.text-container {
+  margin: 0;
+}
+
+.text-container {
+  display: grid;
+  grid-template-columns: 20% 1fr;
+  justify-content: center;
+  align-items: center;
+}
+.text-container > h3 {
+  margin-left: 1.5rem;
+  text-align: start;
+}
+.plan-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0;
+  padding: 1rem 1.5rem;
+  width: 90%;
+  border-radius: var(--border-radius);
+  background-color: var(--baby-purple);
+}
+
+.title-container > h3,
+.title-container > p {
+  text-align: center;
+}
+
+/* Success Display */
+.text-success {
+  margin: 0;
+  text-align: center;
+}
+.logo-container {
+  width: min(20%, 5rem);
+  margin: 0 auto;
+}
+@media screen and (min-width: 36em) {
+  .container {
+    margin: 0 auto;
   }
-  section {
-    background: #ffffff;
+
+  .text-container {
     display: flex;
     flex-direction: column;
-    width: 110px;
-    height: 150px;
-    border-radius: 6px;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+  }
+  .text-container > h3 {
+    margin-left: 0;
     text-align: center;
   }
-  .product {
-    display: flex;
-    flex: 1;
+  .form {
+    padding: 0.5rem;
   }
-  .description {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  p {
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 20px;
-    letter-spacing: -0.154px;
-    color: #242d60;
-    height: 100%;
-    width: 100%;
-    padding: 0 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-  }
-  img, svg {
-    border-radius: 6px;
-    margin: 10px;
-    width: 54px;
-    height: 57px;
-  }
-  h3,
-  h5 {
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 20px;
-    letter-spacing: -0.154px;
-    color: #242d60;
+
+  .logo {
+    width: min(20%, 5rem);
     margin: 0;
   }
-  h5 {
-    opacity: 0.5;
+  /* Success Display */
+  .text-success {
+    margin: 0;
+    text-align: center;
   }
-  button {
-    height: 36px;
-    background: #556cd6;
-    color: white;
-    width: 100%;
-    font-size: 14px;
-    border: 0;
-    font-weight: 500;
-    cursor: pointer;
-    letter-spacing: 0.6;
-    border-radius: 0 0 6px 6px;
-    transition: all 0.2s ease;
-    box-shadow: 0px 4px 5.5px 0px rgba(0, 0, 0, 0.07);
+  .logo-container {
+    width: 20rem;
+    margin: 0 auto;
   }
-  button:hover {
-    opacity: 0.8;
-  }
+}
