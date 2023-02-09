@@ -12,8 +12,8 @@
 
 
 .container-carousel > div > div {
-  width: 42rem !important;
-  height: 100vh;
+  width: 100% !important;
+  height: 90vh;
   margin: 0;
   overflow: hidden;
 }
@@ -55,12 +55,18 @@
 }
 
 .container-info-text {
-  height: 70%;
-  margin: 1rem 0 0;
-  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  height: 65%;
+  margin: 0;
+  padding: 3rem 4rem;
   overflow: hidden;
   background-color: #D0D6F2;
   border-radius: 3em 3em 0 0;
+}
+
+.info-text {
+  overflow: hidden;
 }
 
 .info-text p,
@@ -68,11 +74,15 @@
   cursor: pointer;
 }
 
+.info-text p {
+  font-size: 1rem;
+}
+
 .social-media-links {
   width: 100%;
   margin: 0;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 .social-links {
@@ -82,14 +92,30 @@
 }
 
 .social-links li {
-  margin: 1rem .7rem 0;
-  width: 2.5rem;
+  margin: 1rem 1rem 0;
+  width: 4.5rem;
+  overflow: hidden;
 }
 
 .social-links img {
   filter: invert(53%) sepia(8%) saturate(4305%) hue-rotate(193deg) brightness(95%) contrast(77%);
 }
 
-@media screen and (min-width: 36em) and (orientation: landscape) {
+@media screen and (min-width: 36rem) and (orientation: landscape) {
+  .container-carousel > div > div {
+    width: 42rem !important;
+  }
 
+  .container-info-text {
+    gap: 0;
+  }
+
+  .social-links li {
+    margin: 1rem 1rem 0;
+    width: 3rem;
+  }
+
+  .social-media-links {
+    justify-content: flex-end;
+  }
 }

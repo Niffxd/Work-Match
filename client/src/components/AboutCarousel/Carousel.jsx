@@ -1,10 +1,16 @@
 'use client'
 
-import Carousel from "react-spring-3d-carousel";
-import { config } from "react-spring";
 import { useState } from 'react'
-import { Link } from "react-router-dom";
+import { config } from "react-spring";
+import Carousel from "react-spring-3d-carousel";
 import style from './Carousel.module.css'
+import Mateo from '../../assets/images/about-us/Mateo.png'
+import Daniel from '../../assets/images/about-us/Daniel.png'
+import Marcos from '../../assets/images/about-us/Marcos.png'
+import Dariana from '../../assets/images/about-us/Dariana.png'
+import Diego from '../../assets/images/about-us/Diego.png'
+import Pedro from '../../assets/images/about-us/Pedro.png'
+import Nico from '../../assets/images/about-us/Nico.png'
 
 export default function CarouselComponent () {
   const [ state, setState ] = useState({
@@ -18,25 +24,23 @@ export default function CarouselComponent () {
     {
       key: 1,
       content: <div className={`${style['container-info']}`}>
-        <img src="https://images.generated.photos/7zofgOYy85zT5XJjWJl2_YJbgN491Pd56aa3CeOVlYU/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/NTQyMjQ0LmpwZw.jpg" alt="user" />
+        <img src={Mateo} alt="user" />
         <div className={`${style['container-info-text']}`}>
           <div className={`${style['info-text']}`}>
-            <h1>name</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod cupiditate alias voluptate, saepe, dignissimos facilis aliquid numquam similique, quidem tempora reprehenderit. Nobis ea labore voluptate et distinctio illo hic autem?</p>
-            <p>
-            Aut repudiandae itaque eligendi necessitatibus sint error modi delectus neque odit a labore, molestias veritatis iusto obcaecati minima velit ratione amet, fuga hic illum nihil optio voluptatum sunt! Voluptate, a!</p>
+            <h1>Mateo Colombatti</h1>
+            <p>La fuerza del equipo viene de cada miembro. La fuerza de cada miembro es el equipo.</p>
           </div>
           <div className={`${style['social-media-links']}`}>
             <ul className={`${style['social-links']}`}>
               <li>
-                <Link to=''>
+                <a href='https://www.linkedin.com/in/mateo-colombatti-35366a246' target='_blank' rel='noreferrer'>
                   <img src="https://cdn-icons-png.flaticon.com/512/1532/1532484.png" alt="linkedin" />
-                </Link>
+                </a>
               </li>
               <li>
-                <Link to=''>
-                <img src="https://cdn-icons-png.flaticon.com/512/1051/1051326.png" alt="github" />
-                </Link>
+                <a href='https://github.com/Matt112218' target='_blank' rel='noreferrer'>
+                  <img src="https://cdn-icons-png.flaticon.com/512/1051/1051326.png" alt="github" />
+                </a>
               </li>
             </ul>
           </div>
@@ -46,25 +50,23 @@ export default function CarouselComponent () {
     {
       key: 2,
       content: <div className={`${style['container-info']}`}>
-        <img src="https://images.generated.photos/7IcHvSHyIypmIKV8cdS5alFyJIIqqxFHQO9KxmJ_H_M/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/NzcyMzUzLmpwZw.jpg" alt="user" />
+        <img src={Daniel} alt="user" />
         <div className={`${style['container-info-text']}`}>
           <div className={`${style['info-text']}`}>
-            <h1>name</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod cupiditate alias voluptate, saepe, dignissimos facilis aliquid numquam similique, quidem tempora reprehenderit. Nobis ea labore voluptate et distinctio illo hic autem?</p>
-            <p>
-            Aut repudiandae itaque eligendi necessitatibus sint error modi delectus neque odit a labore, molestias veritatis iusto obcaecati minima velit ratione amet, fuga hic illum nihil optio voluptatum sunt! Voluptate, a!</p>
+            <h1>Daniel Valencia Giraldo</h1>
+            <p>No hay problema que no podamos resolver juntos, y muy pocos que podamos resolver por nosotros mismos.</p>
           </div>
           <div className={`${style['social-media-links']}`}>
             <ul className={`${style['social-links']}`}>
               <li>
-                <Link to=''>
+                <a href='https://www.linkedin.com/in/daniel-valencia-giraldo-384341249' target='_blank' rel='noreferrer'>
                   <img src="https://cdn-icons-png.flaticon.com/512/1532/1532484.png" alt="linkedin" />
-                </Link>
+                </a>
               </li>
               <li>
-                <Link to=''>
-                <img src="https://cdn-icons-png.flaticon.com/512/1051/1051326.png" alt="github" />
-                </Link>
+                <a href='https://github.com/valenDanDev' target='_blank' rel='noreferrer'>
+                  <img src="https://cdn-icons-png.flaticon.com/512/1051/1051326.png" alt="github" />
+                </a>
               </li>
             </ul>
           </div>
@@ -74,25 +76,23 @@ export default function CarouselComponent () {
     {
       key: 3,
       content: <div className={`${style['container-info']}`}>
-        <img src="https://images.generated.photos/c1DCdo6Ov2jMjRH_OjPyY-gs1Mafwtup4Z4SbO9AR7c/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/NDQ4NjkxLmpwZw.jpg" alt="user" />
+        <img src={Marcos} alt="user" />
         <div className={`${style['container-info-text']}`}>
           <div className={`${style['info-text']}`}>
-            <h1>name</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod cupiditate alias voluptate, saepe, dignissimos facilis aliquid numquam similique, quidem tempora reprehenderit. Nobis ea labore voluptate et distinctio illo hic autem?</p>
-            <p>
-            Aut repudiandae itaque eligendi necessitatibus sint error modi delectus neque odit a labore, molestias veritatis iusto obcaecati minima velit ratione amet, fuga hic illum nihil optio voluptatum sunt! Voluptate, a!</p>
+            <h1>Marcos Carbajales</h1>
+            <p>Da siempre lo mejor que tienes. Lo que plantes ahora, lo cosecharás más tarde. </p>
           </div>
           <div className={`${style['social-media-links']}`}>
             <ul className={`${style['social-links']}`}>
               <li>
-                <Link to=''>
+                <a href='https://www.linkedin.com/in/marck-carbajales/' target='_blank' rel='noreferrer'>
                   <img src="https://cdn-icons-png.flaticon.com/512/1532/1532484.png" alt="linkedin" />
-                </Link>
+                </a>
               </li>
               <li>
-                <Link to=''>
-                <img src="https://cdn-icons-png.flaticon.com/512/1051/1051326.png" alt="github" />
-                </Link>
+                <a href='https://github.com/Nhoctus-Marck' target='_blank' rel='noreferrer'>
+                  <img src="https://cdn-icons-png.flaticon.com/512/1051/1051326.png" alt="github" />
+                </a>
               </li>
             </ul>
           </div>
@@ -102,25 +102,23 @@ export default function CarouselComponent () {
     {
       key: 4,
       content: <div className={`${style['container-info']}`}>
-        <img src="https://images.generated.photos/4iKCqIY7fe839GPuvyoEfVM9Ee3WTmSDMVJ7RKCh3KY/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/ODA1MDk4LmpwZw.jpg" alt="user" />
+        <img src={Dariana} alt="user" />
         <div className={`${style['container-info-text']}`}>
           <div className={`${style['info-text']}`}>
-            <h1>name</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod cupiditate alias voluptate, saepe, dignissimos facilis aliquid numquam similique, quidem tempora reprehenderit. Nobis ea labore voluptate et distinctio illo hic autem?</p>
-            <p>
-            Aut repudiandae itaque eligendi necessitatibus sint error modi delectus neque odit a labore, molestias veritatis iusto obcaecati minima velit ratione amet, fuga hic illum nihil optio voluptatum sunt! Voluptate, a!</p>
+            <h1>Dariana Rengifo</h1>
+            <p>Un bote no va hacia delante si cada uno rema a su propia manera.</p>
           </div>
           <div className={`${style['social-media-links']}`}>
             <ul className={`${style['social-links']}`}>
               <li>
-                <Link to=''>
+                <a href='https://www.linkedin.com/in/dariana-rengifo/' target='_blank' rel='noreferrer'>
                   <img src="https://cdn-icons-png.flaticon.com/512/1532/1532484.png" alt="linkedin" />
-                </Link>
+                </a>
               </li>
               <li>
-                <Link to=''>
-                <img src="https://cdn-icons-png.flaticon.com/512/1051/1051326.png" alt="github" />
-                </Link>
+                <a href='https://github.com/darianaren/' target='_blank' rel='noreferrer'>
+                  <img src="https://cdn-icons-png.flaticon.com/512/1051/1051326.png" alt="github" />
+                </a>
               </li>
             </ul>
           </div>
@@ -130,25 +128,23 @@ export default function CarouselComponent () {
     {
       key: 5,
       content: <div className={`${style['container-info']}`}>
-        <img src="https://images.generated.photos/i1UDhhxzSwPadnE4N68xBTSszPJ2sb6uFFoXZ93_zNs/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MjA5ODI3LmpwZw.jpg" alt="user" />
+        <img src={Diego} alt="user" />
         <div className={`${style['container-info-text']}`}>
           <div className={`${style['info-text']}`}>
-            <h1>name</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod cupiditate alias voluptate, saepe, dignissimos facilis aliquid numquam similique, quidem tempora reprehenderit. Nobis ea labore voluptate et distinctio illo hic autem?</p>
-            <p>
-            Aut repudiandae itaque eligendi necessitatibus sint error modi delectus neque odit a labore, molestias veritatis iusto obcaecati minima velit ratione amet, fuga hic illum nihil optio voluptatum sunt! Voluptate, a!</p>
+            <h1>Diego Guillen</h1>
+            <p>Si tú sabes lo que vales, ve y consigue lo que mereces</p>
           </div>
           <div className={`${style['social-media-links']}`}>
             <ul className={`${style['social-links']}`}>
               <li>
-                <Link to=''>
+                <a href='https://www.linkedin.com/in/diegoezequielguillen/' target='_blank' rel='noreferrer'>
                   <img src="https://cdn-icons-png.flaticon.com/512/1532/1532484.png" alt="linkedin" />
-                </Link>
+                </a>
               </li>
               <li>
-                <Link to=''>
-                <img src="https://cdn-icons-png.flaticon.com/512/1051/1051326.png" alt="github" />
-                </Link>
+                <a href='https://github.com/DeGsoft' target='_blank' rel='noreferrer'>
+                  <img src="https://cdn-icons-png.flaticon.com/512/1051/1051326.png" alt="github" />
+                </a>
               </li>
             </ul>
           </div>
@@ -158,25 +154,23 @@ export default function CarouselComponent () {
     {
       key: 6,
       content: <div className={`${style['container-info']}`}>
-        <img src="https://images.generated.photos/Pe-ArYiZiXrvj6eqM3iEnqLJgORlA8yD5mR0O0duT_4/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/NDAxMjM1LmpwZw.jpg" alt="user" />
+        <img src={Pedro} alt="user" />
         <div className={`${style['container-info-text']}`}>
           <div className={`${style['info-text']}`}>
-            <h1>name</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod cupiditate alias voluptate, saepe, dignissimos facilis aliquid numquam similique, quidem tempora reprehenderit. Nobis ea labore voluptate et distinctio illo hic autem?</p>
-            <p>
-            Aut repudiandae itaque eligendi necessitatibus sint error modi delectus neque odit a labore, molestias veritatis iusto obcaecati minima velit ratione amet, fuga hic illum nihil optio voluptatum sunt! Voluptate, a!</p>
+            <h1>Pedro Aristigueta</h1>
+            <p>Por muy alta que sea una montaña, siempre hay un camino hacia la cima.</p>
           </div>
           <div className={`${style['social-media-links']}`}>
             <ul className={`${style['social-links']}`}>
               <li>
-                <Link to=''>
+                <a href='https://www.linkedin.com/in/pedro-aristigueta-357889215/' target='_blank' rel='noreferrer'>
                   <img src="https://cdn-icons-png.flaticon.com/512/1532/1532484.png" alt="linkedin" />
-                </Link>
+                </a>
               </li>
               <li>
-                <Link to=''>
-                <img src="https://cdn-icons-png.flaticon.com/512/1051/1051326.png" alt="github" />
-                </Link>
+                <a href='https://github.com/aristiguetam' target='_blank' rel='noreferrer'>
+                  <img src="https://cdn-icons-png.flaticon.com/512/1051/1051326.png" alt="github" />
+                </a>
               </li>
             </ul>
           </div>
@@ -186,53 +180,23 @@ export default function CarouselComponent () {
     {
       key: 7,
       content: <div className={`${style['container-info']}`}>
-        <img src="https://images.generated.photos/wRBaFdxOZGPtOZnC8xmorSqQM95NC3ZNe85vt1XN3iU/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/NzU4NjAyLmpwZw.jpg" alt="user" />
+        <img src={Nico} alt="user" />
         <div className={`${style['container-info-text']}`}>
           <div className={`${style['info-text']}`}>
-            <h1>name</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod cupiditate alias voluptate, saepe, dignissimos facilis aliquid numquam similique, quidem tempora reprehenderit. Nobis ea labore voluptate et distinctio illo hic autem?</p>
-            <p>
-            Aut repudiandae itaque eligendi necessitatibus sint error modi delectus neque odit a labore, molestias veritatis iusto obcaecati minima velit ratione amet, fuga hic illum nihil optio voluptatum sunt! Voluptate, a!</p>
+            <h1>Nicolas Sanchez</h1>
+            <p>El 80% del éxito se basa simplemente en insistir.</p>
           </div>
           <div className={`${style['social-media-links']}`}>
             <ul className={`${style['social-links']}`}>
               <li>
-                <Link to=''>
+                <a href='https://www.linkedin.com/in/nirsanchez/' target='_blank' rel='noreferrer'>
                   <img src="https://cdn-icons-png.flaticon.com/512/1532/1532484.png" alt="linkedin" />
-                </Link>
+                </a>
               </li>
               <li>
-                <Link to=''>
-                <img src="https://cdn-icons-png.flaticon.com/512/1051/1051326.png" alt="github" />
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    },
-    {
-      key: 8,
-      content: <div className={`${style['container-info']}`}>
-        <img src="https://images.generated.photos/csEhEmTZ3QUC0Wte1vESkhI9kkYG02v_8DnZWch9VMM/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/NjcxMTY1LmpwZw.jpg" alt="user" />
-        <div className={`${style['container-info-text']}`}>
-          <div className={`${style['info-text']}`}>
-            <h1>name</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod cupiditate alias voluptate, saepe, dignissimos facilis aliquid numquam similique, quidem tempora reprehenderit. Nobis ea labore voluptate et distinctio illo hic autem?</p>
-            <p>
-            Aut repudiandae itaque eligendi necessitatibus sint error modi delectus neque odit a labore, molestias veritatis iusto obcaecati minima velit ratione amet, fuga hic illum nihil optio voluptatum sunt! Voluptate, a!</p>
-          </div>
-          <div className={`${style['social-media-links']}`}>
-            <ul className={`${style['social-links']}`}>
-              <li>
-                <Link to=''>
-                  <img src="https://cdn-icons-png.flaticon.com/512/1532/1532484.png" alt="linkedin" />
-                </Link>
-              </li>
-              <li>
-                <Link to=''>
-                <img src="https://cdn-icons-png.flaticon.com/512/1051/1051326.png" alt="github" />
-                </Link>
+                <a href='https://github.com/Niffxd' target='_blank' rel='noreferrer'>
+                  <img src="https://cdn-icons-png.flaticon.com/512/1051/1051326.png" alt="github" />
+                </a>
               </li>
             </ul>
           </div>

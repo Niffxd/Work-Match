@@ -19,10 +19,15 @@
 .links-footer {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+}
+
+.links-footer li {
+  text-align: center;
 }
 
 .link-footer {
-  margin: 0 2rem;
+  margin: 0;
   font-weight: 600;
   text-decoration: none;
   color: var(--light-color);
@@ -40,5 +45,9 @@
 
   .links-footer {
     flex-direction: row;
+  }
+
+  .link-footer {
+    margin: 0 2rem;
   }
 }

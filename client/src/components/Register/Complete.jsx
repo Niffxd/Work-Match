@@ -75,7 +75,7 @@ export default function Complete() {
     && postUser.phone !== '' && postUser.phone.length >= 9 && postUser.phone.length <= 12){
       await dispatch(userActions.postUser(postUser))
       dispatch(userActions.getAllUsers())
-      dispatch(newMessage('Usuario registrado con éxito!. Por favor loguate para comenzar a trabajar!', 'success'))
+      dispatch(newMessage('Usuario registrado con éxito!. Por favor logueate para comenzar a trabajar!', 'success'))
       history.push('/login')
     }
     else{
