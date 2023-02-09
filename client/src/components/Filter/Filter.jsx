@@ -287,9 +287,11 @@ export default function Filter() {
           </div>
         </details>
         {/* Button */}
-        <button onClick={filterHandler} className='button-green'>
-          Aplicar filtros
-        </button>
+        <div className={`${style["button"]}`}>
+          <button onClick={filterHandler} className='button-green'>
+            Aplicar filtros
+          </button>
+        </div>
       </div>
     </form>
   );
