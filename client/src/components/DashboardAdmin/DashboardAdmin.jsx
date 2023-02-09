@@ -38,15 +38,21 @@ const DashboardAdmin = () => {
           </li>
         </ul>
         <hr />
-        {user.allUsers && Object.values(user.allUsers).length > 0 ? user.allUsers.map((x) => (
-          <DashboardCard
-            key={x.id}
-            id={x.id}
-            imagen={x.image}
-            Nombre={x.name}
-            publicaciones={x.Projects}
-          />
-        )): <div><h4>NO HAY USUARIOS</h4></div>} 
+        {
+          !!user.allUsers.length
+            ? user.allUsers.filter(item => item.id !== user.user.id).map(cardUser => {
+              return(
+                <DashboardCard
+                  key={cardUser.id}
+                  id={cardUser.id}
+                  imagen={cardUser.image}
+                  Nombre={cardUser.name}
+                  publicaciones={cardUser.Projects}
+                />
+              )
+            })
+            : <div><h4>NO HAY USUARIOS</h4></div>
+        }
       </div>
     </div>
   );

@@ -38,7 +38,6 @@ export default function AddPhoto({ uploadPhoto, image, setImage, defaultImage })
     document.getElementById('modalProfile').classList.remove('showModal')
   }
 
-
   return (
     <>
       <dialog id='modalProfile'>

@@ -80,11 +80,14 @@ export default function UserProfile() {
   };
 
   // change photo profile
-  const addImageHandler = (event) => {
-    event.preventDefault();
-    //TO DO 1/2: Agregar foto de perfil de los archivos del usuario.
-    alert("agrega una foto de perfil");
-  };
+  const uploadPhoto = () => {
+    // setPreform({
+    //   ...preForm,
+    //   image
+    // })
+    document.getElementById('modalProfile').close()
+    document.getElementById('modalProfile').classList.remove('showModal')
+  }
 
   //Open confirmation message
   const confirmationHandler = async (event) => {
@@ -235,12 +238,7 @@ export default function UserProfile() {
                   alt='profile'
                 />
               </div>
-              <button
-                className={`${style["add-photo"]}`}
-                onClick={addImageHandler}
-              >
-                +
-              </button>
+              {/* <AddPhoto uploadPhoto={uploadPhoto} image={user.image} setImage={}/> */}
             </div>
             <div className={`${style["user-data"]}`}>
               <div className={`${style["premium"]}`}>

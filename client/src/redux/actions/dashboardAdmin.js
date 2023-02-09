@@ -43,7 +43,7 @@ export const putUserAdmin = (data, id) => async (dispatch) => {
     });
   };
 
-  
+  //Obtener id para eliminar al usuario 
   export const getUserIdAmin = (id) => ({
     type: GET_USER_ID_ADMIN,
     payload: id

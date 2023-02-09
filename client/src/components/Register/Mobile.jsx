@@ -18,7 +18,7 @@ export default function Mobile() {
   const { allUsers } = useSelector(state => state.user)
 
   useEffect(() => {
-    dispatch(getAllUsers)
+    dispatch(getAllUsers())
   }, [allUsers]) //eslint-disable-line
 
   const [preForm, setPreform] = useState({

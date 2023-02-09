@@ -5,6 +5,7 @@ import styles from "./dashboardEditAdmin.module.css"
 import { getUserEdit } from "../../../redux/actions/dashboardAdmin";
 import { putUserAdmin } from "../../../redux/actions/dashboardAdmin";
 import { useHistory } from "react-router-dom";
+import {newMessage} from "../../../redux/actions/alertMessageActions"
 
 const DashboardEditAdmin = () => {
   
@@ -31,6 +32,7 @@ const DashboardEditAdmin = () => {
       e.preventDefault();
       dispatch(putUserAdmin(value,id))
       history.push("/my-profile/admin")
+      dispatch(newMessage("El usuario fue actualizado con exito", "sucess"))
     }
     const handleChange = (e) => {
       setValue((state) => ({

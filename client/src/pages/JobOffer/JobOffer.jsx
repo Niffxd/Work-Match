@@ -34,18 +34,17 @@ export default function JobOfferDetail() {
     (state) => state.id === parseInt(oneProject.state)
   );
   const [visible, setVisible] = useState("visible");
-
+  console.log(oneProject.owner, owner);
   //Use Effects
   useEffect(() => {
     dispatch(getProjectId(id));
     dispatch(getPublication(id));
+    oneProject.owner && dispatch(getOwner(oneProject.owner));
   }, []); //eslint-disable-line
 
   useEffect(() => {
-    //eslint-disable-line
-    //eslint-disable-line
     dispatch(getOwner(oneProject.owner));
-  }, [oneProject]); //eslint-disable-line
+  }, [oneProject.owner]); //eslint-disable-line
 
   //Edit Publication
   const editHandler = (event) => {
