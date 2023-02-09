@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { SignInButton } from "../Login/SignInbutton.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import NextButton from "./NextButton.jsx";
-import AddButton from "./AddButton.jsx";
+import AddPhoto from "../AddPhoto/AddPhoto.jsx";
 import user from "../../assets/images/user.png";
 import style from "./register.module.css";
 import { getAllUsers } from "../../redux/actions/userActions.js";
@@ -11,7 +11,6 @@ import { getAllUsers } from "../../redux/actions/userActions.js";
 export default function Mobile() {
   const dispatch = useDispatch()
   const [ image, setImage ] = useState(user)
-  const [ load, setLoad ] = useState(false)
   const [validateEmail, setValidateEmail] = useState(false);
   const [validatePassword, setValidatePassword] = useState(false);
   const [validate, setValidate] = useState(false);
@@ -19,7 +18,7 @@ export default function Mobile() {
   const { allUsers } = useSelector(state => state.user)
 
   useEffect(() => {
-    dispatch(getAllUsers)
+    dispatch(getAllUsers())
   }, [allUsers]) //eslint-disable-line
 
   const [preForm, setPreform] = useState({
@@ -48,24 +47,6 @@ export default function Mobile() {
     else setValidate(false);
   };
 
-  const handlerImage = async event => {
-    const tempImage = event.target.files[0]
-    const data = new FormData()
-    data.append('file', tempImage)
-    data.append('upload_preset', 'Images')
-    setLoad(true)
-    const res = await fetch(
-      'https://api.cloudinary.com/v1_1/djr3toaxt/image/upload',
-      {
-        method: 'POST',
-        body: data
-      }
-    )
-    const img_url = await res.json()
-    setImage(img_url.secure_url)
-    setLoad(false)
-  };
-
   const uploadPhoto = () => {
     setPreform({
       ...preForm,
@@ -87,7 +68,7 @@ export default function Mobile() {
             alt="profile"
           />
         </div>
-        <AddButton handlerImage={handlerImage} uploadPhoto={uploadPhoto} states={{image, load}}/>
+        <AddPhoto uploadPhoto={uploadPhoto} image={image} setImage={setImage}/>
       </div>
       <div className={`${style["info"]}`}>
         <label htmlFor="email">Email:</label>
