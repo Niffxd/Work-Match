@@ -53,7 +53,7 @@ export default function CarouselComponent () {
         <img src={Daniel} alt="user" />
         <div className={`${style['container-info-text']}`}>
           <div className={`${style['info-text']}`}>
-            <h1>Daniel Valencia Giraldo</h1>
+            <h1>Daniel Valencia</h1>
             <p>No hay problema que no podamos resolver juntos, y muy pocos que podamos resolver por nosotros mismos.</p>
           </div>
           <div className={`${style['social-media-links']}`}>

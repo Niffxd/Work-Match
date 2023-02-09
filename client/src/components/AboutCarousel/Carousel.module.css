@@ -12,7 +12,7 @@
 
 
 .container-carousel > div > div {
-  width: 100% !important;
+  width: 70% !important;
   height: 90vh;
   margin: 0;
   overflow: hidden;
@@ -41,9 +41,9 @@
 }
 
 .container-info {
+  height: 100%;
   margin: 0;
   padding: 1rem 0 0;
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -52,20 +52,22 @@
 
 .container-info > img {
   border-radius: 100%;
+  margin: 2rem 0;
 }
 
 .container-info-text {
+  height: 40rem;
   display: flex;
   flex-direction: column;
-  height: 65%;
   margin: 0;
-  padding: 3rem 4rem;
+  padding: 1rem 3rem;
   overflow: hidden;
   background-color: #D0D6F2;
   border-radius: 3em 3em 0 0;
 }
 
 .info-text {
+  margin: 0;
   overflow: hidden;
 }
 
@@ -107,6 +109,7 @@
   }
 
   .container-info-text {
+    padding: 3rem 4rem;
     gap: 0;
   }
 
