@@ -163,3 +163,9 @@
 .invisible {
   display: none;
 }
+
+.star-icon {
+  margin: 0 0.2rem;
+  width: 1rem;
+  height: auto;  
+}

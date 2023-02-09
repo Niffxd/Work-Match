@@ -19,6 +19,7 @@ import {
 import StarRating from "../../components/StarRating";
 
 import style from "./jobOffer.module.css";
+import Stars from "../../components/StarRating/Stars";
 
 export default function JobOfferDetail() {
   //Variables
@@ -130,11 +131,8 @@ export default function JobOfferDetail() {
                 </div>
                 {/* Name */}
                 <p className={`${style["user-name"]}`}>{owner.name}
-
-                {/* Rate */
-                  [...Array(owner.rate)].map((e, i) => <span className="star">&#9733;</span>)                 
-                }                
-
+                {/* Rate */}
+                <Stars rate={owner.rate} />
                 </p>
                 {/* Date */}
                 <p className={`${style["date"]}`}>
@@ -251,9 +249,8 @@ export default function JobOfferDetail() {
               user.id !== owner.id && (
                 <>
                   <div
-                    className={`${visible === "visible" && "invisible"} ${
-                      style["application"]
-                    }`}
+                    className={`${visible === "visible" && "invisible"} ${style["application"]
+                      }`}
                   >
                     <img
                       className={`icon-green ${style["check-icon"]}`}

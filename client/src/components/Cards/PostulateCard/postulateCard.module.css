@@ -84,11 +84,11 @@
   font-weight: var(--semibold);
   margin: 0;
 }
-.star-icon {
+/* .star-icon {
   margin: 0 0.5rem;
   width: 1rem;
   height: auto;
-}
+} */
 .score {
   margin: 0;
 }

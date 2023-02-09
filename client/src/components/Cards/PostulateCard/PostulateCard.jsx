@@ -10,6 +10,7 @@ import {
   saveIdBid,
   updateApplicationStatus,
 } from "../../../redux/actions/userActions";
+import Stars from "../../StarRating/Stars";
 import style from "./postulateCard.module.css";
 
 export default function PostulateCard({
@@ -104,12 +105,13 @@ export default function PostulateCard({
       {rate && (
         <div className={`${style["rate-container"]}`}>
           <p className={`${style["text-score"]}`}>Puntuación:</p>
-          <img
+          {/* <img
             className={`${style["star-icon"]}`}
             src='https://cdn-icons-png.flaticon.com/512/5583/5583265.png'
             alt='Star'
           />
-          <p className={`${style["score"]}`}>{rate}</p>
+          <p className={`${style["score"]}`}>{rate}</p> */}
+          <Stars rate={rate} />
         </div>
       )}
       <p className={`${style["biography"]} ${style[moreInformation]}`}>
