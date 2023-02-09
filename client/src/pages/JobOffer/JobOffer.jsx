@@ -200,16 +200,11 @@ export default function JobOfferDetail() {
             {(oneProject.deleted || !oneProject.status) &&
               user.id &&
               user.id !== owner.id && (
-                // user.Projects &&
-                // userPublication &&
-                // userPublication === "user"
                 <p className={`${style["not-available"]}`}>No disponible.</p>
               )}
             {(oneProject.deleted || !oneProject.status) &&
               user.id &&
               user.id === owner.id && (
-                // userPublication &&
-                // userPublication === "owner"
                 <button className='button-green' onClick={reactivateHandler}>
                   Activar publicación
                 </button>
@@ -230,6 +225,7 @@ export default function JobOfferDetail() {
             {!oneProject.deleted &&
               oneProject.status &&
               user.Projects &&
+              user.id !== owner.id &&
               userPublication &&
               userPublication === "user" && (
                 <div className={`${style["application"]}`}>
