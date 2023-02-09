@@ -34,12 +34,10 @@ export default function JobOfferDetail() {
     (state) => state.id === parseInt(oneProject.state)
   );
   const [visible, setVisible] = useState("visible");
-  console.log(oneProject.owner, owner);
   //Use Effects
   useEffect(() => {
     dispatch(getProjectId(id));
     dispatch(getPublication(id));
-    oneProject.owner && dispatch(getOwner(oneProject.owner));
   }, []); //eslint-disable-line
 
   useEffect(() => {
@@ -200,24 +198,21 @@ export default function JobOfferDetail() {
               </section>
             </section>
             {(oneProject.deleted || !oneProject.status) &&
-              user.Projects &&
-              userPublication &&
-              userPublication === "user" && (
+              user.id &&
+              user.id !== owner.id && (
                 <p className={`${style["not-available"]}`}>No disponible.</p>
               )}
             {(oneProject.deleted || !oneProject.status) &&
-              user.Projects &&
-              userPublication &&
-              userPublication === "owner" && (
+              user.id &&
+              user.id === owner.id && (
                 <button className='button-green' onClick={reactivateHandler}>
                   Activar publicación
                 </button>
               )}
             {!oneProject.deleted &&
               oneProject.status &&
-              user.Projects &&
-              userPublication &&
-              userPublication === "owner" && (
+              user.id &&
+              user.id === owner.id && (
                 <div className='buttons-container'>
                   <button className='button-green' onClick={editHandler}>
                     Editar
@@ -230,6 +225,7 @@ export default function JobOfferDetail() {
             {!oneProject.deleted &&
               oneProject.status &&
               user.Projects &&
+              user.id !== owner.id &&
               userPublication &&
               userPublication === "user" && (
                 <div className={`${style["application"]}`}>
@@ -244,7 +240,8 @@ export default function JobOfferDetail() {
             {!oneProject.deleted &&
               oneProject.status &&
               user.Projects &&
-              !userPublication && (
+              !userPublication &&
+              user.id !== owner.id && (
                 <>
                   <div
                     className={`${visible === "visible" && "invisible"} ${
