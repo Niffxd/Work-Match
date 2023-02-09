@@ -123,9 +123,9 @@ export default function Login() {
         <div className={style["form-container"]}>
           <label>Usuario</label>
           <input
-            type='email'
+            type='text'
             placeholder='Usuario'
-            {...register("email", {
+            {...register("username", {
               required: {
                 value: true,
                 message: "Este campo es requerido",
