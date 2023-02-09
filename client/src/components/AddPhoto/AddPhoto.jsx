@@ -25,14 +25,16 @@ export default function AddPhoto({ uploadPhoto, image, setImage, defaultImage })
     const img_url = await res.json()
     setImage(img_url.secure_url)
     setLoad(false)
-  };  
+  };
 
-  const addImageHandler = () => {
+  const addImageHandler = (event) => {
+    event.preventDefault()
     document.getElementById('modalProfile').showModal()
     document.getElementById('modalProfile').classList.add('showModal')
   }
 
-  const exitModal = () => {
+  const exitModal = (event) => {
+    event.preventDefault()
     setImage(!prevImage ? defaultImage : prevImage)
     document.getElementById('modalProfile').close()
     document.getElementById('modalProfile').classList.remove('showModal')
@@ -48,7 +50,7 @@ export default function AddPhoto({ uploadPhoto, image, setImage, defaultImage })
         <button
           className={`${style['exit-modal']}`}
           onClick={exitModal}>
-            Cerrar
+            Cancelar
         </button>
         <button
           className={`${style['success-upload']}`}
