@@ -1,0 +1,16 @@
+.star-rating button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+  .star-rating-on {
+    color: #000;
+  }
+  .star-rating-off {
+    color: #ccc;
+  }
+  
+  .star-rating {
+    padding: 100px;
+  }

@@ -16,6 +16,7 @@ import {
   getUserId,
   userApplication,
 } from "../../redux/actions/userActions";
+import StarRating from "../../components/StarRating";
 
 import style from "./jobOffer.module.css";
 
@@ -116,7 +117,7 @@ export default function JobOfferDetail() {
         {!oneProject && !owner ? (
           <NotFound message='La oferta de trabajo que buscas no existe.' />
         ) : (
-          <>
+          <>{console.log(owner)}
             <section className={`${style["info-container"]}`}>
               <div className={`${style["data-container"]}`}>
                 {/* Photo profile */}
@@ -128,7 +129,13 @@ export default function JobOfferDetail() {
                   />
                 </div>
                 {/* Name */}
-                <p className={`${style["user-name"]}`}>{owner.name}</p>
+                <p className={`${style["user-name"]}`}>{owner.name}
+
+                {/* Rate */
+                  [...Array(owner.rate)].map((e, i) => <span className="star">&#9733;</span>)                 
+                }                
+
+                </p>
                 {/* Date */}
                 <p className={`${style["date"]}`}>
                   {new Date(oneProject.updatedAt).getDate()}/
