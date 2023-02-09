@@ -1,9 +1,13 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import Loader from '../Register/Loading'
 import style from '../Register/buttons.module.css'
 
-export default function AddPhoto({ uploadPhoto, image, setImage }) {
+export default function AddPhoto({ uploadPhoto, image, setImage, defaultImage }) {
+  const { user } = useSelector(state => state.user)
   const [ load, setLoad ] = useState(false)
+
+  const prevImage = user.image
   
   const handlerImage = async event => {
     const tempImage = event.target.files[0]
@@ -29,6 +33,7 @@ export default function AddPhoto({ uploadPhoto, image, setImage }) {
   }
 
   const exitModal = () => {
+    setImage(!prevImage ? defaultImage : prevImage)
     document.getElementById('modalProfile').close()
     document.getElementById('modalProfile').classList.remove('showModal')
   }

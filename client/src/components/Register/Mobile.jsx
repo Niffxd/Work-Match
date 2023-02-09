@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { SignInButton } from "../Login/SignInbutton.jsx";
 import { useDispatch, useSelector } from "react-redux";
-import NextButton from "./NextButton.jsx";
 import AddPhoto from "../AddPhoto/AddPhoto.jsx";
+import NextButton from "./NextButton.jsx";
 import user from "../../assets/images/user.png";
 import style from "./register.module.css";
 import { getAllUsers } from "../../redux/actions/userActions.js";
@@ -68,7 +68,7 @@ export default function Mobile() {
             alt="profile"
           />
         </div>
-        <AddPhoto uploadPhoto={uploadPhoto} image={image} setImage={setImage}/>
+        <AddPhoto uploadPhoto={uploadPhoto} image={image} setImage={setImage} defaultImage={user}/>
       </div>
       <div className={`${style["info"]}`}>
         <label htmlFor="email">Email:</label>
