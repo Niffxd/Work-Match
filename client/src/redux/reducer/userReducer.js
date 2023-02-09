@@ -59,11 +59,10 @@ export default function userReducer(
         : false;
       const userStatus = !publication
         ? publication
-        : publication.Bid.owner === publication.Bid.user
+        : publication.Bid.status === "Owner"
         ? "owner"
         : "user";
-      setItem("user", { ...state, userPublication: userStatus });
-      return getItem("user", initialState);
+      return { ...state, userPublication: userStatus };
     default:
       return state;
   }
