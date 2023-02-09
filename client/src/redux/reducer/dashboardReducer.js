@@ -4,11 +4,13 @@ import {
   DELETE_USER_ADMIN,
   UPDATE_USER_ADMIN,
   GET_ALL_USERS,
+  GET_USER_ID_ADMIN,
 } from "../actions/dashboardAdmin";
 const initialState = {
   allUsers: [],
   userEdit: {},
   message: "",
+  id: null
 };
 
 export default function userReducer(
@@ -29,7 +31,11 @@ export default function userReducer(
     case DELETE_USER_ADMIN:
       setItem("admin", { ...state, message: payload });
       return getItem("admin", initialState);
-    default:
+    case GET_USER_ID_ADMIN : 
+      return {
+        ...state, id: payload
+      }
+      default:
       return state;
   }
 }
