@@ -26,7 +26,7 @@ export default function NextButton(props) {
     : 
   <>
     <dialog id='completeProfile'>
-      <h3>Email o contraseña no válidos.</h3>
+      <h3>Usuario o contraseña no válidos.</h3>
       <h3>La contraseña deber tener un mínimo de 8 caracteres.</h3>
       <button
         className={`${style['exit-modal']}`}

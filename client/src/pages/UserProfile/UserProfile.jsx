@@ -81,7 +81,8 @@ export default function UserProfile() {
   };
 
   // change photo profile
-  const uploadPhoto = () => {
+  const uploadPhoto = (event) => {
+    event.preventDefault()
     setForm({
       ...form,
       image,
